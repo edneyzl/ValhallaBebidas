@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ValhallaBebidas.Application/ValhallaBebidas.Application.csproj" />
+  <Project Path="ValhallaBebidas.Domain/ValhallaBebidas.Domain.csproj" />
+  <Project Path="ValhallaBebidas.Infrastructure/ValhallaBebidas.Infrastructure.csproj" />
+</Solution>
