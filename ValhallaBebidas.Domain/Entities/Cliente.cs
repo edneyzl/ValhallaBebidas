@@ -15,4 +15,10 @@ public class Cliente
 
     //Propriedade de navegação, referência entre entidades, possui o tipo da classe
     public Endereco? Endereco { get; set; }
+
+    /// <summary>
+    /// Coleção de pedidos associados a este cliente.
+    /// Relacionamento: 1 Cliente possui N Pedidos.
+    /// </summary>
+    public ICollection<Pedido> Pedidos { get; set; } = new List<Pedido>();
 }

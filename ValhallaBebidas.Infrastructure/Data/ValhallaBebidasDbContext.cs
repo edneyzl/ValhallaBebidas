@@ -109,10 +109,7 @@ public class ValhallaBebidasDbContext : DbContext
         modelBuilder.Entity<Produto>(entity =>
         {
             entity.HasKey(p => p.Id);
-
-            entity.Property(p => p.Nome)
-                .IsRequired()
-                .HasMaxLength(200);
+            entity.Property(p => p.Nome).IsRequired().HasMaxLength(200);
 
             entity.Property(p => p.EanCodBarras)
                 .IsRequired()
