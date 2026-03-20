@@ -11,7 +11,6 @@ public class Produto
     public string Descricao { get; set; } = string.Empty;
     public decimal PrecoVenda { get; set; } 
     public decimal PrecoCusto { get; set; }
-    public int QuantidadeEstoque { get; set; }
     public int QuantidadeMinimo { get; set; }
     public DateTime DataCadastro { get; set; }
     public bool Status { get; set; }
