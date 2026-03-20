@@ -4,7 +4,7 @@ public class ClienteDto
 {
     public int Id { get; set; }
     public string Nome { get; set; } = string.Empty;
-    public string CPF { get; set; } = string.Empty;
+    public string Documento { get; set; } = string.Empty;
 }
 
 public class CriarClienteDto
@@ -15,13 +15,15 @@ public class CriarClienteDto
     public string Email { get; set; } = string.Empty;
     public string Senha { get; set; } = string.Empty;
     public DateTime DataNascimento { get; set; }
-    public EnderecoDto Endereco { get; set; } = new();
+    public CriarEnderecoDto Endereco { get; set; } = new();
 }
 
 public class AtualizarClienteDto
 {
     public string Nome { get; set; } = string.Empty;
-    public string CPF { get; set; } = string.Empty;
+    public string Documento { get; set; } = string.Empty;
+    public string Telefone { get; set; } = string.Empty;
+    public DateTime DataNascimento { get; set; }
 }
 
 public class LoginClienteDto
@@ -34,7 +36,7 @@ public class LoginClienteResponseDto
 {
     public int Id { get; set; }
     public string Nome { get; set; } = string.Empty;
-    public string Login { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty; /* identificador do cliente */
     public bool Sucesso { get; set; }
     public string Mensagem { get; set; } = string.Empty;
 }

@@ -8,10 +8,9 @@ public class Cliente
     public string Documento { get; set; } = string.Empty;//CPF CNPJ
     public string Telefone { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
-    public string Login { get; set; } = string.Empty;
     public string SenhaHash { get; set; } = string.Empty; //vai ter criptografia, questão da LGPD
-    public bool Status { get; set; }
-    public int EnderecoId { get; set; }
+    public bool Status { get; set; } = true; //ativo por padrão
+    public int? EnderecoId { get; set; }
 
     //Propriedade de navegação, referência entre entidades, possui o tipo da classe
     public Endereco? Endereco { get; set; }

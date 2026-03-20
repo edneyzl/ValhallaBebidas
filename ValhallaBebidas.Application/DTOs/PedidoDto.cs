@@ -1,25 +1,27 @@
-﻿using ValhallaBebidas.Domain.Entities;
+﻿using ValhallaBebidas.Domain.Enums;
 
 namespace ValhallaBebidas.Application.DTOs;
+
 
 public class PedidoDto
 {
     public int Id { get; set; }
     public int ClienteId { get; set; }
-    public DateTime DataPedido { get; set; } = DateTime.Now;
+    public string NomeCliente { get; set; } = string.Empty;
+    public DateTime DataPedido { get; set; }
     public decimal ValorTotal { get; set; }
-    public string Status { get; set; } = "Pendente";
+    public StatusPedido Status { get; set; }
     public List<ItemPedidoDto> Itens { get; set; } = new();
 }
 
 public class ItemPedidoDto
 {
-    public int Id { get; set; } 
+    public int Id { get; set; }
     public int ProdutoId { get; set; }
+    public string NomeProduto { get; set; } = string.Empty; /* útil para exibir */
     public int Quantidade { get; set; }
-    //Instanciando um produto para acessar o preço de venda, para calcular o subtotal.
-    Produto p = new Produto();
-    public decimal Subtotal => Quantidade * p.PrecoVenda;
+    public decimal PrecoUnitario { get; set; } /* backend preenche com PrecoVenda */
+    public decimal Subtotal { get; set; } /* backend calcula e envia pronto */
 }
 
 public class CriarPedidoDto
@@ -36,7 +38,7 @@ public class CriarItemPedidoDto
 
 public class AtualizarPedidoDto
 {
-    public int ClienteId { get; set; }
-    public string Status { get; set; } = "Pendente";
+    /* Id vem pela URL — não precisa no body */
+    public StatusPedido Status { get; set; }
     public List<CriarItemPedidoDto> Itens { get; set; } = new();
 }
