@@ -35,7 +35,6 @@ public class ValhallaBebidasDbContext : DbContext
             entity.Property(f => f.Login).IsRequired().HasMaxLength(80);
             entity.Property(f => f.SenhaHash).IsRequired().HasMaxLength(500);
             entity.Property(f => f.Status).IsRequired();
-            entity.Property(f => f.PesoCargo).IsRequired();
             entity.Property(f => f.EnderecoId).IsRequired();
             // Relacionamento
             entity.HasOne(f => f.Endereco).WithMany().HasForeignKey(f => f.EnderecoId).OnDelete(DeleteBehavior.Restrict);
@@ -126,9 +125,6 @@ public class ValhallaBebidasDbContext : DbContext
                 .IsRequired()
                 .HasColumnType("decimal(18,2)");
 
-            entity.Property(p => p.QuantidadeEstoque)
-                .IsRequired();
-
             entity.Property(p => p.QuantidadeMinimo)
                 .IsRequired();
 
@@ -158,9 +154,6 @@ public class ValhallaBebidasDbContext : DbContext
             entity.HasIndex(p => p.Nome);
 
             entity.HasIndex(p => p.CategoriaId);
-
-            // Índice útil para controle de estoque
-            entity.HasIndex(p => new { p.Status, p.QuantidadeEstoque });
         });
 
         // ====================== CONFIGURAÇÕES DE CLIENTE ======================
@@ -216,9 +209,5 @@ public class ValhallaBebidasDbContext : DbContext
             entity.HasIndex(c => c.Login)
                 .IsUnique();
         });
-
-
-
-
     }
 }
