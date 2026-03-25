@@ -7,18 +7,20 @@ public class Produto
 {
     public int Id { get; set; }
     public string Nome { get; set; } = string.Empty;
-    public string EanCodBarras { get; set; } = string.Empty;
+    public string Ean { get; set; } = string.Empty;
     public string Descricao { get; set; } = string.Empty;
-    public decimal PrecoVenda { get; set; } 
+    public decimal PrecoVenda { get; set; }
     public decimal PrecoCusto { get; set; }
+    public int QuantidadeEstoque { get; set; } /* ← adicionado — estoque atual */
     public int QuantidadeMinimo { get; set; }
-    public DateTime DataCadastro { get; set; }
-    public bool Status { get; set; }
+    public DateTime DataCadastro { get; set; } = DateTime.Now; /* ← valor padrão */
+    public bool Status { get; set; } = true;         /* ← produto já começa ativo */
+
     /// <summary>
     /// Chave estrangeira para a categoria do produto.
     /// Opcional — produto pode existir sem categoria.
     /// </summary>
-    public int CategoriaId { get; set; }
+    public int? CategoriaId { get; set; } /* ← nullable, comentário dizia opcional */
 
     /// <summary>
     /// Caminho relativo para a foto do produto.
@@ -26,7 +28,6 @@ public class Produto
     /// </summary>
     public string? FotoProduto { get; set; }
 
-    //propriedades de navegação, referência entre entidades, possui o tipo da classe 
     /// <summary>
     /// Referência à categoria (objeto completo).
     /// Relacionamento: N Produtos → 1 Categoria.
