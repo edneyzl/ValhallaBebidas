@@ -9,6 +9,7 @@ namespace ValhallaBebidas.Domain.Interfaces
     {
         Task<Categoria?> ObterPorIdAsync(int id);
         Task<Categoria?> ObterPorNomeAsync(string nome);
+        Task<IEnumerable<Categoria>> ListarTodosAsync();
         Task AdicionarAsync(Categoria categoria);
         Task AtualizarAsync(Categoria categoria);
         Task RemoverAsync(int id);

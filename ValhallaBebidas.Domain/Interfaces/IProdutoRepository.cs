@@ -8,6 +8,7 @@ namespace ValhallaBebidas.Domain.Interfaces
     public interface IProdutoRepository
     {
         Task<Produto?> ObterPorIdAsync(int id);
+        Task<Produto?> ObterPorEanAsync(string ean);
         Task<IEnumerable<Produto>> ListarTodosAsync();
         Task AdicionarAsync(Produto produto);
         Task AtualizarAsync(Produto produto);
