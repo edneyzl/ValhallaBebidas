@@ -19,7 +19,7 @@ public class CategoriaRepository
         => await _context.Categorias.FindAsync(nome);
 
     public async Task<IEnumerable<Categoria>> ListarTodosAsync()
-        => await _context.Categorias.ToListAsync();/*CORRIGIR*/
+        => await _context.Categorias.ToListAsync();/*CORRIGIR essa merda*/
 
     public async Task AdicionarAsync(Categoria categoria)
     {
