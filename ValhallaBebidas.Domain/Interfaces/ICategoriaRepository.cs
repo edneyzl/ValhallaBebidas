@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ValhallaBebidas.Domain.Entities;
+﻿using ValhallaBebidas.Domain.Entities;
 
-namespace ValhallaBebidas.Domain.Interfaces
+namespace ValhallaBebidas.Domain.Interfaces;
+
+public interface ICategoriaRepository
 {
-    public interface ICategoriaRepository
-    {
-        Task<Categoria?> ObterPorIdAsync(int id);
-        Task<Categoria?> ObterPorNomeAsync(string nome);
-        Task<IEnumerable<Categoria>> ListarTodosAsync();
-        Task AdicionarAsync(Categoria categoria);
-        Task AtualizarAsync(Categoria categoria);
-        Task RemoverAsync(int id);
-    }
+    Task<Categoria?> ObterPorIdAsync(int id);
+    Task<Categoria?> ObterPorNomeAsync(string nome);
+    Task<IEnumerable<Categoria>> ListarTodosAsync();
+    Task AdicionarAsync(Categoria categoria);
+    Task AtualizarAsync(Categoria categoria);
+    Task RemoverAsync(int id);
 }

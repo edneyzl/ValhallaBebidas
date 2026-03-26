@@ -1,6 +1,6 @@
 ﻿namespace ValhallaBebidas.Domain.Entities;
 
-public class ItemPedido
+public class ItemPedido : Produto
 {
     public int Id { get; set; }
     /// <summary>Chave estrangeira para o pedido</summary>
