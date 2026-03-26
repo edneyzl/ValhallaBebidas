@@ -6,6 +6,7 @@ public interface IMovimentacaoRepository
 {
     Task<Movimentacao?> ObterPorIdAsync(int id);
     Task<IEnumerable<Movimentacao>> ListarTodosAsync();
+    Task<IEnumerable<Pedido>> ListarPorProdutoAsync(int produtoId);
     Task AdicionarAsync(Movimentacao movimentacao);
     Task AtualizarAsync(Movimentacao movimentacao);
     Task RemoverAsync(int id);

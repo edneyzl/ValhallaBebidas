@@ -1,9 +1,11 @@
 ﻿using ValhallaBebidas.Domain.Entities;
+using ValhallaBebidas.Domain.Interfaces;
 using ValhallaBebidas.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ValhallaBebidas.Infrastructure.Repositories;
 
-public class CategoriaRepository
+public class CategoriaRepository : ICategoriaRepository
 {
     private readonly ValhallaBebidasDbContext _context;
 
@@ -16,10 +18,11 @@ public class CategoriaRepository
         => await _context.Categorias.FindAsync(id);
 
     public async Task<Categoria?> ObterPorNomeAsync(string nome)
-        => await _context.Categorias.FindAsync(nome);
+    => await _context.Categorias
+        .FirstOrDefaultAsync(c => c.Nome.ToLower() == nome.ToLower());
 
     public async Task<IEnumerable<Categoria>> ListarTodosAsync()
-        => await _context.Categorias.ToListAsync();/*CORRIGIR essa merda*/
+        => await _context.Categorias.ToListAsync();
 
     public async Task AdicionarAsync(Categoria categoria)
     {

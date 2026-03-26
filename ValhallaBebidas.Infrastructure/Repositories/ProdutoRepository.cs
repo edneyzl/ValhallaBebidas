@@ -18,7 +18,8 @@ public class ProdutoRepository : IProdutoRepository
         => await _context.Produtos.FindAsync(id);
 
     public async Task<Produto?> ObterPorEanAsync(string ean)
-        => await _context.Produtos.FindAsync(ean);
+    => await _context.Produtos
+        .FirstOrDefaultAsync(p => p.Ean.ToLower() == ean.ToLower());
 
     public async Task<IEnumerable<Produto>> ListarTodosAsync()
         => await _context.Produtos.ToListAsync();

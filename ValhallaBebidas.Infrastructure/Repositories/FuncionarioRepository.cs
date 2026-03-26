@@ -21,7 +21,8 @@ public class FuncionarioRepository : IFuncionarioRepository
         => await _context.Funcionarios.FindAsync(id);
 
     public async Task<Funcionario?> ObterPorCpfAsync(string cpf)
-        => await _context.Funcionarios.FindAsync(cpf);
+    => await _context.Funcionarios
+        .FirstOrDefaultAsync(f => f.Cpf.ToLower() == cpf.ToLower());
 
     public async Task<IEnumerable<Funcionario>> ListarTodosAsync()
         => await _context.Funcionarios.ToListAsync();
