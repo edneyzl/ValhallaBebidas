@@ -9,10 +9,18 @@ public class ItemPedido : Produto
     public int ProdutoId { get; set; }
     /// <summary>Quantidade deste produto no pedido</summary>
     public int Quantidade { get; set; }
-    //calculo dentro de uma classe - não é boa e nem má pratica - á tipico
-    public decimal Subtotal => Quantidade * (Produto?.PrecoVenda ?? 0); // Subtotal é o valor total do item, ou seja, a quantidade vezes o preço de venda do produto. O operador => é usado para criar uma propriedade de expressão, que calcula o valor do subtotal sempre que for acessada, sem a necessidade de armazenar esse valor em um campo separado.
+
+    /// <summary>
+    /// Preço por unidade adotado no momento da criação do item no pedido.
+    /// Mantém o histórico mesmo que o preço do produto mude posteriormente.
+    /// </summary>
+    public decimal PrecoUnitario { get; set; }
+
+    // Calcula o subtotal usando o PrecoUnitario quando disponível; caso contrário
+    // faz fallback para o preço do produto (compatibilidade).
+    public decimal Subtotal => Quantidade * (PrecoUnitario != 0 ? PrecoUnitario : (Produto?.PrecoVenda ?? PrecoVenda));
 
     //propriedades de navegação, referência entre entidades, possui o tipo da classe 
     public Pedido? Pedido { get; set; }
-    public Produto? Produto { get; set; }   
+    public Produto? Produto { get; set; }
 }

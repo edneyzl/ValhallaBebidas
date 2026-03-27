@@ -79,7 +79,7 @@ public class PedidoService
             {
                 ProdutoId = produto.Id,
                 Quantidade = itemDto.Quantidade,
-                PrecoVenda = produto.PrecoVenda, /* captura o preço atual */
+                PrecoUnitario = produto.PrecoVenda, /* captura o preço atual */
             });
         }
 
@@ -151,7 +151,7 @@ public class PedidoService
             ProdutoId = i.ProdutoId,
             NomeProduto = i.Produto?.Nome ?? string.Empty,
             Quantidade = i.Quantidade,
-            PrecoUnitario = i.PrecoVenda,
+            PrecoUnitario = i.PrecoUnitario,
             Subtotal = i.Subtotal,
         }).ToList(),
     };
