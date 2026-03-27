@@ -127,7 +127,7 @@ public class ValhallaBebidasDbContext : DbContext
             entity.HasKey(p => p.Id);
 
             entity.Property(p => p.Nome).IsRequired().HasMaxLength(200);
-            entity.Property(p => p.EanCodBarras).IsRequired().HasMaxLength(13);
+            entity.Property(p => p.Ean).IsRequired().HasMaxLength(13);
             entity.Property(p => p.Descricao).HasMaxLength(500);
             entity.Property(p => p.PrecoVenda).IsRequired().HasColumnType("decimal(18,2)");
             entity.Property(p => p.PrecoCusto).IsRequired().HasColumnType("decimal(18,2)");
@@ -151,7 +151,7 @@ public class ValhallaBebidasDbContext : DbContext
                 .HasForeignKey(i => i.ProdutoId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            entity.HasIndex(p => p.EanCodBarras).IsUnique();
+            entity.HasIndex(p => p.Ean).IsUnique();
             entity.HasIndex(p => p.Nome);
             entity.HasIndex(p => p.CategoriaId);
         });

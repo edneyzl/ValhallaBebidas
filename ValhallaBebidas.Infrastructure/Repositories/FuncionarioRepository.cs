@@ -24,6 +24,14 @@ public class FuncionarioRepository : IFuncionarioRepository
     => await _context.Funcionarios
         .FirstOrDefaultAsync(f => f.Cpf.ToLower() == cpf.ToLower());
 
+    public async Task<Funcionario?> ObterPorEmailAsync(string email)
+    => await _context.Funcionarios
+        .FirstOrDefaultAsync(f => f.Email.ToLower() == email.ToLower());
+
+    public async Task<Funcionario?> ObterPorLoginAsync(string login)
+    => await _context.Funcionarios
+        .FirstOrDefaultAsync(f => f.Login.ToLower() == login.ToLower());
+
     public async Task<IEnumerable<Funcionario>> ListarTodosAsync()
         => await _context.Funcionarios.ToListAsync();
 

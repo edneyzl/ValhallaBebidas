@@ -25,9 +25,8 @@ public class CriarProdutoDto
     public decimal PrecoVenda { get; set; }
     public decimal PrecoCusto { get; set; }
     public int QuantidadeMinimo { get; set; }
-    public int CategoriaId { get; set; }
+    public int? CategoriaId { get; set; }
     public string? FotoProduto { get; set; }
-    /* DataCadastro removido — backend seta DateTime.Now automaticamente */
 }
 
 public class AtualizarProdutoDto
