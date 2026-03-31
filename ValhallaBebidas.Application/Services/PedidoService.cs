@@ -71,7 +71,7 @@ public class PedidoService
         {
             ClienteId = dto.ClienteId,
             DataPedido = DateTime.Now,
-            Status = "Pendente",
+            Status = "Pendente", 
             Itens = itens
         };
 
