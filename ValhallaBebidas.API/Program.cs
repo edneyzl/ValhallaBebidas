@@ -1,5 +1,10 @@
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi;
+using ValhallaBebidas.Application.Services;
+using ValhallaBebidas.Domain.Interfaces;
 using ValhallaBebidas.Infrastructure.Data;
+using ValhallaBebidas.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +13,17 @@ builder.Services.AddDbContext<ValhallaBebidasDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ValhallaBebidasConnection")));
 
 //Registo dos repositórios (infrastructure implementa domain)
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 
 
+//registro dos serviços 
+builder.Services.AddScoped<FuncionarioService>();
+builder.Services.AddScoped<ClienteService>();
+builder.Services.AddScoped<ProdutoService>();
+builder.Services.AddScoped<PedidoService>();
 
 
 
