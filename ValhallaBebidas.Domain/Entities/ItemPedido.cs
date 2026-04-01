@@ -1,6 +1,6 @@
 ﻿namespace ValhallaBebidas.Domain.Entities;
 
-public class ItemPedido : Produto
+public class ItemPedido 
 {
     public int Id { get; set; }
     /// <summary>Chave estrangeira para o pedido</summary>
@@ -18,7 +18,8 @@ public class ItemPedido : Produto
 
     // Calcula o subtotal usando o PrecoUnitario quando disponível; caso contrário
     // faz fallback para o preço do produto (compatibilidade).
-    public decimal Subtotal => Quantidade * (PrecoUnitario != 0 ? PrecoUnitario : (Produto?.PrecoVenda ?? PrecoVenda));
+    public decimal Subtotal =>
+         Quantidade * (PrecoUnitario != 0 ? PrecoUnitario : (Produto?.PrecoVenda ?? 0));
 
     //propriedades de navegação, referência entre entidades, possui o tipo da classe 
     public Pedido? Pedido { get; set; }
