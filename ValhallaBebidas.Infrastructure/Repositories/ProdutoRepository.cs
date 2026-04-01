@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using ValhallaBebidas.Domain.Entities;
 using ValhallaBebidas.Domain.Interfaces;
 using ValhallaBebidas.Infrastructure.Data;
@@ -18,10 +19,16 @@ public class ProdutoRepository : IProdutoRepository
         => await _context.Produtos.FindAsync(id);
 
     public async Task<Produto?> ObterPorEanAsync(string ean)
-        => await _context.Produtos.FindAsync(ean);
+    => await _context.Produtos
+        .FirstOrDefaultAsync(p => p.Ean.ToLower() == ean.ToLower());
 
     public async Task<IEnumerable<Produto>> ListarTodosAsync()
         => await _context.Produtos.ToListAsync();
+
+    public async Task<IEnumerable<Produto>> ListarPorCategoriaAsync(int categoriaId)
+        => await _context.Produtos
+            .Where(p => p.CategoriaId == categoriaId)
+            .ToListAsync();
 
     public async Task AdicionarAsync(Produto produto)
     {

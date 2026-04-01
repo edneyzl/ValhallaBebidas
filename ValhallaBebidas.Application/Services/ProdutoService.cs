@@ -6,78 +6,149 @@ namespace ValhallaBebidas.Application.Services;
 
 public class ProdutoService
 {
-
     private readonly IProdutoRepository _produtoRepository;
+    private readonly ICategoriaRepository _categoriaRepository;
 
-    public ProdutoService(IProdutoRepository produtoRepository)
+    public ProdutoService(
+        IProdutoRepository produtoRepository,
+        ICategoriaRepository categoriaRepository)
     {
         _produtoRepository = produtoRepository;
+        _categoriaRepository = categoriaRepository;
     }
 
-
+    // ════════════════════════════════════════
+    // LISTAR TODOS
+    // ════════════════════════════════════════
     public async Task<IEnumerable<ProdutoDto>> ListarTodosAsync()
     {
         var produtos = await _produtoRepository.ListarTodosAsync();
-        return produtos.Select(p => new ProdutoDto
-        {
-            Id = p.Id,
-            Nome = p.Nome,
-            PrecoVenda = p.PrecoVenda,
-            FotoProduto = p.FotoProduto
-        });
+        return produtos.Select(MapearParaDto);
     }
 
+    // ════════════════════════════════════════
+    // LISTAR ATIVOS — usado pelo frontend
+    // ════════════════════════════════════════
+    public async Task<IEnumerable<ProdutoDto>> ListarAtivosAsync()
+    {
+        var produtos = await _produtoRepository.ListarTodosAsync();
+        return produtos.Where(p => p.Status).Select(MapearParaDto);
+    }
 
+    // ════════════════════════════════════════
+    // LISTAR POR CATEGORIA
+    // ════════════════════════════════════════
+    public async Task<IEnumerable<ProdutoDto>> ListarPorCategoriaAsync(int categoriaId)
+    {
+        var produtos = await _produtoRepository.ListarPorCategoriaAsync(categoriaId);
+        return produtos.Select(MapearParaDto);
+    }
+
+    // ════════════════════════════════════════
+    // OBTER POR ID
+    // ════════════════════════════════════════
     public async Task<ProdutoDto?> ObterPorIdAsync(int id)
     {
         var produto = await _produtoRepository.ObterPorIdAsync(id);
-        if (produto == null) return null;
-
-        return new ProdutoDto { Id = produto.Id, Nome = produto.Nome, PrecoVenda = produto.PrecoVenda, FotoProduto = produto.FotoProduto };
+        return produto == null ? null : MapearParaDto(produto);
     }
 
-
-
+    // ════════════════════════════════════════
+    // CRIAR
+    // ════════════════════════════════════════
     public async Task<ProdutoDto> CriarAsync(CriarProdutoDto dto)
     {
-        // Regra de negócio: preço não pode ser negativo
+        /* Preço não pode ser negativo */
         if (dto.PrecoVenda < 0)
-            throw new InvalidOperationException("O preço do produto não pode ser negativo.");
+            throw new InvalidOperationException("O preço de venda não pode ser negativo.");
+
+        if (dto.PrecoCusto < 0)
+            throw new InvalidOperationException("O preço de custo não pode ser negativo.");
+
+        /* EAN único */
+        var existenteEan = await _produtoRepository.ObterPorEanAsync(dto.EanCodBarras);
+        if (existenteEan != null)
+            throw new InvalidOperationException($"Já existe um produto com o EAN '{dto.EanCodBarras}'.");
+
+        /* Categoria existe */
+        if (dto.CategoriaId.HasValue)
+        {
+            var categoria = await _categoriaRepository.ObterPorIdAsync(dto.CategoriaId.Value);
+            if (categoria == null)
+                throw new KeyNotFoundException($"Categoria com Id {dto.CategoriaId} não encontrada.");
+        }
 
         var produto = new Produto
         {
             Nome = dto.Nome,
+            Ean = dto.EanCodBarras,
+            Descricao = dto.Descricao,
             PrecoVenda = dto.PrecoVenda,
-            FotoProduto = dto.FotoProduto
+            PrecoCusto = dto.PrecoCusto,
+            QuantidadeMinimo = dto.QuantidadeMinimo,
+            QuantidadeEstoque = 0, /* estoque inicial zerado — entra via Movimentacao */
+            DataCadastro = DateTime.Now,
+            Status = true,
+            CategoriaId = dto.CategoriaId,
+            FotoProduto = dto.FotoProduto,
         };
 
         await _produtoRepository.AdicionarAsync(produto);
 
-        return new ProdutoDto { Id = produto.Id, Nome = produto.Nome, PrecoVenda = produto.PrecoVenda, FotoProduto = produto.FotoProduto };
+        return MapearParaDto(produto);
     }
 
-
+    // ════════════════════════════════════════
+    // ATUALIZAR
+    // ════════════════════════════════════════
     public async Task AtualizarAsync(int id, AtualizarProdutoDto dto)
     {
         var produto = await _produtoRepository.ObterPorIdAsync(id);
         if (produto == null)
             throw new KeyNotFoundException($"Produto com Id {id} não encontrado.");
 
-        // Regra de negócio: preço não pode ser negativo
         if (dto.PrecoVenda < 0)
-            throw new InvalidOperationException("O preço do produto não pode ser negativo.");
+            throw new InvalidOperationException("O preço de venda não pode ser negativo.");
+
+        if (dto.PrecoCusto < 0)
+            throw new InvalidOperationException("O preço de custo não pode ser negativo.");
+
+        /* Verifica EAN duplicado em outro produto */
+        var comMesmoEan = await _produtoRepository.ObterPorEanAsync(dto.EanCodBarras);
+        if (comMesmoEan != null && comMesmoEan.Id != id)
+            throw new InvalidOperationException($"O EAN '{dto.EanCodBarras}' já está em uso por outro produto.");
 
         produto.Nome = dto.Nome;
+        produto.Ean = dto.EanCodBarras;
+        produto.Descricao = dto.Descricao;
         produto.PrecoVenda = dto.PrecoVenda;
-        if (dto.FotoProduto != null)
-        {
+        produto.PrecoCusto = dto.PrecoCusto;
+        produto.QuantidadeMinimo = dto.QuantidadeMinimo;
+        produto.Status = dto.Status;
+        produto.CategoriaId = dto.CategoriaId;
+
+        if (!string.IsNullOrWhiteSpace(dto.FotoProduto))
             produto.FotoProduto = dto.FotoProduto;
-        }
 
         await _produtoRepository.AtualizarAsync(produto);
     }
 
+    // ════════════════════════════════════════
+    // ATIVAR / INATIVAR — soft delete
+    // ════════════════════════════════════════
+    public async Task AlterarStatusAsync(int id, bool status)
+    {
+        var produto = await _produtoRepository.ObterPorIdAsync(id);
+        if (produto == null)
+            throw new KeyNotFoundException($"Produto com Id {id} não encontrado.");
 
+        produto.Status = status;
+        await _produtoRepository.AtualizarAsync(produto);
+    }
+
+    // ════════════════════════════════════════
+    // REMOVER
+    // ════════════════════════════════════════
     public async Task RemoverAsync(int id)
     {
         var produto = await _produtoRepository.ObterPorIdAsync(id);
@@ -87,5 +158,35 @@ public class ProdutoService
         await _produtoRepository.RemoverAsync(id);
     }
 
+    // ════════════════════════════════════════
+    // VERIFICAR ESTOQUE BAIXO — Windows Forms dashboard
+    // ════════════════════════════════════════
+    public async Task<IEnumerable<ProdutoDto>> ListarEstoqueBaixoAsync()
+    {
+        var produtos = await _produtoRepository.ListarTodosAsync();
+        return produtos
+            .Where(p => p.Status && p.QuantidadeEstoque <= p.QuantidadeMinimo)
+            .OrderBy(p => p.QuantidadeEstoque)
+            .Select(MapearParaDto);
+    }
 
+    // ════════════════════════════════════════
+    // MAPPER — Entidade → DTO
+    // ════════════════════════════════════════
+    private static ProdutoDto MapearParaDto(Produto p) => new()
+    {
+        Id = p.Id,
+        Nome = p.Nome,
+        EanCodBarras = p.Ean,
+        Descricao = p.Descricao,
+        PrecoVenda = p.PrecoVenda,
+        PrecoCusto = p.PrecoCusto,
+        QuantidadeEstoque = p.QuantidadeEstoque,
+        QuantidadeMinimo = p.QuantidadeMinimo,
+        DataCadastro = p.DataCadastro,
+        Status = p.Status,
+        CategoriaId = p.CategoriaId ?? 0,
+        NomeCategoria = p.Categoria?.Nome ?? string.Empty,
+        FotoProduto = p.FotoProduto,
+    };
 }

@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="ValhallaBebidas.API/ValhallaBebidas.API.csproj" Id="577542e5-1212-4dab-bf89-807dca476bb7" />
   <Project Path="ValhallaBebidas.Application/ValhallaBebidas.Application.csproj" />
   <Project Path="ValhallaBebidas.Domain/ValhallaBebidas.Domain.csproj" />
   <Project Path="ValhallaBebidas.Infrastructure/ValhallaBebidas.Infrastructure.csproj" />
