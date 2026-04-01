@@ -32,7 +32,6 @@ public class ValhallaBebidasDbContext : DbContext
         modelBuilder.Entity<Endereco>(entity =>
         {
             entity.HasKey(e => e.Id);
-
             entity.Property(e => e.TipoLogradouro).IsRequired().HasMaxLength(50);
             entity.Property(e => e.Logradouro).IsRequired().HasMaxLength(200);
             entity.Property(e => e.Numero).IsRequired();
@@ -41,7 +40,6 @@ public class ValhallaBebidasDbContext : DbContext
             entity.Property(e => e.Bairro).IsRequired().HasMaxLength(120);
             entity.Property(e => e.Cidade).IsRequired().HasMaxLength(120);
             entity.Property(e => e.Estado).IsRequired().HasMaxLength(2);
-
             entity.HasIndex(e => e.Cep);
         });
 
@@ -51,9 +49,7 @@ public class ValhallaBebidasDbContext : DbContext
         modelBuilder.Entity<Categoria>(entity =>
         {
             entity.HasKey(c => c.Id);
-
             entity.Property(c => c.Nome).IsRequired().HasMaxLength(40);
-
             entity.HasIndex(c => c.Nome).IsUnique();
         });
 
@@ -63,7 +59,6 @@ public class ValhallaBebidasDbContext : DbContext
         modelBuilder.Entity<Cliente>(entity =>
         {
             entity.HasKey(c => c.Id);
-
             entity.Property(c => c.NomeCliente).IsRequired().HasMaxLength(200);
             entity.Property(c => c.DataNascimento).HasColumnType("datetime2");
             entity.Property(c => c.Documento).IsRequired().HasMaxLength(14);
@@ -71,21 +66,17 @@ public class ValhallaBebidasDbContext : DbContext
             entity.Property(c => c.Email).IsRequired().HasMaxLength(150);
             entity.Property(c => c.SenhaHash).IsRequired().HasMaxLength(500);
             entity.Property(c => c.Status).IsRequired();
-
             /* EnderecoId nullable — cliente pode cadastrar sem endereço */
             entity.Property(c => c.EnderecoId).IsRequired(false);
-
             entity.HasOne(c => c.Endereco)
                 .WithMany()
                 .HasForeignKey(c => c.EnderecoId)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
-
             entity.HasMany(c => c.Pedidos)
                 .WithOne(p => p.Cliente)
                 .HasForeignKey(p => p.ClienteId)
                 .OnDelete(DeleteBehavior.Restrict);
-
             entity.HasIndex(c => c.Documento).IsUnique();
             entity.HasIndex(c => c.Email).IsUnique();
         });
@@ -194,14 +185,21 @@ public class ValhallaBebidasDbContext : DbContext
             entity.Property(i => i.ProdutoId).IsRequired();
             entity.Property(i => i.Quantidade).IsRequired();
 
-            /* Subtotal é propriedade calculada — não persiste no banco */
             entity.Ignore(i => i.Subtotal);
 
             entity.HasIndex(i => i.PedidoId);
             entity.HasIndex(i => i.ProdutoId);
 
-            /* Evita produto duplicado no mesmo pedido */
             entity.HasIndex(i => new { i.PedidoId, i.ProdutoId }).IsUnique();
+
+            // 🔗 Relacionamentos
+            entity.HasOne(i => i.Pedido)
+                .WithMany(p => p.Itens)
+                .HasForeignKey(i => i.PedidoId);
+
+            entity.HasOne(i => i.Produto)
+                .WithMany()
+                .HasForeignKey(i => i.ProdutoId);
         });
 
         // ════════════════════════════════════════════════════════
