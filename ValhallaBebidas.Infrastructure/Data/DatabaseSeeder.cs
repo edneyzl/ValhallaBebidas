@@ -17,24 +17,70 @@ public static class DatabaseSeeder
         await SeedCategoriasAsync(db);
     }
 
+
+
+    // ──────────────────────────────────────────────────────────────────────────────
+    // CATEGORIAS
+    // ──────────────────────────────────────────────────────────────────────────────
     private static async Task SeedCategoriasAsync(ValhallaBebidasDbContext db)
     {
         // Só insere se a tabela estiver vazia
         if (await db.Categorias.AnyAsync()) return;
-
-        // (GerarHash replica o algoritmo do UsuarioService)
-        var hash1234 = GerarHash("valhalla123");
 
         db.Categorias.AddRange(
             new Categoria { Nome = "Refrigerantes" },
             new Categoria { Nome = "Destilados"},
             new Categoria { Nome = "Cervejas" },
             new Categoria { Nome = "Energéticos"},
-            new Categoria { Nome = "Águas"}
+            new Categoria { Nome = "Águas"},
+            new Categoria { Nome = "Sucos" },
+            new Categoria { Nome = "Vinhos" },
+            new Categoria { Nome = "Gelos" }
         );
 
         await db.SaveChangesAsync();
-        Console.WriteLine("✅ Seed: 5 categorias inseridas.");
+        Console.WriteLine("✅ Seed: 8 categorias inseridas.");
+    }
+
+
+    // ──────────────────────────────────────────────────────────────────────────────
+    // ENDEREÇOS
+    // ──────────────────────────────────────────────────────────────────────────────
+    private static async Task SeedEnderecosAsync(ValhallaBebidasDbContext db)
+    {
+        // Só insere se a tabela estiver vazia
+        if (await db.Enderecos.AnyAsync()) return;
+
+        db.Enderecos.AddRange(
+            new Endereco { TipoLogradouro = "Rua", Logradouro="Vicente Garcia", Numero=24, Complemento="Fundos", Cep="08440-261", 
+                Bairro = "Guaianases", Cidade = "São Paulo", Estado = "SP" }
+        );
+
+        await db.SaveChangesAsync();
+        Console.WriteLine("✅ Seed: 1 endereço inserido.");
+    }
+
+
+    // ──────────────────────────────────────────────────────────────────────────────
+    // FUNCIONÁRIOS
+    // ──────────────────────────────────────────────────────────────────────────────
+
+    private static async Task SeedUsuariosAsync(ValhallaBebidasDbContext db)
+    {
+        // Só insere se a tabela estiver vazia
+        if (await db.Funcionarios.AnyAsync()) return;
+
+        // Senha "1234" para todos os usuários de teste
+        // (GerarHash replica o algoritmo do UsuarioService)
+        var hash = GerarHash("adminValhalla");
+
+        db.Funcionarios.AddRange(
+            new Funcionario { NomeCompleto = "Administrador", DataNascimento= new DateTime(01,01,2000), Cpf="111.222.333-44", 
+                Telefone="(11) 99999-9999", Email = "admin@valhalla.br", Login = "admin", SenhaHash = hash, Status=true,EnderecoId=1 }
+        );
+
+        await db.SaveChangesAsync();
+        Console.WriteLine("✅ Seed: 1 usuário inserido.");
     }
 
 
