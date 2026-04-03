@@ -24,7 +24,7 @@ public class FuncionarioController : ControllerBase
 
     //login do usuário, estou enviando uma requisção um post 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+    public async Task<IActionResult> Login([FromBody] LoginFuncionarioDto loginDto)
     {
         try
         {
@@ -60,7 +60,7 @@ public class FuncionarioController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Criar([FromBody] CriarUsuarioDto dto)
+    public async Task<IActionResult> Criar([FromBody] CriarFuncionarioDto dto)
     {
         try
         {
@@ -98,7 +98,7 @@ public class FuncionarioController : ControllerBase
             return BadRequest(new { mensagem = "O ID da rota não corresponde ao ID do corpo da requisição" });
 
 
-        var usuarioAtualizado = await _funcionarioService.UpdateAsync(dto);
+        var usuarioAtualizado = await _funcionarioService.AtualizarAsync(id, dto);
         return Ok(usuarioAtualizado);
 
         if (usuarioAtualizado == null)
