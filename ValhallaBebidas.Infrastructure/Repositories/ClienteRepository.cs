@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ValhallaBebidas.Domain.Entities;
+using ValhallaBebidas.Domain.Interfaces;
 using ValhallaBebidas.Infrastructure.Data;
 
 namespace ValhallaBebidas.Infrastructure.Repositories;
 
-public class ClienteRepository
+public class ClienteRepository : IClienteRepository
 {
     private readonly ValhallaBebidasDbContext _context;
 
