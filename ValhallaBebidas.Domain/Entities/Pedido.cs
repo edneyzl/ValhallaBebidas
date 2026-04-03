@@ -12,6 +12,7 @@ public class Pedido
 
     public Cliente? Cliente { get; set; }
     public ICollection<ItemPedido> Itens { get; set; } = new List<ItemPedido>();
+    public decimal? Total { get; set; }
 
     /// <summary>
     /// Recalcula o ValorTotal com base nos itens atuais.

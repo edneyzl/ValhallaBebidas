@@ -1,4 +1,6 @@
-﻿using ValhallaBebidas.Application.DTOs;
+﻿using System.Security.Cryptography;
+using System.Text;
+using ValhallaBebidas.Application.DTOs;
 using ValhallaBebidas.Domain.Entities;
 using ValhallaBebidas.Domain.Interfaces;
 
@@ -193,4 +195,48 @@ public class FuncionarioService
         Login = f.Login,
         Status = f.Status,
     };
+
+    public async Task<LoginFuncionarioResponseDto> AutenticarAsync(LoginFuncionarioDto loginDto)
+    {
+        // 1. Busca o usuário pelo email
+        var usuario = await _funcionarioRepository.ObterPorEmailAsync(loginDto.Login);
+
+        if (usuario == null)
+        {
+            return new LoginFuncionarioResponseDto
+            {
+                Sucesso = false,
+                Mensagem = "Login não encontrado."
+            };
+        }
+
+        // 2. Gera o hash da senha fornecida e compara com o hash armazenado
+        var senhaHashFornecida = GerarHash(loginDto.Senha);
+        if (usuario.SenhaHash != senhaHashFornecida)
+        {
+            return new LoginFuncionarioResponseDto
+            {
+                Sucesso = false,
+                Mensagem = "Senha incorreta."
+            };
+        }
+
+        return new LoginFuncionarioResponseDto
+        {
+            Id = usuario.Id,
+            Nome = usuario.NomeCompleto,
+            Email = usuario.Email,
+            Sucesso = true,
+            Mensagem = "Login realizado com sucesso.",
+        
+        };
+
+
+    }
+
+    private static string GerarHash(string texto)
+    {
+        var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(texto));
+        return Convert.ToHexString(bytes).ToLower();
+    }
 }

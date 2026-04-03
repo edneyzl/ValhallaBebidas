@@ -10,6 +10,7 @@ namespace ValhallaBebidas.Domain.Enums
     {
         Pendente,
         Confirmado,
-        Cancelado
+        Cancelado,
+       
     }
 }

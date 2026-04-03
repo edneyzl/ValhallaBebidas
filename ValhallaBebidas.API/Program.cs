@@ -18,6 +18,10 @@ builder.Services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 
+// Adicionar os repositórios faltantes:
+builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+
 
 //registro dos serviços 
 builder.Services.AddScoped<FuncionarioService>();
@@ -59,8 +63,6 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
-
-
 //Passo 3: Habilitar CORS no pipeline de requisições
 app.UseCors("PermitirTudo");
 
