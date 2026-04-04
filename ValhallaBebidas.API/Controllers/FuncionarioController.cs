@@ -92,18 +92,27 @@ public class FuncionarioController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, [FromBody] FuncionarioDto dto)
+    public async Task<IActionResult> Update(int id, [FromBody] AtualizarFuncionarioDto dto)
     {
-        if (id != dto.Id)
-            return BadRequest(new { mensagem = "O ID da rota não corresponde ao ID do corpo da requisição" });
-
-
-        var usuarioAtualizado = await _funcionarioService.AtualizarAsync(id, dto);
-        return Ok(usuarioAtualizado);
-
-        if (usuarioAtualizado == null)
-            return NotFound(new { mensagem = $"Usuário {id} não encontrado" });
-
+        try
+        {
+            // AtualizarAsync lança KeyNotFoundException se o funcionário não existir
+            // e InvalidOperationException em casos de validação (CPF/login duplicados)
+            await _funcionarioService.AtualizarAsync(id, dto);
+            return NoContent(); // padrão REST para atualização bem-sucedida sem conteúdo
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(new { mensagem = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return Conflict(new { mensagem = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { mensagem = ex.Message });
+        }
     }
 
 

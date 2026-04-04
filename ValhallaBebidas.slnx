@@ -3,4 +3,5 @@
   <Project Path="ValhallaBebidas.Application/ValhallaBebidas.Application.csproj" />
   <Project Path="ValhallaBebidas.Domain/ValhallaBebidas.Domain.csproj" />
   <Project Path="ValhallaBebidas.Infrastructure/ValhallaBebidas.Infrastructure.csproj" />
+  <Project Path="ValhallaBebidas.Web/ValhallaBebidas.Web.csproj" />
 </Solution>
