@@ -66,6 +66,15 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+// Seed: aplica migrations + categorias + admin (só no primeiro startup)
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ValhallaBebidasDbContext>();
+    await db.Database.MigrateAsync();
+    await DatabaseSeeder.SeedAsync(db);
+}
+
 //Passo 3: Habilitar CORS no pipeline de requisições
 app.UseCors("PermitirTudo");
 

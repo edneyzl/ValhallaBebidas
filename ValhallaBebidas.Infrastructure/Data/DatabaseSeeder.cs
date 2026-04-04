@@ -5,6 +5,30 @@ namespace ValhallaBebidas.Infrastructure.Data;
 
 public static class DatabaseSeeder
 {
+    public static async Task SeedAsync(ValhallaBebidasDbContext db)
+    {
+        await SeedCategoriasAsync(db);
+        await SeedAdminAsync(db);
+    }
+
+    private static async Task SeedCategoriasAsync(ValhallaBebidasDbContext db)
+    {
+        if (await db.Categorias.AnyAsync()) return;
+
+        db.Categorias.AddRange(
+            new Categoria { Nome = "Refrigerantes" },
+            new Categoria { Nome = "Destilados" },
+            new Categoria { Nome = "Cervejas" },
+            new Categoria { Nome = "Energéticos" },
+            new Categoria { Nome = "Águas" },
+            new Categoria { Nome = "Sucos" },
+            new Categoria { Nome = "Vinhos" },
+            new Categoria { Nome = "Gelos" }
+        );
+
+        await db.SaveChangesAsync();
+    }
+
     public static async Task SeedAdminAsync(ValhallaBebidasDbContext db)
     {
         if (await db.Funcionarios.AnyAsync()) return;
