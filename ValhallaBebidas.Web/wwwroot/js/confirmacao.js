@@ -37,13 +37,20 @@ previsao.setDate(previsao.getDate() + 5);
 const previsaoEl = document.getElementById('confirmacaoPrevisao');
 if (previsaoEl) previsaoEl.textContent = previsao.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
 
+/* ── Método de pagamento (lido do localStorage) ── */
+const metodoLabels = {
+    cartao: 'Cartão de crédito',
+    pix: 'Pix',
+    boleto: 'Boleto bancário',
+};
+const metodo = localStorage.getItem('metodoPagamento') || 'cartao';
 const pagEl = document.getElementById('confirmacaoPagamento');
+if (pagEl) pagEl.textContent = metodoLabels[metodo] || metodo;
+
 const endEl = document.getElementById('confirmacaoEndereco');
-if (pagEl) pagEl.textContent = 'Cartão de crédito';
 if (endEl) endEl.textContent = 'Endereço cadastrado';
 
-/* ── Atualiza links ── */
-const btnPedidos = document.querySelector('a[href="meus-pedidos.html"]');
-const btnCatalogo = document.querySelector('a[href="catalogo.html"]');
-if (btnPedidos) btnPedidos.href = '/Pedidos';
-if (btnCatalogo) btnCatalogo.href = '/Catalogo';
+/* Limpa dados da sessão */
+localStorage.removeItem('metodoPagamento');
+localStorage.removeItem('ultimoPedido');
+
