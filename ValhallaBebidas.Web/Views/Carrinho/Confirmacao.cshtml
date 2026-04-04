@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Pedido - Valhalla Bebidas";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/confirmacao.css" />
+    <link rel="stylesheet" href="~/css/page-animations.css" />
+}
+
+<!-- ═══════════ CONFIRMAÇÃO ═══════════ -->
+<main class="confirmacao">
+
+    <!-- ── Hero de sucesso ── -->
+    <div class="confirmacao__hero">
+        <div class="confirmacao__check">✓</div>
+        <h1 class="confirmacao__titulo">Pedido confirmado!</h1>
+        <p class="confirmacao__subtitulo">
+            Obrigado pela sua compra. Em breve você receberá uma confirmação por email.
+        </p>
+        <p class="confirmacao__numero" id="numeroPedido">Pedido #000001</p>
+    </div>
+
+    <!-- ── Detalhes ── -->
+    <div class="confirmacao__layout">
+
+        <!-- Itens do pedido -->
+        <div class="confirmacao__card">
+            <h2 class="confirmacao__card-titulo">Itens do pedido</h2>
+            <ul class="confirmacao__itens" id="confirmacaoItens">
+                <!-- injetado via JS -->
+            </ul>
+            <div class="confirmacao__sep"></div>
+            <div class="confirmacao__total">
+                <span>Total pago</span>
+                <span id="confirmacaoTotal">R$ 0,00</span>
+            </div>
+        </div>
+
+        <!-- Entrega -->
+        <div class="confirmacao__card">
+            <h2 class="confirmacao__card-titulo">Informações de entrega</h2>
+            <div class="confirmacao__info-lista">
+                <div class="confirmacao__info-item">
+                    <span class="confirmacao__info-label">Status</span>
+                    <span class="confirmacao__status">
+                        <span class="confirmacao__status-dot"></span>
+                        Pendente
+                    </span>
+                </div>
+                <div class="confirmacao__info-item">
+                    <span class="confirmacao__info-label">Previsão</span>
+                    <span class="confirmacao__info-valor" id="confirmacaoPrevisao">—</span>
+                </div>
+                <div class="confirmacao__info-item">
+                    <span class="confirmacao__info-label">Endereço</span>
+                    <span class="confirmacao__info-valor" id="confirmacaoEndereco">—</span>
+                </div>
+                <div class="confirmacao__info-item">
+                    <span class="confirmacao__info-label">Pagamento</span>
+                    <span class="confirmacao__info-valor" id="confirmacaoPagamento">—</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ── Ações ── -->
+    <div class="confirmacao__acoes">
+        <a asp-controller="Pedidos" asp-action="Index" class="confirmacao__btn confirmacao__btn--outline">
+            Ver meus pedidos
+        </a>
+        <a asp-controller="Catalogo" asp-action="Index" class="confirmacao__btn confirmacao__btn--primary">
+            Continuar comprando
+        </a>
+    </div>
+
+</main>
+
+@section Scripts {
+    <script src="~/js/confirmacao.js"></script>
+    <script src="~/js/animations.js"></script>
+}

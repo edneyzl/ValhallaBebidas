@@ -1,0 +1,219 @@
+﻿<!-- Views/Shared/_Layout.cshtml -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Valhalla Bebidas</title>
+    <link rel="shortcut icon" href="~/img/Marcas/Valhalla.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="~/css/homepage.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+</head>
+
+    <!-- ═══════════ CART OVERLAY ═══════════ -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- ═══════════ CART SIDEBAR ═══════════ -->
+    <aside class="cart" id="cart">
+        <div class="cart__header">
+            <h2>Carrinho</h2>
+            <button type="button" class="cart__close" id="cartClose">
+                <img src="~/img/Icons/close.svg" alt="Fechar" />
+            </button>
+        </div>
+        <div class="cart__items" id="cartItems"></div>
+        <div class="cart__footer">
+            <div class="cart__total">
+                <span>Total</span>
+                <span id="cartTotal">R$ 0,00</span>
+            </div>
+            <a href="/Carrinho" class="cart__btn">FINALIZAR PEDIDO</a>
+        </div>
+    </aside>
+
+    <!-- ═══════════ NAV ═══════════ -->
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="nav" id="nav">
+    <div class="nav__left">
+        <a asp-controller="Home" asp-action="Index" class="nav__logo">
+            <img src="~/img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
+        </a>
+
+        <div class="nav__links">
+            <a asp-controller="Home" asp-action="Index">Início</a>
+            <a href="#about">Sobre</a>
+            <a href="#category">Catálogo</a>
+            <a href="#footer">Contato</a>
+        </div>
+    </div>
+ 
+    <!-- ── Desktop direito ── -->
+    <div class="nav__right">
+ 
+        <!-- Visitante -->
+        <div class="nav__guest">
+            <a asp-controller="Auth" asp-action="Login" class="nav__btn nav__btn--login">Login</a>
+            <a asp-controller="Auth" asp-action="Cadastro" class="nav__btn nav__btn--register">Cadastrar-se</a>
+        </div>
+ 
+        <!-- Logado -->
+        <div class="nav__user" id="nav-user">
+            <button type="button" class="nav__user-btn" id="userBtn">
+                <span class="nav__user-name" id="userName">Usuário</span>
+                <img src="~/img/Icons/arrowDown.svg" alt="" />
+            </button>
+ 
+            <div class="nav__dropdown nav__dropdown--desktop" id="dropdown-desktop">
+                <a asp-controller="Conta" asp-action="Perfil" class="nav__dropdown-item dropdown-auth">
+                    <span class="nav__dropdown-icon">
+                        <img src="~/img/Icons/user.svg" alt="" />
+                    </span>
+                    <span>Meu Perfil</span>
+                </a>
+ 
+                <div class="nav__dropdown-divider"></div>
+
+                <a asp-controller="Pedidos" asp-action="Index" class="nav__dropdown-item">
+                    <span class="nav__dropdown-icon">
+                        <img src="~/img/Icons/market.svg" alt="" />
+                    </span>
+                    <span>Minhas Compras</span>
+                </a>
+
+                <div class="nav__dropdown-divider"></div>
+ 
+                <a asp-controller="Home" asp-action="Index" class="nav__dropdown-item nav__dropdown-item--logout" id="btn-logout-desktop">
+                    <span class="nav__dropdown-icon">
+                        <img src="~/img/Icons/logout.svg" alt="" />
+                    </span>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+ 
+    </div>
+ 
+    <!-- ── Carrinho — fora do nav__right, visível em todos os breakpoints ── -->
+    <button type="button" class="nav__cart" id="cartBtn">
+        <img src="~/img/Icons/cart.svg" alt="Carrinho" />
+        <span class="nav__cart-count" id="cartCount">0</span>
+    </button>
+ 
+    <!-- ── Mobile ── -->
+    <div class="nav__mobile">
+        <button type="button" class="nav__mobile-btn" id="menuBtn" aria-label="Abrir menu">
+            <img src="~/img/Icons/menu.svg" alt="" />
+        </button>
+ 
+        <div class="nav__dropdown nav__dropdown--mobile" id="dropdown-mobile">
+ 
+            <div class="nav__dropdown-user dropdown-auth">
+                <span id="userNameMobile">Usuário</span>
+            </div>
+
+            <a asp-controller="Conta" asp-action="Perfil" class="nav__dropdown-item dropdown-auth">
+                <span class="nav__dropdown-icon">
+                    <img src="~/img/Icons/user.svg" alt="" />
+                </span>
+                <span>Meu Perfil</span>
+            </a>
+
+            <div class="nav__dropdown-divider dropdown-auth"></div>
+
+            <!-- Só logado vê -->
+            <a asp-controller="Pedidos" asp-action="Index" class="nav__dropdown-item dropdown-auth">
+                <span class="nav__dropdown-icon">
+                    <img src="~/img/Icons/market.svg" alt="" />
+                </span>
+                <span>Minhas Compras</span>
+            </a>
+ 
+            <div class="nav__dropdown-divider dropdown-auth"></div>
+ 
+            <!-- Só visitante vê -->
+            <a asp-controller="Auth" asp-action="Login" class="nav__dropdown-item dropdown-guest">
+                <span class="nav__dropdown-icon">
+                    <img src="~/img/Icons/arrow.svg" alt="" />
+                </span>
+                <span>Login</span>
+            </a>
+
+            <div class="nav__dropdown-divider dropdown-guest"></div>
+ 
+            <a asp-controller="Auth" asp-action="Cadastro" class="nav__dropdown-item dropdown-guest">
+                <span class="nav__dropdown-icon">
+                    <img src="~/img/Icons/user.svg" alt="" />
+                </span>
+                <span>Cadastrar-se</span>
+            </a>
+
+ 
+            <a asp-controller="Home" asp-action="Index" class="nav__dropdown-item nav__dropdown-item--logout dropdown-auth" id="btn-logout-mobile">
+                <span class="nav__dropdown-icon">
+                    <img src="~/img/Icons/logout.svg" alt="" />
+                </span>
+                <span>Logout</span>
+            </a>
+ 
+        </div>
+    </div>
+</nav>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer" id="footer">
+        <div class="footer__content">
+            <div class="footer__brand">
+                <a href="/" class="footer__logo">
+                    <img src="~/img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
+                </a>
+                <p class="footer__desc">Distribuição premium de bebidas para negócios que exigem o melhor.</p>
+            </div>
+            <nav class="footer__nav">
+                <h4 class="footer__nav-title">Navegação</h4>
+                <ul class="footer__nav-list">
+                    <li><a href="/">Início</a></li>
+                    <li><a href="/#about">Sobre</a></li>
+                    <li><a href="/Catalogo">Catálogo</a></li>
+                    <li><a href="/#footer">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="footer__social">
+                <h4 class="footer__nav-title">Redes Sociais</h4>
+                <div class="footer__social-icons">
+                    <a href="#" class="footer__social-btn" aria-label="Instagram">
+                        <img src="~/img/Icons/Instagram.svg" alt="" />
+                    </a>
+                    <a href="#" class="footer__social-btn" aria-label="WhatsApp">
+                        <img src="~/img/Icons/Whatsapp.svg" alt="" />
+                    </a>
+                    <a href="#" class="footer__social-btn" aria-label="LinkedIn">
+                        <img src="~/img/Icons/Linkedin.svg" alt="" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© 2026 Valhalla Bebidas. Todos os direitos reservados.</p>
+            <p>Desenvolvido por <span>Tecnomancy</span></p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="~/js/auth.js"></script>
+    <script src="~/js/nav.js"></script>
+    <script src="~/js/cart.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</html>

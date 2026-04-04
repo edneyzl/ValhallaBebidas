@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Acessar Conta - Valhalla Bebidas";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/login.css" />
+    <link rel="stylesheet" href="~/css/page-animations.css" />
+    <style>
+        /* Hide global nav just for this page to use custom login layout */
+        .nav { display: none !important; }
+        .container { max-width: none; padding: 0; }
+        /* Hide global footer on login page to avoid it showing beside the panel */
+        .footer { display: none !important; }
+        /* Fix: on small screens remove body top padding (set globally by homepage.css)
+           and pin the page-specific nav to the top so it appears at viewport top */
+        @@media (max-width: 600px) {
+            body { padding-top: 0 !important; }
+            .login__nav { position: fixed; top: 0; left: 0; right: 0; z-index: 2000; }
+            /* Center the login content vertically on small screens */
+            .login {
+                min-height: calc(100vh - var(--nav-height, 80px));
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding-top: 0;
+            }
+            /* Ensure brand + form are stacked nicely */
+            .login__brand, .login__form-wrapper { width: 100%; max-width: 420px; }
+            .login__brand { margin-bottom: 24px; }
+        }
+    </style>
+}
+<div class="login">
+
+    <nav class="login__nav page-anim-prep">
+      <a asp-controller="Home" asp-action="Index" class="login__nav-logo">
+        <img src="~/img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
+      </a>
+
+      <div class="login__nav-mobile">
+        <button type="button" class="login__nav-menu" id="loginMenuBtn" aria-label="Menu">
+          <img src="~/img/Icons/menu.svg" alt="" />
+        </button>
+
+        <div class="nav__dropdown nav__dropdown--mobile" id="loginDropMobile">
+          <a asp-controller="Auth" asp-action="Login" class="nav__dropdown-item">
+            <span class="nav__dropdown-icon"><img src="~/img/Icons/arrow.svg" alt="" /></span>
+            <span>Login</span>
+          </a>
+          <a asp-controller="Auth" asp-action="Cadastro" class="nav__dropdown-item">
+            <span class="nav__dropdown-icon"><img src="~/img/Icons/user.svg" alt="" /></span>
+            <span>Cadastrar-se</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="login__title_mobile page-anim-prep">
+        <div class="login__mobile-icon">
+          <img src="~/img/Marcas/ValhallaBlack.svg" alt="" />
+        </div>
+        <h1>Bem vindo(a) de <span>Volta!</span></h1>
+        <p>Faça o login para continuar.</p>
+    </div>
+
+    <div class="login__brand page-anim-prep">
+        <div class="logo__brand">
+          <a asp-controller="Home" asp-action="Index">
+            <img src="~/img/Marcas/ValhallaBlack.svg" alt="Valhalla Bebidas" />
+          </a>
+          <h2>Valhalla Bebidas</h2>
+        </div>
+
+        <img src="~/img/assets/mockupValhalla.png" alt="Mockup Valhalla Bebidas" class="login__mockup" />
+    </div>
+
+    <div class="login__form-wrapper page-anim-prep">
+        <form class="login__form" id="formLogin" method="post" asp-controller="Auth" asp-action="Login">
+          <div class="login__title">
+            <h1>Bem vindo(a) de <span>Volta!</span></h1>
+            <p>Faça o login para continuar.</p>
+          </div>
+
+          <div class="login__inputs">
+            <label for="email" class="login__input">
+              <img src="~/img/Icons/Envelope.svg" alt="" />
+              <input type="email" id="email" name="Email" placeholder="Digite seu email" autocomplete="email" required />
+            </label>
+
+            <label for="senha" class="login__input">
+              <img src="~/img/Icons/Lock.svg" alt="" />
+              <input type="password" id="senha" name="Senha" placeholder="Digite sua senha" autocomplete="current-password" required />
+            </label>
+
+          </div>
+
+          <div class="login__actions">
+            <button type="submit" class="login__btn">Acessar conta</button>
+            <p class="login__register">Não tem uma conta? <a asp-controller="Auth" asp-action="Cadastro">Inscreva-se</a></p>
+          </div>
+        </form>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/login.js"></script>
+    <script src="~/js/animations.js"></script>
+}
+
+

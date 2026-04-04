@@ -1,0 +1,784 @@
+/* ════════════════════════════════════════════════════════
+   login.css — Valhalla Bebidas
+   Base de design: 1920px (Figma)
+════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════════════
+   TOKENS
+════════════════════════════════════════════════════════ */
+:root {
+  --color-bg:           #0f0e0c;
+  --color-surface:      #161616;
+  --color-gold:         #D6BD77;
+  --color-gold-hover:   #e8d08e;
+  --color-white:        #ffffff;
+  --color-black:        #000000;
+  --color-border:       #616161;
+  --color-placeholder:  #616161;
+
+  --body-padding:       50px;
+
+  --login-height:       900px;
+  --login-padding:      10px;
+  --login-gap:          10px;
+  --login-radius:       24px;
+
+  --brand-width:        50%;
+  --brand-radius:       16px;
+
+  --logo-top:           40px;
+  --logo-left:          40px;
+  --logo-icon-size:     60px;
+  --logo-font-size:     28px;
+  --logo-spacing:       -2px;
+
+  --form-gap:           50px;
+  --form-width:         562px;
+
+  --title-size:         52px;
+  --title-spacing:      -2px;
+  --subtitle-size:      22px;
+
+  --inputs-gap:         25px;
+  --input-height:       70px;
+  --input-radius:       20px;
+  --input-icon-size:    40px;
+  --input-font-size:    16px;
+
+  --btn-height:         80px;
+  --btn-radius:         20px;
+  --btn-font-size:      24px;
+  --btn-font-weight:    600;
+
+  --register-size:      20px;
+}
+
+/* ════════════════════════════════════════════════════════
+   RESET
+════════════════════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Sora", sans-serif;
+}
+
+/* ════════════════════════════════════════════════════════
+   BODY
+════════════════════════════════════════════════════════ */
+body {
+  background-color: var(--color-bg);
+  padding: var(--body-padding);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ════════════════════════════════════════════════════════
+   NAV MOBILE — escondida no desktop
+════════════════════════════════════════════════════════ */
+.login__nav {
+  display: none;
+}
+
+.login__nav-mobile {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Dropdown começa fechado */
+#loginDropMobile {
+  display: none;
+}
+
+#loginDropMobile.open {
+  display: flex;
+}
+
+/* ── Ícone arredondado e título mobile — escondidos no desktop ── */
+.login__mobile-icon {
+  display: none;
+}
+
+.login__title_mobile {
+  display: none;
+}
+
+/* ════════════════════════════════════════════════════════
+   LOGIN — Container principal
+════════════════════════════════════════════════════════ */
+.login {
+  width: 100%;
+  height: var(--login-height);
+  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  padding: var(--login-padding);
+  gap: var(--login-gap);
+  border-radius: var(--login-radius);
+  overflow: hidden;
+}
+
+/* ════════════════════════════════════════════════════════
+   LOGIN BRAND — Painel esquerdo
+════════════════════════════════════════════════════════ */
+.login__brand {
+  position: relative;
+  width: var(--brand-width);
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: var(--brand-radius);
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom,
+    #D6BD77 0%,
+    #FFE59C 50%,
+    #FFFFFF 100%
+  );
+}
+
+.login__mockup {
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+}
+
+/* ── Logo + nome ── */
+.logo__brand {
+  position: absolute;
+  top: var(--logo-top);
+  left: var(--logo-left);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  a {
+    width: var(--logo-icon-size);
+    height: var(--logo-icon-size);
+    display: flex;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  h2 {
+    font-size: var(--logo-font-size);
+    font-weight: 700;
+    letter-spacing: var(--logo-spacing);
+    color: var(--color-black);
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   LOGIN FORM WRAPPER — Painel direito
+════════════════════════════════════════════════════════ */
+.login__form-wrapper {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ════════════════════════════════════════════════════════
+   LOGIN FORM
+════════════════════════════════════════════════════════ */
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--form-gap);
+}
+
+/* ── Título ── */
+.login__title {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  h1 {
+    font-size: var(--title-size);
+    letter-spacing: var(--title-spacing);
+    color: var(--color-white);
+
+    span {
+      color: var(--color-gold);
+    }
+  }
+
+  p {
+    font-size: var(--subtitle-size);
+    color: var(--color-border);
+  }
+}
+
+/* ── Inputs ── */
+.login__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--inputs-gap);
+}
+
+.login__input {
+  width: var(--form-width);
+  height: var(--input-height);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: var(--input-radius);
+  border: 2px solid var(--color-border);
+  transition: border-color 0.3s ease;
+  cursor: text;
+
+  img {
+    width: var(--input-icon-size);
+    height: var(--input-icon-size);
+    flex-shrink: 0;
+  }
+
+  input {
+    width: 100%;
+    height: 100%;
+    font-size: var(--input-font-size);
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--color-white);
+  }
+
+  input::placeholder {
+    color: var(--color-placeholder);
+  }
+}
+
+.login__input:focus-within {
+  border-color: var(--color-gold);
+}
+
+/* ════════════════════════════════════════════════════════
+   LOGIN ACTIONS
+════════════════════════════════════════════════════════ */
+.login__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ── Botão principal ── */
+.login__btn {
+  width: var(--form-width);
+  height: var(--btn-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: var(--btn-radius);
+  border: none;
+  background-color: var(--color-gold);
+  cursor: pointer;
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  color: var(--color-black);
+  transition: background-color 0.3s ease;
+}
+
+.login__btn:hover {
+  background-color: var(--color-gold-hover);
+}
+
+/* ── Link de cadastro ── */
+.login__register {
+  font-size: var(--register-size);
+  font-weight: 200;
+  color: var(--color-white);
+
+  a {
+    font-weight: 500;
+    color: var(--color-gold);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  a:hover {
+    opacity: 0.7;
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVIDADE — Desktop
+════════════════════════════════════════════════════════ */
+
+/* ── 1600px ── */
+@media (max-width: 1600px) {
+  :root {
+    --login-height:   820px;
+    --title-size:     46px;
+    --subtitle-size:  20px;
+    --form-width:     500px;
+    --btn-height:     72px;
+    --btn-font-size:  22px;
+    --input-height:   64px;
+  }
+}
+
+/* ── 1440px ── */
+@media (max-width: 1440px) {
+  :root {
+    --login-height:     780px;
+    --title-size:       42px;
+    --subtitle-size:    18px;
+    --form-width:       460px;
+    --btn-height:       68px;
+    --btn-font-size:    20px;
+    --input-height:     60px;
+    --input-icon-size:  34px;
+    --logo-font-size:   24px;
+    --logo-icon-size:   52px;
+    --form-gap:         40px;
+    --inputs-gap:       20px;
+  }
+}
+
+/* ── 1366px ── */
+@media (max-width: 1366px) {
+  :root {
+    --body-padding:     40px;
+    --login-height:     740px;
+    --title-size:       38px;
+    --subtitle-size:    16px;
+    --form-width:       420px;
+    --btn-height:       64px;
+    --btn-font-size:    18px;
+    --input-height:     56px;
+    --input-icon-size:  30px;
+    --logo-font-size:   22px;
+    --logo-icon-size:   48px;
+    --logo-top:         32px;
+    --logo-left:        32px;
+    --form-gap:         36px;
+    --inputs-gap:       18px;
+  }
+}
+
+/* ── 1280px ── */
+@media (max-width: 1280px) {
+  :root {
+    --body-padding:     32px;
+    --login-height:     700px;
+    --title-size:       34px;
+    --subtitle-size:    15px;
+    --form-width:       380px;
+    --btn-height:       60px;
+    --btn-font-size:    17px;
+    --input-height:     52px;
+    --input-icon-size:  28px;
+    --logo-font-size:   20px;
+    --logo-icon-size:   44px;
+    --logo-top:         28px;
+    --logo-left:        28px;
+    --form-gap:         32px;
+    --inputs-gap:       16px;
+    --register-size:    17px;
+  }
+}
+
+/* ── 1024px ── */
+@media (max-width: 1024px) {
+  :root {
+    --body-padding:     24px;
+    --title-size:       30px;
+    --subtitle-size:    14px;
+    --form-width:       340px;
+    --btn-height:       56px;
+    --btn-font-size:    16px;
+    --input-height:     50px;
+    --input-icon-size:  26px;
+    --logo-font-size:   18px;
+    --logo-icon-size:   40px;
+    --logo-top:         24px;
+    --logo-left:        24px;
+    --form-gap:         28px;
+    --inputs-gap:       14px;
+    --register-size:    15px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   MOBILE — até 600px
+════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+
+  /* ── Body ── */
+  body {
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Nav mobile ── */
+  .login__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    width: 100%;
+    height: 80px;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid #1b1b1b;
+    flex-shrink: 0;
+  }
+
+  .login__nav-logo img {
+    width: 85px;
+    height: auto;
+  }
+
+  .login__nav-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  /* ── Container principal ── */
+  .login {
+    flex: 1;
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+    background-color: var(--color-bg);
+    gap: 0;
+  }
+
+  /* ── Painel esquerdo — some no mobile ── */
+  .login__brand {
+    display: none;
+  }
+
+  /* ── Título mobile — aparece acima do form ── */
+  .login__title_mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 40px 24px 0;
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: var(--color-white);
+
+      span {
+        color: var(--color-gold);
+      }
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--color-border);
+    }
+  }
+
+  /* ── Ícone arredondado ── */
+  .login__mobile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+
+    img {
+      width: 80px;
+      height: 80px;
+      padding: 16px;
+      background-color: var(--color-gold);
+      border-radius: 20px;
+      object-fit: contain;
+    }
+  }
+
+  /* ── Painel direito — ocupa tudo ── */
+  .login__form-wrapper {
+    width: 100%;
+    height: auto;
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px 24px 40px;
+  }
+
+  /* ── Formulário — esconde título (já está no mobile-title) ── */
+  .login__form {
+    width: 100%;
+    gap: 32px;
+  }
+
+  .login__title {
+    display: none; /* título mobile já exibido acima */
+  }
+
+  /* ── Inputs ── */
+  .login__inputs {
+    gap: 16px;
+  }
+
+  .login__input {
+    width: 100%;
+    height: 60px;
+    border-radius: 16px;
+  }
+
+  /* ── Ações ── */
+  .login__actions {
+    gap: 16px;
+  }
+
+  .login__btn {
+    width: 100%;
+    height: 64px;
+    border-radius: 16px;
+    font-size: 18px;
+  }
+
+  .login__register {
+    font-size: 14px;
+    text-align: center;
+  }
+
+} /* fim mobile */
+
+/* ════════════════════════════════════════════════════════
+   TABLET — 601px até 1020px
+════════════════════════════════════════════════════════ */
+@media (min-width: 601px) and (max-width: 1020px) {
+
+  /* ── Body ── */
+  body {
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  /* ── Nav tablet ── */
+  .login__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    width: 100%;
+    height: 80px;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid #1b1b1b;
+    flex-shrink: 0;
+  }
+
+  .login__nav-logo img {
+    width: 85px;
+    height: auto;
+  }
+
+  .login__nav-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  /* ── Container principal ── */
+  .login {
+    flex: 1;
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+    background-color: var(--color-bg);
+    gap: 0;
+  }
+
+  /* ── Painel esquerdo — some no tablet ── */
+  .login__brand {
+    display: none;
+  }
+
+  /* ── Título mobile ── */
+  .login__title_mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 48px 40px 0;
+
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -2px;
+      color: var(--color-white);
+
+      span {
+        color: var(--color-gold);
+      }
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--color-border);
+    }
+  }
+
+  /* ── Ícone arredondado ── */
+  .login__mobile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+
+    img {
+      width: 96px;
+      height: 96px;
+      padding: 20px;
+      background-color: var(--color-gold);
+      border-radius: 24px;
+      object-fit: contain;
+    }
+  }
+
+  /* ── Painel direito — ocupa tudo ── */
+  .login__form-wrapper {
+    width: 100%;
+    height: auto;
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 40px 60px;
+  }
+
+  /* ── Formulário ── */
+  .login__form {
+    width: 100%;
+    max-width: 480px;
+    gap: 36px;
+  }
+
+  .login__title {
+    display: none; /* título mobile já exibido acima */
+  }
+
+  /* ── Inputs ── */
+  .login__inputs {
+    gap: 18px;
+  }
+
+  .login__input {
+    width: 100%;
+    height: 64px;
+    border-radius: 16px;
+  }
+
+  /* ── Ações ── */
+  .login__actions {
+    gap: 20px;
+  }
+
+  .login__btn {
+    width: 100%;
+    height: 70px;
+    border-radius: 16px;
+    font-size: 20px;
+  }
+
+  .login__register {
+    font-size: 16px;
+    text-align: center;
+  }
+
+}
+
+/* ════════════════════════════════════════════════════════
+   DROPDOWN — Nav mobile login
+════════════════════════════════════════════════════════ */
+.nav__dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 220px;
+  background-color: #1b1b1b;
+  border: 1px solid #616161;
+  border-radius: 12px;
+  padding: 8px;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 200;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav__dropdown.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.nav__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 400;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav__dropdown-item:hover {
+  background-color: #232320;
+  color: #D6BD77;
+}
+
+.nav__dropdown-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+}

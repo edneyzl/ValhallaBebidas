@@ -1,0 +1,286 @@
+﻿@* Views/Home/Index.cshtml *@
+@{
+    ViewData["Title"] = "Valhalla Bebidas - Distribuidora de Bebidas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/page-animations.css" />
+}
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="hero">
+    <div class="hero__content">
+        <div class="hero__tag reveal">
+            <h3>DISTRIBUIDORA DE BEBIDAS</h3>
+        </div>
+ 
+        <div class="hero__title reveal">
+            <h1>Valhalla</h1>
+            <span>Bebidas</span>
+        </div>
+ 
+        <p class="hero__description reveal">
+            Rótulos que seus clientes não encontram em qualquer<br />
+            lugar. Distribuição premium para negócios que exigem o<br />
+            melhor.
+        </p>
+ 
+        <div class="hero__actions reveal">
+            <a href="#category" class="hero__btn hero__btn--primary">Ver Produtos</a>
+            <a href="#footer" class="hero__btn hero__btn--secondary">Contato</a>
+        </div>
+    </div>
+ 
+    <div class="hero__visual reveal">
+        <img src="~/img/assets/ModelValhalla.png" alt="Representante Valhalla Bebidas" />
+    </div>
+</section>
+ 
+<!-- ═══════════ BRANDS ═══════════ -->
+<div class="brands" id="brands">
+    <div class="brands__track">
+        <img src="~/img/Marcas/Ambev.svg" alt="Ambev" />
+        <img src="~/img/Marcas/Coca-Cola.svg" alt="Coca-Cola" />
+        <img src="~/img/Marcas/Pepsico.svg" alt="Pepsico" />
+        <img src="~/img/Marcas/Ambev.svg" alt="Ambev" />
+        <img src="~/img/Marcas/Coca-Cola.svg" alt="Coca-Cola" />
+        <img src="~/img/Marcas/Pepsico.svg" alt="Pepsico" />
+        <img src="~/img/Marcas/Ambev.svg" alt="Ambev" />
+        <img src="~/img/Marcas/Coca-Cola.svg" alt="Coca-Cola" />
+        <img src="~/img/Marcas/Pepsico.svg" alt="Pepsico" />
+        <img src="~/img/Marcas/Ambev.svg" alt="Ambev" />
+        <img src="~/img/Marcas/Coca-Cola.svg" alt="Coca-Cola" />
+        <img src="~/img/Marcas/Pepsico.svg" alt="Pepsico" />
+        <img src="~/img/Marcas/Ambev.svg" alt="Ambev" />
+        <img src="~/img/Marcas/Coca-Cola.svg" alt="Coca-Cola" />
+        <img src="~/img/Marcas/Pepsico.svg" alt="Pepsico" />
+        <img src="~/img/Marcas/Ambev.svg" alt="Ambev" />
+        <img src="~/img/Marcas/Coca-Cola.svg" alt="Coca-Cola" />
+        <img src="~/img/Marcas/Pepsico.svg" alt="Pepsico" />
+    </div>
+</div>
+ 
+<!-- ═══════════ STATS ═══════════ -->
+<section class="stats" id="stats">
+    <ul class="stats__list">
+        <li class="stats__item">
+            <h2>500+</h2>
+            <p>CLIENTES ATIVOS</p>
+        </li>
+        <li class="stats__item">
+            <h2>12</h2>
+            <p>ESTADOS</p>
+        </li>
+        <li class="stats__item">
+            <h2>3</h2>
+            <p>GRANDES MARCAS</p>
+        </li>
+    </ul>
+</section>
+ 
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="about" id="about">
+    <div class="about__left reveal">
+        <h2>SOBRE A VALHALLA</h2>
+        <h1>Onde os maiores <br />rótulos do mundo <br />encontram você.</h1>
+    </div>
+ 
+    <div class="about__right reveal">
+        <p>
+            A <span>Valhalla Bebidas</span> nasceu com uma missão clara:
+            <span>conectar negócios às<br />bebidas que seus clientes mais desejam</span>,
+            com acesso exclusivo a portfólios das maiores fabricantes do planeta.<br /><br />
+            Da venda no atacado ao suporte estratégico, somos parceiros do seu negócio em cada etapa.
+        </p>
+ 
+        <div class="about__cards">
+            <div class="about__cards-row">
+                <div class="about__card">
+                    <img src="~/img/Icons/Thophy.svg" alt="" />
+                    <h2>EXCLUSIVIDADE</h2>
+                </div>
+                <div class="about__card">
+                    <img src="~/img/Icons/Check.svg" alt="" />
+                    <h2>QUALIDADE</h2>
+                </div>
+            </div>
+ 
+            <div class="about__cards-row">
+                <div class="about__card">
+                    <img src="~/img/Icons/HandShake.svg" alt="" />
+                    <h2>SUPORTE</h2>
+                </div>
+                <div class="about__card">
+                    <img src="~/img/Icons/UpLinear.svg" alt="" />
+                    <h2>CRESCIMENTO</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ 
+<!-- ═══════════ WORK ═══════════ -->
+<section class="work" id="work">
+    <div class="work__content">
+        <h3>PROCESSO</h3>
+        <h1>Como Funciona</h1>
+        <p>
+            Tornamos a parceria simples e rápida para que você foque no que
+            realmente importa: <span>vender</span>.
+        </p>
+ 
+        <ul class="work__step reveal">
+            <li class="work__step__item">
+                <div class="work__step__circle">
+                    <div><span>1</span></div>
+                </div>
+                <h2>CADASTRE-SE</h2>
+                <p>Crie sua conta como parceiro em menos de 5<br />minutos com seu CNPJ/CPF.</p>
+            </li>
+ 
+            <li class="work__step__item">
+                <div class="work__step__circle">
+                    <div><span>2</span></div>
+                </div>
+                <h2>EXPLORE</h2>
+                <p>Acesse o catálogo exclusivo com centenas de<br />SKUs das maiores marcas.</p>
+            </li>
+ 
+            <li class="work__step__item">
+                <div class="work__step__circle">
+                    <div><span>3</span></div>
+                </div>
+                <h2>PEÇA</h2>
+                <p>Faça seu pedido online com preços especiais<br />para parceiros.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+ 
+<!-- ═══════════ CPA ═══════════ -->
+<section class="cpa" id="cpa">
+    <div class="cpa__content">
+        <h2>DISTRIBUIDORES AUTORIZADOS DOS MAIORES DO MERCADO</h2>
+ 
+        <div class="cpa__mark">
+            <img src="~/img/Marcas/Ambev.svg" alt="Ambev" />
+            <img src="~/img/Marcas/Coca-Cola.svg" alt="Coca-Cola" />
+            <img src="~/img/Marcas/Pepsico.svg" alt="Pepsico" />
+        </div>
+    </div>
+</section>
+ 
+<!-- ═══════════ CATEGORY ═══════════ -->
+<section class="category" id="category">
+    <div class="category__content">
+ 
+        <!-- Cabeçalho -->
+        <div class="category__first">
+            <div class="category__first-div">
+                <h3>CATÁLOGO</h3>
+                <div>
+                    <h2>Nossos</h2>
+                    <h2>Destaques</h2>
+                </div>
+            </div>
+ 
+            <a href="/Catalogo" class="category__first-link">
+                <h3>VER CATÁLOGO COMPLETO</h3>
+                <img src="~/img/Icons/arrow.svg" alt="Arrow" class="category__arrow" />
+            </a>
+        </div>
+ 
+        <!-- Cards -->
+        <ul class="category__second">
+ 
+            <li class="category__card">
+                <div class="category__card-badge category__card-badge--first">
+                    <h2>ALTA ROTATIVIDADE</h2>
+                </div>
+                <div class="category__card-bottom">
+                    <div class="category__card-title">
+                        <h3>CERVEJAS PREMIUM</h3>
+                        <h2>Linha Artesanal</h2>
+                    </div>
+                    <div class="category__card-type">
+                        <h3>Cervejas</h3>
+                        <a href="/Catalogo">
+                            <span>VER MAIS</span>
+                            <img src="~/img/Icons/arrow.svg" alt="Arrow" />
+                        </a>
+                    </div>
+                </div>
+            </li>
+ 
+            <li class="category__card">
+                <div class="category__card-badge category__card-badge--second">
+                    <h2>EXCLUSIVO</h2>
+                </div>
+                <div class="category__card-bottom">
+                    <div class="category__card-title">
+                        <h3>ENERGÉTICOS & FUNCIONAIS</h3>
+                        <h2>Energy & Sport</h2>
+                    </div>
+                    <div class="category__card-type">
+                        <h3>Energéticos</h3>
+                        <a href="/Catalogo">
+                            <span>VER MAIS</span>
+                            <img src="~/img/Icons/arrow.svg" alt="Arrow" />
+                        </a>
+                    </div>
+                </div>
+            </li>
+ 
+            <li class="category__card">
+                <div class="category__card-badge category__card-badge--third">
+                    <h2>NOVO</h2>
+                </div>
+                <div class="category__card-bottom">
+                    <div class="category__card-title">
+                        <h3>REFRIGERANTES & SUCOS</h3>
+                        <h2>Linha Refrescante</h2>
+                    </div>
+                    <div class="category__card-type">
+                        <h3>Refrigerantes</h3>
+                        <a href="/Catalogo">
+                            <span>VER MAIS</span>
+                            <img src="~/img/Icons/arrow.svg" alt="Arrow" />
+                        </a>
+                    </div>
+                </div>
+            </li>
+ 
+        </ul>
+    </div>
+</section>
+ 
+<!-- ═══════════ PARTNER ═══════════ -->
+<section class="partner" id="partner">
+    <div class="partner__content">
+        <h3>SEJA PARCEIRO</h3>
+ 
+        <div class="partner__title">
+            <h2>Entre para</h2>
+            <h1>Valhalla Bebidas</h1>
+        </div>
+ 
+        <p>Faça parte da rede de distribuidores que já transforma o mercado de bebidas no Brasil.</p>
+ 
+        <div class="partner__buttons">
+            <label for="nome" class="partner__input">
+                <input type="text" id="nome" placeholder="Seu nome" />
+            </label>
+ 
+            <label for="cnpj" class="partner__input">
+                <input type="text" id="cnpj" placeholder="CNPJ/CPF" />
+            </label>
+ 
+            <button type="button" class="partner__btn">QUERO SER PARCEIRO</button>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/animations.js"></script>
+}

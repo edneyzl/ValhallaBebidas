@@ -1,0 +1,181 @@
+﻿@{
+    ViewData["Title"] = "Criar Conta - Valhalla Bebidas";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/cadastro.css" />
+    <link rel="stylesheet" href="~/css/page-animations.css" />
+    <style>
+        /* Esconde a nav padrão do _Layout apenas nesta página de cadastro */
+        .nav { display: none !important; }
+        /* Ajusta o container herdado do layout para usar largura completa */
+        .container { max-width: none; padding: 0; }
+        /* Evita footer aparecendo junto com o painel (mobile/desktop) */
+        .footer { display: none !important; }
+
+        /* Mobile fixes: pin mobile nav to top and center the form vertically */
+        @@media (max-width: 600px) {
+            body { padding-top: 0 !important; }
+            .cadastro__nav { position: fixed; top: 0; left: 0; right: 0; z-index: 2000; }
+            .cadastro { min-height: calc(100vh - var(--nav-height, 80px)); display: flex; flex-direction: column; justify-content: center; padding-top: 0; }
+            .cadastro__header, .cadastro__form { width: 100%; max-width: 420px; margin: 0 auto; }
+            .cadastro { padding-left: 16px; padding-right: 16px; margin-top: 70px; }
+        }
+    </style>
+}
+
+<nav class="cadastro__nav page-anim-prep">
+  <a asp-controller="Home" asp-action="Index" class="cadastro__nav-logo">
+    <img src="~/img/Marcas/Valhalla.svg" alt="Valhalla Bebidas" />
+  </a>
+
+  <div class="cadastro__nav-mobile">
+    <button type="button" class="cadastro__nav-menu" id="cadastroMenuBtn" aria-label="Menu">
+      <img src="~/img/Icons/menu.svg" alt="" />
+    </button>
+
+    <div class="nav__dropdown" id="cadastroDropMobile">
+      <a asp-controller="Auth" asp-action="Login" class="nav__dropdown-item">
+        <span class="nav__dropdown-icon"><img src="~/img/Icons/arrow.svg" alt="" /></span>
+        <span>Login</span>
+      </a>
+      <a asp-controller="Auth" asp-action="Cadastro" class="nav__dropdown-item">
+        <span class="nav__dropdown-icon"><img src="~/img/Icons/user.svg" alt="" /></span>
+        <span>Cadastrar-se</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="cadastro">
+    <div class="cadastro__header page-anim-prep">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="cadastro__icon">
+            <img src="~/img/Marcas/ValhallaBlack.svg" alt="Valhalla Bebidas" />
+        </a>
+        <h1>Crie sua conta</h1>
+        <p>Preencha os dados para se tornar um parceiro.</p>
+    </div>
+
+    <form class="cadastro__form" id="formCadastro" method="post" asp-controller="Auth" asp-action="Cadastro">
+        <div class="cadastro__section page-anim-prep">
+            <h2 class="cadastro__section-title">Dados Pessoais</h2>
+
+            <div class="cadastro__field">
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" name="Nome" placeholder="Digite seu nome / empresa" autocomplete="name" required />
+                <p class="cadastro__input-erro" id="erroNome"></p>
+            </div>
+
+            <div class="cadastro__field">
+                <label for="dataNascimento">Data de nascimento</label>
+                <input type="text" id="dataNascimento" name="DataNascimento" placeholder="DD/MM/YYYY" maxlength="10" required />
+                <p class="cadastro__input-erro" id="erroDataNascimento"></p>
+            </div>
+
+            <div class="cadastro__field">
+                <label for="documento">Documento</label>
+                <input type="text" id="documento" name="Documento" placeholder="CPF / CNPJ" maxlength="18" required />
+                <p class="cadastro__input-erro" id="erroDocumento"></p>
+            </div>
+
+            <div class="cadastro__field">
+                <label for="telefone">Telefone</label>
+                <input type="text" id="telefone" name="Telefone" placeholder="(00) 00000-0000" maxlength="15" required />
+                <p class="cadastro__input-erro" id="erroTelefone"></p>
+            </div>
+
+            <div class="cadastro__field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="Email" placeholder="Digite seu email" autocomplete="email" required />
+                <p class="cadastro__input-erro" id="erroEmail"></p>
+            </div>
+        </div>
+
+        <div class="cadastro__section page-anim-prep">
+            <h2 class="cadastro__section-title">Palavra-Chave</h2>
+
+            <div class="cadastro__row">
+                <div class="cadastro__field">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="Senha" autocomplete="new-password" required />
+                    <p class="cadastro__input-erro" id="erroSenha"></p>
+                </div>
+
+                <div class="cadastro__field">
+                    <label for="confirmarSenha">Confirmar Senha</label>
+                    <input type="password" id="confirmarSenha" name="ConfirmarSenha" autocomplete="new-password" required />
+                    <p class="cadastro__input-erro" id="erroConfirmarSenha"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cadastro__section page-anim-prep">
+            <h2 class="cadastro__section-title">Endereço</h2>
+
+            <div class="cadastro__row cadastro__row--7-3">
+                <div class="cadastro__field">
+                    <label for="logradouro">Logradouro</label>
+                    <input type="text" id="logradouro" name="Endereco.Logradouro" autocomplete="street-address" required />
+                    <p class="cadastro__input-erro" id="erroLogradouro"></p>
+                </div>
+
+                <div class="cadastro__field">
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="Endereco.Cep" placeholder="00000-000" maxlength="9" required />
+                    <p class="cadastro__input-erro" id="erroCep"></p>
+                </div>
+            </div>
+
+            <div class="cadastro__row cadastro__row--3-col">
+                <div class="cadastro__field">
+                    <label for="numero">N.º</label>
+                    <input type="text" id="numero" name="Endereco.Numero" maxlength="10" required />
+                    <p class="cadastro__input-erro" id="erroNumero"></p>
+                </div>
+
+                <div class="cadastro__field">
+                    <label for="complemento">Complemento</label>
+                    <input type="text" id="complemento" name="Endereco.Complemento" maxlength="100" />
+                </div>
+
+                <div class="cadastro__field">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="bairro" name="Endereco.Bairro" required />
+                    <p class="cadastro__input-erro" id="erroBairro"></p>
+                </div>
+            </div>
+
+            <div class="cadastro__row cadastro__row--7-3">
+                <div class="cadastro__field">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="Endereco.Cidade" autocomplete="address-level2" required />
+                    <p class="cadastro__input-erro" id="erroCidade"></p>
+                </div>
+
+                <div class="cadastro__field">
+                    <label for="estado">Estado</label>
+                    <input type="text" id="estado" name="Endereco.Estado" placeholder="UF" maxlength="2" autocomplete="address-level1" required />
+                    <p class="cadastro__input-erro" id="erroEstado"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cadastro__actions">
+            <button type="submit" class="cadastro__btn">Criar conta</button>
+            <p class="cadastro__login">Já tem uma conta? <a asp-controller="Auth" asp-action="Login">Faça o Login</a></p>
+        </div>
+    </form>
+
+    <div class="toast" id="toast" aria-live="polite" aria-atomic="true">
+        <div class="toast__icon">✓</div>
+        <div class="toast__content">
+            <p class="toast__title">Conta criada com sucesso!</p>
+            <p class="toast__desc">Redirecionando para a página inicial...</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/cadastro.js"></script>
+    <script src="~/js/animations.js"></script>
+}

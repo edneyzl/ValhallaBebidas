@@ -1,0 +1,196 @@
+﻿@{
+    ViewData["Title"] = "Catálogo - Valhalla Bebidas";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/catalogo.css" />
+    <link rel="stylesheet" href="~/css/page-animations.css" />
+
+    <style>
+        .product-card,
+        .page-anim-prep {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+    </style>
+}
+
+<header class="catalogoHero">
+    <section class="imgSection page-anim-prep">
+        <!-- tenta carregar a imagem real; se falhar, mostra fallback SVG -->
+        <img src="~/img/assets/categoriaPhoto.jpg" alt="Imagem Valhalla" 
+             onerror="this.style.display='none'; document.getElementById('categoriaFallback').style.display='block';" />
+
+        <div id="categoriaFallback" style="display:none;">
+            <svg width="100%" height="340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imagem Valhalla">
+                <defs>
+                    <linearGradient id="g" x1="0" x2="1">
+                        <stop stop-color="#f5f5f7" offset="0" />
+                        <stop stop-color="#e6e7ea" offset="1" />
+                    </linearGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#g)" />
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="28" fill="#777">Imagem Valhalla</text>
+            </svg>
+        </div>
+    </section>
+</header>
+
+<section class="category">
+    <div class="filter-container page-anim-prep">
+        <div class="filter">
+            <h3>CATEGORIAS</h3>
+            <!-- Ajuste semântico: transformar cards em <ul> -->
+            <ul class="cards">
+                <li class="catalogo_filter-btn-active">
+                    <button>Todos</button>
+                </li>
+                <li class="catalogo_filter-btn">
+                    <button>Refrigerantes</button>
+                </li>
+                <li class="catalogo_filter-btn">
+                    <button>Destilados</button>
+                </li>
+                <li class="catalogo_filter-btn">
+                    <button>Cervejas</button>
+                </li>
+                <li class="catalogo_filter-btn">
+                    <button>Energéticos</button>
+                </li>
+                <li class="catalogo_filter-btn">
+                    <button>Vinhos</button>
+                </li>
+                <li class="catalogo_filter-btn">
+                    <button>Sucos</button>
+                </li>
+                <li class="catalogo_filter-btn">
+                    <button>Águas</button>
+                </li>
+                <li class="catalogo_filter-btn">
+                    <button>Gelos</button>
+                </li>
+            </ul>
+
+            <h3>ORDENAR POR</h3>
+            <ul class="cards">
+                <li class="catalogo_filter-btn-active">
+                    <button>Relevância</button>
+                </li>
+                <li class="catalogo_filter-btn">
+                    <button>Menor preço</button>
+                </li>
+                <li class="catalogo_filter-btn">
+                    <button>Maior preço</button>
+                </li>
+                <li class="catalogo_filter-btn">
+                    <button>Nome A-Z</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="products-container">
+        <div class="product__title page-anim-prep">
+            <div>
+                <h1>Catálogo</h1>
+                <p>0 produtos encontrados</p>
+            </div>
+
+            <label for="search-input">
+                <a href="#">
+                    <img src="~/img/Icons/Glass.svg" alt="Buscar">
+                </a>
+                <input type="text" id="search-input" placeholder="Buscar produtos">
+            </label>
+        </div>
+
+        <!-- ==========================================
+           NOVA ESTRUTURA GRID (Sem .line e usando <ul>)
+           ========================================== -->
+        <ul class="products">
+
+            <li class="product-card page-anim-prep">
+                <div class="product-img">
+                    <img src="~/img/ExemploBebida.png" alt="Bebida X">
+                </div>
+                <div>
+                    <h1>Bebida X</h1>
+                    <p>Categoria</p>
+                </div>
+                <h2>R$40,99</h2>
+                <div class="buttons">
+                    <a href="#" class="market-button">Adicionar ao carrinho</a>
+                    <a href="#" class="details-button">Ver detalhes</a>
+                </div>
+            </li>
+
+            <li class="product-card page-anim-prep">
+                <div class="product-img">
+                    <img src="~/img/ExemploBebida.png" alt="Bebida X">
+                </div>
+                <div>
+                    <h1>Bebida X</h1>
+                    <p>Categoria</p>
+                </div>
+                <h2>R$40,99</h2>
+                <div class="buttons">
+                    <a href="#" class="market-button">Adicionar ao carrinho</a>
+                    <a href="#" class="details-button">Ver detalhes</a>
+                </div>
+            </li>
+
+            <li class="product-card page-anim-prep">
+                <div class="product-img">
+                    <img src="~/img/ExemploBebida.png" alt="Bebida X">
+                </div>
+                <div>
+                    <h1>Bebida X</h1>
+                    <p>Categoria</p>
+                </div>
+                <h2>R$40,99</h2>
+                <div class="buttons">
+                    <a href="#" class="market-button">Adicionar ao carrinho</a>
+                    <a href="#" class="details-button">Ver detalhes</a>
+                </div>
+            </li>
+
+            <li class="product-card page-anim-prep">
+                <div class="product-img">
+                    <img src="~/img/ExemploBebida.png" alt="Bebida X">
+                </div>
+                <div>
+                    <h1>Bebida X</h1>
+                    <p>Categoria</p>
+                </div>
+                <h2>R$40,99</h2>
+                <div class="buttons">
+                    <a href="#" class="market-button">Adicionar ao carrinho</a>
+                    <a href="#" class="details-button">Ver detalhes</a>
+                </div>
+            </li>
+
+            <li class="product-card page-anim-prep">
+                <div class="product-img">
+                    <img src="~/img/ExemploBebida.png" alt="Bebida X">
+                </div>
+                <div>
+                    <h1>Bebida X</h1>
+                    <p>Categoria</p>
+                </div>
+                <h2>R$40,99</h2>
+                <div class="buttons">
+                    <a href="#" class="market-button">Adicionar ao carrinho</a>
+                    <a href="#" class="details-button">Ver detalhes</a>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</section>
+
+
+@section Scripts {
+    <script src="~/js/catalogo.js"></script>
+    <script src="~/js/animations.js"></script>
+}

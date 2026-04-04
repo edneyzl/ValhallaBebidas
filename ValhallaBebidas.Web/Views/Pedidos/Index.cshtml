@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Meus Pedidos - Valhalla Bebidas";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/compras.css" />
+    <link rel="stylesheet" href="~/css/page-animations.css" />
+}
+
+<!-- ═══════════ MEUS PEDIDOS ═══════════ -->
+<main class="pedidos">
+
+    <!-- ── Header ── -->
+    <div class="pedidos__header">
+        <div>
+            <h1>Minhas Compras</h1>
+            <p id="pedidosCount">0 pedidos</p>
+        </div>
+        <a href="catalogo.html" class="pedidos__btn-novo">+ Novo pedido</a>
+    </div>
+
+    <!-- ── Filtros de status ── -->
+    <div class="pedidos__filtros">
+        <button class="pedidos__filtro pedidos__filtro--active" data-status="todos">Todos</button>
+        <button class="pedidos__filtro" data-status="Pendente">Pendentes</button>
+        <button class="pedidos__filtro" data-status="Confirmado">Confirmados</button>
+        <button class="pedidos__filtro" data-status="Cancelado">Cancelados</button>
+    </div>
+
+    <!-- ── Lista de pedidos ── -->
+    <div class="pedidos__lista" id="pedidosLista">
+        <!-- injetado via JS -->
+    </div>
+
+    <!-- ── Estado vazio ── -->
+    <div class="pedidos__vazio" id="pedidosVazio" style="display:none;">
+        <p>Nenhum pedido encontrado.</p>
+        <a href="catalogo.html" class="pedidos__vazio-link">Explorar catálogo</a>
+    </div>
+
+</main>
+
+
+@section Scripts {
+    <script src="~/js/compras.js"></script>
+    <script src="~/js/animations.js"></script>
+}

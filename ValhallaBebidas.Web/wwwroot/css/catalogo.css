@@ -1,0 +1,737 @@
+/* ==========================================================================
+   VARIÁVEIS (CUSTOM PROPERTIES) & DESIGN SYSTEM
+   ========================================================================== */
+   :root {
+    --color-primary: #D6BD77;
+    --color-primary-hover: #e0c988;
+    --color-bg-main: #161616;
+    --color-bg-card: #212121;
+    --color-bg-input: #1b1b1b;
+    --color-text-main: #FFFFFF;
+    --color-text-muted: #797979;
+    --color-text-dark: #616161;
+    --color-border: #404040;
+    
+    --nav-height: 80px;
+    --font-main: "Sora", sans-serif;
+    --transition-speed: 0.3s ease;
+  }
+  
+  /* ==========================================================================
+     RESET & BASE
+     ========================================================================== */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-main);
+  }
+  
+  html,
+  body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+    padding-top: 0;
+    overflow-x: hidden;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+
+
+/* ════════════════════════════════════════════════════════
+ NAV
+════════════════════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  width: 100%;
+  height: var(--nav-height);
+  padding: 0 var(--nav-padding-x);
+  display: flex;
+  justify-content: space-between;
+  background-color: #0f0e0c;
+  border-bottom: 2px solid #1b1b1b;
+}
+
+/* ── Lado esquerdo (logo + links) ── */
+.nav__left {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--nav-gap-logo-links);
+}
+
+/* Logo */
+.nav__logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Links de navegação */
+.nav__links {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: var(--nav-links-gap);
+
+  a {
+    text-decoration: none;
+    color: var(--color-text-nav);
+    font-size: var(--link-font-size);
+    font-weight: var(--link-font-weight);
+    border-bottom: 1px solid transparent;
+    transition:
+      border-bottom-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  a:hover {
+    border-bottom-color: var(--color-gold);
+  }
+}
+
+/* ── Lado direito (botões) ── */
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Base dos botões nav */
+.nav__btn {
+  height: var(--btn-height);
+  padding: 0 10px;
+  border-radius: var(--btn-radius);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* Botão Login */
+.nav__btn--login {
+  width: var(--btn-login-width);
+  border: 1px solid var(--color-border-btn);
+  background-color: var(--color-surface);
+  color: var(--color-white);
+}
+
+.nav__btn--login:hover {
+  border-color: var(--color-gold);
+  background-color: #232320;
+}
+
+/* Botão Cadastrar-se */
+.nav__btn--register {
+  width: var(--btn-register-width);
+  border: none;
+  background-color: var(--color-gold);
+  color: var(--color-black);
+}
+
+.nav__btn--register:hover {
+  background-color: var(--color-gold-hover);
+}
+
+/* ════════════════════════════════════════════════════════
+   NAV — Desktop + Mobile + Dropdown
+════════════════════════════════════════════════════════ */
+
+/* ── Controle visitante / logado ── */
+.nav__guest {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav__user {
+  display: none;
+  position: relative;
+}
+
+/* ── Botão do usuário logado ── */
+.nav__user-btn {
+  width: 150px;
+  background: none;
+  border: 1px solid var(--color-border-btn);
+  border-radius: var(--btn-radius);
+  height: var(--btn-height);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: 'Sora', sans-serif;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav__user-btn:hover {
+  border-color: var(--color-gold);
+  background-color: #232320;
+}
+
+.nav__user-name {
+  color: var(--color-white);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+}
+
+.nav__user-chevron {
+  color: var(--color-gold);
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.nav__user-btn.open .nav__user-chevron {
+  transform: rotate(180deg);
+}
+
+/* ════════════════════════════════════════════════════════
+   DROPDOWN — base compartilhada
+════════════════════════════════════════════════════════ */
+.nav__dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 220px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--about-card-border);
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 200;
+
+  /* Estado inicial — fechado */
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Dropdown aberto */
+.nav__dropdown.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* ── Item ── */
+.nav__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: 15px;
+  font-weight: 400;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav__dropdown-item:hover {
+  background-color: #232320;
+  color: var(--color-gold);
+}
+
+/* ── Ícone ── */
+.nav__dropdown-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ── Divider ── */
+.nav__dropdown-divider {
+  height: 1px;
+  background-color: var(--about-card-border);
+  margin: 4px 8px;
+}
+
+/* ── Logout ── */
+.nav__dropdown-item--logout:hover {
+  background-color: rgba(180, 30, 30, 0.15);
+  color: #e05c5c;
+}
+
+/* ════════════════════════════════════════════════════════
+   MOBILE — ícone hambúrguer
+════════════════════════════════════════════════════════ */
+
+/* Wrapper do menu mobile — escondido no desktop */
+.nav__mobile {
+  display: none;
+  position: relative;
+  align-items: center;
+}
+
+/* Botão do ícone */
+.nav__mobile-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.nav__mobile-btn img {
+  width: 50px;
+  height: 50px;
+}
+
+.nav__dropdown-user {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 10px;
+
+  span {
+    color: var(--color-gold);
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVIDADE
+════════════════════════════════════════════════════════ */
+
+/* Desktop — mostra nav__right, esconde mobile */
+@media (min-width: 901px) {
+  .nav__mobile {
+    display: none;
+  }
+}
+
+/* Mobile / tablet — esconde nav__right e links, mostra menu */
+@media (max-width: 800px) {
+  .nav__right {
+    display: none;
+  }
+
+  .nav__links {
+    display: none;
+  }
+
+  .nav__mobile {
+    display: flex;
+  }
+}
+  
+  /* ==========================================================================
+     HERO E IMAGEM
+     ========================================================================== */
+  .catalogoHero {
+    padding-top: var(--nav-height);
+  }
+  
+  .catalogoHero .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .imgSection {
+    width: 100%;
+    height: clamp(250px, 40vh, 450px); /* Altura fluida: min 250px, ideal 40% da tela, max 450px */
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .imgSection img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha tudo sem distorcer */
+    object-position: center; /* Centraliza o foco da foto */
+    display: block;
+  }
+  
+  /* ==========================================================================
+     LAYOUT PRINCIPAL: FILTROS E PRODUTOS (FLEXBOX)
+     ========================================================================== */
+  .category {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    flex-direction: row; /* Desktop first: barra na esquerda, conteúdo na direita */
+  }
+  
+  /* ─── BARRA LATERAL (FILTROS) ─── */
+  .filter-container {
+    flex: 0 0 350px; /* Largura base para telas grandes */
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg-main);
+    padding: 3rem 2rem;
+    border-right: 1px solid var(--color-border);
+  }
+  
+  .filter {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    /* Dica de Pro: Mantém o filtro visível ao dar scroll em desktops */
+    position: sticky; 
+    top: calc(var(--nav-height) + 2rem); 
+  }
+  
+  .filter h3 {
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+  }
+  
+  .filter .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .catalogo_filter-btn,
+  .catalogo_filter-btn-active {
+    width: 100%;
+    display: flex;
+    padding: 12px 15px;
+    border-radius: 10px;
+    transition: background-color var(--transition-speed);
+  }
+  
+  .catalogo_filter-btn-active {
+    background-color: var(--color-bg-card);
+  }
+  
+  .catalogo_filter-btn-active button {
+    color: var(--color-primary);
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .catalogo_filter-btn button {
+    color: var(--color-text-dark);
+    font-size: 16px;
+    width: 100%;
+    text-align: left;
+    transition: color var(--transition-speed);
+  }
+  
+  .catalogo_filter-btn:hover {
+    background-color: var(--color-bg-card);
+  }
+  
+  .catalogo_filter-btn:hover button {
+    color: var(--color-text-main);
+  }
+  
+  /* ─── CONTAINER DE PRODUTOS ─── */
+  .products-container {
+    flex: 1; /* Ocupa todo o resto do espaço disponível */
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 5%; /* Padding dinâmico usando porcentagem */
+  }
+  
+  .product__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que o input quebre de linha se não houver espaço */
+    gap: 20px;
+    margin-bottom: 3rem;
+  }
+  
+  .product__title div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .product__title h1 {
+    font-size: 50px;
+    font-weight: 400;
+    color: var(--color-primary);
+    line-height: 1.1;
+  }
+  
+  .product__title p {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--color-text-muted);
+  }
+  
+  /* Barra de Pesquisa */
+  .product__title label {
+    width: 350px;
+    max-width: 100%;
+    height: 50px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 20px;
+    background-color: var(--color-bg-input);
+    border: 1px solid var(--color-border);
+    transition: border-color var(--transition-speed);
+  }
+  
+  .product__title label:focus-within {
+    border-color: var(--color-primary); /* Feedback visual de acessibilidade */
+  }
+  
+  .product__title label img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .product__title label input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: var(--color-text-main);
+  }
+  
+  /* ==========================================================================
+     A GRADE DE PRODUTOS (CSS GRID)
+     ========================================================================== */
+  .products {
+    display: grid;
+    /* Mágica do Grid: Cria colunas de no mín. 280px e estica para caber na tela. 
+       Isso ELIMINA a necessidade das "div.line" e funciona do 1920px ao 320px */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
+    width: 100%;
+  }
+  
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Garante que os cards na mesma linha fiquem com a mesma altura */
+    gap: 15px;
+  }
+  
+  .product-img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Quadrado perfeito independente da largura */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg-card);
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 20px;
+  }
+  
+  .product-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Não corta a bebida, mantém a proporção */
+  }
+  
+  .product-card div h1 {
+    font-size: 24px;
+    color: var(--color-primary);
+    margin-bottom: 5px;
+  }
+  
+  .product-card div p {
+    font-size: 16px;
+    color: var(--color-text-dark);
+  }
+  
+  .product-card h2 {
+    font-size: 30px;
+    color: var(--color-text-main);
+    margin-top: auto; /* Empurra o preço e os botões para o final do card */
+  }
+  
+  .product-card .buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  /* Botões do Card */
+  .market-button,
+  .details-button {
+    flex: 1; /* Dividem o espaço meio a meio perfeitamente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 45px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background-color var(--transition-speed), transform 0.1s;
+  }
+  
+  .market-button {
+    background-color: var(--color-primary);
+    color: #000;
+  }
+  
+  .market-button:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+  }
+  
+  .details-button {
+    background-color: var(--color-bg-input);
+    border: 1px solid var(--color-text-dark);
+    color: var(--color-text-main);
+  }
+  
+  .details-button:hover {
+    background-color: var(--color-border);
+    transform: translateY(-2px);
+  }
+  
+  /* ==========================================================================
+     MEDIA QUERIES (RESPONSIVIDADE)
+     ========================================================================== */
+  
+  /* ─── 1366px e Laptops Menores ─── */
+  @media (max-width: 1400px) {
+    .filter-container {
+      flex: 0 0 280px; /* Reduz a largura da sidebar */
+      padding: 2rem 1.5rem;
+    }
+    
+    .products-container {
+      padding: 3rem 4%;
+    }
+  
+    .product__title h1 {
+      font-size: 40px; /* Título ligeiramente menor */
+    }
+    
+    .product-card h2 {
+      font-size: 26px;
+    }
+
+    .imgSection {
+      height: 300px; /* Reduz um pouco a altura para não ocupar a tela toda do laptop */
+    }
+  }
+  
+  /* ─── 1024px (Tablets em Paisagem) ─── */
+  @media (max-width: 1024px) {
+    .category {
+      flex-direction: column; /* Joga os filtros para o topo */
+    }
+  
+    .filter-container {
+      flex: none;
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid var(--color-border);
+      padding: 2rem 5%;
+    }
+  
+    .filter {
+      position: static; /* Remove o sticky já que agora está no topo */
+      gap: 1.5rem;
+    }
+    
+    /* Filtros no tablet viram uma grid para aproveitar o espaço */
+    .filter .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+  }
+  
+  /* ─── 768px (Mobile e Tablets em Retrato) ─── */
+  @media (max-width: 768px) {
+    .imgSection {
+      height: 250px; /* Imagem do Hero menor */
+    }
+  
+    .products-container {
+      padding: 2rem 5%;
+    }
+  
+    .product__title {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .product__title label {
+      width: 100%; /* Input de busca ocupa 100% da tela */
+    }
+  
+    .product-card .buttons {
+      flex-direction: column; /* Empilha os botões no mobile */
+      width: 100%;
+      height: 40%;
+      gap: 10px;
+    }
+    
+    .market-button,
+    .details-button {
+      height: 40px; /* Botões ainda maiores no mobile para facilitar o clique */
+      font-size: 15px; /* Letras maiores para leitura rápida */
+      letter-spacing: 0.5px;
+    }
+  
+    .product-card {
+      padding: 20px; /* Aumenta o respiro interno do card no mobile */
+    }
+  
+    .product-card h1 {
+      font-size: 1.4rem; /* Garante que o nome da cerveja não fique pequeno */
+    }
+  }
+  

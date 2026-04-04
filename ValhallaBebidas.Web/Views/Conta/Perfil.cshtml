@@ -1,0 +1,182 @@
+﻿@{
+    ViewData["Title"] = "Meu Perfil - Valhalla Bebidas";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/perfil.css" />
+    <link rel="stylesheet" href="~/css/page-animations.css" />
+}
+
+<!-- ═══════════ PERFIL ═══════════ -->
+<main class="perfil">
+
+    <!-- ── Header ── -->
+    <div class="perfil__header">
+        <div class="perfil__avatar" id="perfilAvatar">
+            <span id="perfilInicial">J</span>
+        </div>
+        <div class="perfil__header-info">
+            <h1 id="perfilNome">João Silva</h1>
+            <p id="perfilEmail">joao@email.com</p>
+            <span class="perfil__badge">Cliente ativo</span>
+        </div>
+    </div>
+
+    <!-- ── Layout principal ── -->
+    <div class="perfil__layout">
+
+        <!-- ── Sidebar de navegação ── -->
+        <aside class="perfil__sidebar">
+            <nav class="perfil__nav">
+                <button class="perfil__nav-item perfil__nav-item--active" data-tab="dados">
+                    <span class="perfil__nav-icone"><img src="~/img/Icons/user.svg" alt=""></span>
+                    Dados pessoais
+                </button>
+                <button class="perfil__nav-item" data-tab="endereco">
+                    <span class="perfil__nav-icone"><img src="~/img/Icons/address.svg" alt=""></span>
+                    Endereço
+                </button>
+                <button class="perfil__nav-item" data-tab="senha">
+                    <span class="perfil__nav-icone"><img src="~/img/Icons/lock.svg" alt=""></span>
+                    Alterar senha
+                </button>
+                <div class="perfil__nav-sep"></div>
+                <button class="perfil__nav-item perfil__nav-item--danger" id="btnLogout">
+                    <span class="perfil__nav-icone"><img src="~/img/Icons/logout.svg" alt=""></span>
+                    Sair da conta
+                </button>
+            </nav>
+        </aside>
+
+        <!-- ── Conteúdo ── -->
+        <div class="perfil__conteudo">
+
+            <!-- ═══ Tab — Dados pessoais ═══ -->
+            <div class="perfil__tab" id="tabDados">
+                <div class="perfil__card">
+                    <h2 class="perfil__card-titulo">Dados pessoais</h2>
+
+                    <div class="perfil__field">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome" name="nome" autocomplete="name" />
+                    </div>
+
+                    <div class="perfil__row">
+                        <div class="perfil__field">
+                            <label for="dataNascimento">Data de nascimento</label>
+                            <input type="text" id="dataNascimento" placeholder="DD/MM/YYYY" maxlength="10" />
+                        </div>
+                        <div class="perfil__field">
+                            <label for="documento">CPF / CNPJ</label>
+                            <input type="text" id="documento" maxlength="18" />
+                        </div>
+                    </div>
+
+                    <div class="perfil__row">
+                        <div class="perfil__field">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" autocomplete="email" />
+                        </div>
+                        <div class="perfil__field">
+                            <label for="telefone">Telefone</label>
+                            <input type="text" id="telefone" maxlength="15" />
+                        </div>
+                    </div>
+
+                    <div class="perfil__acoes">
+                        <button type="button" class="perfil__btn perfil__btn--primary" id="btnSalvarDados">
+                            Salvar alterações
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ Tab — Endereço ═══ -->
+            <div class="perfil__tab" id="tabEndereco" style="display:none;">
+                <div class="perfil__card">
+                    <h2 class="perfil__card-titulo">Endereço de entrega</h2>
+
+                    <div class="perfil__row">
+                        <div class="perfil__field perfil__field--grow">
+                            <label for="logradouro">Logradouro</label>
+                            <input type="text" id="logradouro" autocomplete="street-address" />
+                        </div>
+                        <div class="perfil__field perfil__field--cep">
+                            <label for="cep">CEP</label>
+                            <input type="text" id="cep" placeholder="00000-000" maxlength="9" />
+                        </div>
+                    </div>
+
+                    <div class="perfil__row">
+                        <div class="perfil__field perfil__field--num">
+                            <label for="numero">Número</label>
+                            <input type="text" id="numero" maxlength="10" />
+                        </div>
+                        <div class="perfil__field perfil__field--grow">
+                            <label for="complemento">Complemento</label>
+                            <input type="text" id="complemento" placeholder="Apto, sala..." />
+                        </div>
+                        <div class="perfil__field perfil__field--grow">
+                            <label for="bairro">Bairro</label>
+                            <input type="text" id="bairro" />
+                        </div>
+                    </div>
+
+                    <div class="perfil__row">
+                        <div class="perfil__field perfil__field--grow">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" id="cidade" autocomplete="address-level2" />
+                        </div>
+                        <div class="perfil__field perfil__field--uf">
+                            <label for="estado">UF</label>
+                            <input type="text" id="estado" placeholder="SP" maxlength="2" />
+                        </div>
+                    </div>
+
+                    <div class="perfil__acoes">
+                        <button type="button" class="perfil__btn perfil__btn--primary" id="btnSalvarEndereco">
+                            Salvar endereço
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ Tab — Senha ═══ -->
+            <div class="perfil__tab" id="tabSenha" style="display:none;">
+                <div class="perfil__card">
+                    <h2 class="perfil__card-titulo">Alterar senha</h2>
+
+                    <div class="perfil__field">
+                        <label for="senhaAtual">Senha atual</label>
+                        <input type="password" id="senhaAtual" autocomplete="current-password" />
+                    </div>
+
+                    <div class="perfil__field">
+                        <label for="novaSenha">Nova senha</label>
+                        <input type="password" id="novaSenha" autocomplete="new-password" />
+                        <span class="perfil__field-hint">Mínimo 6 caracteres</span>
+                    </div>
+
+                    <div class="perfil__field">
+                        <label for="confirmarSenha">Confirmar nova senha</label>
+                        <input type="password" id="confirmarSenha" autocomplete="new-password" />
+                        <p class="perfil__field-erro" id="erroSenha"></p>
+                    </div>
+
+                    <div class="perfil__acoes">
+                        <button type="button" class="perfil__btn perfil__btn--primary" id="btnSalvarSenha">
+                            Alterar senha
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+@section Scripts {
+    <script src="~/js/perfil.js"></script>
+    <script src="~/js/animations.js"></script>
+}

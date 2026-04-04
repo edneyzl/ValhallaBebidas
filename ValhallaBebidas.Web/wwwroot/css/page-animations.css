@@ -1,0 +1,12 @@
+/* Estados iniciais para GSAP — evita flash antes do script */
+.page-anim-prep {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-anim-prep {
+    opacity: 1;
+    transform: none;
+  }
+}

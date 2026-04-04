@@ -1,0 +1,337 @@
+/* ════════════════════════════════════════════════════════
+   meus-pedidos.css — Valhalla Bebidas
+════════════════════════════════════════════════════════ */
+:root {
+    --pedidos-padding-x: 105px;
+    --pedidos-padding-y: 60px;
+    --pedidos-gap:       24px;
+    --card-padding:      28px;
+    --card-radius:       20px;
+  }
+  
+  body { padding-top: var(--nav-height); }
+  
+  /* ════════════════════════════════════════════════════════
+     MEUS PEDIDOS
+  ════════════════════════════════════════════════════════ */
+  .pedidos {
+    width: 100%;
+    padding: var(--pedidos-padding-y) var(--pedidos-padding-x);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  /* ── Header ── */
+  .pedidos__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  
+    h1 {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -2px;
+      color: #ffffff;
+    }
+  
+    p {
+      font-size: 15px;
+      font-weight: 300;
+      color: #606060;
+      margin-top: 6px;
+    }
+  }
+  
+  .pedidos__btn-novo {
+    height: 44px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    background-color: #D6BD77;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  
+  .pedidos__btn-novo:hover {
+    background-color: #e8d08e;
+  }
+  
+  /* ── Filtros ── */
+  .pedidos__filtros {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .pedidos__filtro {
+    height: 36px;
+    padding: 0 16px;
+    background: transparent;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #606060;
+    cursor: pointer;
+    font-family: 'Sora', sans-serif;
+    transition: all 0.2s ease;
+  }
+  
+  .pedidos__filtro:hover {
+    border-color: #404040;
+    color: #ffffff;
+  }
+  
+  .pedidos__filtro--active {
+    border-color: #D6BD77;
+    color: #D6BD77;
+    background-color: rgba(214, 189, 119, 0.06);
+  }
+  
+  /* ── Lista ── */
+  .pedidos__lista {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pedidos-gap);
+  }
+  
+  /* ── Card de pedido ── */
+  .pedido__card {
+    background-color: #161616;
+    border: 1px solid #1e1e1e;
+    border-radius: var(--card-radius);
+    padding: var(--card-padding);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: border-color 0.2s ease;
+  }
+  
+  .pedido__card:hover {
+    border-color: #2a2a2a;
+  }
+  
+  /* ── Topo do card ── */
+  .pedido__card-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .pedido__card-id {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #D6BD77;
+    text-transform: uppercase;
+  }
+  
+  .pedido__card-data {
+    font-size: 13px;
+    font-weight: 300;
+    color: #404040;
+  }
+  
+  /* ── Status badge ── */
+  .pedido__status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .pedido__status--pendente {
+    background-color: rgba(214, 189, 119, 0.1);
+    color: #D6BD77;
+  }
+  
+  .pedido__status--confirmado {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: #4caf50;
+  }
+  
+  .pedido__status--cancelado {
+    background-color: rgba(224, 92, 92, 0.1);
+    color: #e05c5c;
+  }
+  
+  .pedido__status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background-color: currentColor;
+  }
+  
+  /* ── Itens do pedido ── */
+  .pedido__itens {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .pedido__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .pedido__item-img {
+    width: 44px;
+    height: 44px;
+    background-color: #1b1b1b;
+    border-radius: 10px;
+    border: 1px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 6px;
+    }
+  }
+  
+  .pedido__item-nome {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+  }
+  
+  .pedido__item-qty {
+    font-size: 13px;
+    font-weight: 300;
+    color: #606060;
+  }
+  
+  .pedido__item-preco {
+    font-size: 14px;
+    font-weight: 600;
+    color: #D6BD77;
+  }
+  
+  /* ── Rodapé do card ── */
+  .pedido__card-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid #1e1e1e;
+  }
+  
+  .pedido__total-label {
+    font-size: 13px;
+    font-weight: 300;
+    color: #606060;
+  }
+  
+  .pedido__total-valor {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -1px;
+  }
+  
+  .pedido__card-acoes {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .pedido__btn {
+    height: 38px;
+    padding: 0 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Sora', sans-serif;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+  }
+  
+  .pedido__btn--outline {
+    background: transparent;
+    border: 1px solid #2a2a2a;
+    color: #606060;
+  }
+  
+  .pedido__btn--outline:hover {
+    border-color: #D6BD77;
+    color: #D6BD77;
+  }
+  
+  .pedido__btn--cancelar {
+    background: transparent;
+    border: 1px solid #2a2a2a;
+    color: #606060;
+  }
+  
+  .pedido__btn--cancelar:hover {
+    border-color: #e05c5c;
+    color: #e05c5c;
+  }
+  
+  /* ── Estado vazio ── */
+  .pedidos__vazio {
+    width: 100%;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  
+    p {
+      font-size: 16px;
+      font-weight: 300;
+      color: #404040;
+    }
+  }
+  
+  .pedidos__vazio-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: #D6BD77;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  
+  .pedidos__vazio-link:hover {
+    border-bottom-color: #D6BD77;
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     RESPONSIVIDADE
+  ════════════════════════════════════════════════════════ */
+  @media (max-width: 1366px) { :root { --pedidos-padding-x: 80px; } }
+  @media (max-width: 1280px) { :root { --pedidos-padding-x: 64px; } }
+  @media (max-width: 1024px) { :root { --pedidos-padding-x: 40px; } }
+  
+  @media (max-width: 900px) {
+    :root { --pedidos-padding-x: 28px; }
+    .pedidos__header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .pedidos__btn-novo { width: 100%; justify-content: center; }
+  }
+  
+  @media (max-width: 600px) {
+    :root { --pedidos-padding-x: 24px; --pedidos-padding-y: 32px; --card-padding: 20px; }
+    .pedidos__header h1 { font-size: 30px; }
+    .pedido__card-topo { flex-wrap: wrap; gap: 10px; }
+    .pedido__card-rodape { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .pedido__card-acoes { width: 100%; }
+    .pedido__btn { flex: 1; justify-content: center; }
+  }

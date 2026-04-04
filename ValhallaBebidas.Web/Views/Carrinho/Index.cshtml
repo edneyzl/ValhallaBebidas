@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Carrinho - Valhalla Bebidas";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/carrinho.css" />
+    <link rel="stylesheet" href="~/css/page-animations.css" />
+}
+
+<!-- ═══════════ CARRINHO ═══════════ -->
+<main class="carrinho">
+
+    <!-- ── Breadcrumb ── -->
+    <div class="carrinho__breadcrumb page-anim-prep">
+        <a asp-controller="Catalogo" asp-action="Index">← Continuar comprando</a>
+    </div>
+
+    <!-- ── Título ── -->
+    <div class="carrinho__header page-anim-prep">
+        <h1>Meu Carrinho</h1>
+        <p id="carrinhoCount">0 itens</p>
+    </div>
+
+    <!-- ── Layout principal ── -->
+    <div class="carrinho__layout" id="carrinhoLayout">
+
+        <!-- ═══ Lista de itens ═══ -->
+        <section class="carrinho__itens page-anim-prep">
+
+            <!-- Header da lista -->
+            <div class="carrinho__itens-header">
+                <span>Produto</span>
+                <span>Preço</span>
+                <span>Quantidade</span>
+                <span>Subtotal</span>
+            </div>
+
+            <!-- Itens injetados via JS -->
+            <ul class="carrinho__lista" id="carrinhoLista"></ul>
+
+            <!-- Estado vazio -->
+            <div class="carrinho__vazio" id="carrinhoVazio" style="display: none;">
+                <p>Seu carrinho está vazio.</p>
+                <a asp-controller="Catalogo" asp-action="Index" class="carrinho__vazio-link">Ver produtos</a>
+            </div>
+
+        </section>
+
+        <!-- ═══ Resumo do pedido ═══ -->
+        <aside class="carrinho__resumo page-anim-prep">
+
+            <h2 class="carrinho__resumo-title">Resumo do pedido</h2>
+
+            <div class="carrinho__resumo-linha">
+                <span>Subtotal</span>
+                <span id="resumoSubtotal">R$ 0,00</span>
+            </div>
+
+            <div class="carrinho__resumo-linha">
+                <span>Frete</span>
+                <span class="carrinho__frete" id="resumoFrete">A calcular</span>
+            </div>
+
+            <div class="carrinho__resumo-divider"></div>
+
+            <div class="carrinho__resumo-total">
+                <span>Total</span>
+                <span id="resumoTotal">R$ 0,00</span>
+            </div>
+
+            <a asp-controller="Carrinho" asp-action="Checkout" class="carrinho__btn-checkout" id="btnCheckout">
+                Ir para o checkout
+            </a>
+
+            <a asp-controller="Catalogo" asp-action="Index" class="carrinho__btn-continuar">
+                Continuar comprando
+            </a>
+
+        </aside>
+
+    </div>
+
+</main>
+
+@section Scripts {
+    <script src="~/js/carrinho.js"></script>
+    <script src="~/js/animations.js"></script>
+}

@@ -1,0 +1,188 @@
+﻿@{
+    ViewData["Title"] = "Checkout - Valhalla Bebidas";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/checkout.css" />
+    <link rel="stylesheet" href="~/css/page-animations.css" />
+}
+
+<!-- ═══════════ CHECKOUT ═══════════ -->
+<main class="checkout">
+
+    <div class="checkout__breadcrumb">
+        <a href="carrinho.html">← Voltar ao carrinho</a>
+    </div>
+
+    <h1 class="checkout__titulo">Finalizar pedido</h1>
+
+    <!-- ── Layout principal ── -->
+    <div class="checkout__layout">
+
+        <!-- ═══ Coluna esquerda ═══ -->
+        <div class="checkout__esquerda">
+
+            <!-- Card — Endereço -->
+            <div class="checkout__card">
+                <h2 class="checkout__card-title">Endereço de entrega</h2>
+
+                <div class="checkout__field">
+                    <label for="logradouro">Logradouro</label>
+                    <input type="text" id="logradouro" placeholder="Rua, Avenida..." autocomplete="street-address" />
+                </div>
+
+                <div class="checkout__row">
+                    <div class="checkout__field">
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero" maxlength="10" />
+                    </div>
+                    <div class="checkout__field checkout__field--grow">
+                        <label for="complemento">Complemento</label>
+                        <input type="text" id="complemento" placeholder="Apto, sala..." />
+                    </div>
+                </div>
+
+                <div class="checkout__row">
+                    <div class="checkout__field checkout__field--grow">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro" />
+                    </div>
+                    <div class="checkout__field">
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" placeholder="00000-000" maxlength="9" />
+                    </div>
+                </div>
+
+                <div class="checkout__row">
+                    <div class="checkout__field checkout__field--grow">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade" autocomplete="address-level2" />
+                    </div>
+                    <div class="checkout__field checkout__field--uf">
+                        <label for="estado">UF</label>
+                        <input type="text" id="estado" placeholder="SP" maxlength="2" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card — Pagamento -->
+            <div class="checkout__card">
+                <h2 class="checkout__card-title">Forma de pagamento</h2>
+
+                <!-- Métodos -->
+                <div class="checkout__metodos">
+                    <button type="button" class="checkout__metodo checkout__metodo--active" data-metodo="cartao">
+                        <span class="checkout__metodo-icone"><img src="~/img/Icons/credit-card.svg" alt="Cartão" /></span>
+                        <span>Cartão</span>
+                    </button>
+                    <button type="button" class="checkout__metodo" data-metodo="pix">
+                        <span class="checkout__metodo-icone"><img src="~/img/Icons/pix.svg" alt="Pix" /></span>
+                        <span>Pix</span>
+                    </button>
+                    <button type="button" class="checkout__metodo" data-metodo="boleto">
+                        <span class="checkout__metodo-icone"><img src="~/img/Icons/boleto.svg" alt="Boleto" /></span>
+                        <span>Boleto</span>
+                    </button>
+                </div>
+
+                <!-- Cartão -->
+                <div class="checkout__painel" id="painelCartao">
+                    <div class="checkout__field">
+                        <label for="nomeCartao">Nome no cartão</label>
+                        <input type="text" id="nomeCartao" placeholder="Como aparece no cartão" autocomplete="cc-name" />
+                    </div>
+                    <div class="checkout__field">
+                        <label for="numeroCartao">Número do cartão</label>
+                        <input type="text" id="numeroCartao" placeholder="0000 0000 0000 0000" maxlength="19" autocomplete="cc-number" />
+                    </div>
+                    <div class="checkout__row">
+                        <div class="checkout__field">
+                            <label for="validade">Validade</label>
+                            <input type="text" id="validade" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp" />
+                        </div>
+                        <div class="checkout__field">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="000" maxlength="4" autocomplete="cc-csc" />
+                        </div>
+                        <div class="checkout__field">
+                            <label for="parcelas">Parcelas</label>
+                            <select id="parcelas">
+                                <option value="1">1x sem juros</option>
+                                <option value="2">2x sem juros</option>
+                                <option value="3">3x sem juros</option>
+                                <option value="6">6x sem juros</option>
+                                <option value="12">12x sem juros</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pix -->
+                <div class="checkout__painel checkout__painel--info" id="painelPix" style="display:none;">
+                    <span class="checkout__info-icone"><img src="~/img/Icons/pix.svg" alt="Pix" /></span>
+                    <div>
+                        <p class="checkout__info-titulo">Pagamento via Pix</p>
+                        <p class="checkout__info-desc">O QR Code será gerado após a confirmação. Válido por 30 minutos.</p>
+                    </div>
+                </div>
+
+                <!-- Boleto -->
+                <div class="checkout__painel checkout__painel--info" id="painelBoleto" style="display:none;">
+                    <span class="checkout__info-icone"><img src="~/img/Icons/boleto.svg" alt="Boleto" /></span>
+                    <div>
+                        <p class="checkout__info-titulo">Pagamento via Boleto</p>
+                        <p class="checkout__info-desc">O boleto será gerado após a confirmação. Vencimento em 3 dias úteis.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ═══ Coluna direita — Resumo ═══ -->
+        <aside class="checkout__resumo">
+            <h2 class="checkout__resumo-titulo">Resumo do pedido</h2>
+
+            <ul class="checkout__resumo-lista" id="resumoLista">
+                <!-- injetado via JS -->
+            </ul>
+
+            <div class="checkout__resumo-sep"></div>
+
+            <div class="checkout__resumo-linha">
+                <span>Subtotal</span>
+                <span id="resumoSubtotal">R$ 0,00</span>
+            </div>
+            <div class="checkout__resumo-linha">
+                <span>Frete</span>
+                <span class="checkout__resumo-frete">A calcular</span>
+            </div>
+
+            <div class="checkout__resumo-sep"></div>
+
+            <div class="checkout__resumo-total">
+                <span>Total</span>
+                <span id="resumoTotal">R$ 0,00</span>
+            </div>
+
+            <button type="button" class="checkout__btn" id="btnConfirmar">
+                Confirmar pedido
+            </button>
+
+            <p class="checkout__seguro">Pagamento 100% seguro</p>
+        </aside>
+
+    </div>
+
+</main>
+
+@section Scripts {
+    <script>
+        // Routes generated server-side to ensure correct base path
+        window.appRoutes = {
+            checkoutApi: '@Url.Action("CheckoutApi","Carrinho")',
+            confirmacao: '@Url.Action("Confirmacao","Carrinho")'
+        };
+    </script>
+    <script src="~/js/checkout.js"></script>
+    <script src="~/js/animations.js"></script>
+}

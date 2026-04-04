@@ -1,0 +1,467 @@
+/* ════════════════════════════════════════════════════════
+   produto.css — Valhalla Bebidas
+   Base de design: 1440px (Figma)
+   Depende de: homepage.css (reset, nav, tokens globais)
+════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════════════
+   TOKENS — específicos do produto
+════════════════════════════════════════════════════════ */
+:root {
+  --produto-padding-x:        105px;
+  --produto-padding-y:        60px;
+  --produto-gap:              80px;
+
+  --img-size:                 540px;
+  --img-radius:               24px;
+
+  --breadcrumb-size:          14px;
+  --categoria-size:           14px;
+  --nome-size:                48px;
+  --nome-spacing:             -2px;
+  --ean-size:                 13px;
+  --descricao-size:           16px;
+  --preco-size:               52px;
+  --preco-label-size:         13px;
+
+  --qty-size:                 52px;
+  --qty-btn-size:             44px;
+  --qty-font-size:            20px;
+
+  --btn-height:               64px;
+  --btn-radius:               16px;
+  --btn-font-size:            17px;
+
+  --estoque-size:             13px;
+  --detalhe-title-size:       13px;
+  --detalhe-item-size:        14px;
+}
+
+  
+  /* ════════════════════════════════════════════════════════
+     RESET
+  ════════════════════════════════════════════════════════ */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Sora", sans-serif;
+  }
+  
+  html, body {
+    background-color: #0f0e0c;
+    overflow-x: hidden;
+    padding-top: var(--nav-height);
+  }
+
+  .nav__btn {
+    height: 40px;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+
+  .nav__user-btn {
+    height: 40px;
+    padding: 0 10px;
+    font-size: 14px;
+
+    span {
+      font-size: 14px;
+    }
+  }
+
+  /* ════════════════════════════════════════════════════════
+     PRODUTO — Container principal
+  ════════════════════════════════════════════════════════ */
+  .produto {
+    width: 100%;
+    padding: var(--produto-padding-y) var(--produto-padding-x);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     BREADCRUMB
+  ════════════════════════════════════════════════════════ */
+  .produto__breadcrumb {
+    a {
+      font-size: var(--breadcrumb-size);
+      font-weight: 300;
+      color: #606060;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+  
+    a:hover {
+      color: #D6BD77;
+    }
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     LAYOUT — Imagem + Info
+  ════════════════════════════════════════════════════════ */
+  .produto__layout {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--produto-gap);
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     IMAGEM
+  ════════════════════════════════════════════════════════ */
+  .produto__img-wrapper {
+    flex-shrink: 0;
+    position: sticky;
+    top: calc(var(--nav-height, 80px) + 32px);
+  }
+  
+  .produto__img {
+    width: var(--img-size);
+    height: var(--img-size);
+    background-color: #161616;
+    border-radius: var(--img-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid #232320;
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 40px;
+    }
+  
+    span {
+      font-size: 120px;
+      opacity: 0.15;
+    }
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     INFO — Coluna direita
+  ════════════════════════════════════════════════════════ */
+  .produto__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 8px;
+  }
+  
+  /* ── Categoria ── */
+  .produto__categoria {
+    font-size: var(--categoria-size);
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #D6BD77;
+    text-transform: uppercase;
+  }
+  
+  /* ── Nome ── */
+  .produto__nome {
+    font-size: var(--nome-size);
+    font-weight: 700;
+    letter-spacing: var(--nome-spacing);
+    color: #ffffff;
+    line-height: 1.1;
+  }
+  
+  /* ── EAN ── */
+  .produto__ean {
+    font-size: var(--ean-size);
+    font-weight: 300;
+    color: #5e5e5e;
+  }
+  
+  /* ── Divisor ── */
+  .produto__divider {
+    width: 100%;
+    height: 1px;
+    background-color: #1b1b1b;
+  }
+  
+  /* ── Descrição ── */
+  .produto__descricao {
+    font-size: var(--descricao-size);
+    font-weight: 300;
+    color: #606060;
+    line-height: 1.7;
+  }
+  
+  /* ── Preço ── */
+  .produto__preco-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .produto__preco-label {
+    font-size: var(--preco-label-size);
+    font-weight: 300;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .produto__preco {
+    font-size: var(--preco-size);
+    font-weight: 700;
+    color: #D6BD77;
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     AÇÕES — Quantidade + Botão
+  ════════════════════════════════════════════════════════ */
+  .produto__acoes {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  /* ── Quantidade ── */
+  .produto__quantidade {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid #404040;
+    border-radius: var(--btn-radius);
+    overflow: hidden;
+    height: var(--btn-height);
+  }
+  
+  .produto__qty-btn {
+    width: var(--qty-btn-size);
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .produto__qty-btn:hover {
+    background-color: #1b1b1b;
+    color: #D6BD77;
+  }
+  
+  .produto__qty-valor {
+    width: var(--qty-size);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--qty-font-size);
+    font-weight: 600;
+    color: #ffffff;
+    border-left: 1px solid #404040;
+    border-right: 1px solid #404040;
+  }
+  
+  /* ── Botão adicionar ── */
+  .produto__btn-adicionar {
+    flex: 1;
+    height: var(--btn-height);
+    background-color: #D6BD77;
+    border: none;
+    border-radius: var(--btn-radius);
+    font-size: var(--btn-font-size);
+    font-weight: 700;
+    color: #000000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .produto__btn-adicionar:hover {
+    background-color: #e8d08e;
+  }
+  
+  .produto__btn-adicionar:disabled {
+    background-color: #2a2a2a;
+    color: #404040;
+    cursor: not-allowed;
+  }
+  
+  /* ── Estoque ── */
+  .produto__estoque {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--estoque-size);
+    font-weight: 300;
+    color: #606060;
+  }
+  
+  .produto__estoque-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background-color: #4caf50;
+    flex-shrink: 0;
+  }
+  
+  .produto__estoque--esgotado .produto__estoque-dot {
+    background-color: #e05c5c;
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     DETALHES — Tabela de especificações
+  ════════════════════════════════════════════════════════ */
+  .produto__detalhes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .produto__detalhes-title {
+    font-size: var(--detalhe-title-size);
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: #D6BD77;
+    text-transform: uppercase;
+  }
+  
+  .produto__detalhes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #1b1b1b;
+    border-radius: 12px;
+    overflow: hidden;
+  
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid #1b1b1b;
+      font-size: var(--detalhe-item-size);
+  
+      span:first-child {
+        font-weight: 300;
+        color: #404040;
+      }
+  
+      span:last-child {
+        font-weight: 700;
+        color: #ffffff;
+      }
+    }
+  
+    li:last-child {
+      border-bottom: none;
+    }
+  
+    li:nth-child(odd)  { background-color: #0d0d0b; }
+    li:nth-child(even) { background-color: #111110; }
+  }
+  
+  /* ════════════════════════════════════════════════════════
+     RESPONSIVIDADE — Desktop
+  ════════════════════════════════════════════════════════ */
+  
+  /* ── 1366px ── */
+  @media (max-width: 1366px) {
+    :root {
+      --produto-padding-x: 80px;
+      --img-size:          460px;
+      --nome-size:         42px;
+      --preco-size:        46px;
+      --produto-gap:       60px;
+    }
+  }
+  
+  /* ── 1280px ── */
+  @media (max-width: 1280px) {
+    :root {
+      --produto-padding-x: 64px;
+      --img-size:          420px;
+      --nome-size:         38px;
+      --preco-size:        42px;
+      --produto-gap:       48px;
+    }
+  }
+  
+  /* ── 1024px ── */
+  @media (max-width: 1024px) {
+    :root {
+      --produto-padding-x: 40px;
+      --img-size:          360px;
+      --nome-size:         34px;
+      --preco-size:        38px;
+      --produto-gap:       40px;
+      --btn-height:        56px;
+      --btn-font-size:     15px;
+    }
+  
+    .produto__img-wrapper {
+      position: static;
+    }
+  }
+  
+  /* ── 900px — empilha ── */
+  @media (max-width: 900px) {
+    :root {
+      --produto-padding-x: 28px;
+      --produto-gap:       32px;
+    }
+  
+    .produto__layout {
+      flex-direction: column;
+    }
+  
+    .produto__img-wrapper {
+      width: 100%;
+    }
+  
+    .produto__img {
+      width: 100%;
+      height: 360px;
+    }
+  }
+  
+  /* ── 600px — Mobile ── */
+  @media (max-width: 600px) {
+    :root {
+      --btn-height:     60px;    /* ← aumenta a altura */
+      --btn-font-size:  16px;
+      --qty-btn-size:   56px;    /* ← botões − e + maiores */
+      --qty-font-size:  22px;
+      --qty-size:       60px;
+    }
+  
+    .produto__acoes {
+      height: 150px;
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .produto__quantidade {
+      justify-content: stretch;
+      width: 100%;
+    }
+  
+    /* − e + ocupam mais espaço, número fica no meio */
+    .produto__qty-btn {
+      flex: 1;
+    }
+  
+    .produto__btn-adicionar {
+      width: 100%;
+      height: 60px !important;
+      font-size: 16px;
+      border-radius: 16px;
+    }
+  }

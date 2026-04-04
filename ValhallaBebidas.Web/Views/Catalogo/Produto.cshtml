@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Produto - Valhalla Bebidas";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/produto.css" />
+    <link rel="stylesheet" href="~/css/page-animations.css" />
+    <style>
+        /* Emergency override: force product texts and headings visible
+           (fix cases where animations or missing CSS leave them hidden) */
+        .produto .page-anim-prep,
+        .produto .produto__info,
+        .produto .produto__nome,
+        .produto .produto__categoria,
+        .produto .produto__ean,
+        .produto .produto__descricao,
+        .produto .produto__preco,
+        .produto .produto__preco-label,
+        .produto .produto__detalhes-list li span {
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+        }
+
+        /* Explicit readable colors matching site theme */
+        .produto .produto__nome { color: #ffffff !important; }
+        .produto .produto__categoria { color: #D6BD77 !important; }
+        .produto .produto__ean { color: #5e5e5e !important; }
+        .produto .produto__descricao { color: #606060 !important; }
+        .produto .produto__preco { color: #D6BD77 !important; }
+        .produto .produto__preco-label { color: #ffffff !important; }
+        .produto .produto__detalhes-list li span:first-child { color: #404040 !important; }
+        .produto .produto__detalhes-list li span:last-child { color: #ffffff !important; }
+
+        /* Ensure headings are not clipped or behind overlays */
+        .produto__info { z-index: 2; }
+    </style>
+}
+
+<main class="produto">
+
+    <!-- ── Breadcrumb ── -->
+    <div class="produto__breadcrumb page-anim-prep">
+        <a asp-controller="Catalogo" asp-action="Index">← Voltar ao catálogo</a>
+    </div>
+
+    <!-- ── Layout principal — Imagem + Info ── -->
+    <div class="produto__layout">
+
+        <!-- ═══ Imagem ═══ -->
+        <div class="produto__img-wrapper">
+            <div class="produto__img" id="produtoImg">
+                <img src="~/img/ExemploBebida.png" alt="Imagem do produto" />
+            </div>
+        </div>
+
+        <!-- ═══ Info ═══ -->
+        <div class="produto__info page-anim-prep">
+
+            <p class="produto__categoria" id="produtoCategoria">Cervejas</p>
+
+            <h1 class="produto__nome" id="produtoNome">Heineken Long Neck 330ml</h1>
+
+            <p class="produto__ean" id="produtoEan">EAN: 7891149107067</p>
+
+            <div class="produto__divider"></div>
+
+            <p class="produto__descricao" id="produtoDescricao">
+                Cerveja de origem holandesa com sabor levemente amargo e refrescante.
+                Produzida com lúpulo selecionado e malte de alta qualidade.
+                Ideal para ocasiões especiais e consumo imediato.
+            </p>
+
+            <div class="produto__divider"></div>
+
+            <div class="produto__preco-wrapper">
+                <span class="produto__preco-label">Preço unitário</span>
+                <p class="produto__preco" id="produtoPreco">R$ 8,50</p>
+            </div>
+
+            <div class="produto__acoes">
+                <div class="produto__quantidade">
+                    <button type="button" class="produto__qty-btn" id="qtyMenos">−</button>
+                    <span class="produto__qty-valor" id="qtyValor">1</span>
+                    <button type="button" class="produto__qty-btn" id="qtyMais">+</button>
+                </div>
+                <button type="button" class="produto__btn-adicionar" id="btnAdicionar">
+                    Adicionar ao carrinho
+                </button>
+            </div>
+
+            <p class="produto__estoque" id="produtoEstoque">
+                <span class="produto__estoque-dot"></span>
+                Em estoque
+            </p>
+
+        </div>
+    </div>
+
+    <!-- ═══ Detalhes — largura total abaixo do layout ═══ -->
+    <div class="produto__detalhes page-anim-prep">
+        <h3 class="produto__detalhes-title">Detalhes do produto</h3>
+        <ul class="produto__detalhes-list">
+            <li>
+                <span>Categoria</span>
+                <span id="detalheCategoria">Categoria</span>
+            </li>
+            <li>
+                <span>Código EAN</span>
+                <span id="detalheEan">Código EAN</span>
+            </li>
+            <li>
+                <span>Estoque mínimo</span>
+                <span id="detalheEstoqueMin">Estoque mínimo</span>
+            </li>
+            <li>
+                <span>Cadastrado em</span>
+                <span id="detalheData">Cadastrado em</span>
+            </li>
+        </ul>
+    </div>
+
+</main>
+
+@section Scripts {
+    <script src="~/js/produto.js"></script>
+    <script src="~/js/animations.js"></script>
+}
