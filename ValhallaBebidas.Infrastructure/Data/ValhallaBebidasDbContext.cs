@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ValhallaBebidas.Domain.Entities;
 using ValhallaBebidas.Domain.Enums;
+using ValhallaBebidas.Domain.Interfaces;
 
 namespace ValhallaBebidas.Infrastructure.Data;
 
-public class ValhallaBebidasDbContext : DbContext
+public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
 {
     public ValhallaBebidasDbContext(DbContextOptions<ValhallaBebidasDbContext> options) : base(options)
     {

@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-using ValhallaBebidas.Application.DTOs;
+﻿using ValhallaBebidas.Application.DTOs;
 using ValhallaBebidas.Domain.Entities;
 using ValhallaBebidas.Domain.Interfaces;
 
@@ -10,13 +8,16 @@ public class FuncionarioService
 {
     private readonly IFuncionarioRepository _funcionarioRepository;
     private readonly IEnderecoRepository _enderecoRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
     public FuncionarioService(
         IFuncionarioRepository funcionarioRepository,
-        IEnderecoRepository enderecoRepository)
+        IEnderecoRepository enderecoRepository,
+        IUnitOfWork unitOfWork)
     {
         _funcionarioRepository = funcionarioRepository;
         _enderecoRepository = enderecoRepository;
+        _unitOfWork = unitOfWork;
     }
 
     // ════════════════════════════════════════
@@ -88,6 +89,8 @@ public class FuncionarioService
 
         await _funcionarioRepository.AdicionarAsync(funcionario);
 
+        await _unitOfWork.SaveChangesAsync();
+
         return MapearParaDto(funcionario);
     }
 
@@ -121,7 +124,8 @@ public class FuncionarioService
         if (!string.IsNullOrWhiteSpace(dto.Senha))
             funcionario.SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.Senha);
 
-        await _funcionarioRepository.AtualizarAsync(funcionario);
+        _ = _funcionarioRepository.AtualizarAsync(funcionario);
+        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -134,7 +138,8 @@ public class FuncionarioService
             throw new KeyNotFoundException($"Funcionário com Id {id} não encontrado.");
 
         funcionario.Status = status;
-        await _funcionarioRepository.AtualizarAsync(funcionario);
+        _ = _funcionarioRepository.AtualizarAsync(funcionario);
+        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -147,6 +152,7 @@ public class FuncionarioService
             throw new KeyNotFoundException($"Funcionário com Id {id} não encontrado.");
 
         await _funcionarioRepository.RemoverAsync(id);
+        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -198,45 +204,29 @@ public class FuncionarioService
 
     public async Task<LoginFuncionarioResponseDto> AutenticarAsync(LoginFuncionarioDto loginDto)
     {
-        // 1. Busca o usuário pelo email
-        var usuario = await _funcionarioRepository.ObterPorEmailAsync(loginDto.Login);
+        var funcionario = await _funcionarioRepository.ObterPorEmailAsync(loginDto.Login);
 
-        if (usuario == null)
-        {
+        if (funcionario == null || !BCrypt.Net.BCrypt.Verify(loginDto.Senha, funcionario.SenhaHash))
             return new LoginFuncionarioResponseDto
             {
                 Sucesso = false,
-                Mensagem = "Login não encontrado."
+                Mensagem = "Email ou senha inválidos."
             };
-        }
 
-        // 2. Gera o hash da senha fornecida e compara com o hash armazenado
-        var senhaHashFornecida = GerarHash(loginDto.Senha);
-        if (usuario.SenhaHash != senhaHashFornecida)
-        {
+        if (!funcionario.Status)
             return new LoginFuncionarioResponseDto
             {
                 Sucesso = false,
-                Mensagem = "Senha incorreta."
+                Mensagem = "Conta inativa. Entre em contato com o administrador."
             };
-        }
 
         return new LoginFuncionarioResponseDto
         {
-            Id = usuario.Id,
-            Nome = usuario.NomeCompleto,
-            Email = usuario.Email,
+            Id = funcionario.Id,
+            Nome = funcionario.NomeCompleto,
+            Email = funcionario.Email,
             Sucesso = true,
             Mensagem = "Login realizado com sucesso.",
-        
         };
-
-
-    }
-
-    private static string GerarHash(string texto)
-    {
-        var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(texto));
-        return Convert.ToHexString(bytes).ToLower();
     }
 }

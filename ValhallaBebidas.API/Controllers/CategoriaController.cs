@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ValhallaBebidas.Infrastructure.Data;
+using Microsoft.AspNetCore.Mvc;
+using ValhallaBebidas.Domain.Interfaces;
 
 namespace ValhallaBebidas.API.Controllers;
 
-
-// <summary>
+/// <summary>
 /// Controller para gerenciamento de categorias de produtos.
 /// Fornece endpoint de consulta para popular ComboBoxes no cliente.
 /// </summary>
@@ -13,11 +11,11 @@ namespace ValhallaBebidas.API.Controllers;
 [Route("api/[controller]")]
 public class CategoriaController : ControllerBase
 {
-    private readonly ValhallaBebidasDbContext _db;
+    private readonly ICategoriaRepository _categoriaRepository;
 
-    public CategoriaController(ValhallaBebidasDbContext db)
+    public CategoriaController(ICategoriaRepository categoriaRepository)
     {
-        _db = db;
+        _categoriaRepository = categoriaRepository;
     }
 
     /// <summary>
@@ -27,12 +25,7 @@ public class CategoriaController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetCategorias()
     {
-        var categorias = await _db.Categorias
-            .OrderBy(c => c.Nome)
-            .Select(c => new { c.Id, c.Nome })
-            .ToListAsync();
-
-        return Ok(categorias);
+        var categorias = await _categoriaRepository.ListarTodosAsync();
+        return Ok(categorias.Select(c => new { c.Id, c.Nome }).OrderBy(c => c.Nome));
     }
-
 }

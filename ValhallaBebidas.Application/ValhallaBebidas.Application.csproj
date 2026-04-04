@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ValhallaBebidas.Domain\ValhallaBebidas.Domain.csproj" />
-    <ProjectReference Include="..\ValhallaBebidas.Infrastructure\ValhallaBebidas.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

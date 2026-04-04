@@ -39,13 +39,11 @@ public class PedidoRepository : IPedidoRepository
     public async Task AdicionarAsync(Pedido pedido)
     {
         await _context.Pedidos.AddAsync(pedido);
-        await _context.SaveChangesAsync();
     }
 
     public async Task AtualizarAsync(Pedido pedido)
     {
         _context.Pedidos.Update(pedido);
-        await _context.SaveChangesAsync();
     }
 
     public async Task RemoverAsync(int id)
@@ -54,7 +52,6 @@ public class PedidoRepository : IPedidoRepository
         if (pedido != null)
         {
             _context.Pedidos.Remove(pedido);
-            await _context.SaveChangesAsync();
         }
     }
 }

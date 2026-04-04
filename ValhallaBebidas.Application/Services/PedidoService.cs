@@ -10,15 +10,18 @@ public class PedidoService
     private readonly IPedidoRepository _pedidoRepository;
     private readonly IClienteRepository _clienteRepository;
     private readonly IProdutoRepository _produtoRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
     public PedidoService(
         IPedidoRepository pedidoRepository,
         IClienteRepository clienteRepository,
-        IProdutoRepository produtoRepository)
+        IProdutoRepository produtoRepository,
+        IUnitOfWork unitOfWork)
     {
         _pedidoRepository = pedidoRepository;
         _clienteRepository = clienteRepository;
         _produtoRepository = produtoRepository;
+        _unitOfWork = unitOfWork;
     }
 
     // ════════════════════════════════════════
@@ -62,7 +65,7 @@ public class PedidoService
         if (cliente == null)
             throw new KeyNotFoundException($"Cliente com Id {dto.ClienteId} não encontrado.");
 
-        /* Monta os itens */
+        /* Monta os itens e registra baixa de estoque */
         var itens = new List<ItemPedido>();
         foreach (var itemDto in dto.Itens)
         {
@@ -81,12 +84,16 @@ public class PedidoService
                 Quantidade = itemDto.Quantidade,
                 PrecoUnitario = produto.PrecoVenda, /* captura o preço atual */
             });
+
+            /* Decrementa estoque (marcado no Change Tracker — será salvo no Commit) */
+            produto.QuantidadeEstoque -= itemDto.Quantidade;
+            _ = _produtoRepository.AtualizarAsync(produto);
         }
 
         var pedido = new Pedido
         {
             ClienteId = dto.ClienteId,
-            DataPedido = DateTime.Now,
+            DataPedido = DateTime.UtcNow,
             Status = StatusPedido.Pendente,
             Itens = itens,
         };
@@ -94,6 +101,7 @@ public class PedidoService
         pedido.RecalcularTotal();
 
         await _pedidoRepository.AdicionarAsync(pedido);
+        await _unitOfWork.SaveChangesAsync();
 
         var pedidoCriado = await _pedidoRepository.ObterPorIdAsync(pedido.Id);
         return MapearParaDto(pedidoCriado!);
@@ -113,7 +121,7 @@ public class PedidoService
             throw new InvalidOperationException("Um pedido cancelado não pode ser alterado.");
 
         pedido.Status = novoStatus;
-        await _pedidoRepository.AtualizarAsync(pedido);
+        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -132,6 +140,7 @@ public class PedidoService
             throw new KeyNotFoundException($"Pedido com Id {id} não encontrado.");
 
         await _pedidoRepository.RemoverAsync(id);
+        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════

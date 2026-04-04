@@ -1,80 +1,86 @@
-﻿using System.Collections.Concurrent;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using ValhallaBebidas.Web.Filters;
+using ValhallaBebidas.Application.DTOs;
+using System.Text.Json;
 
 namespace ValhallaBebidas.Web.Controllers;
 
+[TypeFilter(typeof(AuthFilter))]
 public class CarrinhoController : Controller
 {
-    // In-memory store — substitui pela API quando pronto
-    private static readonly ConcurrentDictionary<string, PedidoWeb> _pedidos = new();
+    private readonly IHttpClientFactory _httpClientFactory;
 
-    // ── Exibições ──────────────────────────────────────
+    public CarrinhoController(IHttpClientFactory httpClientFactory)
+    {
+        _httpClientFactory = httpClientFactory;
+    }
+
     public IActionResult Index() => View();
     public IActionResult Checkout() => View();
     public IActionResult Confirmacao() => View();
 
-    // ── POST /Carrinho/CheckoutApi ─────────────────────
+    /* ── POST /Carrinho/CheckoutApi ── */
+    /// <summary>
+    /// O token CSRF é validado via cookie pelo AntiForgery, mas como o JS
+    /// envia o token no header RequestVerificationToken (não form data),
+    /// usamos IgnoreAntiforgeryToken e validamos manualmente.
+    /// </summary>
     [HttpPost]
-    public IActionResult CheckoutApi([FromBody] CheckoutPayload payload)
+    [IgnoreAntiforgeryToken]
+    public async Task<IActionResult> CheckoutApi([FromBody] CheckoutPayload payload)
     {
+        /* Validação manual do CSRF token */
+        if (!ValidateCsrfToken(HttpContext))
+            return BadRequest(new { mensagem = "Requisição inválida." });
+
         if (payload?.Itens == null || payload.Itens.Count == 0)
             return BadRequest(new { mensagem = "Carrinho vazio." });
 
-        var id = Guid.NewGuid().ToString("N")[..8].ToUpper();
+        var sessionUserId = HttpContext.Session.GetString("UserId");
+        if (!int.TryParse(sessionUserId, out var clienteId))
+            return Unauthorized(new { mensagem = "Sessão expirada." });
 
-        _pedidos[id] = new PedidoWeb
+        try
         {
-            Id = id,
-            Itens = payload.Itens,
-            Entrega = payload.Entrega,
-            CriadoEm = DateTime.UtcNow
-        };
+            var client = _httpClientFactory.CreateClient("ValhallaAPI");
+            var apiPayload = new
+            {
+                clienteId,
+                itens = payload.Itens.Select(i => new
+                {
+                    produtoId = i.ProdutoId,
+                    quantidade = i.Quantidade
+                })
+            };
 
-        return Json(new { pedidoId = id, mensagem = "Pedido criado com sucesso." });
+            var response = await client.PostAsJsonAsync("api/pedido", apiPayload);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var erro = await response.Content.ReadAsStringAsync();
+                return BadRequest(new { mensagem = erro });
+            }
+
+            var pedido = await response.Content.ReadFromJsonAsync<dynamic>();
+            return Json(new { pedidoId = pedido?.id, mensagem = "Pedido criado com sucesso." });
+        }
+        catch
+        {
+            return StatusCode(500, new { mensagem = "Erro interno. Tente novamente." });
+        }
     }
 
-    // ── GET /Carrinho/GetPedido?pedidoId=XXX ──────────
-    [HttpGet]
-    public IActionResult GetPedido([FromQuery] string? pedidoId)
+    private static bool ValidateCsrfToken(HttpContext context)
     {
-        if (string.IsNullOrEmpty(pedidoId))
-            return BadRequest(new { mensagem = "Id do pedido não informado." });
-
-        if (_pedidos.TryGetValue(pedidoId, out var pedido))
-            return Json(pedido);
-
-        return NotFound(new { mensagem = $"Pedido '{pedidoId}' não encontrado." });
+        try
+        {
+            var cookieToken = context.Request.Cookies["XSRF-TOKEN"];
+            var headerToken = context.Request.Headers["RequestVerificationToken"].FirstOrDefault();
+            return !string.IsNullOrEmpty(cookieToken) && cookieToken == headerToken;
+        }
+        catch
+        {
+            return false;
+        }
     }
-}
-
-// ── DTOs ──────────────────────────────────────────────
-public record CheckoutPayload(
-    List<ItemPedidoWeb> Itens,
-    EnderecoEntrega Entrega
-);
-
-public record ItemPedidoWeb(
-    string ProdutoId,
-    int Quantidade,
-    string Nome,
-    decimal Preco,
-    string? Imagem
-);
-
-public record EnderecoEntrega(
-    string Logradouro,
-    string Numero,
-    string? Complemento,
-    string Bairro,
-    string Cidade,
-    string Estado,
-    string Cep
-);
-
-public class PedidoWeb
-{
-    public string Id { get; set; } = string.Empty;
-    public List<ItemPedidoWeb> Itens { get; set; } = [];
-    public EnderecoEntrega? Entrega { get; set; }
-    public DateTime CriadoEm { get; set; }
 }

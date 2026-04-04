@@ -12,11 +12,11 @@ namespace ValhallaBebidas.Domain.Entities
         public decimal Quantidade { get; set; } // Valor absoluto (ex: 10)
         public DirecaoMovimentacao Direcao { get; set; } // Lógica substituindo o Enum: // 1 = Entrada (Soma), -1 = Saída/Perda (Subtrai)
         public string Motivo { get; set; } = string.Empty; // Ex: "Venda", "Quebra"
-        public DateTime Data { get; set; } = DateTime.Now; // Data da operação
+        public DateTime Data { get; set; } = DateTime.UtcNow; // Data da operação (UTC)
 
         //Propriedade de navegação, referência entre entidades, possui o tipo da classe
         public Produto? Produto { get; set; }
 
-        public decimal ValorImpactoEstoque => Quantidade * (int)Direcao; // Exemplo: Se for Entrada (1) e Quantidade 10, retorna +10. Se for Saída (-1) e Quantidade 10, retorna -10.
+        public decimal ValorImpactoEstoque => Direcao == DirecaoMovimentacao.Entrada ? Quantidade : -Quantidade;
     }
 }

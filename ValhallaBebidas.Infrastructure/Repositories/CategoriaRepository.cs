@@ -18,8 +18,7 @@ public class CategoriaRepository : ICategoriaRepository
         => await _context.Categorias.FindAsync(id);
 
     public async Task<Categoria?> ObterPorNomeAsync(string nome)
-    => await _context.Categorias
-        .FirstOrDefaultAsync(c => c.Nome.ToLower() == nome.ToLower());
+    => await _context.Categorias.FirstOrDefaultAsync(c => c.Nome == nome);
 
     public async Task<IEnumerable<Categoria>> ListarTodosAsync()
         => await _context.Categorias.ToListAsync();
@@ -27,13 +26,11 @@ public class CategoriaRepository : ICategoriaRepository
     public async Task AdicionarAsync(Categoria categoria)
     {
         await _context.Categorias.AddAsync(categoria);
-        await _context.SaveChangesAsync();
     }
 
     public async Task AtualizarAsync(Categoria categoria)
     {
         _context.Categorias.Update(categoria);
-        await _context.SaveChangesAsync();
     }
 
     public async Task RemoverAsync(int id)
@@ -42,7 +39,6 @@ public class CategoriaRepository : ICategoriaRepository
         if (categoria != null)
         {
             _context.Categorias.Remove(categoria);
-            await _context.SaveChangesAsync();
         }
     }
 }

@@ -40,8 +40,20 @@ cartBtn?.addEventListener('click', abrirCarrinho);
 cartClose?.addEventListener('click', fecharCarrinho);
 cartOverlay?.addEventListener('click', fecharCarrinho);
 
-/* ── localStorage ── */
-function salvarCarrinho(itens) {
+/* ── Sanitização XSS ── */
+function escapar(str) {
+    if (typeof str !== 'string') return '';
+    const el = document.createElement('div');
+    el.textContent = str;
+    return el.innerHTML;
+}
+
+function imagemSegura(url) {
+    if (!url || url.startsWith('javascript:') || url.startsWith('data:')) return '';
+    return url;
+}
+
+/* ── localStorage ── */function salvarCarrinho(itens) {
     localStorage.setItem('carrinho', JSON.stringify(itens));
 }
 
@@ -70,10 +82,10 @@ function renderizarItens(itens) {
 
     cartItemsEl.innerHTML = itens.map(item => `
     <div class="cart__item" data-id="${item.id}">
-      <img class="cart__item-img" src="${item.imagem || ''}" alt="${item.nome}"
+      <img class="cart__item-img" src="${imagemSegura(item.imagem)}" alt="${escapar(item.nome)}"
            onerror="this.style.display='none'" />
       <div class="cart__item-info">
-        <h3>${item.nome}</h3>
+        <h3>${escapar(item.nome)}</h3>
         <p>R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}</p>
       </div>
       <div class="cart__item-qty">

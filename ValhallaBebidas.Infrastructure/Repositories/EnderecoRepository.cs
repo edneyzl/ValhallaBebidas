@@ -20,19 +20,16 @@ public class EnderecoRepository : IEnderecoRepository
         => await _context.Enderecos.FindAsync(id);
 
     public async Task<Endereco?> ObterPorCepAsync(string cep)
-    => await _context.Enderecos
-        .FirstOrDefaultAsync(e => e.Cep.ToLower() == cep.ToLower());
+    => await _context.Enderecos.FirstOrDefaultAsync(e => e.Cep == cep);
 
     public async Task AdicionarAsync(Endereco endereco)
     {
         await _context.Enderecos.AddAsync(endereco);
-        await _context.SaveChangesAsync();
     }
 
     public async Task AtualizarAsync(Endereco endereco)
     {
         _context.Enderecos.Update(endereco);
-        await _context.SaveChangesAsync();
     }
 
     public async Task RemoverAsync(int id)
@@ -41,7 +38,6 @@ public class EnderecoRepository : IEnderecoRepository
         if (endereco != null)
         {
             _context.Enderecos.Remove(endereco);
-            await _context.SaveChangesAsync();
         }
     }
 }

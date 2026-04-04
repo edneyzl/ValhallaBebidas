@@ -19,10 +19,10 @@ public class ClienteRepository : IClienteRepository
     => await _context.Clientes.FindAsync(id);
 
     public async Task<Cliente?> ObterPorDocumentoAsync(string doc)
-    => await _context.Clientes.FirstOrDefaultAsync(c => c.Documento.ToLower() == doc.ToLower());
+    => await _context.Clientes.FirstOrDefaultAsync(c => c.Documento == doc);
 
     public async Task<Cliente?> ObterPorEmailAsync(string email)
-    => await _context.Clientes.FirstOrDefaultAsync(c => c.Email.ToLower() == email.ToLower());
+    => await _context.Clientes.FirstOrDefaultAsync(c => c.Email == email);
 
     public async Task<IEnumerable<Cliente>> ListarTodosAsync()
     => await _context.Clientes.ToListAsync();
@@ -30,13 +30,11 @@ public class ClienteRepository : IClienteRepository
     public async Task AdicionarAsync(Cliente cliente)
     {
         await _context.Clientes.AddAsync(cliente);
-        await _context.SaveChangesAsync();
     }
 
     public async Task AtualizarAsync(Cliente cliente)
     {
         _context.Clientes.Update(cliente);
-        await _context.SaveChangesAsync();
     }
 
     public async Task RemoverAsync(int id)
@@ -45,7 +43,6 @@ public class ClienteRepository : IClienteRepository
         if (cliente != null)
         {
             _context.Clientes.Remove(cliente);
-            await _context.SaveChangesAsync();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ValhallaBebidas.Domain.Entities;
 
@@ -13,7 +12,7 @@ public class Produto
     public decimal PrecoCusto { get; set; }
     public int QuantidadeEstoque { get; set; } /* ← adicionado — estoque atual */
     public int QuantidadeMinimo { get; set; }
-    public DateTime DataCadastro { get; set; } = DateTime.Now; /* ← valor padrão */
+    public DateTime DataCadastro { get; set; } = DateTime.UtcNow; /* ← valor padrão */
     public bool Status { get; set; } = true;         /* ← produto já começa ativo */
 
     /// <summary>

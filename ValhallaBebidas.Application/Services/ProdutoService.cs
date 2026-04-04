@@ -8,13 +8,16 @@ public class ProdutoService
 {
     private readonly IProdutoRepository _produtoRepository;
     private readonly ICategoriaRepository _categoriaRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
     public ProdutoService(
         IProdutoRepository produtoRepository,
-        ICategoriaRepository categoriaRepository)
+        ICategoriaRepository categoriaRepository,
+        IUnitOfWork unitOfWork)
     {
         _produtoRepository = produtoRepository;
         _categoriaRepository = categoriaRepository;
+        _unitOfWork = unitOfWork;
     }
 
     // ════════════════════════════════════════
@@ -27,12 +30,14 @@ public class ProdutoService
     }
 
     // ════════════════════════════════════════
-    // LISTAR ATIVOS — usado pelo frontend
+    // LISTAR ATIVOS — usado pelo frontend/catalogo + dashboard
+    //    O Global Query Filter já limita a Status=true no banco,
+    //    então não filtra novamente em memória.
     // ════════════════════════════════════════
     public async Task<IEnumerable<ProdutoDto>> ListarAtivosAsync()
     {
         var produtos = await _produtoRepository.ListarTodosAsync();
-        return produtos.Where(p => p.Status).Select(MapearParaDto);
+        return produtos.Select(MapearParaDto);
     }
 
     // ════════════════════════════════════════
@@ -87,13 +92,14 @@ public class ProdutoService
             PrecoCusto = dto.PrecoCusto,
             QuantidadeMinimo = dto.QuantidadeMinimo,
             QuantidadeEstoque = 0, /* estoque inicial zerado — entra via Movimentacao */
-            DataCadastro = DateTime.Now,
+            DataCadastro = DateTime.UtcNow,
             Status = true,
             CategoriaId = dto.CategoriaId,
             FotoProduto = dto.FotoProduto,
         };
 
         await _produtoRepository.AdicionarAsync(produto);
+        await _unitOfWork.SaveChangesAsync();
 
         return MapearParaDto(produto);
     }
@@ -130,7 +136,8 @@ public class ProdutoService
         if (!string.IsNullOrWhiteSpace(dto.FotoProduto))
             produto.FotoProduto = dto.FotoProduto;
 
-        await _produtoRepository.AtualizarAsync(produto);
+        _ = _produtoRepository.AtualizarAsync(produto);
+        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -143,7 +150,8 @@ public class ProdutoService
             throw new KeyNotFoundException($"Produto com Id {id} não encontrado.");
 
         produto.Status = status;
-        await _produtoRepository.AtualizarAsync(produto);
+        _ = _produtoRepository.AtualizarAsync(produto);
+        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -156,6 +164,7 @@ public class ProdutoService
             throw new KeyNotFoundException($"Produto com Id {id} não encontrado.");
 
         await _produtoRepository.RemoverAsync(id);
+        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -163,11 +172,8 @@ public class ProdutoService
     // ════════════════════════════════════════
     public async Task<IEnumerable<ProdutoDto>> ListarEstoqueBaixoAsync()
     {
-        var produtos = await _produtoRepository.ListarTodosAsync();
-        return produtos
-            .Where(p => p.Status && p.QuantidadeEstoque <= p.QuantidadeMinimo)
-            .OrderBy(p => p.QuantidadeEstoque)
-            .Select(MapearParaDto);
+        var produtos = await _produtoRepository.ObterEstoqueBaixoAsync();
+        return produtos.Select(MapearParaDto);
     }
 
     // ════════════════════════════════════════

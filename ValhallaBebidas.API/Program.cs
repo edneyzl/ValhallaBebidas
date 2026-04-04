@@ -22,8 +22,11 @@ builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 
+// Dashboard (agregações)
+builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
 
-//registro dos serviços 
+//registro dos serviços
+builder.Services.AddScoped<IUnitOfWork, ValhallaBebidasDbContext>();
 builder.Services.AddScoped<FuncionarioService>();
 builder.Services.AddScoped<ClienteService>();
 builder.Services.AddScoped<ProdutoService>();

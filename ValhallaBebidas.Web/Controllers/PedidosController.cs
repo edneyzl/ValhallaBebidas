@@ -1,9 +1,64 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ValhallaBebidas.Web.Filters;
 
 namespace ValhallaBebidas.Web.Controllers;
 
+[TypeFilter(typeof(AuthFilter))]
 public class PedidosController : Controller
 {
-    // ── /Pedidos ───────────────────────────────────────
+    private readonly IHttpClientFactory _httpClientFactory;
+
+    public PedidosController(IHttpClientFactory httpClientFactory)
+    {
+        _httpClientFactory = httpClientFactory;
+    }
+
     public IActionResult Index() => View();
+
+    /* ── GET /Pedidos/MeusPedidosApi — chamado pelo JS ── */
+    [HttpGet]
+    public async Task<IActionResult> MeusPedidosApi()
+    {
+        var clienteId = HttpContext.Session.GetString("UserId");
+        if (string.IsNullOrEmpty(clienteId))
+            return Unauthorized();
+
+        try
+        {
+            var client = _httpClientFactory.CreateClient("ValhallaAPI");
+            var response = await client.GetAsync($"api/pedido/cliente/{clienteId}");
+            var data = await response.Content.ReadAsStringAsync();
+            return Content(data, "application/json");
+        }
+        catch
+        {
+            return StatusCode(500);
+        }
+    }
+
+    /* ── PUT /Pedidos/Cancelar/{id} — protegido por AuthFilter ── */
+    [HttpPut("Cancelar/{id}")]
+    public async Task<IActionResult> CancelarPedido(int id)
+    {
+        var clienteId = HttpContext.Session.GetString("UserId");
+        if (string.IsNullOrEmpty(clienteId))
+            return Unauthorized();
+
+        try
+        {
+            var client = _httpClientFactory.CreateClient("ValhallaAPI");
+            var payload = new { novoStatus = "Cancelado" };
+            var response = await client.PutAsJsonAsync($"api/pedido/{id}/status", payload);
+            var data = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+                return BadRequest(new { mensagem = data });
+
+            return Ok(new { mensagem = "Pedido cancelado com sucesso." });
+        }
+        catch
+        {
+            return StatusCode(500, new { mensagem = "Erro ao cancelar pedido." });
+        }
+    }
 }

@@ -19,8 +19,7 @@ public class ProdutoRepository : IProdutoRepository
         => await _context.Produtos.FindAsync(id);
 
     public async Task<Produto?> ObterPorEanAsync(string ean)
-    => await _context.Produtos
-        .FirstOrDefaultAsync(p => p.Ean.ToLower() == ean.ToLower());
+    => await _context.Produtos.FirstOrDefaultAsync(p => p.Ean == ean);
 
     public async Task<IEnumerable<Produto>> ListarTodosAsync()
         => await _context.Produtos.ToListAsync();
@@ -30,16 +29,20 @@ public class ProdutoRepository : IProdutoRepository
             .Where(p => p.CategoriaId == categoriaId)
             .ToListAsync();
 
+    public async Task<IEnumerable<Produto>> ObterEstoqueBaixoAsync()
+        => await _context.Produtos
+            .Where(p => p.QuantidadeEstoque <= p.QuantidadeMinimo)
+            .OrderBy(p => p.QuantidadeEstoque)
+            .ToListAsync();
+
     public async Task AdicionarAsync(Produto produto)
     {
         await _context.Produtos.AddAsync(produto);
-        await _context.SaveChangesAsync();
     }
 
     public async Task AtualizarAsync(Produto produto)
     {
         _context.Produtos.Update(produto);
-        await _context.SaveChangesAsync();
     }
 
     public async Task RemoverAsync(int id)
@@ -48,7 +51,6 @@ public class ProdutoRepository : IProdutoRepository
         if (produto != null)
         {
             _context.Produtos.Remove(produto);
-            await _context.SaveChangesAsync();
         }
     }
 }
