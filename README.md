@@ -321,37 +321,6 @@ O carrinho é mantido no **localStorage** do navegador e sincronizado com a API 
 
 ---
 
-## 📸 Preview
-
-### Landing Page
-![Homepage](./img/HomePage.png)
-
-### Login
-![Login](./img/LoginPage.png)
-
-### Cadastro
-![Cadastro](./img/CadastroPage.png)
-
-### Catálogo
-![Catalogo](./img/CatalogoPage.png)
-
-### Produtos
-![Produto](./img/ProdutosPage.png)
-
-### Carrinho
-![Carrinho](./img/CarrinhoPage.png)
-
-### Checkout
-![Checkout](./img/CheckOutPage.png)
-
-### Confirmação
-![Confirmação](./img/ConfirmaçãoPage.png)
-
-### Minhas Compras
-![Minhas Compras](./img/ComprasPage.png)
-
----
-
 ## 👨‍💻 Autor
 
 Desenvolvido por **TecnoMancy**
