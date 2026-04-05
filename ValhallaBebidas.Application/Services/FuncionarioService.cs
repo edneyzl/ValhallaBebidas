@@ -84,11 +84,10 @@ public class FuncionarioService
             Login = dto.Login,
             SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.Senha),
             Status = true,
-            EnderecoId = endereco.Id,
+            Endereco = endereco,
         };
 
         await _funcionarioRepository.AdicionarAsync(funcionario);
-
         await _unitOfWork.SaveChangesAsync();
 
         return MapearParaDto(funcionario);
@@ -124,7 +123,7 @@ public class FuncionarioService
         if (!string.IsNullOrWhiteSpace(dto.Senha))
             funcionario.SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.Senha);
 
-        _ = _funcionarioRepository.AtualizarAsync(funcionario);
+        await _funcionarioRepository.AtualizarAsync(funcionario);
         await _unitOfWork.SaveChangesAsync();
     }
 
@@ -138,7 +137,7 @@ public class FuncionarioService
             throw new KeyNotFoundException($"Funcionário com Id {id} não encontrado.");
 
         funcionario.Status = status;
-        _ = _funcionarioRepository.AtualizarAsync(funcionario);
+        await _funcionarioRepository.AtualizarAsync(funcionario);
         await _unitOfWork.SaveChangesAsync();
     }
 

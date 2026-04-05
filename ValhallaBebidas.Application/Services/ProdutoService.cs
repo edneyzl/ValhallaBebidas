@@ -71,9 +71,9 @@ public class ProdutoService
             throw new InvalidOperationException("O preço de custo não pode ser negativo.");
 
         /* EAN único */
-        var existenteEan = await _produtoRepository.ObterPorEanAsync(dto.EanCodBarras);
+        var existenteEan = await _produtoRepository.ObterPorEanAsync(dto.Ean);
         if (existenteEan != null)
-            throw new InvalidOperationException($"Já existe um produto com o EAN '{dto.EanCodBarras}'.");
+            throw new InvalidOperationException($"Já existe um produto com o EAN '{dto.Ean}'.");
 
         /* Categoria existe */
         if (dto.CategoriaId.HasValue)
@@ -86,7 +86,7 @@ public class ProdutoService
         var produto = new Produto
         {
             Nome = dto.Nome,
-            Ean = dto.EanCodBarras,
+            Ean = dto.Ean,
             Descricao = dto.Descricao,
             PrecoVenda = dto.PrecoVenda,
             PrecoCusto = dto.PrecoCusto,
@@ -120,12 +120,12 @@ public class ProdutoService
             throw new InvalidOperationException("O preço de custo não pode ser negativo.");
 
         /* Verifica EAN duplicado em outro produto */
-        var comMesmoEan = await _produtoRepository.ObterPorEanAsync(dto.EanCodBarras);
+        var comMesmoEan = await _produtoRepository.ObterPorEanAsync(dto.Ean);
         if (comMesmoEan != null && comMesmoEan.Id != id)
-            throw new InvalidOperationException($"O EAN '{dto.EanCodBarras}' já está em uso por outro produto.");
+            throw new InvalidOperationException($"O EAN '{dto.Ean}' já está em uso por outro produto.");
 
         produto.Nome = dto.Nome;
-        produto.Ean = dto.EanCodBarras;
+        produto.Ean = dto.Ean;
         produto.Descricao = dto.Descricao;
         produto.PrecoVenda = dto.PrecoVenda;
         produto.PrecoCusto = dto.PrecoCusto;
@@ -136,7 +136,7 @@ public class ProdutoService
         if (!string.IsNullOrWhiteSpace(dto.FotoProduto))
             produto.FotoProduto = dto.FotoProduto;
 
-        _ = _produtoRepository.AtualizarAsync(produto);
+        await _produtoRepository.AtualizarAsync(produto);
         await _unitOfWork.SaveChangesAsync();
     }
 
@@ -150,7 +150,7 @@ public class ProdutoService
             throw new KeyNotFoundException($"Produto com Id {id} não encontrado.");
 
         produto.Status = status;
-        _ = _produtoRepository.AtualizarAsync(produto);
+        await _produtoRepository.AtualizarAsync(produto);
         await _unitOfWork.SaveChangesAsync();
     }
 
@@ -183,7 +183,7 @@ public class ProdutoService
     {
         Id = p.Id,
         Nome = p.Nome,
-        EanCodBarras = p.Ean,
+        Ean = p.Ean,
         Descricao = p.Descricao,
         PrecoVenda = p.PrecoVenda,
         PrecoCusto = p.PrecoCusto,

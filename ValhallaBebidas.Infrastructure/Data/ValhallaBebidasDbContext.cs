@@ -211,7 +211,7 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
             entity.HasKey(m => m.Id);
 
             entity.Property(m => m.ProdutoId).IsRequired();
-            entity.Property(m => m.Quantidade).IsRequired().HasColumnType("decimal(18,2)");
+            entity.Property(m => m.Quantidade).IsRequired();
             entity.Property(m => m.Motivo).IsRequired().HasMaxLength(200);
             entity.Property(m => m.Data).IsRequired().HasColumnType("datetime2");
 

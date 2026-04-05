@@ -10,17 +10,20 @@ public class PedidoService
     private readonly IPedidoRepository _pedidoRepository;
     private readonly IClienteRepository _clienteRepository;
     private readonly IProdutoRepository _produtoRepository;
+    private readonly IMovimentacaoRepository _movimentacaoRepository;
     private readonly IUnitOfWork _unitOfWork;
 
     public PedidoService(
         IPedidoRepository pedidoRepository,
         IClienteRepository clienteRepository,
         IProdutoRepository produtoRepository,
+        IMovimentacaoRepository movimentacaoRepository,
         IUnitOfWork unitOfWork)
     {
         _pedidoRepository = pedidoRepository;
         _clienteRepository = clienteRepository;
         _produtoRepository = produtoRepository;
+        _movimentacaoRepository = movimentacaoRepository;
         _unitOfWork = unitOfWork;
     }
 
@@ -65,15 +68,18 @@ public class PedidoService
         if (cliente == null)
             throw new KeyNotFoundException($"Cliente com Id {dto.ClienteId} não encontrado.");
 
+        /* Batch load — 1 query para todos os produtos (elimina N+1) */
+        var produtoIds = dto.Itens.Select(i => i.ProdutoId).Distinct();
+        var produtos = (await _produtoRepository.ObterPorIdsAsync(produtoIds)).ToDictionary(p => p.Id);
+
         /* Monta os itens e registra baixa de estoque */
         var itens = new List<ItemPedido>();
         foreach (var itemDto in dto.Itens)
         {
-            var produto = await _produtoRepository.ObterPorIdAsync(itemDto.ProdutoId);
-            if (produto == null)
+            if (!produtos.TryGetValue(itemDto.ProdutoId, out var produto))
                 throw new KeyNotFoundException($"Produto com Id {itemDto.ProdutoId} não encontrado.");
 
-            /* Estoque suficiente */
+            /* Estoque suficiente — validação no mesmo snapshot */
             if (produto.QuantidadeEstoque < itemDto.Quantidade)
                 throw new InvalidOperationException(
                     $"Estoque insuficiente para '{produto.Nome}'. Disponível: {produto.QuantidadeEstoque}.");
@@ -85,9 +91,17 @@ public class PedidoService
                 PrecoUnitario = produto.PrecoVenda, /* captura o preço atual */
             });
 
-            /* Decrementa estoque (marcado no Change Tracker — será salvo no Commit) */
+            /* Decrementa estoque e registra movimentação no mesmo SaveChanges */
             produto.QuantidadeEstoque -= itemDto.Quantidade;
-            _ = _produtoRepository.AtualizarAsync(produto);
+
+            await _movimentacaoRepository.AdicionarAsync(new Movimentacao
+            {
+                ProdutoId = produto.Id,
+                Quantidade = itemDto.Quantidade,
+                Direcao = DirecaoMovimentacao.Saida,
+                Motivo = $"Pedido pendente",
+                Data = DateTime.UtcNow,
+            });
         }
 
         var pedido = new Pedido
@@ -103,8 +117,9 @@ public class PedidoService
         await _pedidoRepository.AdicionarAsync(pedido);
         await _unitOfWork.SaveChangesAsync();
 
-        var pedidoCriado = await _pedidoRepository.ObterPorIdAsync(pedido.Id);
-        return MapearParaDto(pedidoCriado!);
+        /* Retorna do change tracker — sem nova query */
+        var salvo = await _pedidoRepository.ObterPorIdAsync(pedido.Id);
+        return MapearParaDto(salvo!);
     }
 
     // ════════════════════════════════════════
