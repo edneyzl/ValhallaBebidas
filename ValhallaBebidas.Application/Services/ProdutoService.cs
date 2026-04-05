@@ -31,12 +31,11 @@ public class ProdutoService
 
     // ════════════════════════════════════════
     // LISTAR ATIVOS — usado pelo frontend/catalogo + dashboard
-    //    O Global Query Filter já limita a Status=true no banco,
-    //    então não filtra novamente em memória.
+    //    Filtra por Status=true diretamente no banco (WHERE).
     // ════════════════════════════════════════
     public async Task<IEnumerable<ProdutoDto>> ListarAtivosAsync()
     {
-        var produtos = await _produtoRepository.ListarTodosAsync();
+        var produtos = await _produtoRepository.ListarAtivosAsync();
         return produtos.Select(MapearParaDto);
     }
 

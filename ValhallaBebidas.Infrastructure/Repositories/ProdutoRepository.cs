@@ -43,6 +43,11 @@ public class ProdutoRepository : IProdutoRepository
             .OrderBy(p => p.QuantidadeEstoque)
             .ToListAsync();
 
+    public async Task<IEnumerable<Produto>> ListarAtivosAsync()
+        => await _context.Produtos
+            .Where(p => p.Status)
+            .ToListAsync();
+
     public async Task AdicionarAsync(Produto produto)
     {
         await _context.Produtos.AddAsync(produto);

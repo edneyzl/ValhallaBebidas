@@ -140,10 +140,42 @@ public class PedidoService
     }
 
     // ════════════════════════════════════════
-    // CANCELAR — atalho semântico
+    // CANCELAR — reverte estoque e registra estorno
+    // O pedido deve ter itens carregados pelo repo
     // ════════════════════════════════════════
-    public async Task CancelarAsync(int id)
-        => await AtualizarStatusAsync(id, StatusPedido.Cancelado);
+    public async Task CancelarAsync(int id, int clienteId)
+    {
+        var pedido = await _pedidoRepository.ObterPorIdAsync(id);
+        if (pedido == null)
+            throw new KeyNotFoundException($"Pedido com Id {id} não encontrado.");
+
+        if (pedido.ClienteId != clienteId)
+            throw new InvalidOperationException("Você não tem permissão para cancelar este pedido.");
+
+        if (pedido.Status == StatusPedido.Cancelado)
+            throw new InvalidOperationException("Um pedido cancelado não pode ser alterado.");
+
+        /* Devolve estoque de cada item e registra a movimentação de estorno */
+        foreach (var item in pedido.Itens)
+        {
+            var produto = await _produtoRepository.ObterPorIdAsync(item.ProdutoId);
+            if (produto == null) continue;
+
+            produto.QuantidadeEstoque += item.Quantidade;
+
+            await _movimentacaoRepository.AdicionarAsync(new Movimentacao
+            {
+                ProdutoId = produto.Id,
+                Quantidade = item.Quantidade,
+                Direcao = DirecaoMovimentacao.Entrada,
+                Motivo = $"Estorno — cancelamento do pedido #{id}",
+                Data = DateTime.UtcNow,
+            });
+        }
+
+        pedido.Status = StatusPedido.Cancelado;
+        await _unitOfWork.SaveChangesAsync();
+    }
 
     // ════════════════════════════════════════
     // REMOVER

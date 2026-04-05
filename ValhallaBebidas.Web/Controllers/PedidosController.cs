@@ -36,8 +36,8 @@ public class PedidosController : Controller
         }
     }
 
-    /* ── PUT /Pedidos/Cancelar/{id} — protegido por AuthFilter ── */
-    [HttpPut("Cancelar/{id}")]
+    /* ── POST /Pedidos/Cancelar/{id} — protegido por AuthFilter ── */
+    [HttpPost("Cancelar/{id}")]
     public async Task<IActionResult> CancelarPedido(int id)
     {
         var clienteId = HttpContext.Session.GetString("UserId");
@@ -47,12 +47,13 @@ public class PedidosController : Controller
         try
         {
             var client = _httpClientFactory.CreateClient("ValhallaAPI");
-            var payload = new { novoStatus = "Cancelado" };
-            var response = await client.PutAsJsonAsync($"api/pedido/{id}/status", payload);
-            var data = await response.Content.ReadAsStringAsync();
+            var response = await client.PostAsync($"api/pedido/{id}/cancelar?clienteId={clienteId}", null);
 
             if (!response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsStringAsync();
                 return BadRequest(new { mensagem = data });
+            }
 
             return Ok(new { mensagem = "Pedido cancelado com sucesso." });
         }
