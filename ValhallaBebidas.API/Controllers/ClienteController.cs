@@ -79,4 +79,34 @@ public class ClienteController : ControllerBase
             return NotFound(new { mensagem = ex.Message });
         }
     }
+
+    /// <summary>
+    /// Atualiza o endereço do cliente.
+    /// </summary>
+    [HttpPut("{id}/endereco")]
+    public async Task<IActionResult> AtualizarEndereco(int id, [FromBody] AtualizarEnderecoDto dto)
+    {
+        try
+        {
+            await _clienteService.AtualizarEnderecoAsync(id, dto);
+            return NoContent();
+        }
+        catch (KeyNotFoundException ex) { return NotFound(new { mensagem = ex.Message }); }
+        catch (InvalidOperationException ex) { return Conflict(new { mensagem = ex.Message }); }
+    }
+
+    /// <summary>
+    /// Altera a senha do cliente.
+    /// </summary>
+    [HttpPut("{id}/senha")]
+    public async Task<IActionResult> AtualizarSenha(int id, [FromBody] AtualizarSenhaDto dto)
+    {
+        try
+        {
+            await _clienteService.AtualizarSenhaAsync(id, dto);
+            return NoContent();
+        }
+        catch (KeyNotFoundException ex) { return NotFound(new { mensagem = ex.Message }); }
+        catch (InvalidOperationException ex) { return BadRequest(new { mensagem = ex.Message }); }
+    }
 }

@@ -93,7 +93,7 @@ document.getElementById('btnSalvarDados')?.addEventListener('click', async () =>
         const clienteId = sessao?.userId;
         if (!clienteId) { mostrarFeedback('Sessão inválida. Faça login novamente.', true); return; }
 
-        const dataPayload = dataNasc ? new Date(dataNasc.split('/').reverse().join('-') + 'T00:00:00') : new Date();
+        const dataPayload = dataNasc ? dataNasc.split('/').reverse().join('-') : new Date().toISOString().split('T')[0];
         const response = await fetch(`/api/cliente/${clienteId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -115,20 +115,78 @@ document.getElementById('btnSalvarDados')?.addEventListener('click', async () =>
 
 /* ── Salvar endereço ── */
 document.getElementById('btnSalvarEndereco')?.addEventListener('click', async () => {
-    // Endereço seria atualizado por endpoint separado — por enquanto salva local
-    mostrarFeedback('Endereço atualizado com sucesso!');
+    const res = await fetch('/api/session');
+    const sessao = await res.json();
+    const clienteId = sessao?.userId;
+    if (!clienteId) { mostrarFeedback('Sessão inválida.', true); return; }
+
+    const logradouro = document.getElementById('logradouro')?.value.trim();
+    const numero = document.getElementById('numero')?.value;
+    if (!logradouro || !numero) { mostrarFeedback('Preencha logradouro e número.', true); return; }
+
+    try {
+        const response = await fetch(`/api/cliente/${clienteId}/endereco`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                enderecoId: 0, /* backend ignora — busca pelo cliente.EnderecoId */
+                tipoLogradouro: 'Rua',
+                logradouro,
+                numero: parseInt(numero) || 0,
+                complemento: document.getElementById('complemento')?.value.trim() || '',
+                cep: (document.getElementById('cep')?.value || '').replace(/\D/g, ''),
+                bairro: document.getElementById('bairro')?.value.trim() || '',
+                cidade: document.getElementById('cidade')?.value.trim() || '',
+                estado: document.getElementById('estado')?.value.trim() || '',
+            }),
+        });
+        if (!response.ok) {
+            const err = await response.json();
+            mostrarFeedback(err.mensagem || 'Erro ao atualizar endereço.', true);
+            return;
+        }
+        mostrarFeedback('Endereço atualizado com sucesso!');
+    } catch {
+        mostrarFeedback('Erro de conexão.', true);
+    }
 });
 
 /* ── Salvar senha ── */
-document.getElementById('btnSalvarSenha')?.addEventListener('click', () => {
-    const nova = document.getElementById('novaSenha')?.value;
-    const confirmar = document.getElementById('confirmarSenha')?.value;
+document.getElementById('btnSalvarSenha')?.addEventListener('click', async () => {
     const erroEl = document.getElementById('erroSenha');
     if (erroEl) erroEl.textContent = '';
+
+    const senhaAtual = document.getElementById('senhaAtual')?.value;
+    const nova = document.getElementById('novaSenha')?.value;
+    const confirmar = document.getElementById('confirmarSenha')?.value;
+
     if (!nova || nova.length < 6) { if (erroEl) erroEl.textContent = 'Mínimo 6 caracteres.'; return; }
     if (nova !== confirmar) { if (erroEl) erroEl.textContent = 'Senhas não conferem.'; return; }
-    mostrarFeedback('Senha alterada com sucesso!');
-    ['senhaAtual', 'novaSenha', 'confirmarSenha'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+
+    const res = await fetch('/api/session');
+    const sessao = await res.json();
+    const clienteId = sessao?.userId;
+    if (!clienteId) { mostrarFeedback('Sessão inválida.', true); return; }
+
+    try {
+        const response = await fetch(`/api/cliente/${clienteId}/senha`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                senhaAtual: senhaAtual,
+                novaSenha: nova,
+            }),
+        });
+        if (!response.ok) {
+            const err = await response.json();
+            mostrarFeedback(err.mensagem || 'Erro ao alterar senha.', true);
+            return;
+        }
+        mostrarFeedback('Senha alterada com sucesso!');
+        ['senhaAtual', 'novaSenha', 'confirmarSenha'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    } catch {
+        mostrarFeedback('Erro de conexão.', true);
+    }
 });
 
 /* ── Toast feedback ── */

@@ -31,6 +31,12 @@ public class AtualizarClienteDto
     public DateTime DataNascimento { get; set; }
 }
 
+public class AtualizarSenhaDto
+{
+    public string SenhaAtual { get; set; } = string.Empty;
+    public string NovaSenha { get; set; } = string.Empty;
+}
+
 public class LoginClienteDto
 {
     public string Email { get; set; } = string.Empty; /* usa email como login */

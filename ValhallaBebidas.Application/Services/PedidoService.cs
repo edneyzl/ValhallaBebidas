@@ -110,6 +110,13 @@ public class PedidoService
             DataPedido = DateTime.UtcNow,
             Status = StatusPedido.Pendente,
             Itens = itens,
+            EnderecoEntregaLogradouro = dto.EnderecoEntrega?.Logradouro,
+            EnderecoEntregaNumero = dto.EnderecoEntrega?.Numero,
+            EnderecoEntregaComplemento = dto.EnderecoEntrega?.Complemento,
+            EnderecoEntregaBairro = dto.EnderecoEntrega?.Bairro,
+            EnderecoEntregaCidade = dto.EnderecoEntrega?.Cidade,
+            EnderecoEntregaEstado = dto.EnderecoEntrega?.Estado,
+            EnderecoEntregaCep = dto.EnderecoEntrega?.Cep,
         };
 
         pedido.RecalcularTotal();
@@ -210,5 +217,15 @@ public class PedidoService
             PrecoUnitario = i.PrecoUnitario,
             Subtotal = i.Subtotal,
         }).ToList(),
+        EnderecoEntrega = pedido.EnderecoEntregaLogradouro == null ? null : new EnderecoEntregaDto
+        {
+            Logradouro = pedido.EnderecoEntregaLogradouro,
+            Numero = pedido.EnderecoEntregaNumero ?? string.Empty,
+            Complemento = pedido.EnderecoEntregaComplemento ?? string.Empty,
+            Bairro = pedido.EnderecoEntregaBairro ?? string.Empty,
+            Cidade = pedido.EnderecoEntregaCidade ?? string.Empty,
+            Estado = pedido.EnderecoEntregaEstado ?? string.Empty,
+            Cep = pedido.EnderecoEntregaCep ?? string.Empty,
+        },
     };
 }

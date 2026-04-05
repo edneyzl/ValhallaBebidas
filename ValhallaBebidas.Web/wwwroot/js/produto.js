@@ -43,7 +43,7 @@ async function carregarProdutoProduto() {
         if (imagem) produtoImg.innerHTML = `<img src="${imagem}" alt="${produto.nome}" />`;
         produtoCategoria.textContent = produto.nomeCategoria;
         produtoNome.textContent = produto.nome;
-        produtoEan.textContent = `EAN: ${produto.eanCodBarras}`;
+        produtoEan.textContent = `EAN: ${produto.ean}`;
         produtoDescricao.textContent = produto.descricao;
         produtoPreco.textContent = `R$ ${produto.precoVenda.toFixed(2).replace('.', ',')}`;
 
@@ -52,7 +52,7 @@ async function carregarProdutoProduto() {
         if (!temEstoque) produtoEstoque.classList.add('produto__estoque--esgotado');
 
         detalheCategoria.textContent = produto.nomeCategoria;
-        detalheEan.textContent = produto.eanCodBarras;
+        detalheEan.textContent = produto.ean;
         detalheEstoqueMin.textContent = `${produto.quantidadeMinimo} unidades`;
         detalheData.textContent = produto.dataCadastro.toLocaleString ? new Date(produto.dataCadastro).toLocaleDateString('pt-BR') : produto.dataCadastro;
 
@@ -69,9 +69,7 @@ async function carregarProdutoProduto() {
         }
 
         btnAdicionar.addEventListener('click', () => {
-            for (let i = 0; i < quantidade; i++) {
-                adicionarAoCarrinho({ id: produto.id, nome: produto.nome, preco: produto.precoVenda, imagem: produto.fotoProduto || '' });
-            }
+            adicionarAoCarrinho({ id: produto.id, nome: produto.nome, preco: produto.precoVenda, imagem: produto.fotoProduto || '', quantidade });
         });
     } catch {
         window.location.href = '/Catalogo';

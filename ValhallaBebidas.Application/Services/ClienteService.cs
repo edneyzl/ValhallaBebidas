@@ -202,4 +202,50 @@ public class ClienteService
             Estado = c.Endereco.Estado,
         },
     };
+
+    // ════════════════════════════════════════
+    // ATUALIZAR ENDEREÇO
+    // ════════════════════════════════════════
+    public async Task AtualizarEnderecoAsync(int clienteId, AtualizarEnderecoDto dto)
+    {
+        var cliente = await _clienteRepository.ObterPorIdAsync(clienteId);
+        if (cliente == null)
+            throw new KeyNotFoundException($"Cliente com Id {clienteId} não encontrado.");
+
+        if (cliente.EnderecoId == null)
+            throw new InvalidOperationException("Cliente não possui endereço cadastrado.");
+
+        var enderecoExistente = await _enderecoRepository.ObterPorIdAsync(cliente.EnderecoId.Value);
+        if (enderecoExistente == null)
+            throw new KeyNotFoundException("Endereço não encontrado.");
+
+        enderecoExistente.TipoLogradouro = dto.TipoLogradouro;
+        enderecoExistente.Logradouro = dto.Logradouro;
+        enderecoExistente.Numero = dto.Numero;
+        enderecoExistente.Complemento = dto.Complemento;
+        enderecoExistente.Cep = dto.Cep;
+        enderecoExistente.Bairro = dto.Bairro;
+        enderecoExistente.Cidade = dto.Cidade;
+        enderecoExistente.Estado = dto.Estado;
+
+        await _enderecoRepository.AtualizarAsync(enderecoExistente);
+        await _unitOfWork.SaveChangesAsync();
+    }
+
+    // ════════════════════════════════════════
+    // ATUALIZAR SENHA
+    // ════════════════════════════════════════
+    public async Task AtualizarSenhaAsync(int clienteId, AtualizarSenhaDto dto)
+    {
+        var cliente = await _clienteRepository.ObterPorIdAsync(clienteId);
+        if (cliente == null)
+            throw new KeyNotFoundException($"Cliente com Id {clienteId} não encontrado.");
+
+        if (!BCrypt.Net.BCrypt.Verify(dto.SenhaAtual, cliente.SenhaHash))
+            throw new InvalidOperationException("Senha atual inválida.");
+
+        cliente.SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.NovaSenha);
+        await _clienteRepository.AtualizarAsync(cliente);
+        await _unitOfWork.SaveChangesAsync();
+    }
 }

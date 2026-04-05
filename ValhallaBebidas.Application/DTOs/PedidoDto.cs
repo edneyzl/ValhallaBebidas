@@ -12,6 +12,7 @@ public class PedidoDto
     public decimal ValorTotal { get; set; }
     public StatusPedido Status { get; set; }
     public List<ItemPedidoDto> Itens { get; set; } = new();
+    public EnderecoEntregaDto? EnderecoEntrega { get; set; }
 }
 
 public class ItemPedidoDto
@@ -28,12 +29,24 @@ public class CriarPedidoDto
 {
     public int ClienteId { get; set; }
     public List<CriarItemPedidoDto> Itens { get; set; } = new();
+    public EnderecoEntregaDto? EnderecoEntrega { get; set; }
 }
 
 public class CriarItemPedidoDto
 {
     public int ProdutoId { get; set; }
     public int Quantidade { get; set; }
+}
+
+public class EnderecoEntregaDto
+{
+    public string Logradouro { get; set; } = string.Empty;
+    public string Numero { get; set; } = string.Empty;
+    public string Complemento { get; set; } = string.Empty;
+    public string Bairro { get; set; } = string.Empty;
+    public string Cidade { get; set; } = string.Empty;
+    public string Estado { get; set; } = string.Empty;
+    public string Cep { get; set; } = string.Empty;
 }
 
 public class AtualizarPedidoDto
