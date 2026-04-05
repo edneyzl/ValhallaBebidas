@@ -29,6 +29,7 @@ public class CriarEnderecoDto
 
 public class AtualizarEnderecoDto
 {
+    public int EnderecoId { get; set; }
     public string TipoLogradouro { get; set; } = string.Empty;
     public string Logradouro { get; set; } = string.Empty;
     public int Numero { get; set; }
@@ -37,7 +38,5 @@ public class AtualizarEnderecoDto
     public string Bairro { get; set; } = string.Empty;
     public string Cidade { get; set; } = string.Empty;
     public string Estado { get; set; } = string.Empty;
-
-
 }
 

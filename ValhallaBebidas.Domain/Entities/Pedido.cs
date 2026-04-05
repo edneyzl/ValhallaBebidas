@@ -10,6 +10,17 @@ public class Pedido
     public decimal ValorTotal { get; set; }
     public StatusPedido Status { get; set; } = StatusPedido.Pendente; /* enum em vez de string */
 
+    /// <summary>
+    /// Endereço de entrega do pedido (flattened fields — value object).
+    /// </summary>
+    public string? EnderecoEntregaLogradouro { get; set; }
+    public string? EnderecoEntregaNumero { get; set; }
+    public string? EnderecoEntregaComplemento { get; set; }
+    public string? EnderecoEntregaBairro { get; set; }
+    public string? EnderecoEntregaCidade { get; set; }
+    public string? EnderecoEntregaEstado { get; set; }
+    public string? EnderecoEntregaCep { get; set; }
+
     public Cliente? Cliente { get; set; }
     public ICollection<ItemPedido> Itens { get; set; } = new List<ItemPedido>();
 

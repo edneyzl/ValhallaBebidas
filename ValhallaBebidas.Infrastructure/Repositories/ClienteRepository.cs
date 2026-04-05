@@ -16,16 +16,24 @@ public class ClienteRepository : IClienteRepository
 
 
     public async Task<Cliente?> ObterPorIdAsync(int id)
-    => await _context.Clientes.FindAsync(id);
+    => await _context.Clientes
+        .Include(c => c.Endereco)
+        .FirstOrDefaultAsync(c => c.Id == id);
 
     public async Task<Cliente?> ObterPorDocumentoAsync(string doc)
-    => await _context.Clientes.FirstOrDefaultAsync(c => c.Documento == doc);
+    => await _context.Clientes
+        .Include(c => c.Endereco)
+        .FirstOrDefaultAsync(c => c.Documento == doc);
 
     public async Task<Cliente?> ObterPorEmailAsync(string email)
-    => await _context.Clientes.FirstOrDefaultAsync(c => c.Email == email);
+    => await _context.Clientes
+        .Include(c => c.Endereco)
+        .FirstOrDefaultAsync(c => c.Email == email);
 
     public async Task<IEnumerable<Cliente>> ListarTodosAsync()
-    => await _context.Clientes.ToListAsync();
+    => await _context.Clientes
+        .Include(c => c.Endereco)
+        .ToListAsync();
 
     public async Task AdicionarAsync(Cliente cliente)
     {

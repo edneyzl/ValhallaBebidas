@@ -170,6 +170,15 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
                 .HasForeignKey(i => i.PedidoId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            /* Endereço de entrega (flattened value object) */
+            entity.Property(p => p.EnderecoEntregaLogradouro).HasMaxLength(200);
+            entity.Property(p => p.EnderecoEntregaNumero).HasMaxLength(10);
+            entity.Property(p => p.EnderecoEntregaComplemento).HasMaxLength(150);
+            entity.Property(p => p.EnderecoEntregaBairro).HasMaxLength(120);
+            entity.Property(p => p.EnderecoEntregaCidade).HasMaxLength(120);
+            entity.Property(p => p.EnderecoEntregaEstado).HasMaxLength(2);
+            entity.Property(p => p.EnderecoEntregaCep).HasMaxLength(8);
+
             entity.HasIndex(p => p.ClienteId);
             entity.HasIndex(p => p.DataPedido);
             entity.HasIndex(p => new { p.ClienteId, p.DataPedido });
@@ -211,7 +220,7 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
             entity.HasKey(m => m.Id);
 
             entity.Property(m => m.ProdutoId).IsRequired();
-            entity.Property(m => m.Quantidade).IsRequired().HasColumnType("decimal(18,2)");
+            entity.Property(m => m.Quantidade).IsRequired();
             entity.Property(m => m.Motivo).IsRequired().HasMaxLength(200);
             entity.Property(m => m.Data).IsRequired().HasColumnType("datetime2");
 

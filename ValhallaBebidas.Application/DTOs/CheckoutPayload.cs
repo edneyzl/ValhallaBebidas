@@ -3,7 +3,7 @@ namespace ValhallaBebidas.Application.DTOs;
 public class CheckoutPayload
 {
     public List<CheckoutItem> Itens { get; set; } = new();
-    public EnderecoEntrega Entrega { get; set; } = new();
+    public EnderecoEntrega? Entrega { get; set; }
 }
 
 public class CheckoutItem

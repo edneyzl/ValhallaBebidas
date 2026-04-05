@@ -17,10 +17,9 @@ builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
-
-// Adicionar os repositórios faltantes:
 builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<IMovimentacaoRepository, MovimentacaoRepository>();
 
 // Dashboard (agregações)
 builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
@@ -31,6 +30,7 @@ builder.Services.AddScoped<FuncionarioService>();
 builder.Services.AddScoped<ClienteService>();
 builder.Services.AddScoped<ProdutoService>();
 builder.Services.AddScoped<PedidoService>();
+builder.Services.AddScoped<MovimentacaoService>();
 
 
 

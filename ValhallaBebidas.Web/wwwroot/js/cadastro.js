@@ -127,9 +127,8 @@ function mostrarToast() {
     setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
-/* ── Submit ── */
-document.getElementById('formCadastro')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
+/* ── Submit — deixa o form submeter ao servidor (POST /Auth/Cadastro) ── */
+document.getElementById('formCadastro')?.addEventListener('submit', (e) => {
     const dados = {
         nome: document.getElementById('nome').value.trim(),
         dataNascimento: document.getElementById('dataNascimento').value.trim(),
@@ -146,17 +145,15 @@ document.getElementById('formCadastro')?.addEventListener('submit', async (e) =>
         cidade: document.getElementById('cidade').value.trim(),
         estado: document.getElementById('estado').value.trim(),
     };
-    if (!validarFormulario(dados)) return;
-    console.log('Payload cadastro:', dados);
-    mostrarToast();
-    setTimeout(() => {
-        localStorage.setItem('logado', 'true');
-        localStorage.setItem('nomeUser', dados.nome.split(' ')[0]);
-        window.location.href = '/';
-    }, 2500);
-});
 
-function converterData(dataBR) {
-    const [dia, mes, ano] = dataBR.split('/');
-    return `${ano}-${mes}-${dia}T00:00:00`;
-}
+    if (!validarFormulario(dados)) {
+        e.preventDefault();
+        return;
+    }
+
+    /* Válido — permite submit normal ao servidor.
+       O AuthController valida no server-side e chama a API real.
+       Se a API rejeitar (email duplicado, etc.) o ViewBag.Erro aparece na view. */
+    console.log('Submit cadastro:', dados);
+    mostrarToast();
+});

@@ -247,6 +247,7 @@ body {
 
   input {
     width: 100%;
+    min-width: 0;
     height: 100%;
     font-size: var(--input-font-size);
     background: transparent;
@@ -296,7 +297,19 @@ body {
   background-color: var(--color-gold-hover);
 }
 
-/* ── Link de cadastro ── */
+/* ── Mensagem de erro ── */
+.login__erro {
+    width: var(--form-width);
+    text-align: center;
+    color: #e05c5c;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: rgba(224, 92, 92, 0.08);
+    border: 1px solid rgba(224, 92, 92, 0.3);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: -8px;
+}
 .login__register {
   font-size: var(--register-size);
   font-weight: 200;
@@ -313,6 +326,8 @@ body {
     opacity: 0.7;
   }
 }
+
+
 
 /* ════════════════════════════════════════════════════════
    RESPONSIVIDADE — Desktop
@@ -567,6 +582,11 @@ body {
     text-align: center;
   }
 
+  .login__erro {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
 } /* fim mobile */
 
 /* ════════════════════════════════════════════════════════
@@ -725,27 +745,79 @@ body {
     text-align: center;
   }
 
+  .login__erro {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
 }
+
+/* ════════════════════════════════════════════════════════
+   TOGGLE SENHA — Botão mostrar/ocultar
+════════════════════════════════════════════════════════ */
+.login__input {
+  position: relative;
+}
+
+.login__input__toggle {
+    cursor: pointer !important;
+    padding: 4px;
+    margin: 0;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.login__input__toggle * {
+    cursor: pointer !important;
+}
+
+.login__input input.input__senha {
+  padding-right: 60px;
+}
+
+.login__input__toggle:hover {
+  opacity: 0.7;
+}
+
+.login__input__toggle img {
+    width: 28px;
+    height: 28px;
+    display: block;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
 
 /* ════════════════════════════════════════════════════════
    DROPDOWN — Nav mobile login
 ════════════════════════════════════════════════════════ */
 .nav__dropdown {
-  position: absolute;
-  top: calc(100% + 12px);
-  right: 0;
-  width: 220px;
-  background-color: #1b1b1b;
-  border: 1px solid #616161;
-  border-radius: 12px;
-  padding: 8px;
-  flex-direction: column;
-  gap: 4px;
-  z-index: 200;
-  opacity: 0;
-  transform: translateY(-8px);
-  pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 220px;
+    background-color: #1b1b1b;
+    border: 1px solid #616161;
+    border-radius: 12px;
+    padding: 8px;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 200;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .nav__dropdown.open {

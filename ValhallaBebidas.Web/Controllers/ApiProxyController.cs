@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ValhallaBebidas.Application.DTOs;
 
 namespace ValhallaBebidas.Web.Controllers;
 
@@ -78,11 +79,10 @@ public class ApiProxyController : ControllerBase
 
     /* ── POST /api/pedido (criar) ── */
     [HttpPost("api/pedido")]
-    public async Task<IActionResult> CriarPedido([FromBody] System.Text.Json.JsonElement payload)
+    public async Task<IActionResult> CriarPedido([FromBody] CriarPedidoDto payload)
     {
         var client = _httpClientFactory.CreateClient("ValhallaAPI");
-        var content = new StringContent(payload.GetRawText(), System.Text.Encoding.UTF8, "application/json");
-        var response = await client.PostAsync("api/pedido", content);
+        var response = await client.PostAsJsonAsync("api/pedido", payload);
         var data = await response.Content.ReadAsStringAsync();
 
         if (!response.IsSuccessStatusCode)
@@ -93,11 +93,13 @@ public class ApiProxyController : ControllerBase
 
     /* ── PUT /api/pedido/{id}/status ── */
     [HttpPut("api/pedido/{id}/status")]
-    public async Task<IActionResult> AtualizarStatus(int id, [FromBody] System.Text.Json.JsonElement payload)
+    public async Task<IActionResult> AtualizarStatus(int id, [FromBody] AtualizarStatusDto payload)
     {
+        if (string.IsNullOrEmpty(payload?.NovoStatus))
+            return BadRequest(new { mensagem = "campo 'novoStatus' é obrigatório." });
+
         var client = _httpClientFactory.CreateClient("ValhallaAPI");
-        var content = new StringContent(payload.GetRawText(), System.Text.Encoding.UTF8, "application/json");
-        var response = await client.PutAsync($"api/pedido/{id}/status", content);
+        var response = await client.PutAsJsonAsync($"api/pedido/{id}/status", payload);
         var data = await response.Content.ReadAsStringAsync();
 
         if (!response.IsSuccessStatusCode)

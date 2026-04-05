@@ -1,44 +1,18 @@
 /* ════════════════════════════════════════════════════════
-   perfil.js — Valhalla Bebidas (MVC)
+   perfil.js — Valhalla Bebidas (MVC — API real)
    Depende de: auth.js (isLogado, nomeUser)
 ════════════════════════════════════════════════════════ */
 
 if (!isLogado) window.location.href = '/Auth/Login';
 
-const usuarioMock = {
-    nome: nomeUser,
-    email: localStorage.getItem('emailUser') || 'usuario@email.com',
-    documento: '123.456.789-00',
-    telefone: '(11) 99999-9999',
-    dataNascimento: '01/01/1990',
-    endereco: {
-        logradouro: 'Rua das Bebidas', numero: '123', complemento: 'Apto 45',
-        bairro: 'Centro', cep: '01310-100', cidade: 'São Paulo', estado: 'SP',
-    }
-};
-
 /* ── Header ── */
 const perfilNome = document.getElementById('perfilNome');
 const perfilEmail = document.getElementById('perfilEmail');
 const perfilInicial = document.getElementById('perfilInicial');
-if (perfilNome) perfilNome.textContent = usuarioMock.nome;
-if (perfilEmail) perfilEmail.textContent = usuarioMock.email;
-if (perfilInicial) perfilInicial.textContent = usuarioMock.nome.charAt(0).toUpperCase();
 
-/* ── Preenche campos ── */
-const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
-set('nome', usuarioMock.nome);
-set('email', usuarioMock.email);
-set('documento', usuarioMock.documento);
-set('telefone', usuarioMock.telefone);
-set('dataNascimento', usuarioMock.dataNascimento);
-set('logradouro', usuarioMock.endereco.logradouro);
-set('numero', usuarioMock.endereco.numero);
-set('complemento', usuarioMock.endereco.complemento);
-set('bairro', usuarioMock.endereco.bairro);
-set('cep', usuarioMock.endereco.cep);
-set('cidade', usuarioMock.endereco.cidade);
-set('estado', usuarioMock.endereco.estado);
+if (perfilNome) perfilNome.textContent = nomeUser;
+if (perfilEmail) perfilEmail.textContent = localStorage.getItem('emailUser') || '';
+if (perfilInicial && nomeUser) perfilInicial.textContent = nomeUser.charAt(0).toUpperCase();
 
 /* ── Tabs ── */
 const tabs = {
@@ -60,10 +34,7 @@ document.querySelectorAll('.perfil__nav-item[data-tab]').forEach(btn => {
 
 /* ── Logout ── */
 document.getElementById('btnLogout')?.addEventListener('click', () => {
-    localStorage.removeItem('logado');
-    localStorage.removeItem('nomeUser');
-    localStorage.removeItem('carrinho');
-    window.location.href = '/';
+    window.location.href = '/Auth/Logout';
 });
 
 /* ── Máscaras ── */
@@ -89,7 +60,7 @@ document.getElementById('estado')?.addEventListener('input', (e) => {
     e.target.value = e.target.value.toUpperCase().replace(/[^A-Z]/g, '');
 });
 
-/* ── CEP ── */
+/* ── CEP via ViaCEP ── */
 document.getElementById('cep')?.addEventListener('blur', async (e) => {
     const cep = e.target.value.replace(/\D/g, '');
     if (cep.length !== 8) return;
@@ -105,37 +76,126 @@ document.getElementById('cep')?.addEventListener('blur', async (e) => {
     } catch { /* silencia */ }
 });
 
-/* ── Salvar dados ── */
-document.getElementById('btnSalvarDados')?.addEventListener('click', () => {
+/* ── Helper set value ── */
+const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
+
+/* ── Salvar dados do perfil ── */
+document.getElementById('btnSalvarDados')?.addEventListener('click', async () => {
     const nome = document.getElementById('nome')?.value.trim();
-    localStorage.setItem('nomeUser', nome?.split(' ')[0] || nomeUser);
-    mostrarFeedback('Dados atualizados com sucesso!');
+    const documento = document.getElementById('documento')?.value.trim();
+    const telefone = document.getElementById('telefone')?.value.trim();
+    const dataNasc = document.getElementById('dataNascimento')?.value.trim();
+
+    /* Busca clienteId da sessão via endpoint seguro */
+    try {
+        const res = await fetch('/api/session');
+        const sessao = await res.json();
+        const clienteId = sessao?.userId;
+        if (!clienteId) { mostrarFeedback('Sessão inválida. Faça login novamente.', true); return; }
+
+        const dataPayload = dataNasc ? dataNasc.split('/').reverse().join('-') : new Date().toISOString().split('T')[0];
+        const response = await fetch(`/api/cliente/${clienteId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nome, documento, telefone, dataNascimento: dataPayload }),
+        });
+        if (!response.ok) {
+            const err = await response.json();
+            mostrarFeedback(err.mensagem || 'Erro ao atualizar dados.', true);
+            return;
+        }
+        localStorage.setItem('nomeUser', nome?.split(' ')[0] || nomeUser);
+        if (perfilNome) perfilNome.textContent = nome;
+        if (perfilInicial) perfilInicial.textContent = nome.charAt(0).toUpperCase();
+        mostrarFeedback('Dados atualizados com sucesso!');
+    } catch {
+        mostrarFeedback('Erro de conexão. Tente novamente.', true);
+    }
 });
 
 /* ── Salvar endereço ── */
-document.getElementById('btnSalvarEndereco')?.addEventListener('click', () => {
-    mostrarFeedback('Endereço atualizado com sucesso!');
+document.getElementById('btnSalvarEndereco')?.addEventListener('click', async () => {
+    const res = await fetch('/api/session');
+    const sessao = await res.json();
+    const clienteId = sessao?.userId;
+    if (!clienteId) { mostrarFeedback('Sessão inválida.', true); return; }
+
+    const logradouro = document.getElementById('logradouro')?.value.trim();
+    const numero = document.getElementById('numero')?.value;
+    if (!logradouro || !numero) { mostrarFeedback('Preencha logradouro e número.', true); return; }
+
+    try {
+        const response = await fetch(`/api/cliente/${clienteId}/endereco`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                enderecoId: 0, /* backend ignora — busca pelo cliente.EnderecoId */
+                tipoLogradouro: 'Rua',
+                logradouro,
+                numero: parseInt(numero) || 0,
+                complemento: document.getElementById('complemento')?.value.trim() || '',
+                cep: (document.getElementById('cep')?.value || '').replace(/\D/g, ''),
+                bairro: document.getElementById('bairro')?.value.trim() || '',
+                cidade: document.getElementById('cidade')?.value.trim() || '',
+                estado: document.getElementById('estado')?.value.trim() || '',
+            }),
+        });
+        if (!response.ok) {
+            const err = await response.json();
+            mostrarFeedback(err.mensagem || 'Erro ao atualizar endereço.', true);
+            return;
+        }
+        mostrarFeedback('Endereço atualizado com sucesso!');
+    } catch {
+        mostrarFeedback('Erro de conexão.', true);
+    }
 });
 
 /* ── Salvar senha ── */
-document.getElementById('btnSalvarSenha')?.addEventListener('click', () => {
-    const nova = document.getElementById('novaSenha')?.value;
-    const confirmar = document.getElementById('confirmarSenha')?.value;
+document.getElementById('btnSalvarSenha')?.addEventListener('click', async () => {
     const erroEl = document.getElementById('erroSenha');
     if (erroEl) erroEl.textContent = '';
+
+    const senhaAtual = document.getElementById('senhaAtual')?.value;
+    const nova = document.getElementById('novaSenha')?.value;
+    const confirmar = document.getElementById('confirmarSenha')?.value;
+
     if (!nova || nova.length < 6) { if (erroEl) erroEl.textContent = 'Mínimo 6 caracteres.'; return; }
     if (nova !== confirmar) { if (erroEl) erroEl.textContent = 'Senhas não conferem.'; return; }
-    mostrarFeedback('Senha alterada com sucesso!');
-    ['senhaAtual', 'novaSenha', 'confirmarSenha'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+
+    const res = await fetch('/api/session');
+    const sessao = await res.json();
+    const clienteId = sessao?.userId;
+    if (!clienteId) { mostrarFeedback('Sessão inválida.', true); return; }
+
+    try {
+        const response = await fetch(`/api/cliente/${clienteId}/senha`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                senhaAtual: senhaAtual,
+                novaSenha: nova,
+            }),
+        });
+        if (!response.ok) {
+            const err = await response.json();
+            mostrarFeedback(err.mensagem || 'Erro ao alterar senha.', true);
+            return;
+        }
+        mostrarFeedback('Senha alterada com sucesso!');
+        ['senhaAtual', 'novaSenha', 'confirmarSenha'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    } catch {
+        mostrarFeedback('Erro de conexão.', true);
+    }
 });
 
-/* ── Toast ── */
-function mostrarFeedback(mensagem) {
+/* ── Toast feedback ── */
+function mostrarFeedback(mensagem, erro = false) {
     const toast = document.createElement('div');
     toast.textContent = mensagem;
     toast.style.cssText = `
     position:fixed;bottom:32px;right:32px;background:#161616;
-    border:1px solid #D6BD77;color:#fff;padding:16px 24px;
+    border:1px solid ${erro ? '#e05c5c' : '#D6BD77'};color:#fff;padding:16px 24px;
     border-radius:12px;font-size:14px;font-family:Sora,sans-serif;
     z-index:9999;opacity:0;transition:opacity .3s ease;
   `;

@@ -63,9 +63,8 @@ async function cancelarPedido(id) {
     if (!confirm('Deseja realmente cancelar este pedido?')) return;
     try {
         const response = await fetch(`/Pedidos/Cancelar/${id}`, {
-            method: 'PUT',
+            method: 'POST',
             credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
         });
         if (!response.ok) {
             alert('Erro ao cancelar pedido. Tente novamente.');

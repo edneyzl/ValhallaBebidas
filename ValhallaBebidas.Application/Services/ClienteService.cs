@@ -87,11 +87,10 @@ public class ClienteService
             Email = dto.Email,
             SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.Senha),
             Status = true,
-            EnderecoId = endereco.Id,
+            Endereco = endereco,
         };
 
         await _clienteRepository.AdicionarAsync(cliente);
-
         await _unitOfWork.SaveChangesAsync();
 
         return MapearParaDto(cliente);
@@ -116,7 +115,7 @@ public class ClienteService
         cliente.Telefone = dto.Telefone;
         cliente.DataNascimento = dto.DataNascimento;
 
-        _ = _clienteRepository.AtualizarAsync(cliente);
+        await _clienteRepository.AtualizarAsync(cliente);
         await _unitOfWork.SaveChangesAsync();
     }
 
@@ -130,7 +129,7 @@ public class ClienteService
             throw new KeyNotFoundException($"Cliente com Id {id} não encontrado.");
 
         cliente.Status = status;
-        _ = _clienteRepository.AtualizarAsync(cliente);
+        await _clienteRepository.AtualizarAsync(cliente);
         await _unitOfWork.SaveChangesAsync();
     }
 
@@ -186,5 +185,67 @@ public class ClienteService
         Id = c.Id,
         Nome = c.NomeCliente,
         Documento = c.Documento,
+        Email = c.Email,
+        Telefone = c.Telefone,
+        DataNascimento = c.DataNascimento,
+        Status = c.Status,
+        Endereco = c.Endereco == null ? null : new EnderecoDto
+        {
+            Id = c.Endereco.Id,
+            TipoLogradouro = c.Endereco.TipoLogradouro,
+            Logradouro = c.Endereco.Logradouro,
+            Numero = c.Endereco.Numero,
+            Complemento = c.Endereco.Complemento,
+            Cep = c.Endereco.Cep,
+            Bairro = c.Endereco.Bairro,
+            Cidade = c.Endereco.Cidade,
+            Estado = c.Endereco.Estado,
+        },
     };
+
+    // ════════════════════════════════════════
+    // ATUALIZAR ENDEREÇO
+    // ════════════════════════════════════════
+    public async Task AtualizarEnderecoAsync(int clienteId, AtualizarEnderecoDto dto)
+    {
+        var cliente = await _clienteRepository.ObterPorIdAsync(clienteId);
+        if (cliente == null)
+            throw new KeyNotFoundException($"Cliente com Id {clienteId} não encontrado.");
+
+        if (cliente.EnderecoId == null)
+            throw new InvalidOperationException("Cliente não possui endereço cadastrado.");
+
+        var enderecoExistente = await _enderecoRepository.ObterPorIdAsync(cliente.EnderecoId.Value);
+        if (enderecoExistente == null)
+            throw new KeyNotFoundException("Endereço não encontrado.");
+
+        enderecoExistente.TipoLogradouro = dto.TipoLogradouro;
+        enderecoExistente.Logradouro = dto.Logradouro;
+        enderecoExistente.Numero = dto.Numero;
+        enderecoExistente.Complemento = dto.Complemento;
+        enderecoExistente.Cep = dto.Cep;
+        enderecoExistente.Bairro = dto.Bairro;
+        enderecoExistente.Cidade = dto.Cidade;
+        enderecoExistente.Estado = dto.Estado;
+
+        await _enderecoRepository.AtualizarAsync(enderecoExistente);
+        await _unitOfWork.SaveChangesAsync();
+    }
+
+    // ════════════════════════════════════════
+    // ATUALIZAR SENHA
+    // ════════════════════════════════════════
+    public async Task AtualizarSenhaAsync(int clienteId, AtualizarSenhaDto dto)
+    {
+        var cliente = await _clienteRepository.ObterPorIdAsync(clienteId);
+        if (cliente == null)
+            throw new KeyNotFoundException($"Cliente com Id {clienteId} não encontrado.");
+
+        if (!BCrypt.Net.BCrypt.Verify(dto.SenhaAtual, cliente.SenhaHash))
+            throw new InvalidOperationException("Senha atual inválida.");
+
+        cliente.SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.NovaSenha);
+        await _clienteRepository.AtualizarAsync(cliente);
+        await _unitOfWork.SaveChangesAsync();
+    }
 }

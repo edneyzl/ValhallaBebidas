@@ -9,7 +9,7 @@ namespace ValhallaBebidas.Domain.Entities
     {
         public int Id { get; set; } // Identificador único
         public int ProdutoId { get; set; } // ID do produto que está movendo
-        public decimal Quantidade { get; set; } // Valor absoluto (ex: 10)
+        public int Quantidade { get; set; } // Valor absoluto (ex: 10)
         public DirecaoMovimentacao Direcao { get; set; } // Lógica substituindo o Enum: // 1 = Entrada (Soma), -1 = Saída/Perda (Subtrai)
         public string Motivo { get; set; } = string.Empty; // Ex: "Venda", "Quebra"
         public DateTime Data { get; set; } = DateTime.UtcNow; // Data da operação (UTC)

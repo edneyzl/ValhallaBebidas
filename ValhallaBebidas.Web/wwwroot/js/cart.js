@@ -118,11 +118,12 @@ function alterarQtd(id, delta) {
 
 function adicionarAoCarrinho(produto) {
     let itens = carregarCarrinho();
+    const qtd = produto.quantidade || 1;
     const index = itens.findIndex(i => i.id === produto.id);
     if (index !== -1) {
-        itens[index].quantidade += 1;
+        itens[index].quantidade += qtd;
     } else {
-        itens.push({ ...produto, quantidade: 1 });
+        itens.push({ ...produto, quantidade: qtd });
     }
     salvarCarrinho(itens);
     renderizarItens(itens);

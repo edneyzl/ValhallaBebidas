@@ -5,6 +5,11 @@ public class ClienteDto
     public int Id { get; set; }
     public string Nome { get; set; } = string.Empty;
     public string Documento { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string Telefone { get; set; } = string.Empty;
+    public DateTime DataNascimento { get; set; }
+    public bool Status { get; set; }
+    public EnderecoDto? Endereco { get; set; }
 }
 
 public class CriarClienteDto
@@ -24,6 +29,12 @@ public class AtualizarClienteDto
     public string Documento { get; set; } = string.Empty;
     public string Telefone { get; set; } = string.Empty;
     public DateTime DataNascimento { get; set; }
+}
+
+public class AtualizarSenhaDto
+{
+    public string SenhaAtual { get; set; } = string.Empty;
+    public string NovaSenha { get; set; } = string.Empty;
 }
 
 public class LoginClienteDto

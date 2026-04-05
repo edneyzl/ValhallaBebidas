@@ -10,17 +10,20 @@ public class PedidoService
     private readonly IPedidoRepository _pedidoRepository;
     private readonly IClienteRepository _clienteRepository;
     private readonly IProdutoRepository _produtoRepository;
+    private readonly IMovimentacaoRepository _movimentacaoRepository;
     private readonly IUnitOfWork _unitOfWork;
 
     public PedidoService(
         IPedidoRepository pedidoRepository,
         IClienteRepository clienteRepository,
         IProdutoRepository produtoRepository,
+        IMovimentacaoRepository movimentacaoRepository,
         IUnitOfWork unitOfWork)
     {
         _pedidoRepository = pedidoRepository;
         _clienteRepository = clienteRepository;
         _produtoRepository = produtoRepository;
+        _movimentacaoRepository = movimentacaoRepository;
         _unitOfWork = unitOfWork;
     }
 
@@ -65,15 +68,18 @@ public class PedidoService
         if (cliente == null)
             throw new KeyNotFoundException($"Cliente com Id {dto.ClienteId} não encontrado.");
 
+        /* Batch load — 1 query para todos os produtos (elimina N+1) */
+        var produtoIds = dto.Itens.Select(i => i.ProdutoId).Distinct();
+        var produtos = (await _produtoRepository.ObterPorIdsAsync(produtoIds)).ToDictionary(p => p.Id);
+
         /* Monta os itens e registra baixa de estoque */
         var itens = new List<ItemPedido>();
         foreach (var itemDto in dto.Itens)
         {
-            var produto = await _produtoRepository.ObterPorIdAsync(itemDto.ProdutoId);
-            if (produto == null)
+            if (!produtos.TryGetValue(itemDto.ProdutoId, out var produto))
                 throw new KeyNotFoundException($"Produto com Id {itemDto.ProdutoId} não encontrado.");
 
-            /* Estoque suficiente */
+            /* Estoque suficiente — validação no mesmo snapshot */
             if (produto.QuantidadeEstoque < itemDto.Quantidade)
                 throw new InvalidOperationException(
                     $"Estoque insuficiente para '{produto.Nome}'. Disponível: {produto.QuantidadeEstoque}.");
@@ -85,9 +91,17 @@ public class PedidoService
                 PrecoUnitario = produto.PrecoVenda, /* captura o preço atual */
             });
 
-            /* Decrementa estoque (marcado no Change Tracker — será salvo no Commit) */
+            /* Decrementa estoque e registra movimentação no mesmo SaveChanges */
             produto.QuantidadeEstoque -= itemDto.Quantidade;
-            _ = _produtoRepository.AtualizarAsync(produto);
+
+            await _movimentacaoRepository.AdicionarAsync(new Movimentacao
+            {
+                ProdutoId = produto.Id,
+                Quantidade = itemDto.Quantidade,
+                Direcao = DirecaoMovimentacao.Saida,
+                Motivo = $"Pedido pendente",
+                Data = DateTime.UtcNow,
+            });
         }
 
         var pedido = new Pedido
@@ -96,6 +110,13 @@ public class PedidoService
             DataPedido = DateTime.UtcNow,
             Status = StatusPedido.Pendente,
             Itens = itens,
+            EnderecoEntregaLogradouro = dto.EnderecoEntrega?.Logradouro,
+            EnderecoEntregaNumero = dto.EnderecoEntrega?.Numero,
+            EnderecoEntregaComplemento = dto.EnderecoEntrega?.Complemento,
+            EnderecoEntregaBairro = dto.EnderecoEntrega?.Bairro,
+            EnderecoEntregaCidade = dto.EnderecoEntrega?.Cidade,
+            EnderecoEntregaEstado = dto.EnderecoEntrega?.Estado,
+            EnderecoEntregaCep = dto.EnderecoEntrega?.Cep,
         };
 
         pedido.RecalcularTotal();
@@ -103,8 +124,9 @@ public class PedidoService
         await _pedidoRepository.AdicionarAsync(pedido);
         await _unitOfWork.SaveChangesAsync();
 
-        var pedidoCriado = await _pedidoRepository.ObterPorIdAsync(pedido.Id);
-        return MapearParaDto(pedidoCriado!);
+        /* Retorna do change tracker — sem nova query */
+        var salvo = await _pedidoRepository.ObterPorIdAsync(pedido.Id);
+        return MapearParaDto(salvo!);
     }
 
     // ════════════════════════════════════════
@@ -125,10 +147,42 @@ public class PedidoService
     }
 
     // ════════════════════════════════════════
-    // CANCELAR — atalho semântico
+    // CANCELAR — reverte estoque e registra estorno
+    // O pedido deve ter itens carregados pelo repo
     // ════════════════════════════════════════
-    public async Task CancelarAsync(int id)
-        => await AtualizarStatusAsync(id, StatusPedido.Cancelado);
+    public async Task CancelarAsync(int id, int clienteId)
+    {
+        var pedido = await _pedidoRepository.ObterPorIdAsync(id);
+        if (pedido == null)
+            throw new KeyNotFoundException($"Pedido com Id {id} não encontrado.");
+
+        if (pedido.ClienteId != clienteId)
+            throw new InvalidOperationException("Você não tem permissão para cancelar este pedido.");
+
+        if (pedido.Status == StatusPedido.Cancelado)
+            throw new InvalidOperationException("Um pedido cancelado não pode ser alterado.");
+
+        /* Devolve estoque de cada item e registra a movimentação de estorno */
+        foreach (var item in pedido.Itens)
+        {
+            var produto = await _produtoRepository.ObterPorIdAsync(item.ProdutoId);
+            if (produto == null) continue;
+
+            produto.QuantidadeEstoque += item.Quantidade;
+
+            await _movimentacaoRepository.AdicionarAsync(new Movimentacao
+            {
+                ProdutoId = produto.Id,
+                Quantidade = item.Quantidade,
+                Direcao = DirecaoMovimentacao.Entrada,
+                Motivo = $"Estorno — cancelamento do pedido #{id}",
+                Data = DateTime.UtcNow,
+            });
+        }
+
+        pedido.Status = StatusPedido.Cancelado;
+        await _unitOfWork.SaveChangesAsync();
+    }
 
     // ════════════════════════════════════════
     // REMOVER
@@ -163,5 +217,15 @@ public class PedidoService
             PrecoUnitario = i.PrecoUnitario,
             Subtotal = i.Subtotal,
         }).ToList(),
+        EnderecoEntrega = pedido.EnderecoEntregaLogradouro == null ? null : new EnderecoEntregaDto
+        {
+            Logradouro = pedido.EnderecoEntregaLogradouro,
+            Numero = pedido.EnderecoEntregaNumero ?? string.Empty,
+            Complemento = pedido.EnderecoEntregaComplemento ?? string.Empty,
+            Bairro = pedido.EnderecoEntregaBairro ?? string.Empty,
+            Cidade = pedido.EnderecoEntregaCidade ?? string.Empty,
+            Estado = pedido.EnderecoEntregaEstado ?? string.Empty,
+            Cep = pedido.EnderecoEntregaCep ?? string.Empty,
+        },
     };
 }

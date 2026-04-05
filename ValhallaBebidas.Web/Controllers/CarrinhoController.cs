@@ -50,7 +50,17 @@ public class CarrinhoController : Controller
                 {
                     produtoId = i.ProdutoId,
                     quantidade = i.Quantidade
-                })
+                }),
+                enderecoEntrega = payload.Entrega == null ? null : new
+                {
+                    logradouro = payload.Entrega.Logradouro,
+                    numero = payload.Entrega.Numero,
+                    complemento = payload.Entrega.Complemento ?? "",
+                    bairro = payload.Entrega.Bairro,
+                    cidade = payload.Entrega.Cidade,
+                    estado = payload.Entrega.Estado,
+                    cep = payload.Entrega.Cep,
+                }
             };
 
             var response = await client.PostAsJsonAsync("api/pedido", apiPayload);

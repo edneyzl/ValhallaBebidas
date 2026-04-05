@@ -21,6 +21,14 @@ public class ProdutoRepository : IProdutoRepository
     public async Task<Produto?> ObterPorEanAsync(string ean)
     => await _context.Produtos.FirstOrDefaultAsync(p => p.Ean == ean);
 
+    public async Task<IEnumerable<Produto>> ObterPorIdsAsync(IEnumerable<int> ids)
+    {
+        var idSet = ids.ToHashSet();
+        return await _context.Produtos
+            .Where(p => idSet.Contains(p.Id))
+            .ToListAsync();
+    }
+
     public async Task<IEnumerable<Produto>> ListarTodosAsync()
         => await _context.Produtos.ToListAsync();
 
@@ -33,6 +41,11 @@ public class ProdutoRepository : IProdutoRepository
         => await _context.Produtos
             .Where(p => p.QuantidadeEstoque <= p.QuantidadeMinimo)
             .OrderBy(p => p.QuantidadeEstoque)
+            .ToListAsync();
+
+    public async Task<IEnumerable<Produto>> ListarAtivosAsync()
+        => await _context.Produtos
+            .Where(p => p.Status)
             .ToListAsync();
 
     public async Task AdicionarAsync(Produto produto)
