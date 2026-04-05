@@ -113,11 +113,16 @@ public class PedidoController : ControllerBase
     /// Valida que o pedido pertence ao cliente logado.
     /// </summary>
     [HttpPost("{id}/cancelar")]
-    public async Task<IActionResult> Cancelar(int id, [FromQuery] int clienteId)
+    public async Task<IActionResult> Cancelar(int id)
     {
+        var clienteIdString = HttpContext.Session?.GetString("ClienteId");
+
+        if (string.IsNullOrEmpty(clienteIdString) || !int.TryParse(clienteIdString, out var clienteId))
+            return Unauthorized(new { mensagem = "Cliente não autenticado." });
+
         try
         {
-            await _pedidoService.CancelarAsync(id, clienteId);
+            await _pedidoService.CancelarAsync(id, int.Parse(clienteIdString));
             return Ok(new { mensagem = "Pedido cancelado com sucesso." });
         }
         catch (KeyNotFoundException ex)
