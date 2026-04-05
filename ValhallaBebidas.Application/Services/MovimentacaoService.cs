@@ -89,7 +89,7 @@ public class MovimentacaoService
         if (produto == null)
             throw new KeyNotFoundException($"Produto com Id {dto.ProdutoId} nao encontrado.");
 
-        var quantidade = (int)dto.Quantidade;
+        var quantidade = dto.Quantidade;
         if (quantidade <= 0)
             throw new InvalidOperationException("A quantidade de saida deve ser maior que zero.");
 

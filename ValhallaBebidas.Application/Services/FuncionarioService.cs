@@ -200,32 +200,4 @@ public class FuncionarioService
         Login = f.Login,
         Status = f.Status,
     };
-
-    public async Task<LoginFuncionarioResponseDto> AutenticarAsync(LoginFuncionarioDto loginDto)
-    {
-        var funcionario = await _funcionarioRepository.ObterPorEmailAsync(loginDto.Login);
-
-        if (funcionario == null || !BCrypt.Net.BCrypt.Verify(loginDto.Senha, funcionario.SenhaHash))
-            return new LoginFuncionarioResponseDto
-            {
-                Sucesso = false,
-                Mensagem = "Email ou senha inválidos."
-            };
-
-        if (!funcionario.Status)
-            return new LoginFuncionarioResponseDto
-            {
-                Sucesso = false,
-                Mensagem = "Conta inativa. Entre em contato com o administrador."
-            };
-
-        return new LoginFuncionarioResponseDto
-        {
-            Id = funcionario.Id,
-            Nome = funcionario.NomeCompleto,
-            Email = funcionario.Email,
-            Sucesso = true,
-            Mensagem = "Login realizado com sucesso.",
-        };
-    }
 }

@@ -29,7 +29,7 @@ public class CriarPedidoDto
 {
     public int ClienteId { get; set; }
     public List<CriarItemPedidoDto> Itens { get; set; } = new();
-    public EnderecoEntregaDto? EnderecoEntrega { get; set; }
+    public EnderecoEntregaDto? Entrega { get; set; }
 }
 
 public class CriarItemPedidoDto
@@ -56,3 +56,4 @@ public class AtualizarPedidoDto
     public string Status { get; set; } = "Pendente";
     public List<CriarItemPedidoDto> Itens { get; set; } = new();
 }
+
