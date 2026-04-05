@@ -109,6 +109,32 @@ public class PedidoController : ControllerBase
     }
 
     /// <summary>
+    /// Cancela um pedido e devolve o estoque dos itens.
+    /// Valida que o pedido pertence ao cliente logado.
+    /// </summary>
+    [HttpPost("{id}/cancelar")]
+    public async Task<IActionResult> Cancelar(int id, [FromQuery] int clienteId)
+    {
+        try
+        {
+            await _pedidoService.CancelarAsync(id, clienteId);
+            return Ok(new { mensagem = "Pedido cancelado com sucesso." });
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(new { mensagem = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return Conflict(new { mensagem = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { mensagem = ex.Message });
+        }
+    }
+
+    /// <summary>
     /// Remove um pedido.
     /// </summary>
     [HttpDelete("{id}")]
