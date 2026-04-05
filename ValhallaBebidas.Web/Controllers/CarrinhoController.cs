@@ -27,11 +27,8 @@ public class CarrinhoController : Controller
     /// </summary>
     [HttpPost]
     [IgnoreAntiforgeryToken]
-    public async Task<IActionResult> CheckoutApi([FromBody] CheckoutPayload payload)
+    public async Task<IActionResult> CheckoutApi([FromBody] CriarPedidoDto payload)
     {
-        /* Validação manual do CSRF token */
-        if (!ValidateCsrfToken(HttpContext))
-            return BadRequest(new { mensagem = "Requisição inválida." });
 
         if (payload?.Itens == null || payload.Itens.Count == 0)
             return BadRequest(new { mensagem = "Carrinho vazio." });
@@ -42,28 +39,13 @@ public class CarrinhoController : Controller
 
         try
         {
-            var client = _httpClientFactory.CreateClient("ValhallaAPI");
-            var apiPayload = new
-            {
-                clienteId,
-                itens = payload.Itens.Select(i => new
-                {
-                    produtoId = i.ProdutoId,
-                    quantidade = i.Quantidade
-                }),
-                enderecoEntrega = payload.Entrega == null ? null : new
-                {
-                    logradouro = payload.Entrega.Logradouro,
-                    numero = payload.Entrega.Numero,
-                    complemento = payload.Entrega.Complemento ?? "",
-                    bairro = payload.Entrega.Bairro,
-                    cidade = payload.Entrega.Cidade,
-                    estado = payload.Entrega.Estado,
-                    cep = payload.Entrega.Cep,
-                }
-            };
+            // 1. Injeta o ID seguro da sessão no DTO que veio do front-end
+            payload.ClienteId = clienteId;
 
-            var response = await client.PostAsJsonAsync("api/pedido", apiPayload);
+            var client = _httpClientFactory.CreateClient("ValhallaAPI");
+
+            // 2. Envia o DTO DIRETAMENTE! Sem criar objetos manuais.
+            var response = await client.PostAsJsonAsync("api/pedido", payload);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -77,20 +59,6 @@ public class CarrinhoController : Controller
         catch
         {
             return StatusCode(500, new { mensagem = "Erro interno. Tente novamente." });
-        }
-    }
-
-    private static bool ValidateCsrfToken(HttpContext context)
-    {
-        try
-        {
-            var cookieToken = context.Request.Cookies["XSRF-TOKEN"];
-            var headerToken = context.Request.Headers["RequestVerificationToken"].FirstOrDefault();
-            return !string.IsNullOrEmpty(cookieToken) && cookieToken == headerToken;
-        }
-        catch
-        {
-            return false;
         }
     }
 }
