@@ -6,17 +6,17 @@
     <link rel="stylesheet" href="~/css/login.css" />
     <link rel="stylesheet" href="~/css/page-animations.css" />
     <style>
-        /* Hide global nav just for this page to use custom login layout */
+        /* Hide global nav/footer, reset container */
         .nav { display: none !important; }
-        .container { max-width: none; padding: 0; }
-        /* Hide global footer on login page to avoid it showing beside the panel */
         .footer { display: none !important; }
-        /* Fix: on small screens remove body top padding (set globally by homepage.css)
-           and pin the page-specific nav to the top so it appears at viewport top */
+        .container { max-width: none !important; padding: 0 !important; }
+        main.pb-3 { padding-bottom: 0 !important; }
+        html, body { padding: 0 !important; margin: 0 !important; overflow-x: hidden; }
+        .login__erro { color: #e05c5c !important; }
+
+        /* Fix mobile */
         @@media (max-width: 600px) {
-            body { padding-top: 0 !important; }
             .login__nav { position: fixed; top: 0; left: 0; right: 0; z-index: 2000; }
-            /* Center the login content vertically on small screens */
             .login {
                 min-height: calc(100vh - var(--nav-height, 80px));
                 display: flex;
@@ -25,7 +25,6 @@
                 align-items: center;
                 padding-top: 0;
             }
-            /* Ensure brand + form are stacked nicely */
             .login__brand, .login__form-wrapper { width: 100%; max-width: 420px; }
             .login__brand { margin-bottom: 24px; }
         }
@@ -90,12 +89,20 @@
 
             <label for="senha" class="login__input">
               <img src="~/img/Icons/Lock.svg" alt="" />
-              <input type="password" id="senha" name="Senha" placeholder="Digite sua senha" autocomplete="current-password" required />
+              <input type="password" class="input__senha" id="senha" name="Senha" placeholder="Digite sua senha" autocomplete="current-password" required />
+              <span class="login__input__toggle" id="toggleSenha" role="button" tabindex="0" aria-label="Mostrar senha">
+                <img src="/img/Icons/EyeOpen.svg" alt="" class="eye-open" />
+                <img src="/img/Icons/EyeClose.svg" alt="" class="eye-close" style="display:none" />
+              </span>
             </label>
 
           </div>
 
           <div class="login__actions">
+            @if (!string.IsNullOrEmpty(ViewBag.Erro))
+            {
+                <p class="login__erro">@ViewBag.Erro</p>
+            }
             <button type="submit" class="login__btn">Acessar conta</button>
             <p class="login__register">Não tem uma conta? <a asp-controller="Auth" asp-action="Cadastro">Inscreva-se</a></p>
           </div>

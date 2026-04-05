@@ -1,12 +1,10 @@
 /* ════════════════════════════════════════════════════════
-   login.js — Valhalla Bebidas (MVC)
-   Depende de: auth.js (isLogado)
+   login.js — Valhalla Bebidas (MVC — Session segura)
+   O submit agora vai para o Controller via form POST
+   O controller valida e cria a Session no servidor
 ════════════════════════════════════════════════════════ */
 
-/* ── Redireciona se já logado ── */
-if (isLogado) window.location.href = '/';
-
-/* ── Dropdown mobile do login ── */
+/* ── Dropdown mobile ── */
 const loginMenuBtn = document.getElementById('loginMenuBtn');
 const loginDropMobile = document.getElementById('loginDropMobile');
 
@@ -16,73 +14,70 @@ loginMenuBtn?.addEventListener('click', (e) => {
 });
 
 document.addEventListener('click', (e) => {
-    if (!loginDropMobile?.contains(e.target) && !loginMenuBtn?.contains(e.target)) {
+    if (!loginDropMobile?.contains(e.target) && !loginMenuBtn?.contains(e.target))
         loginDropMobile?.classList.remove('open');
-    }
 });
 
-loginDropMobile?.querySelectorAll('.nav__dropdown-item').forEach(item =>
-    item.addEventListener('click', () => loginDropMobile.classList.remove('open'))
-);
-
 /* ── Erros por campo ── */
-function mostrarErroInput(id, mensagem) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = mensagem;
+function mostrarErroForm(mensagem) {
+    // Remove erro anterior se existir
+    const existente = document.querySelector('.login__erro');
+    if (existente) existente.remove();
+
+    // Cria erro dinâmico dentro do form
+    const erro = document.createElement('p');
+    erro.className = 'login__erro';
+    erro.textContent = mensagem;
+    const actions = document.querySelector('.login__actions');
+    actions?.insertBefore(erro, actions.firstChild);
 }
 
-function limparErroInput(id) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = '';
+function limparErroForm() {
+    const existente = document.querySelector('.login__erro');
+    if (existente) existente.remove();
 }
 
-/* ── Submit ── */
+/* ════════════════════════════════════════════════════════
+   TOGGLE SENHA — Mostrar / ocultar
+════════════════════════════════════════════════════════ */
+const toggleSenha = document.getElementById('toggleSenha');
+
+toggleSenha?.addEventListener('click', () => {
+    const input = document.getElementById('senha');
+    const isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
+
+    // Troca o ícone visível
+    const eyeOpen = toggleSenha.querySelector('.eye-open');
+    const eyeClose = toggleSenha.querySelector('.eye-close');
+    if (isPassword) { eyeOpen.style.display = 'none'; eyeClose.style.display = 'block'; }
+    else { eyeOpen.style.display = 'block'; eyeClose.style.display = 'none'; }
+
+    // Atualiza aria-label para acessibilidade
+    toggleSenha.setAttribute('aria-label', isPassword ? 'Ocultar senha' : 'Mostrar senha');
+});
+
+/* ── Validação antes de submeter ── */
 const formLogin = document.getElementById('formLogin');
 
-formLogin?.addEventListener('submit', async (e) => {
-    e.preventDefault();
+formLogin?.addEventListener('submit', (e) => {
+    const email = document.getElementById('email')?.value.trim();
+    const senha = document.getElementById('senha')?.value;
 
-    const email = document.getElementById('email').value.trim();
-    const senha = document.getElementById('senha').value;
+    limparErroForm();
 
-    limparErroInput('erroEmail');
-    limparErroInput('erroSenha');
-
-    /* Validações frontend */
-    if (!email.includes('@') || !email.includes('.')) {
-        mostrarErroInput('erroEmail', 'Digite um email válido.');
+    if (!email || !email.includes('@') || !email.includes('.')) {
+        mostrarErroForm('Digite um email válido.');
+        e.preventDefault();
         return;
     }
 
-    if (senha.length < 6) {
-        mostrarErroInput('erroSenha', 'Senha deve ter pelo menos 6 caracteres.');
+    if (!senha || senha.length < 6) {
+        mostrarErroForm('Senha deve ter pelo menos 6 caracteres.');
+        e.preventDefault();
         return;
     }
 
-    /* ── Simulação ── */
-    const usuarioFake = { id: 1, nome: 'João Silva', email, sucesso: true, mensagem: 'Login realizado.' };
-    console.log('Payload login:', { email, senha });
-
-    if (usuarioFake.sucesso) {
-        localStorage.setItem('logado', 'true');
-        localStorage.setItem('nomeUser', usuarioFake.nome.split(' ')[0]);
-        window.location.href = '/';
-    }
-
-    /* ── API — descomenta quando pronto ── */
-    /*
-    try {
-      const response = await fetch('https://localhost:7001/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ email, senha })
-      });
-      const data = await response.json();
-      if (!response.ok) { mostrarErroInput('erroEmail', data.mensagem); return; }
-      localStorage.setItem('logado', 'true');
-      localStorage.setItem('nomeUser', data.nome.split(' ')[0]);
-      window.location.href = '/';
-    } catch { mostrarErroInput('erroEmail', 'Erro de conexão.'); }
-    */
+    /* Se válido o form submete normalmente para POST /Auth/Login
+       O controller trata a autenticação e cria a Session */
 });

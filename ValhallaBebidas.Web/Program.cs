@@ -6,7 +6,7 @@ builder.Services.AddControllersWithViews();
 // HttpClient para chamar a API
 builder.Services.AddHttpClient("ValhallaAPI", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7001/");
+    client.BaseAddress = new Uri("http://localhost:5101/");
     client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
 
