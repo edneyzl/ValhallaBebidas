@@ -8,7 +8,7 @@ public class ImagemController : ControllerBase
 {
     private readonly IWebHostEnvironment _environment;
 
-    public ImagensController(IWebHostEnvironment environment)
+    public ImagemController(IWebHostEnvironment environment)
     {
         _environment = environment;
     }
