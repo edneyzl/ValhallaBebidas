@@ -153,24 +153,32 @@ public class PedidoService
     public async Task CancelarAsync(int id, int clienteId)
     {
         var pedido = await _pedidoRepository.ObterPorIdAsync(id);
-
         if (pedido == null)
-        throw new KeyNotFoundException($"Pedido com Id {id} não encontrado.");
+            throw new KeyNotFoundException($"Pedido com Id {id} não encontrado.");
+
+        if (pedido.ClienteId != clienteId)
+            throw new InvalidOperationException("Você não tem permissão para cancelar este pedido.");
+
+        if (pedido.Status == StatusPedido.Cancelado)
+            throw new InvalidOperationException("Pedido já está cancelado.");
 
         var produtoIds = pedido.Itens.Select(i => i.ProdutoId).Distinct();
         var produtos = (await _produtoRepository.ObterPorIdsAsync(produtoIds)).ToDictionary(p => p.Id);
 
         foreach (var item in pedido.Itens)
         {
-            if (produtos.TryGetValue(item.ProdutoId, out var produto))
-            {
-                produto.QuantidadeEstoque += item.Quantidade;
+            if (!produtos.TryGetValue(item.ProdutoId, out var produto)) continue;
 
-                await _movimentacaoRepository.AdicionarAsync(new Movimentacao
-                {
-                    // ... sua lógica de movimentação ...
-                });
-            }
+            produto.QuantidadeEstoque += item.Quantidade;
+
+            await _movimentacaoRepository.AdicionarAsync(new Movimentacao
+            {
+                ProdutoId = produto.Id,
+                Quantidade = item.Quantidade,
+                Direcao = DirecaoMovimentacao.Entrada,
+                Motivo = $"Estorno — cancelamento pedido #{id}",
+                Data = DateTime.UtcNow,
+            });
         }
 
         pedido.Status = StatusPedido.Cancelado;
