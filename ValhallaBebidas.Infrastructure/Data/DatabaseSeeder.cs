@@ -44,7 +44,7 @@ public static class DatabaseSeeder
                 Logradouro = "Vicente Garcia",
                 Numero = 24,
                 Complemento = "Fundos",
-                Cep = "08440-261",
+                Cep = "08440261",
                 Bairro = "Guaianases",
                 Cidade = "São Paulo",
                 Estado = "SP",

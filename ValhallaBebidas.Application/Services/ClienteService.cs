@@ -8,16 +8,13 @@ public class ClienteService
 {
     private readonly IClienteRepository _clienteRepository;
     private readonly IEnderecoRepository _enderecoRepository;
-    private readonly IUnitOfWork _unitOfWork;
 
     public ClienteService(
         IClienteRepository clienteRepository,
-        IEnderecoRepository enderecoRepository,
-        IUnitOfWork unitOfWork)
+        IEnderecoRepository enderecoRepository)
     {
         _clienteRepository = clienteRepository;
         _enderecoRepository = enderecoRepository;
-        _unitOfWork = unitOfWork;
     }
 
     // ════════════════════════════════════════
@@ -91,7 +88,6 @@ public class ClienteService
         };
 
         await _clienteRepository.AdicionarAsync(cliente);
-        await _unitOfWork.SaveChangesAsync();
 
         return MapearParaDto(cliente);
     }
@@ -116,7 +112,7 @@ public class ClienteService
         cliente.DataNascimento = dto.DataNascimento;
 
         await _clienteRepository.AtualizarAsync(cliente);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
@@ -130,7 +126,6 @@ public class ClienteService
 
         cliente.Status = status;
         await _clienteRepository.AtualizarAsync(cliente);
-        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -143,7 +138,6 @@ public class ClienteService
             throw new KeyNotFoundException($"Cliente com Id {id} não encontrado.");
 
         await _clienteRepository.RemoverAsync(id);
-        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -229,7 +223,6 @@ public class ClienteService
         enderecoExistente.Estado = dto.Estado;
 
         await _enderecoRepository.AtualizarAsync(enderecoExistente);
-        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -246,6 +239,5 @@ public class ClienteService
 
         cliente.SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.NovaSenha);
         await _clienteRepository.AtualizarAsync(cliente);
-        await _unitOfWork.SaveChangesAsync();
     }
 }

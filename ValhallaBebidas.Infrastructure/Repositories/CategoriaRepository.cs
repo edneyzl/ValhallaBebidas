@@ -26,11 +26,13 @@ public class CategoriaRepository : ICategoriaRepository
     public async Task AdicionarAsync(Categoria categoria)
     {
         await _context.Categorias.AddAsync(categoria);
+                await _context.SaveChangesAsync();
     }
 
     public async Task AtualizarAsync(Categoria categoria)
     {
         _context.Categorias.Update(categoria);
+        await _context.SaveChangesAsync();
     }
 
     public async Task RemoverAsync(int id)
@@ -39,6 +41,7 @@ public class CategoriaRepository : ICategoriaRepository
         if (categoria != null)
         {
             _context.Categorias.Remove(categoria);
+            await _context.SaveChangesAsync();
         }
     }
 }

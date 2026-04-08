@@ -8,16 +8,14 @@ public class FuncionarioService
 {
     private readonly IFuncionarioRepository _funcionarioRepository;
     private readonly IEnderecoRepository _enderecoRepository;
-    private readonly IUnitOfWork _unitOfWork;
+
 
     public FuncionarioService(
         IFuncionarioRepository funcionarioRepository,
-        IEnderecoRepository enderecoRepository,
-        IUnitOfWork unitOfWork)
+        IEnderecoRepository enderecoRepository)
     {
         _funcionarioRepository = funcionarioRepository;
         _enderecoRepository = enderecoRepository;
-        _unitOfWork = unitOfWork;
     }
 
     // ════════════════════════════════════════
@@ -88,7 +86,7 @@ public class FuncionarioService
         };
 
         await _funcionarioRepository.AdicionarAsync(funcionario);
-        await _unitOfWork.SaveChangesAsync();
+
 
         return MapearParaDto(funcionario);
     }
@@ -124,7 +122,7 @@ public class FuncionarioService
             funcionario.SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.Senha);
 
         await _funcionarioRepository.AtualizarAsync(funcionario);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
@@ -138,7 +136,7 @@ public class FuncionarioService
 
         funcionario.Status = status;
         await _funcionarioRepository.AtualizarAsync(funcionario);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
@@ -151,7 +149,7 @@ public class FuncionarioService
             throw new KeyNotFoundException($"Funcionário com Id {id} não encontrado.");
 
         await _funcionarioRepository.RemoverAsync(id);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════

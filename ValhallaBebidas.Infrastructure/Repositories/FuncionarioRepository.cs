@@ -35,11 +35,13 @@ public class FuncionarioRepository : IFuncionarioRepository
     public async Task AdicionarAsync(Funcionario funcionario)
     {
         await _context.Funcionarios.AddAsync(funcionario);
+        await _context.SaveChangesAsync();
     }
 
     public async Task AtualizarAsync(Funcionario funcionario)
     {
         _context.Funcionarios.Update(funcionario);
+        await _context.SaveChangesAsync();
     }
 
     public async Task RemoverAsync(int id)
@@ -48,6 +50,7 @@ public class FuncionarioRepository : IFuncionarioRepository
         if (funcionario != null)
         {
             _context.Funcionarios.Remove(funcionario);
+            await _context.SaveChangesAsync();
         }
     }
 }

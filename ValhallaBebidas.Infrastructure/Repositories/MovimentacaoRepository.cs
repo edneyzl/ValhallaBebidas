@@ -34,11 +34,13 @@ public class MovimentacaoRepository : IMovimentacaoRepository
     public async Task AdicionarAsync(Movimentacao movimentacao)
     {
         await _context.Movimentacoes.AddAsync(movimentacao);
+        await _context.SaveChangesAsync();
     }
 
     public async Task AtualizarAsync(Movimentacao movimentacao)
     {
         _context.Movimentacoes.Update(movimentacao);
+        await _context.SaveChangesAsync();
     }
 
     public async Task RemoverAsync(int id)
@@ -47,6 +49,7 @@ public class MovimentacaoRepository : IMovimentacaoRepository
         if (movimentacao != null)
         {
             _context.Movimentacoes.Remove(movimentacao);
+            await _context.SaveChangesAsync();
         }
     }
 }

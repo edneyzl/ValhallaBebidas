@@ -208,7 +208,7 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
                 .HasForeignKey(i => i.PedidoId);
 
             entity.HasOne(i => i.Produto)
-                .WithMany()
+                .WithMany(p => p.ItensPedido) // 🔥FIO ESSENCIAL
                 .HasForeignKey(i => i.ProdutoId);
         });
 

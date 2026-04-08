@@ -11,20 +11,19 @@ public class PedidoService
     private readonly IClienteRepository _clienteRepository;
     private readonly IProdutoRepository _produtoRepository;
     private readonly IMovimentacaoRepository _movimentacaoRepository;
-    private readonly IUnitOfWork _unitOfWork;
+
 
     public PedidoService(
         IPedidoRepository pedidoRepository,
         IClienteRepository clienteRepository,
         IProdutoRepository produtoRepository,
-        IMovimentacaoRepository movimentacaoRepository,
-        IUnitOfWork unitOfWork)
+        IMovimentacaoRepository movimentacaoRepository)
     {
         _pedidoRepository = pedidoRepository;
         _clienteRepository = clienteRepository;
         _produtoRepository = produtoRepository;
         _movimentacaoRepository = movimentacaoRepository;
-        _unitOfWork = unitOfWork;
+
     }
 
     // ════════════════════════════════════════
@@ -122,7 +121,7 @@ public class PedidoService
         pedido.RecalcularTotal();
 
         await _pedidoRepository.AdicionarAsync(pedido);
-        await _unitOfWork.SaveChangesAsync();
+
 
         /* Retorna do change tracker — sem nova query */
         var salvo = await _pedidoRepository.ObterPorIdAsync(pedido.Id);
@@ -143,7 +142,7 @@ public class PedidoService
             throw new InvalidOperationException("Um pedido cancelado não pode ser alterado.");
 
         pedido.Status = novoStatus;
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
@@ -182,7 +181,7 @@ public class PedidoService
         }
 
         pedido.Status = StatusPedido.Cancelado;
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
@@ -195,7 +194,7 @@ public class PedidoService
             throw new KeyNotFoundException($"Pedido com Id {id} não encontrado.");
 
         await _pedidoRepository.RemoverAsync(id);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
