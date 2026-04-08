@@ -9,16 +9,15 @@ public class MovimentacaoService
 {
     private readonly IMovimentacaoRepository _movimentacaoRepository;
     private readonly IProdutoRepository _produtoRepository;
-    private readonly IUnitOfWork _unitOfWork;
+
 
     public MovimentacaoService(
         IMovimentacaoRepository movimentacaoRepository,
-        IProdutoRepository produtoRepository,
-        IUnitOfWork unitOfWork)
+        IProdutoRepository produtoRepository)
     {
         _movimentacaoRepository = movimentacaoRepository;
         _produtoRepository = produtoRepository;
-        _unitOfWork = unitOfWork;
+
     }
 
     // ════════════════════════════════════════
@@ -75,7 +74,7 @@ public class MovimentacaoService
         await _produtoRepository.AtualizarAsync(produto);
 
         await _movimentacaoRepository.AdicionarAsync(movimentacao);
-        await _unitOfWork.SaveChangesAsync();
+
 
         return MapearParaDto(movimentacao);
     }
@@ -111,7 +110,6 @@ public class MovimentacaoService
         await _produtoRepository.AtualizarAsync(produto);
 
         await _movimentacaoRepository.AdicionarAsync(movimentacao);
-        await _unitOfWork.SaveChangesAsync();
 
         return MapearParaDto(movimentacao);
     }
@@ -148,7 +146,7 @@ public class MovimentacaoService
         }
 
         await _produtoRepository.AtualizarAsync(produto);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
@@ -158,7 +156,7 @@ public class MovimentacaoService
     public async Task RemoverAsync(int id)
     {
         await _movimentacaoRepository.RemoverAsync(id);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════

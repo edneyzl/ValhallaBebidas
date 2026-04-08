@@ -51,11 +51,13 @@ public class ProdutoRepository : IProdutoRepository
     public async Task AdicionarAsync(Produto produto)
     {
         await _context.Produtos.AddAsync(produto);
+        await _context.SaveChangesAsync();
     }
 
     public async Task AtualizarAsync(Produto produto)
     {
         _context.Produtos.Update(produto);
+        await _context.SaveChangesAsync();
     }
 
     public async Task RemoverAsync(int id)
@@ -64,6 +66,7 @@ public class ProdutoRepository : IProdutoRepository
         if (produto != null)
         {
             _context.Produtos.Remove(produto);
+            await _context.SaveChangesAsync();
         }
     }
 }

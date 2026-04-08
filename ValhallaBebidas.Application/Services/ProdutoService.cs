@@ -8,16 +8,15 @@ public class ProdutoService
 {
     private readonly IProdutoRepository _produtoRepository;
     private readonly ICategoriaRepository _categoriaRepository;
-    private readonly IUnitOfWork _unitOfWork;
+
 
     public ProdutoService(
         IProdutoRepository produtoRepository,
-        ICategoriaRepository categoriaRepository,
-        IUnitOfWork unitOfWork)
+        ICategoriaRepository categoriaRepository)
     {
         _produtoRepository = produtoRepository;
         _categoriaRepository = categoriaRepository;
-        _unitOfWork = unitOfWork;
+
     }
 
     // ════════════════════════════════════════
@@ -98,7 +97,7 @@ public class ProdutoService
         };
 
         await _produtoRepository.AdicionarAsync(produto);
-        await _unitOfWork.SaveChangesAsync();
+
 
         return MapearParaDto(produto);
     }
@@ -136,7 +135,7 @@ public class ProdutoService
             produto.FotoProduto = dto.FotoProduto;
 
         await _produtoRepository.AtualizarAsync(produto);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
@@ -150,7 +149,7 @@ public class ProdutoService
 
         produto.Status = status;
         await _produtoRepository.AtualizarAsync(produto);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
@@ -163,7 +162,7 @@ public class ProdutoService
             throw new KeyNotFoundException($"Produto com Id {id} não encontrado.");
 
         await _produtoRepository.RemoverAsync(id);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
