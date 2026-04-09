@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ValhallaBebidas.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,7 +34,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     Logradouro = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Numero = table.Column<int>(type: "int", nullable: false),
                     Complemento = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Cep = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
+                    Cep = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: false),
                     Bairro = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
                     Cidade = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
                     Estado = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false)
@@ -80,8 +80,8 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomeCliente = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Documento = table.Column<string>(type: "nvarchar(14)", maxLength: 14, nullable: false),
+                    DataNascimento = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Documento = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Telefone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     SenhaHash = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
@@ -106,7 +106,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomeCompleto = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DataNascimento = table.Column<DateTime>(type: "datetime", nullable: false),
                     Cpf = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     Telefone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
@@ -165,7 +165,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     EnderecoEntregaBairro = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: true),
                     EnderecoEntregaCidade = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: true),
                     EnderecoEntregaEstado = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: true),
-                    EnderecoEntregaCep = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: true)
+                    EnderecoEntregaCep = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: true)
                 },
                 constraints: table =>
                 {

@@ -1,18 +1,18 @@
-// Program.cs
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-// HttpClient para chamar a API
 builder.Services.AddHttpClient("ValhallaAPI", client =>
 {
-    client.BaseAddress = new Uri(builder.Configuration["ApiBaseUrl"]
-        ?? "http://localhost:5101/");
+    client.BaseAddress = new Uri(
+        builder.Configuration["ApiBaseUrl"] ?? "http://localhost:5101/"
+    );
+
     client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
 
-// Session para guardar o usuário logado
 builder.Services.AddDistributedMemoryCache();
+
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromHours(8);

@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ValhallaBebidas.Domain.Entities;
 using ValhallaBebidas.Domain.Interfaces;
 using ValhallaBebidas.Infrastructure.Data;
@@ -16,35 +15,51 @@ public class ProdutoRepository : IProdutoRepository
     }
 
     public async Task<Produto?> ObterPorIdAsync(int id)
-        => await _context.Produtos.FindAsync(id);
+        => await _context.Produtos
+            .AsNoTracking()
+            .Include(p => p.Categoria)
+            .FirstOrDefaultAsync(p => p.Id == id);
 
     public async Task<Produto?> ObterPorEanAsync(string ean)
-    => await _context.Produtos.FirstOrDefaultAsync(p => p.Ean == ean);
+        => await _context.Produtos
+            .FirstOrDefaultAsync(p => p.Ean == ean);
 
     public async Task<IEnumerable<Produto>> ObterPorIdsAsync(IEnumerable<int> ids)
     {
         var idSet = ids.ToHashSet();
+
         return await _context.Produtos
+            .AsNoTracking()
+            .Include(p => p.Categoria)
             .Where(p => idSet.Contains(p.Id))
             .ToListAsync();
     }
 
     public async Task<IEnumerable<Produto>> ListarTodosAsync()
-        => await _context.Produtos.ToListAsync();
+        => await _context.Produtos
+            .AsNoTracking()
+            .Include(p => p.Categoria)
+            .ToListAsync();
 
     public async Task<IEnumerable<Produto>> ListarPorCategoriaAsync(int categoriaId)
         => await _context.Produtos
-            .Where(p => p.CategoriaId == categoriaId)
+            .AsNoTracking()
+            .Include(p => p.Categoria)
+            .Where(p => p.Status && p.CategoriaId == categoriaId)
             .ToListAsync();
 
     public async Task<IEnumerable<Produto>> ObterEstoqueBaixoAsync()
         => await _context.Produtos
+            .AsNoTracking()
+            .Include(p => p.Categoria)
             .Where(p => p.QuantidadeEstoque <= p.QuantidadeMinimo)
             .OrderBy(p => p.QuantidadeEstoque)
             .ToListAsync();
 
     public async Task<IEnumerable<Produto>> ListarAtivosAsync()
         => await _context.Produtos
+            .AsNoTracking()
+            .Include(p => p.Categoria)
             .Where(p => p.Status)
             .ToListAsync();
 
@@ -62,7 +77,8 @@ public class ProdutoRepository : IProdutoRepository
 
     public async Task RemoverAsync(int id)
     {
-        var produto = await ObterPorIdAsync(id);
+        var produto = await _context.Produtos.FirstOrDefaultAsync(p => p.Id == id);
+
         if (produto != null)
         {
             _context.Produtos.Remove(produto);

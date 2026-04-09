@@ -52,12 +52,12 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Documento")
                         .IsRequired()
-                        .HasMaxLength(14)
-                        .HasColumnType("nvarchar(14)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -113,8 +113,8 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.Property<string>("Cep")
                         .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                        .HasMaxLength(9)
+                        .HasColumnType("nvarchar(9)");
 
                     b.Property<string>("Cidade")
                         .IsRequired()
@@ -165,7 +165,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(11)");
 
                     b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -301,8 +301,8 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(120)");
 
                     b.Property<string>("EnderecoEntregaCep")
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                        .HasMaxLength(9)
+                        .HasColumnType("nvarchar(9)");
 
                     b.Property<string>("EnderecoEntregaCidade")
                         .HasMaxLength(120)
