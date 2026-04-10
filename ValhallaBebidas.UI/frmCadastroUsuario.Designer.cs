@@ -363,7 +363,7 @@
             guna2TextBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2TextBox1.ForeColor = Color.LightGray;
             guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(311, 120);
+            guna2TextBox1.Location = new Point(277, 120);
             guna2TextBox1.Margin = new Padding(4);
             guna2TextBox1.Name = "guna2TextBox1";
             guna2TextBox1.PlaceholderForeColor = Color.DarkGray;
@@ -388,7 +388,7 @@
             guna2TextBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2TextBox2.ForeColor = Color.LightGray;
             guna2TextBox2.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox2.Location = new Point(311, 162);
+            guna2TextBox2.Location = new Point(277, 177);
             guna2TextBox2.Margin = new Padding(4);
             guna2TextBox2.Name = "guna2TextBox2";
             guna2TextBox2.PlaceholderForeColor = Color.DarkGray;
@@ -413,7 +413,7 @@
             guna2TextBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2TextBox3.ForeColor = Color.LightGray;
             guna2TextBox3.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox3.Location = new Point(38, 120);
+            guna2TextBox3.Location = new Point(14, 120);
             guna2TextBox3.Margin = new Padding(4);
             guna2TextBox3.Name = "guna2TextBox3";
             guna2TextBox3.PlaceholderForeColor = Color.DarkGray;
@@ -438,7 +438,7 @@
             guna2TextBox4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2TextBox4.ForeColor = Color.LightGray;
             guna2TextBox4.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox4.Location = new Point(38, 162);
+            guna2TextBox4.Location = new Point(14, 177);
             guna2TextBox4.Margin = new Padding(4);
             guna2TextBox4.Name = "guna2TextBox4";
             guna2TextBox4.PlaceholderForeColor = Color.DarkGray;
