@@ -12,6 +12,9 @@ namespace ValhallaBebidas.UI
 
         }
 
-       
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }
