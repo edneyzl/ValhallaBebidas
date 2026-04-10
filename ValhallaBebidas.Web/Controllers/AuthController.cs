@@ -96,7 +96,7 @@ public class AuthController : Controller
             senha = model.Senha,
             endereco = new
             {
-                tipoLogradouro = "Rua",
+                tipoLogradouro = "",
                 logradouro = model.Endereco.Logradouro,
                 numero = model.Endereco.Numero,
                 complemento = model.Endereco.Complemento ?? "",

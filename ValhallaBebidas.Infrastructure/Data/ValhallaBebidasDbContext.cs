@@ -36,7 +36,7 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
             entity.Property(e => e.TipoLogradouro).IsRequired().HasMaxLength(50);
             entity.Property(e => e.Logradouro).IsRequired().HasMaxLength(200);
             entity.Property(e => e.Numero).IsRequired();
-            entity.Property(e => e.Complemento).HasMaxLength(150); /* opcional */
+            entity.Property(e => e.Complemento).HasMaxLength(150);
             entity.Property(e => e.Cep).IsRequired().HasMaxLength(9);
             entity.Property(e => e.Bairro).IsRequired().HasMaxLength(120);
             entity.Property(e => e.Cidade).IsRequired().HasMaxLength(120);
