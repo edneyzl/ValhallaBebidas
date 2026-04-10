@@ -239,7 +239,7 @@
             guna2TextBox2.Margin = new Padding(11, 12, 11, 12);
             guna2TextBox2.Name = "guna2TextBox2";
             guna2TextBox2.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
-            guna2TextBox2.PlaceholderText = "📧 Digite seu e-mail";
+            guna2TextBox2.PlaceholderText = "📧 Digite seu e-mail ";
             guna2TextBox2.SelectedText = "";
             guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2TextBox2.Size = new Size(358, 51);
