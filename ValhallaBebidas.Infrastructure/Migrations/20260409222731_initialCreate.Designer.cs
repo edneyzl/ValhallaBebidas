@@ -12,7 +12,7 @@ using ValhallaBebidas.Infrastructure.Data;
 namespace ValhallaBebidas.Infrastructure.Migrations
 {
     [DbContext(typeof(ValhallaBebidasDbContext))]
-    [Migration("20260409181653_initialCreate")]
+    [Migration("20260409222731_initialCreate")]
     partial class initialCreate
     {
         /// <inheritdoc />

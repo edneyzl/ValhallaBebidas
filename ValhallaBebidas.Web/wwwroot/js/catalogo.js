@@ -1,11 +1,9 @@
 /* ════════════════════════════════════════════════════════
    catalogo.js — Valhalla Bebidas (MVC — API real)
    Depende de: auth.js (isLogado) | cart.js (adicionarAoCarrinho)
-
-   Ajuste:
-   - filtros por data-categoria-id
-   - ordenação por data-ordem
-   - restante mantido como estava
+   Observações:
+   - Usa event delegation para botões .btn-add-cart
+   - Garante sanitização e normalização de dados
 ════════════════════════════════════════════════════════ */
 
 let produtos = [];
@@ -22,7 +20,8 @@ function escapar(str) {
 }
 
 function imagemSegura(url) {
-    if (!url || url.startsWith('javascript:') || url.startsWith('data:')) return '';
+    if (!url || typeof url !== 'string') return '';
+    if (url.startsWith('javascript:') || url.startsWith('data:')) return '';
     return url;
 }
 
@@ -81,7 +80,11 @@ document.querySelectorAll('.categorias button[data-categoria-id]').forEach(btn =
             li.className = 'catalogo_filter-btn';
         });
 
-        btn.closest('li').className = 'catalogo_filter-btn-active';
+        btn.closest('li')?.classList.add('catalogo_filter-btn-active');
+        // remove active from others
+        document.querySelectorAll('.categorias li.catalogo_filter-btn-active').forEach(li => {
+            if (li !== btn.closest('li')) li.className = 'catalogo_filter-btn';
+        });
 
         categoriaAtiva = btn.dataset.categoriaId || 'todos';
         renderizar();
@@ -95,7 +98,10 @@ document.querySelectorAll('.ordenacao button[data-ordem]').forEach(btn => {
             li.className = 'catalogo_filter-btn';
         });
 
-        btn.closest('li').className = 'catalogo_filter-btn-active';
+        btn.closest('li')?.classList.add('catalogo_filter-btn-active');
+        document.querySelectorAll('.ordenacao li.catalogo_filter-btn-active').forEach(li => {
+            if (li !== btn.closest('li')) li.className = 'catalogo_filter-btn';
+        });
 
         ordemAtiva = btn.dataset.ordem || 'relevancia';
         renderizar();
@@ -115,12 +121,11 @@ searchInput?.addEventListener('input', (e) => {
 
 /* ── Filtrar e ordenar ── */
 function filtrarProdutos() {
-    let resultado = [...produtos];
+    let resultado = Array.isArray(produtos) ? [...produtos] : [];
 
     /* Filtra por CategoriaId da API */
     if (categoriaAtiva !== 'todos') {
         const categoriaId = Number(categoriaAtiva);
-
         resultado = resultado.filter(p => Number(p.categoriaId) === categoriaId);
     }
 
@@ -134,15 +139,15 @@ function filtrarProdutos() {
     /* Ordenação */
     switch (ordemAtiva) {
         case 'menor':
-            resultado.sort((a, b) => a.precoVenda - b.precoVenda);
+            resultado.sort((a, b) => (Number(a.precoVenda) || 0) - (Number(b.precoVenda) || 0));
             break;
 
         case 'maior':
-            resultado.sort((a, b) => b.precoVenda - a.precoVenda);
+            resultado.sort((a, b) => (Number(b.precoVenda) || 0) - (Number(a.precoVenda) || 0));
             break;
 
         case 'nome':
-            resultado.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
+            resultado.sort((a, b) => String(a.nome).localeCompare(String(b.nome), 'pt-BR'));
             break;
 
         case 'relevancia':
@@ -155,27 +160,29 @@ function filtrarProdutos() {
 
 /* ── Render ── */
 function gerarCard(produto) {
-    const nomeEscapado = escapar(produto.nome);
-
-    const chaveCategoria = normalizar(produto.nomeCategoria);
+    const nomeEscapado = escapar(String(produto.nome || ''));
+    const chaveCategoria = normalizar(produto.nomeCategoria || '');
     const label = categoriaLabel[chaveCategoria] || produto.nomeCategoria || '';
     const labelEscapado = escapar(label);
 
     const imgSegura = imagemSegura(produto.fotoProduto);
-    const temImg = Boolean(imgSegura) && normalizar(imgSegura) !== 'string';
+    const temImg = Boolean(imgSegura);
 
-    const dadosProduto = JSON.stringify({
-        id: produto.id,
-        nome: produto.nome,
-        preco: produto.precoVenda,
-        imagem: produto.fotoProduto || '',
-    }).replace(/"/g, '&quot;');
+    // Dados para atributos data-*
+    const dataId = escapar(String(produto.id ?? ''));
+    const dataNome = escapar(String(produto.nome ?? ''));
+    const dataPreco = escapar(String(produto.precoVenda ?? '0'));
+    const dataImagem = escapar(String(produto.fotoProduto ?? ''));
 
-    const btnAdicionar = isLogado
-        ? `<a href="#" class="market-button"
-               onclick="event.preventDefault(); adicionarAoCarrinho(JSON.parse(&quot;${dadosProduto}&quot;))">
+    // Botão agora é <button type="button"> com data-attributes (sem href nem onclick inline)
+    const btnAdicionar = (typeof isLogado !== 'undefined' && isLogado)
+        ? `<button type="button" class="market-button btn-add-cart"
+               data-id="${dataId}"
+               data-nome="${dataNome}"
+               data-preco="${dataPreco}"
+               data-imagem="${dataImagem}">
                Adicionar ao carrinho
-           </a>`
+           </button>`
         : `<a href="/Auth/Login" class="market-button" style="opacity:.5">Fazer login</a>`;
 
     return `
@@ -191,11 +198,11 @@ function gerarCard(produto) {
                 ${labelEscapado ? `<p>${labelEscapado}</p>` : ''}
             </div>
 
-            <h2>R$${Number(produto.precoVenda).toFixed(2).replace('.', ',')}</h2>
+            <h2>R$${(Number(produto.precoVenda) || 0).toFixed(2).replace('.', ',')}</h2>
 
             <div class="buttons">
                 ${btnAdicionar}
-                <a href="/Catalogo/Produto?id=${produto.id}" class="details-button">Ver detalhes</a>
+                <a href="/Catalogo/Produto?id=${encodeURIComponent(produto.id)}" class="details-button">Ver detalhes</a>
             </div>
         </li>
     `;
@@ -229,4 +236,47 @@ function mostrarSkeleton() {
     `).join('');
 }
 
+/* ── Delegação de clique para botões "Adicionar ao carrinho" ──
+   Usa event delegation para funcionar mesmo quando os cards são re-renderizados.
+   Chama adicionarAoCarrinho(produto) exposto pelo cart.js.
+*/
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn-add-cart');
+    if (!btn) return;
+
+    // previne qualquer comportamento padrão (por segurança)
+    e.preventDefault();
+
+    // Se não estiver logado, redireciona para login (comportamento anterior)
+    if (typeof isLogado !== 'undefined' && !isLogado) {
+        window.location.href = '/Auth/Login';
+        return;
+    }
+
+    const id = btn.dataset.id;
+    const nome = btn.dataset.nome;
+    const preco = btn.dataset.preco;
+    const imagem = btn.dataset.imagem;
+
+    // Valida e monta o objeto produto
+    const produto = {
+        id: Number(id) || id,
+        nome: nome || '',
+        preco: Number(preco) || 0,
+        imagem: imagem || '',
+        quantidade: 1
+    };
+
+    // Chama função global do cart.js
+    if (typeof adicionarAoCarrinho === 'function') {
+        adicionarAoCarrinho(produto);
+    } else {
+        console.warn('adicionarAoCarrinho não está disponível. Verifique se cart.js foi carregado antes de catalogo.js.');
+    }
+});
+
+/* ── Inicialização ── */
 carregarProdutos();
+
+/* ── Export (opcional) ── */
+window.carregarProdutos = carregarProdutos;

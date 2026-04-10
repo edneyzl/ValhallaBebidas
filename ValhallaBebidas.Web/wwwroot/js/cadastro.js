@@ -127,6 +127,8 @@ function mostrarToast() {
     setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
+
+
 /* ── Submit — deixa o form submeter ao servidor (POST /Auth/Cadastro) ── */
 document.getElementById('formCadastro')?.addEventListener('submit', (e) => {
     const dados = {
@@ -140,11 +142,12 @@ document.getElementById('formCadastro')?.addEventListener('submit', (e) => {
         logradouro: document.getElementById('logradouro').value.trim(),
         cep: document.getElementById('cep').value.trim(),
         numero: document.getElementById('numero').value.trim(),
-        complemento: document.getElementById('complemento').value.trim(),
+        complemento: document.getElementById('complemento').value.trim() || "",
         bairro: document.getElementById('bairro').value.trim(),
         cidade: document.getElementById('cidade').value.trim(),
         estado: document.getElementById('estado').value.trim(),
     };
+
 
     if (!validarFormulario(dados)) {
         e.preventDefault();
