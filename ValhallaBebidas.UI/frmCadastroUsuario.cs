@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace ValhallaBebidas.UI
 {
-    public partial class FrmCadstroUsuario : Form
+    public partial class frmCadastroUsuario : Form
     {
-        public FrmCadstroUsuario()
+        public frmCadastroUsuario()
         {
             InitializeComponent();
         }

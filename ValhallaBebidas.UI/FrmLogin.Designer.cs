@@ -46,10 +46,10 @@
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            btnFechar = new Guna.UI2.WinForms.Guna2CircleButton();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            linkLabel1 = new LinkLabel();
+            linkCadastreSe = new LinkLabel();
             btnLogin = new Guna.UI2.WinForms.Guna2Button();
             guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
             txtSenha = new Guna.UI2.WinForms.Guna2TextBox();
@@ -62,18 +62,20 @@
             // 
             // guna2Panel1
             // 
+            guna2Panel1.BackColor = Color.Transparent;
+            guna2Panel1.BorderRadius = 5;
             guna2Panel1.Controls.Add(guna2CirclePictureBox1);
             guna2Panel1.Controls.Add(guna2HtmlLabel4);
             guna2Panel1.Controls.Add(guna2HtmlLabel3);
             guna2Panel1.Controls.Add(guna2HtmlLabel2);
             guna2Panel1.Controls.Add(guna2HtmlLabel1);
-            guna2Panel1.Controls.Add(guna2CircleButton1);
+            guna2Panel1.Controls.Add(btnFechar);
             guna2Panel1.CustomizableEdges = customizableEdges3;
             guna2Panel1.FillColor = Color.FromArgb(15, 14, 12);
-            guna2Panel1.Location = new Point(2, 2);
+            guna2Panel1.Location = new Point(-8, -5);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2Panel1.Size = new Size(420, 115);
+            guna2Panel1.Size = new Size(447, 125);
             guna2Panel1.TabIndex = 0;
             // 
             // guna2CirclePictureBox1
@@ -137,29 +139,31 @@
             guna2HtmlLabel1.TabIndex = 1;
             guna2HtmlLabel1.Text = "Valhalla";
             // 
-            // guna2CircleButton1
+            // btnFechar
             // 
-            guna2CircleButton1.BackColor = SystemColors.ActiveCaptionText;
-            guna2CircleButton1.CustomBorderColor = Color.Black;
-            guna2CircleButton1.DisabledState.BorderColor = Color.DarkGray;
-            guna2CircleButton1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2CircleButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2CircleButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2CircleButton1.FillColor = Color.Red;
-            guna2CircleButton1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2CircleButton1.ForeColor = Color.White;
-            guna2CircleButton1.Location = new Point(385, 3);
-            guna2CircleButton1.Name = "guna2CircleButton1";
-            guna2CircleButton1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CircleButton1.Size = new Size(32, 32);
-            guna2CircleButton1.TabIndex = 0;
-            guna2CircleButton1.Text = "X";
+            btnFechar.BackColor = Color.Transparent;
+            btnFechar.CustomBorderColor = Color.Black;
+            btnFechar.DisabledState.BorderColor = Color.DarkGray;
+            btnFechar.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnFechar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnFechar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnFechar.FillColor = Color.Red;
+            btnFechar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnFechar.ForeColor = Color.White;
+            btnFechar.Location = new Point(397, 10);
+            btnFechar.Name = "btnFechar";
+            btnFechar.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnFechar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            btnFechar.Size = new Size(32, 32);
+            btnFechar.TabIndex = 0;
+            btnFechar.Text = "X";
+            btnFechar.Click += guna2CircleButton1_Click;
             // 
             // guna2Panel2
             // 
+            guna2Panel2.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             guna2Panel2.Controls.Add(guna2HtmlLabel7);
-            guna2Panel2.Controls.Add(linkLabel1);
+            guna2Panel2.Controls.Add(linkCadastreSe);
             guna2Panel2.Controls.Add(btnLogin);
             guna2Panel2.Controls.Add(guna2TextBox2);
             guna2Panel2.Controls.Add(txtSenha);
@@ -167,10 +171,10 @@
             guna2Panel2.Controls.Add(guna2HtmlLabel5);
             guna2Panel2.CustomizableEdges = customizableEdges11;
             guna2Panel2.FillColor = Color.FromArgb(33, 33, 33);
-            guna2Panel2.Location = new Point(2, 115);
+            guna2Panel2.Location = new Point(-8, 110);
             guna2Panel2.Name = "guna2Panel2";
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2Panel2.Size = new Size(420, 335);
+            guna2Panel2.Size = new Size(444, 356);
             guna2Panel2.TabIndex = 1;
             // 
             // guna2HtmlLabel7
@@ -178,27 +182,27 @@
             guna2HtmlLabel7.BackColor = Color.Transparent;
             guna2HtmlLabel7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             guna2HtmlLabel7.ForeColor = Color.White;
-            guna2HtmlLabel7.Location = new Point(76, 284);
+            guna2HtmlLabel7.Location = new Point(98, 284);
             guna2HtmlLabel7.Name = "guna2HtmlLabel7";
             guna2HtmlLabel7.Size = new Size(161, 23);
             guna2HtmlLabel7.TabIndex = 5;
             guna2HtmlLabel7.Text = "Não tem uma conta? ";
             // 
-            // linkLabel1
+            // linkCadastreSe
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.BackColor = Color.Transparent;
-            linkLabel1.DisabledLinkColor = Color.Transparent;
-            linkLabel1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            linkLabel1.ForeColor = Color.Transparent;
-            linkLabel1.LinkColor = Color.FromArgb(214, 189, 119);
-            linkLabel1.Location = new Point(243, 286);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(95, 21);
-            linkLabel1.TabIndex = 4;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Inscreva-se";
-            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            linkCadastreSe.AutoSize = true;
+            linkCadastreSe.BackColor = Color.Transparent;
+            linkCadastreSe.DisabledLinkColor = Color.Transparent;
+            linkCadastreSe.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            linkCadastreSe.ForeColor = Color.Transparent;
+            linkCadastreSe.LinkColor = Color.FromArgb(214, 189, 119);
+            linkCadastreSe.Location = new Point(265, 286);
+            linkCadastreSe.Name = "linkCadastreSe";
+            linkCadastreSe.Size = new Size(95, 21);
+            linkCadastreSe.TabIndex = 4;
+            linkCadastreSe.TabStop = true;
+            linkCadastreSe.Text = "Inscreva-se";
+            linkCadastreSe.LinkClicked += linkLabel1_LinkClicked;
             // 
             // btnLogin
             // 
@@ -212,7 +216,7 @@
             btnLogin.FillColor = Color.FromArgb(214, 189, 119);
             btnLogin.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.Black;
-            btnLogin.Location = new Point(19, 231);
+            btnLogin.Location = new Point(41, 231);
             btnLogin.Name = "btnLogin";
             btnLogin.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnLogin.Size = new Size(358, 45);
@@ -235,7 +239,7 @@
             guna2TextBox2.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2TextBox2.ForeColor = Color.FromArgb(214, 189, 119);
             guna2TextBox2.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox2.Location = new Point(18, 109);
+            guna2TextBox2.Location = new Point(40, 109);
             guna2TextBox2.Margin = new Padding(11, 12, 11, 12);
             guna2TextBox2.Name = "guna2TextBox2";
             guna2TextBox2.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
@@ -262,9 +266,10 @@
             txtSenha.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtSenha.ForeColor = Color.FromArgb(214, 189, 119);
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(19, 170);
+            txtSenha.Location = new Point(41, 170);
             txtSenha.Margin = new Padding(7);
             txtSenha.Name = "txtSenha";
+            txtSenha.PasswordChar = '*';
             txtSenha.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             txtSenha.PlaceholderText = "🔒 Digite sua senha";
             txtSenha.SelectedText = "";
@@ -278,7 +283,7 @@
             guna2HtmlLabel6.BackColor = Color.Transparent;
             guna2HtmlLabel6.Font = new Font("Rockwell", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel6.ForeColor = Color.FromArgb(214, 189, 119);
-            guna2HtmlLabel6.Location = new Point(286, 46);
+            guna2HtmlLabel6.Location = new Point(308, 46);
             guna2HtmlLabel6.Name = "guna2HtmlLabel6";
             guna2HtmlLabel6.Size = new Size(95, 41);
             guna2HtmlLabel6.TabIndex = 1;
@@ -289,7 +294,7 @@
             guna2HtmlLabel5.BackColor = Color.Transparent;
             guna2HtmlLabel5.Font = new Font("Rockwell", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel5.ForeColor = SystemColors.ButtonHighlight;
-            guna2HtmlLabel5.Location = new Point(19, 46);
+            guna2HtmlLabel5.Location = new Point(41, 46);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             guna2HtmlLabel5.Size = new Size(261, 41);
             guna2HtmlLabel5.TabIndex = 1;
@@ -319,7 +324,7 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        private Guna.UI2.WinForms.Guna2CircleButton btnFechar;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
@@ -329,7 +334,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2TextBox txtSenha;
         private Guna.UI2.WinForms.Guna2Button btnLogin;
-        private LinkLabel linkLabel1;
+        private LinkLabel linkCadastreSe;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
     }

@@ -1,6 +1,6 @@
 ﻿namespace ValhallaBebidas.UI
 {
-    partial class FrmCadstroUsuario
+    partial class frmCadastroUsuario
     {
         /// <summary>
         /// Required designer variable.
