@@ -137,14 +137,13 @@ public class PedidoService
         if (pedido == null)
             throw new KeyNotFoundException($"Pedido com Id {id} não encontrado.");
 
-        /* Pedido cancelado não pode ser reaberto */
         if (pedido.Status == StatusPedido.Cancelado)
             throw new InvalidOperationException("Um pedido cancelado não pode ser alterado.");
 
         pedido.Status = novoStatus;
 
+        await _pedidoRepository.AtualizarAsync(pedido);
     }
-
     // ════════════════════════════════════════
     // CANCELAR — reverte estoque e registra estorno
     // O pedido deve ter itens carregados pelo repo
@@ -182,6 +181,8 @@ public class PedidoService
 
         pedido.Status = StatusPedido.Cancelado;
 
+
+        await _pedidoRepository.AtualizarAsync(pedido);
     }
 
     // ════════════════════════════════════════

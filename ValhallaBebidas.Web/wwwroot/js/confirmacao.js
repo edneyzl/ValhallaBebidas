@@ -1,56 +1,147 @@
 /* ════════════════════════════════════════════════════════
-   confirmacao.js — Valhalla Bebidas (MVC)
-   Depende de: auth.js (isLogado)
+   confirmacao.js — Valhalla Bebidas
 ════════════════════════════════════════════════════════ */
 
-if (!isLogado) window.location.href = '/Auth/Login';
+window.addEventListener('authCarregado', ({ detail }) => {
+    if (!detail.isLogado) {
+        window.location.href = '/Auth/Login';
+        return;
+    }
 
-const params = new URLSearchParams(window.location.search);
-const pedidoId = params.get('pedido') || Math.floor(Math.random() * 900000 + 100000);
-const numeroEl = document.getElementById('numeroPedido');
-if (numeroEl) numeroEl.textContent = `Pedido #${pedidoId}`;
+    iniciarConfirmacao();
+});
 
-const itens = JSON.parse(localStorage.getItem('ultimoPedido') || '[]');
-const lista = document.getElementById('confirmacaoItens');
-const formatar = v => `R$ ${v.toFixed(2).replace('.', ',')}`;
-
-if (itens.length > 0 && lista) {
-    lista.innerHTML = itens.map(item => `
-    <li class="confirmacao__item">
-      <div class="confirmacao__item-img">
-        ${item.imagem ? `<img src="${item.imagem}" alt="${item.nome}" />` : `<span>🍺</span>`}
-      </div>
-      <div class="confirmacao__item-info">
-        <p>${item.nome}</p>
-        <span>${item.quantidade}x · ${formatar(item.preco)}</span>
-      </div>
-      <p class="confirmacao__item-preco">${formatar(item.preco * item.quantidade)}</p>
-    </li>
-  `).join('');
-    const total = itens.reduce((acc, i) => acc + i.preco * i.quantidade, 0);
-    const totalEl = document.getElementById('confirmacaoTotal');
-    if (totalEl) totalEl.textContent = formatar(total);
+function formatar(v) {
+    return `R$ ${Number(v || 0).toFixed(2).replace('.', ',')}`;
 }
 
-const previsao = new Date();
-previsao.setDate(previsao.getDate() + 5);
-const previsaoEl = document.getElementById('confirmacaoPrevisao');
-if (previsaoEl) previsaoEl.textContent = previsao.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+function escapar(str) {
+    const el = document.createElement('div');
+    el.textContent = str ?? '';
+    return el.innerHTML;
+}
 
-/* ── Método de pagamento (lido do localStorage) ── */
-const metodoLabels = {
-    cartao: 'Cartão de crédito',
-    pix: 'Pix',
-    boleto: 'Boleto bancário',
-};
-const metodo = localStorage.getItem('metodoPagamento') || 'cartao';
-const pagEl = document.getElementById('confirmacaoPagamento');
-if (pagEl) pagEl.textContent = metodoLabels[metodo] || metodo;
+async function iniciarConfirmacao() {
+    const params = new URLSearchParams(window.location.search);
+    const pedidoId = params.get('pedido');
 
-const endEl = document.getElementById('confirmacaoEndereco');
-if (endEl) endEl.textContent = 'Endereço cadastrado';
+    if (!pedidoId) {
+        window.location.href = '/';
+        return;
+    }
 
-/* Limpa dados da sessão */
-localStorage.removeItem('metodoPagamento');
-localStorage.removeItem('ultimoPedido');
+    const numeroEl = document.getElementById('numeroPedido');
+    if (numeroEl) numeroEl.textContent = `PEDIDO #${pedidoId}`;
 
+    try {
+        const response = await fetch(`/Carrinho/ObterPedidoApi?id=${pedidoId}`, {
+            credentials: 'include'
+        });
+
+        if (response.status === 401) {
+            window.location.href = '/Auth/Login';
+            return;
+        }
+
+        if (!response.ok) {
+            const texto = await response.text();
+            console.error('Erro ao carregar pedido:', texto);
+            throw new Error('Erro ao carregar pedido');
+        }
+
+        const pedido = await response.json();
+        console.log('Pedido carregado:', pedido);
+
+        renderizarItens(pedido);
+        renderizarInfos(pedido);
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+function renderizarItens(pedido) {
+    const lista = document.getElementById('confirmacaoItens');
+    const totalEl = document.getElementById('confirmacaoTotal');
+
+    if (!lista) {
+        console.error('Elemento #confirmacaoItens não encontrado');
+        return;
+    }
+
+    const itens = pedido.itens || [];
+
+    lista.innerHTML = itens.map(item => {
+        const nome = escapar(item.nomeProduto || item.nome || item.produto?.nome || 'Produto');
+        const qt = Number(item.quantidade) || 0;
+        const preco = Number(item.precoUnitario || item.preco || 0);
+        const subtotal = Number(item.subtotal) || (preco * qt);
+        const img = item.fotoProduto || item.imagem || item.produto?.fotoProduto || '';
+
+        return `
+            <li class="confirmacao__item">
+                <div class="confirmacao__item-img">
+                    ${img ? `<img src="${img}" alt="${nome}" />` : `<span>🍺</span>`}
+                </div>
+                <div class="confirmacao__item-info">
+                    <p>${nome}</p>
+                    <span>${qt}x · ${formatar(preco)}</span>
+                </div>
+                <p class="confirmacao__item-preco">${formatar(subtotal)}</p>
+            </li>
+        `;
+    }).join('');
+
+    if (totalEl) {
+        totalEl.textContent = formatar(pedido.valorTotal);
+    }
+}
+
+function renderizarInfos(pedido) {
+    const statusEl = document.getElementById('confirmacaoStatus');
+    const previsaoEl = document.getElementById('confirmacaoPrevisao');
+    const enderecoEl = document.getElementById('confirmacaoEndereco');
+    const pagamentoEl = document.getElementById('confirmacaoPagamento');
+
+    if (statusEl) {
+        statusEl.textContent = typeof pedido.status === 'string' ? pedido.status : 'Pendente';
+    }
+
+    if (previsaoEl) {
+        const previsao = new Date();
+        previsao.setDate(previsao.getDate() + 5);
+        previsaoEl.textContent = previsao.toLocaleDateString('pt-BR', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+    }
+
+    const endereco = pedido.enderecoEntrega || pedido.endereco || null;
+
+    if (enderecoEl) {
+        enderecoEl.textContent = endereco
+            ? `${endereco.logradouro}, ${endereco.numero} - ${endereco.bairro}, ${endereco.cidade}/${endereco.estado}`
+            : 'Endereço cadastrado';
+    }
+
+    function formatarPagamento(valor) {
+        if (!valor) return 'Cartão';
+
+        valor = valor.toLowerCase();
+
+        if (valor === 'pix') return 'Pix';
+        if (valor === 'cartao' || valor === 'cartão') return 'Cartão de crédito';
+        if (valor === 'boleto') return 'Boleto';
+
+        return valor.charAt(0).toUpperCase() + valor.slice(1);
+    }
+
+    if (pagamentoEl) {
+        const metodo =
+            pedido.formaPagamento ||
+            localStorage.getItem('metodoPagamento');
+
+        pagamentoEl.textContent = formatarPagamento(metodo);
+    }
+}

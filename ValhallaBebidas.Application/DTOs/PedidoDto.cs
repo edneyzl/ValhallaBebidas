@@ -53,7 +53,7 @@ public class AtualizarPedidoDto
 {
     /* Id vem pela URL — não precisa no body */
     public int ClienteId { get; set; }
-    public string Status { get; set; } = "Pendente";
+    public StatusPedido Status { get; set; }
     public List<CriarItemPedidoDto> Itens { get; set; } = new();
 }
 
