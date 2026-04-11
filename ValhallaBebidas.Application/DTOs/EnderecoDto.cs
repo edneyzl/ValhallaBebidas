@@ -3,7 +3,6 @@
 public class EnderecoDto
 {
     public int Id { get; set; }
-    public string TipoLogradouro { get; set; } = string.Empty;
     public string Logradouro { get; set; } = string.Empty;
     public int Numero { get; set; }
     public string Complemento { get; set; } = string.Empty;
@@ -15,7 +14,6 @@ public class EnderecoDto
 
 public class CriarEnderecoDto
 {
-    public string TipoLogradouro { get; set; } = string.Empty;
     public string Logradouro { get; set; } = string.Empty;
     public int Numero { get; set; }
     public string Complemento { get; set; } = string.Empty;
@@ -30,7 +28,6 @@ public class CriarEnderecoDto
 public class AtualizarEnderecoDto
 {
     public int EnderecoId { get; set; }
-    public string TipoLogradouro { get; set; } = string.Empty;
     public string Logradouro { get; set; } = string.Empty;
     public int Numero { get; set; }
     public string Complemento { get; set; } = string.Empty;

@@ -59,7 +59,7 @@ public class FuncionarioService
         /* Cria o endereço */
         var endereco = new Endereco
         {
-            TipoLogradouro = dto.Endereco.TipoLogradouro,
+
             Logradouro = dto.Endereco.Logradouro,
             Numero = dto.Endereco.Numero,
             Complemento = dto.Endereco.Complemento,

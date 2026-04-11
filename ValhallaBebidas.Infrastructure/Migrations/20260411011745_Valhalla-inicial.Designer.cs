@@ -12,8 +12,8 @@ using ValhallaBebidas.Infrastructure.Data;
 namespace ValhallaBebidas.Infrastructure.Migrations
 {
     [DbContext(typeof(ValhallaBebidasDbContext))]
-    [Migration("20260409222731_initialCreate")]
-    partial class initialCreate
+    [Migration("20260411011745_Valhalla-inicial")]
+    partial class Valhallainicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -136,16 +136,11 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.Property<string>("Logradouro")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("Numero")
                         .HasColumnType("int");
-
-                    b.Property<string>("TipoLogradouro")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 

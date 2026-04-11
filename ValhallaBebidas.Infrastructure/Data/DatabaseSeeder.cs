@@ -40,11 +40,10 @@ public static class DatabaseSeeder
         {
             endereco = new Endereco
             {
-                TipoLogradouro = "Rua",
-                Logradouro = "Vicente Garcia",
+                Logradouro = "Rua Vicente Garcia",
                 Numero = 24,
                 Complemento = "Fundos",
-                Cep = "08440261",
+                Cep = "08440-261",
                 Bairro = "Guaianases",
                 Cidade = "São Paulo",
                 Estado = "SP",

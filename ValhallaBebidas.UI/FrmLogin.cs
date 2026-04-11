@@ -14,7 +14,7 @@ namespace ValhallaBebidas.UI
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmCadastroUsuario form = new();//chama a tela de cadastro
+            frmCadastroFuncionario form = new();//chama a tela de cadastro
             form.ShowDialog();//impede que clicar em outra tela enquanto a de cadastro estiver aberta
         }
 

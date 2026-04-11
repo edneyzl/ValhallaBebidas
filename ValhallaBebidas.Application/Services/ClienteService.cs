@@ -62,7 +62,6 @@ public class ClienteService
         /* Cria o endereço */
         var endereco = new Endereco
         {
-            TipoLogradouro = dto.Endereco.TipoLogradouro,
             Logradouro = dto.Endereco.Logradouro,
             Numero = dto.Endereco.Numero,
             Complemento = dto.Endereco.Complemento ?? "",
@@ -186,7 +185,6 @@ public class ClienteService
         Endereco = c.Endereco == null ? null : new EnderecoDto
         {
             Id = c.Endereco.Id,
-            TipoLogradouro = c.Endereco.TipoLogradouro,
             Logradouro = c.Endereco.Logradouro,
             Numero = c.Endereco.Numero,
             Complemento = c.Endereco.Complemento ?? "",
@@ -213,7 +211,6 @@ public class ClienteService
         if (enderecoExistente == null)
             throw new KeyNotFoundException("Endereço não encontrado.");
 
-        enderecoExistente.TipoLogradouro = dto.TipoLogradouro;
         enderecoExistente.Logradouro = dto.Logradouro;
         enderecoExistente.Numero = dto.Numero;
         enderecoExistente.Complemento = dto.Complemento;

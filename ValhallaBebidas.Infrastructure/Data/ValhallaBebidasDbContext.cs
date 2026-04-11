@@ -33,8 +33,7 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
         modelBuilder.Entity<Endereco>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.TipoLogradouro).IsRequired().HasMaxLength(50);
-            entity.Property(e => e.Logradouro).IsRequired().HasMaxLength(200);
+            entity.Property(e => e.Logradouro).IsRequired().HasMaxLength(250);
             entity.Property(e => e.Numero).IsRequired();
             entity.Property(e => e.Complemento).HasMaxLength(150);
             entity.Property(e => e.Cep).IsRequired().HasMaxLength(9);
