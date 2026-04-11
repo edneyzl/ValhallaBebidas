@@ -12,7 +12,6 @@ public class PedidoService
     private readonly IProdutoRepository _produtoRepository;
     private readonly IMovimentacaoRepository _movimentacaoRepository;
 
-
     public PedidoService(
         IPedidoRepository pedidoRepository,
         IClienteRepository clienteRepository,
@@ -23,62 +22,46 @@ public class PedidoService
         _clienteRepository = clienteRepository;
         _produtoRepository = produtoRepository;
         _movimentacaoRepository = movimentacaoRepository;
-
     }
 
-    // ════════════════════════════════════════
-    // LISTAR TODOS
-    // ════════════════════════════════════════
     public async Task<IEnumerable<PedidoDto>> ListarTodosAsync()
     {
         var pedidos = await _pedidoRepository.ListarTodosAsync();
         return pedidos.Select(MapearParaDto);
     }
 
-    // ════════════════════════════════════════
-    // LISTAR POR CLIENTE
-    // ════════════════════════════════════════
     public async Task<IEnumerable<PedidoDto>> ListarPorClienteAsync(int clienteId)
     {
         var pedidos = await _pedidoRepository.ListarPorClienteAsync(clienteId);
         return pedidos.Select(MapearParaDto);
     }
 
-    // ════════════════════════════════════════
-    // OBTER POR ID
-    // ════════════════════════════════════════
     public async Task<PedidoDto?> ObterPorIdAsync(int id)
     {
         var pedido = await _pedidoRepository.ObterPorIdAsync(id);
         return pedido == null ? null : MapearParaDto(pedido);
     }
 
-    // ════════════════════════════════════════
-    // CRIAR
-    // ════════════════════════════════════════
     public async Task<PedidoDto> CriarAsync(CriarPedidoDto dto)
     {
-        /* Pelo menos 1 item */
         if (dto.Itens == null || dto.Itens.Count == 0)
             throw new InvalidOperationException("Um pedido deve conter pelo menos 1 item.");
 
-        /* Cliente existe */
         var cliente = await _clienteRepository.ObterPorIdAsync(dto.ClienteId);
         if (cliente == null)
             throw new KeyNotFoundException($"Cliente com Id {dto.ClienteId} não encontrado.");
 
-        /* Batch load — 1 query para todos os produtos (elimina N+1) */
         var produtoIds = dto.Itens.Select(i => i.ProdutoId).Distinct();
-        var produtos = (await _produtoRepository.ObterPorIdsAsync(produtoIds)).ToDictionary(p => p.Id);
+        var produtos = (await _produtoRepository.ObterPorIdsAsync(produtoIds))
+            .ToDictionary(p => p.Id);
 
-        /* Monta os itens e registra baixa de estoque */
         var itens = new List<ItemPedido>();
+
         foreach (var itemDto in dto.Itens)
         {
             if (!produtos.TryGetValue(itemDto.ProdutoId, out var produto))
                 throw new KeyNotFoundException($"Produto com Id {itemDto.ProdutoId} não encontrado.");
 
-            /* Estoque suficiente — validação no mesmo snapshot */
             if (produto.QuantidadeEstoque < itemDto.Quantidade)
                 throw new InvalidOperationException(
                     $"Estoque insuficiente para '{produto.Nome}'. Disponível: {produto.QuantidadeEstoque}.");
@@ -87,19 +70,7 @@ public class PedidoService
             {
                 ProdutoId = produto.Id,
                 Quantidade = itemDto.Quantidade,
-                PrecoUnitario = produto.PrecoVenda, /* captura o preço atual */
-            });
-
-            /* Decrementa estoque e registra movimentação no mesmo SaveChanges */
-            produto.QuantidadeEstoque -= itemDto.Quantidade;
-
-            await _movimentacaoRepository.AdicionarAsync(new Movimentacao
-            {
-                ProdutoId = produto.Id,
-                Quantidade = itemDto.Quantidade,
-                Direcao = DirecaoMovimentacao.Saida,
-                Motivo = $"Pedido pendente",
-                Data = DateTime.UtcNow,
+                PrecoUnitario = produto.PrecoVenda
             });
         }
 
@@ -122,15 +93,29 @@ public class PedidoService
 
         await _pedidoRepository.AdicionarAsync(pedido);
 
+        foreach (var item in pedido.Itens)
+        {
+            var produto = produtos[item.ProdutoId];
 
-        /* Retorna do change tracker — sem nova query */
+            produto.QuantidadeEstoque -= item.Quantidade;
+            await _produtoRepository.AtualizarAsync(produto);
+
+            await _movimentacaoRepository.AdicionarAsync(new Movimentacao
+            {
+                ProdutoId = produto.Id,
+                Quantidade = item.Quantidade,
+                Direcao = DirecaoMovimentacao.Saida,
+                Motivo = $"Reserva de estoque — pedido pendente #{pedido.Id}",
+                Data = DateTime.UtcNow
+            });
+        }
+
+        await _pedidoRepository.SaveAsync();
+
         var salvo = await _pedidoRepository.ObterPorIdAsync(pedido.Id);
         return MapearParaDto(salvo!);
     }
 
-    // ════════════════════════════════════════
-    // ATUALIZAR STATUS — confirmar ou cancelar
-    // ════════════════════════════════════════
     public async Task AtualizarStatusAsync(int id, StatusPedido novoStatus)
     {
         var pedido = await _pedidoRepository.ObterPorIdAsync(id);
@@ -144,10 +129,7 @@ public class PedidoService
 
         await _pedidoRepository.AtualizarAsync(pedido);
     }
-    // ════════════════════════════════════════
-    // CANCELAR — reverte estoque e registra estorno
-    // O pedido deve ter itens carregados pelo repo
-    // ════════════════════════════════════════
+
     public async Task CancelarAsync(int id, int clienteId)
     {
         var pedido = await _pedidoRepository.ObterPorIdAsync(id);
@@ -161,13 +143,15 @@ public class PedidoService
             throw new InvalidOperationException("Pedido já está cancelado.");
 
         var produtoIds = pedido.Itens.Select(i => i.ProdutoId).Distinct();
-        var produtos = (await _produtoRepository.ObterPorIdsAsync(produtoIds)).ToDictionary(p => p.Id);
+        var produtos = (await _produtoRepository.ObterPorIdsAsync(produtoIds))
+            .ToDictionary(p => p.Id);
 
         foreach (var item in pedido.Itens)
         {
-            if (!produtos.TryGetValue(item.ProdutoId, out var produto)) continue;
+            var produto = produtos[item.ProdutoId];
 
             produto.QuantidadeEstoque += item.Quantidade;
+            await _produtoRepository.AtualizarAsync(produto);
 
             await _movimentacaoRepository.AdicionarAsync(new Movimentacao
             {
@@ -175,19 +159,15 @@ public class PedidoService
                 Quantidade = item.Quantidade,
                 Direcao = DirecaoMovimentacao.Entrada,
                 Motivo = $"Estorno — cancelamento pedido #{id}",
-                Data = DateTime.UtcNow,
+                Data = DateTime.UtcNow
             });
         }
 
         pedido.Status = StatusPedido.Cancelado;
-
-
         await _pedidoRepository.AtualizarAsync(pedido);
+        await _pedidoRepository.SaveAsync();
     }
 
-    // ════════════════════════════════════════
-    // REMOVER
-    // ════════════════════════════════════════
     public async Task RemoverAsync(int id)
     {
         var pedido = await _pedidoRepository.ObterPorIdAsync(id);
@@ -195,12 +175,8 @@ public class PedidoService
             throw new KeyNotFoundException($"Pedido com Id {id} não encontrado.");
 
         await _pedidoRepository.RemoverAsync(id);
-
     }
 
-    // ════════════════════════════════════════
-    // MAPPER — Entidade → DTO
-    // ════════════════════════════════════════
     private static PedidoDto MapearParaDto(Pedido pedido) => new()
     {
         Id = pedido.Id,

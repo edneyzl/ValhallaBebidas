@@ -4,10 +4,10 @@ namespace ValhallaBebidas.Domain.Interfaces;
 
 public interface IMovimentacaoRepository
 {
-    Task<Movimentacao?> ObterPorIdAsync(int id);
     Task<IEnumerable<Movimentacao>> ListarTodosAsync();
     Task<IEnumerable<Movimentacao>> ListarPorProdutoAsync(int produtoId);
+    Task<Movimentacao?> ObterPorIdAsync(int id);
     Task AdicionarAsync(Movimentacao movimentacao);
-    Task AtualizarAsync(Movimentacao movimentacao);
     Task RemoverAsync(int id);
+    Task SaveAsync();
 }

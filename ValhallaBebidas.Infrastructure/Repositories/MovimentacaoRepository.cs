@@ -14,33 +14,27 @@ public class MovimentacaoRepository : IMovimentacaoRepository
         _context = context;
     }
 
-
-    public async Task<Movimentacao?> ObterPorIdAsync(int id)
-        => await _context.Movimentacoes
-            .Include(m => m.Produto)          // Carrega o produto junto
-            .FirstOrDefaultAsync(m => m.Id == id);
-
     public async Task<IEnumerable<Movimentacao>> ListarTodosAsync()
         => await _context.Movimentacoes
             .Include(m => m.Produto)
+            .OrderByDescending(m => m.Data)
             .ToListAsync();
 
     public async Task<IEnumerable<Movimentacao>> ListarPorProdutoAsync(int produtoId)
         => await _context.Movimentacoes
             .Include(m => m.Produto)
             .Where(m => m.ProdutoId == produtoId)
+            .OrderByDescending(m => m.Data)
             .ToListAsync();
+
+    public async Task<Movimentacao?> ObterPorIdAsync(int id)
+        => await _context.Movimentacoes
+            .Include(m => m.Produto)
+            .FirstOrDefaultAsync(m => m.Id == id);
 
     public async Task AdicionarAsync(Movimentacao movimentacao)
     {
         await _context.Movimentacoes.AddAsync(movimentacao);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task AtualizarAsync(Movimentacao movimentacao)
-    {
-        _context.Movimentacoes.Update(movimentacao);
-        await _context.SaveChangesAsync();
     }
 
     public async Task RemoverAsync(int id)
@@ -49,7 +43,11 @@ public class MovimentacaoRepository : IMovimentacaoRepository
         if (movimentacao != null)
         {
             _context.Movimentacoes.Remove(movimentacao);
-            await _context.SaveChangesAsync();
         }
+    }
+
+    public async Task SaveAsync()
+    {
+        await _context.SaveChangesAsync();
     }
 }

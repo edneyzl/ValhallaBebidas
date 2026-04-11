@@ -16,7 +16,6 @@ public class ProdutoRepository : IProdutoRepository
 
     public async Task<Produto?> ObterPorIdAsync(int id)
         => await _context.Produtos
-            .AsNoTracking()
             .Include(p => p.Categoria)
             .FirstOrDefaultAsync(p => p.Id == id);
 
@@ -29,7 +28,6 @@ public class ProdutoRepository : IProdutoRepository
         var idSet = ids.ToHashSet();
 
         return await _context.Produtos
-            .AsNoTracking()
             .Include(p => p.Categoria)
             .Where(p => idSet.Contains(p.Id))
             .ToListAsync();
@@ -37,20 +35,17 @@ public class ProdutoRepository : IProdutoRepository
 
     public async Task<IEnumerable<Produto>> ListarTodosAsync()
         => await _context.Produtos
-            .AsNoTracking()
             .Include(p => p.Categoria)
             .ToListAsync();
 
     public async Task<IEnumerable<Produto>> ListarPorCategoriaAsync(int categoriaId)
         => await _context.Produtos
-            .AsNoTracking()
             .Include(p => p.Categoria)
-            .Where(p => p.Status && p.CategoriaId == categoriaId)
+            .Where(p => p.CategoriaId == categoriaId)
             .ToListAsync();
 
     public async Task<IEnumerable<Produto>> ObterEstoqueBaixoAsync()
         => await _context.Produtos
-            .AsNoTracking()
             .Include(p => p.Categoria)
             .Where(p => p.QuantidadeEstoque <= p.QuantidadeMinimo)
             .OrderBy(p => p.QuantidadeEstoque)
@@ -58,7 +53,6 @@ public class ProdutoRepository : IProdutoRepository
 
     public async Task<IEnumerable<Produto>> ListarAtivosAsync()
         => await _context.Produtos
-            .AsNoTracking()
             .Include(p => p.Categoria)
             .Where(p => p.Status)
             .ToListAsync();
@@ -66,23 +60,40 @@ public class ProdutoRepository : IProdutoRepository
     public async Task AdicionarAsync(Produto produto)
     {
         await _context.Produtos.AddAsync(produto);
-        await _context.SaveChangesAsync();
     }
 
-    public async Task AtualizarAsync(Produto produto)
+    public Task AtualizarAsync(Produto produto)
     {
-        _context.Produtos.Update(produto);
-        await _context.SaveChangesAsync();
+        var local = _context.Produtos.Local.FirstOrDefault(p => p.Id == produto.Id);
+
+        if (local != null)
+        {
+            _context.Entry(local).CurrentValues.SetValues(produto);
+        }
+        else
+        {
+            var entry = _context.Entry(produto);
+
+            if (entry.State == EntityState.Detached)
+                _context.Attach(produto);
+
+            entry.State = EntityState.Modified;
+        }
+
+        return Task.CompletedTask;
     }
 
     public async Task RemoverAsync(int id)
     {
-        var produto = await _context.Produtos.FirstOrDefaultAsync(p => p.Id == id);
-
+        var produto = await ObterPorIdAsync(id);
         if (produto != null)
         {
             _context.Produtos.Remove(produto);
-            await _context.SaveChangesAsync();
         }
+    }
+
+    public async Task SaveAsync()
+    {
+        await _context.SaveChangesAsync();
     }
 }
