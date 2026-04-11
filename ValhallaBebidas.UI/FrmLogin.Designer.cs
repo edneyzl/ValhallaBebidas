@@ -248,7 +248,7 @@
             guna2TextBox2.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2TextBox2.Size = new Size(358, 51);
             guna2TextBox2.TabIndex = 2;
-            guna2TextBox2.TextChanged += guna2TextBox2_TextChanged;
+     
             // 
             // txtSenha
             // 
@@ -276,7 +276,7 @@
             txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges10;
             txtSenha.Size = new Size(358, 51);
             txtSenha.TabIndex = 2;
-            txtSenha.TextChanged += guna2TextBox1_TextChanged;
+ 
             // 
             // guna2HtmlLabel6
             // 
@@ -311,8 +311,7 @@
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            Load += Form1_Load;
-            guna2Panel1.ResumeLayout(false);
+             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
             guna2Panel2.ResumeLayout(false);
