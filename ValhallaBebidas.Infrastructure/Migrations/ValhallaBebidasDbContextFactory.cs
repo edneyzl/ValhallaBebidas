@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using ValhallaBebidas.Infrastructure.Data;
 
 namespace ValhallaBebidas.Infrastructure.Data;
 
@@ -16,15 +17,11 @@ namespace ValhallaBebidas.Infrastructure.Data;
 /// "use este método para criar o DbContext quando estiver gerando migrations",
 /// sem precisar do Program.cs ou do projeto de startup.
 ///
-/// Isso permite rodar: dotnet ef migrations add <Nome> --project ValhallaBebidas.Infrastructure
+/// Isso permite rodar: dotnet ef migrations add <Nome> --project SenacBuy.Infrastructure
 /// de qualquer lugar, sem precisar especificar --startup-project.
 /// </summary>
 public class ValhallaBebidasDbContextFactory : IDesignTimeDbContextFactory<ValhallaBebidasDbContext>
 {
-    public ValhallaBebidasDbContextFactory()
-    {
-    }
-
     public ValhallaBebidasDbContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<ValhallaBebidasDbContext>();

@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using ValhallaBebidas.UI.Services.Models;
 
-namespace SenValhallaBebidasacBuy.UI.Services.Models
+namespace ValhallaBebidas.UI.Services.Models
 {
     /// <summary>
     /// Serviço responsável pelas chamadas HTTP ao endpoint de Usuário da API.
@@ -14,7 +14,7 @@ namespace SenValhallaBebidasacBuy.UI.Services.Models
     ///   GET    api/usuario         — listar todos os usuários
     ///   PUT    api/usuario/{id}    — atualizar nome/email de um usuário
     /// </summary>
-    public class UsuarioApiService
+    public class FuncionarioApiService
     {
         private readonly HttpClient _http = ApiClientService.Cliente;
 
@@ -31,7 +31,7 @@ namespace SenValhallaBebidasacBuy.UI.Services.Models
             try
             {
                 var payload = new LoginDto { Email = email, Senha = senha };
-                var response = await _http.PostAsJsonAsync("api/usuario/login", payload);
+                var response = await _http.PostAsJsonAsync("api/funcionario/login", payload);
 
                 // A API retorna 200 OK em caso de sucesso ou 401 Unauthorized em falha
                 var resultado = await response.Content.ReadFromJsonAsync<LoginResponseDto>();
@@ -53,22 +53,22 @@ namespace SenValhallaBebidasacBuy.UI.Services.Models
         }
 
         // ──────────────────────────────────────────────────────────────────────────────
-        // CADASTRAR USUÁRIO
+        // CADASTRAR FUNCIONARIO
         // ──────────────────────────────────────────────────────────────────────────────
 
         /// <summary>
         /// Cadastra um novo usuário na API.
         /// Retorna o UsuarioDto criado ou null em caso de erro.
         /// </summary>
-        public async Task<UsuarioDto?> CadastrarUsuarioAsync(string nome, string email, string senha, string? fotoPerfil = null)
+        public async Task<FuncionarioDto?> CadastrarFuncionarioAsync(string nome,string dataNasc, string cpf, string telefone, string email, string senha, string? fotoPerfil = null)
         {
             try
             {
-                var payload = new CriarUsuarioDto { Nome = nome, Email = email, Senha = senha, FotoPerfil = fotoPerfil };
-                var response = await _http.PostAsJsonAsync("api/usuario", payload);
+                var payload = new CriarFuncionarioDto { Nome = nome, Email = email, DataNascimento = dataNasc, Cpf = cpf, Telefone = telefone, Senha = senha, FotoPerfil = fotoPerfil };
+                var response = await _http.PostAsJsonAsync("api/funcionario", payload);
 
                 if (response.IsSuccessStatusCode)
-                    return await response.Content.ReadFromJsonAsync<UsuarioDto>();
+                    return await response.Content.ReadFromJsonAsync<FuncionarioDto>();
 
                 // 409 Conflict: email já cadastrado
                 var erro = await response.Content.ReadAsStringAsync();
@@ -85,24 +85,24 @@ namespace SenValhallaBebidasacBuy.UI.Services.Models
         }
 
         // ──────────────────────────────────────────────────────────────────────────────
-        // LISTAR USUÁRIOS
+        // LISTAR FUNCIONARIOS
         // ──────────────────────────────────────────────────────────────────────────────
 
         /// <summary>
         /// Retorna a lista de todos os usuários cadastrados (sem senhas).
         /// </summary>
-        public async Task<List<UsuarioDto>> ListarUsuariosAsync()
+        public async Task<List<FuncionarioDto>> ListarUsuariosAsync()
         {
             try
             {
-                var lista = await _http.GetFromJsonAsync<List<UsuarioDto>>("api/usuario");
-                return lista ?? new List<UsuarioDto>();
+                var lista = await _http.GetFromJsonAsync<List<FuncionarioDto>>("api/funcionario");
+                return lista ?? new List<FuncionarioDto>();
             }
             catch (HttpRequestException ex)
             {
                 MessageBox.Show($"Sem conexão com a API: {ex.Message}",
                     "Erro de Conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new List<UsuarioDto>();
+                return new List<FuncionarioDto>();
             }
         }
 
@@ -110,33 +110,33 @@ namespace SenValhallaBebidasacBuy.UI.Services.Models
         // BUSCAR POR ID
         // ──────────────────────────────────────────────────────────────────────────────
 
-        public async Task<UsuarioDto?> GetUsuarioByIdAsync(int id)
+        public async Task<FuncionarioDto?> GetUsuarioByIdAsync(int id)
         {
             try
             {
-                return await _http.GetFromJsonAsync<UsuarioDto>($"api/usuario/{id}");
+                return await _http.GetFromJsonAsync<FuncionarioDto>($"api/funcionario/{id}");
             }
             catch (HttpRequestException ex)
             {
-                MessageBox.Show($"Erro ao buscar usuário: {ex.Message}",
+                MessageBox.Show($"Erro ao buscar funcionario: {ex.Message}",
                     "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
 
         // ──────────────────────────────────────────────────────────────────────────────
-        // ATUALIZAR USUÁRIO
+        // ATUALIZAR FUNCIONARIO
         // ──────────────────────────────────────────────────────────────────────────────
 
         /// <summary>
         /// Atualiza nome e email de um usuário existente.
         /// Retorna true em caso de sucesso.
         /// </summary>
-        public async Task<bool> AtualizarUsuarioAsync(UsuarioDto dto)
+        public async Task<bool> AtualizarUsuarioAsync(FuncionarioDto dto)
         {
             try
             {
-                var response = await _http.PutAsJsonAsync($"api/usuario/{dto.Id}", dto);
+                var response = await _http.PutAsJsonAsync($"api/funcionario/{dto.Id}", dto);
 
                 if (response.IsSuccessStatusCode)
                     return true;
@@ -155,18 +155,18 @@ namespace SenValhallaBebidasacBuy.UI.Services.Models
         }
 
         // ──────────────────────────────────────────────────────────────────────────────
-        // EXCLUIR USUÁRIO
+        // EXCLUIR FUNCIONARIO
         // ──────────────────────────────────────────────────────────────────────────────
 
         /// <summary>
         /// Exclui um usuário existente.
         /// Retorna true em caso de sucesso.
         /// </summary>
-        public async Task<bool> ExcluirUsuarioAsync(int id)
+        public async Task<bool> ExcluirFuncionarioAsync(int id)
         {
             try
             {
-                var response = await _http.DeleteAsync($"api/usuario/{id}");
+                var response = await _http.DeleteAsync($"api/funcionario/{id}");
 
                 if (response.IsSuccessStatusCode)
                     return true;
@@ -218,7 +218,7 @@ namespace SenValhallaBebidasacBuy.UI.Services.Models
                 streamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(contentType);
                 form.Add(streamContent, "file", Path.GetFileName(filePath));
 
-                var response = await _http.PostAsync("api/upload/usuario", form);
+                var response = await _http.PostAsync("api/upload/funcionario", form);
                 if (response.IsSuccessStatusCode)
                 {
                     var result = await response.Content.ReadFromJsonAsync<UploadResponseDto>(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
