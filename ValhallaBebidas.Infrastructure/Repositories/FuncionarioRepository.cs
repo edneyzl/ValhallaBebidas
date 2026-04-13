@@ -26,9 +26,6 @@ public class FuncionarioRepository : IFuncionarioRepository
     public async Task<Funcionario?> ObterPorEmailAsync(string email)
     => await _context.Funcionarios.FirstOrDefaultAsync(f => f.Email == email);
 
-    public async Task<Funcionario?> ObterPorLoginAsync(string login)
-    => await _context.Funcionarios.FirstOrDefaultAsync(f => f.Login == login);
-
     public async Task<IEnumerable<Funcionario>> ListarTodosAsync()
         => await _context.Funcionarios.ToListAsync();
 

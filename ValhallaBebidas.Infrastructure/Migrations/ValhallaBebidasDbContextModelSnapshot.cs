@@ -170,11 +170,6 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     b.Property<int>("EnderecoId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
-
                     b.Property<string>("NomeCompleto")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -202,9 +197,6 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                         .IsUnique();
 
                     b.HasIndex("EnderecoId");
-
-                    b.HasIndex("Login")
-                        .IsUnique();
 
                     b.ToTable("Funcionarios");
                 });

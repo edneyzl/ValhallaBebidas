@@ -7,8 +7,8 @@ namespace ValhallaBebidas.UI
             InitializeComponent();
         }
 
-      
-        
+
+
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -16,11 +16,12 @@ namespace ValhallaBebidas.UI
             form.ShowDialog();//impede que clicar em outra tela enquanto a de cadastro estiver aberta
         }
 
-        
+
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }

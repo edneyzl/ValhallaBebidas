@@ -93,7 +93,6 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
             entity.Property(f => f.Cpf).IsRequired().HasMaxLength(11);
             entity.Property(f => f.Telefone).HasMaxLength(20);
             entity.Property(f => f.Email).IsRequired().HasMaxLength(150);
-            entity.Property(f => f.Login).IsRequired().HasMaxLength(80);
             entity.Property(f => f.SenhaHash).IsRequired().HasMaxLength(500);
             entity.Property(f => f.Status).IsRequired();
 
@@ -107,7 +106,6 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
 
             entity.HasIndex(f => f.Cpf).IsUnique();
             entity.HasIndex(f => f.Email).IsUnique();
-            entity.HasIndex(f => f.Login).IsUnique();
         });
 
         // ════════════════════════════════════════════════════════

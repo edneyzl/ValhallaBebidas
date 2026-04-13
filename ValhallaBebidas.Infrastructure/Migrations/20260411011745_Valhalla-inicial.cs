@@ -109,7 +109,6 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     Cpf = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     Telefone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Login = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
                     SenhaHash = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false),
                     EnderecoId = table.Column<int>(type: "int", nullable: false)

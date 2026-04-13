@@ -561,7 +561,6 @@ namespace ValhallaBebidas.UI
             // 
             txtSenha.BorderColor = Color.Silver;
             txtSenha.BorderRadius = 10;
-            txtSenha.CustomizableEdges = customizableEdges70;
             txtSenha.DefaultText = "";
             txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSenha.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -578,7 +577,6 @@ namespace ValhallaBebidas.UI
             txtSenha.PlaceholderForeColor = Color.DarkGray;
             txtSenha.PlaceholderText = "Senha";
             txtSenha.SelectedText = "";
-            txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges71;
             txtSenha.Size = new Size(279, 34);
             txtSenha.TabIndex = 1;
             // 
@@ -628,7 +626,5 @@ namespace ValhallaBebidas.UI
         private Guna.UI2.WinForms.Guna2Button btnLimparCampos;
         private Guna.UI2.WinForms.Guna2TextBox txtTelefone;
         private Guna.UI2.WinForms.Guna2TextBox txtSenha;
-        private CustomizableEdges customizableEdges70;
-        private CustomizableEdges customizableEdges71;
     }
 }
