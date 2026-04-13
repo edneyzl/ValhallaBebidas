@@ -8,7 +8,6 @@ public class Funcionario
     public string Cpf { get; set; } = string.Empty;
     public string Telefone { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
-    public string Login { get; set; } = string.Empty;
     public string SenhaHash { get; set; } = string.Empty;
     public bool Status { get; set; } = true; //ativo por padrão
     public int EnderecoId { get; set; }//chave estrangeira para o endereço do funcionário, obrigatório, um funcionário deve ter um endereço

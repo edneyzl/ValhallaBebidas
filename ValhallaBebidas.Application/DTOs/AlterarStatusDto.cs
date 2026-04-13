@@ -1,11 +1,11 @@
-﻿namespace ValhallaBebidas.Application.DTOs;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-public class AlterarStatusDto
+namespace ValhallaBebidas.Application.DTOs
 {
-    public bool Status { get; set; }
-}
-
-public class AtualizarStatusDto
-{
-    public string NovoStatus { get; set; } = string.Empty;
+    public class AlterarStatusDto
+    {
+        public bool Status { get; set; }
+    }
 }

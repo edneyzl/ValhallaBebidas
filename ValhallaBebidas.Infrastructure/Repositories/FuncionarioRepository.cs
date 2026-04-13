@@ -26,20 +26,19 @@ public class FuncionarioRepository : IFuncionarioRepository
     public async Task<Funcionario?> ObterPorEmailAsync(string email)
     => await _context.Funcionarios.FirstOrDefaultAsync(f => f.Email == email);
 
-    public async Task<Funcionario?> ObterPorLoginAsync(string login)
-    => await _context.Funcionarios.FirstOrDefaultAsync(f => f.Login == login);
-
     public async Task<IEnumerable<Funcionario>> ListarTodosAsync()
         => await _context.Funcionarios.ToListAsync();
 
     public async Task AdicionarAsync(Funcionario funcionario)
     {
         await _context.Funcionarios.AddAsync(funcionario);
+        await _context.SaveChangesAsync();
     }
 
     public async Task AtualizarAsync(Funcionario funcionario)
     {
         _context.Funcionarios.Update(funcionario);
+        await _context.SaveChangesAsync();
     }
 
     public async Task RemoverAsync(int id)
@@ -48,6 +47,7 @@ public class FuncionarioRepository : IFuncionarioRepository
         if (funcionario != null)
         {
             _context.Funcionarios.Remove(funcionario);
+            await _context.SaveChangesAsync();
         }
     }
 }

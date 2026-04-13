@@ -21,6 +21,10 @@ namespace ValhallaBebidas.Infrastructure.Data;
 /// </summary>
 public class ValhallaBebidasDbContextFactory : IDesignTimeDbContextFactory<ValhallaBebidasDbContext>
 {
+    public ValhallaBebidasDbContextFactory()
+    {
+    }
+
     public ValhallaBebidasDbContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<ValhallaBebidasDbContext>();

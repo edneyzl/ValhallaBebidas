@@ -11,7 +11,6 @@ namespace ValhallaBebidas.Domain.Interfaces
         Task<Funcionario?> ObterPorIdAsync(int id);//método para obter um usuário por id, retornando um objeto do tipo Usuario ou null se não encontrado
         Task<Funcionario?> ObterPorCpfAsync(string cpf);//método para obter um usuário por cpf, retornando um objeto do tipo Usuario ou null se não encontrado
         Task<Funcionario?> ObterPorEmailAsync(string email);//método para obter um usuário por email, retornando um objeto do tipo Usuario ou null se não encontrado
-        Task<Funcionario?> ObterPorLoginAsync(string login); //método para obter um usuário por login, retornando um objeto do tipo Usuario ou null se não encontrado
         Task<IEnumerable<Funcionario>> ListarTodosAsync();//método para listar todos os usuários, retornando uma lista de objetos do tipo Usuario
         Task AdicionarAsync(Funcionario funcionario);//método para adicionar um novo usuário, recebendo um objeto do tipo Usuario e retornando a tarefa assíncrona
         Task AtualizarAsync(Funcionario funcionario);//método para atualizar um usuário existente, recebendo um objeto do tipo Usuario e retornando a tarefa assíncrona

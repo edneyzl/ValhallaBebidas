@@ -33,11 +33,10 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
         modelBuilder.Entity<Endereco>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.TipoLogradouro).IsRequired().HasMaxLength(50);
-            entity.Property(e => e.Logradouro).IsRequired().HasMaxLength(200);
+            entity.Property(e => e.Logradouro).IsRequired().HasMaxLength(250);
             entity.Property(e => e.Numero).IsRequired();
-            entity.Property(e => e.Complemento).HasMaxLength(150); /* opcional */
-            entity.Property(e => e.Cep).IsRequired().HasMaxLength(8);
+            entity.Property(e => e.Complemento).HasMaxLength(150);
+            entity.Property(e => e.Cep).IsRequired().HasMaxLength(9);
             entity.Property(e => e.Bairro).IsRequired().HasMaxLength(120);
             entity.Property(e => e.Cidade).IsRequired().HasMaxLength(120);
             entity.Property(e => e.Estado).IsRequired().HasMaxLength(2);
@@ -61,8 +60,8 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
         {
             entity.HasKey(c => c.Id);
             entity.Property(c => c.NomeCliente).IsRequired().HasMaxLength(200);
-            entity.Property(c => c.DataNascimento).HasColumnType("datetime2");
-            entity.Property(c => c.Documento).IsRequired().HasMaxLength(14);
+            entity.Property(c => c.DataNascimento).HasColumnType("date");
+            entity.Property(c => c.Documento).IsRequired().HasMaxLength(20);
             entity.Property(c => c.Telefone).HasMaxLength(20);
             entity.Property(c => c.Email).IsRequired().HasMaxLength(150);
             entity.Property(c => c.SenhaHash).IsRequired().HasMaxLength(500);
@@ -90,11 +89,10 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
             entity.HasKey(f => f.Id);
 
             entity.Property(f => f.NomeCompleto).IsRequired().HasMaxLength(200);
-            entity.Property(f => f.DataNascimento).HasColumnType("datetime2");
+            entity.Property(f => f.DataNascimento).HasColumnType("date");
             entity.Property(f => f.Cpf).IsRequired().HasMaxLength(11);
             entity.Property(f => f.Telefone).HasMaxLength(20);
             entity.Property(f => f.Email).IsRequired().HasMaxLength(150);
-            entity.Property(f => f.Login).IsRequired().HasMaxLength(80);
             entity.Property(f => f.SenhaHash).IsRequired().HasMaxLength(500);
             entity.Property(f => f.Status).IsRequired();
 
@@ -108,7 +106,6 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
 
             entity.HasIndex(f => f.Cpf).IsUnique();
             entity.HasIndex(f => f.Email).IsUnique();
-            entity.HasIndex(f => f.Login).IsUnique();
         });
 
         // ════════════════════════════════════════════════════════
@@ -177,7 +174,7 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
             entity.Property(p => p.EnderecoEntregaBairro).HasMaxLength(120);
             entity.Property(p => p.EnderecoEntregaCidade).HasMaxLength(120);
             entity.Property(p => p.EnderecoEntregaEstado).HasMaxLength(2);
-            entity.Property(p => p.EnderecoEntregaCep).HasMaxLength(8);
+            entity.Property(p => p.EnderecoEntregaCep).HasMaxLength(9);
 
             entity.HasIndex(p => p.ClienteId);
             entity.HasIndex(p => p.DataPedido);
@@ -208,7 +205,7 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
                 .HasForeignKey(i => i.PedidoId);
 
             entity.HasOne(i => i.Produto)
-                .WithMany()
+                .WithMany(p => p.ItensPedido) // 🔥FIO ESSENCIAL
                 .HasForeignKey(i => i.ProdutoId);
         });
 

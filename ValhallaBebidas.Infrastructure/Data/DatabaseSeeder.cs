@@ -40,8 +40,7 @@ public static class DatabaseSeeder
         {
             endereco = new Endereco
             {
-                TipoLogradouro = "Rua",
-                Logradouro = "Vicente Garcia",
+                Logradouro = "Rua Vicente Garcia",
                 Numero = 24,
                 Complemento = "Fundos",
                 Cep = "08440-261",
@@ -60,7 +59,6 @@ public static class DatabaseSeeder
             Cpf = "11122233344",
             Telefone = "(11) 99999-9999",
             Email = "admin@valhalla.br",
-            Login = "admin",
             SenhaHash = hash,
             Status = true,
             EnderecoId = endereco.Id,

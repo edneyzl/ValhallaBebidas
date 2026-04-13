@@ -8,16 +8,13 @@ public class ClienteService
 {
     private readonly IClienteRepository _clienteRepository;
     private readonly IEnderecoRepository _enderecoRepository;
-    private readonly IUnitOfWork _unitOfWork;
 
     public ClienteService(
         IClienteRepository clienteRepository,
-        IEnderecoRepository enderecoRepository,
-        IUnitOfWork unitOfWork)
+        IEnderecoRepository enderecoRepository)
     {
         _clienteRepository = clienteRepository;
         _enderecoRepository = enderecoRepository;
-        _unitOfWork = unitOfWork;
     }
 
     // ════════════════════════════════════════
@@ -65,10 +62,9 @@ public class ClienteService
         /* Cria o endereço */
         var endereco = new Endereco
         {
-            TipoLogradouro = dto.Endereco.TipoLogradouro,
             Logradouro = dto.Endereco.Logradouro,
             Numero = dto.Endereco.Numero,
-            Complemento = dto.Endereco.Complemento,
+            Complemento = dto.Endereco.Complemento ?? "",
             Cep = dto.Endereco.Cep,
             Bairro = dto.Endereco.Bairro,
             Cidade = dto.Endereco.Cidade,
@@ -91,7 +87,6 @@ public class ClienteService
         };
 
         await _clienteRepository.AdicionarAsync(cliente);
-        await _unitOfWork.SaveChangesAsync();
 
         return MapearParaDto(cliente);
     }
@@ -116,7 +111,7 @@ public class ClienteService
         cliente.DataNascimento = dto.DataNascimento;
 
         await _clienteRepository.AtualizarAsync(cliente);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
@@ -130,7 +125,6 @@ public class ClienteService
 
         cliente.Status = status;
         await _clienteRepository.AtualizarAsync(cliente);
-        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -143,7 +137,6 @@ public class ClienteService
             throw new KeyNotFoundException($"Cliente com Id {id} não encontrado.");
 
         await _clienteRepository.RemoverAsync(id);
-        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -192,10 +185,9 @@ public class ClienteService
         Endereco = c.Endereco == null ? null : new EnderecoDto
         {
             Id = c.Endereco.Id,
-            TipoLogradouro = c.Endereco.TipoLogradouro,
             Logradouro = c.Endereco.Logradouro,
             Numero = c.Endereco.Numero,
-            Complemento = c.Endereco.Complemento,
+            Complemento = c.Endereco.Complemento ?? "",
             Cep = c.Endereco.Cep,
             Bairro = c.Endereco.Bairro,
             Cidade = c.Endereco.Cidade,
@@ -219,7 +211,6 @@ public class ClienteService
         if (enderecoExistente == null)
             throw new KeyNotFoundException("Endereço não encontrado.");
 
-        enderecoExistente.TipoLogradouro = dto.TipoLogradouro;
         enderecoExistente.Logradouro = dto.Logradouro;
         enderecoExistente.Numero = dto.Numero;
         enderecoExistente.Complemento = dto.Complemento;
@@ -229,7 +220,6 @@ public class ClienteService
         enderecoExistente.Estado = dto.Estado;
 
         await _enderecoRepository.AtualizarAsync(enderecoExistente);
-        await _unitOfWork.SaveChangesAsync();
     }
 
     // ════════════════════════════════════════
@@ -246,6 +236,5 @@ public class ClienteService
 
         cliente.SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.NovaSenha);
         await _clienteRepository.AtualizarAsync(cliente);
-        await _unitOfWork.SaveChangesAsync();
     }
 }

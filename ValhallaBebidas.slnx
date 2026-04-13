@@ -3,5 +3,6 @@
   <Project Path="ValhallaBebidas.Application/ValhallaBebidas.Application.csproj" />
   <Project Path="ValhallaBebidas.Domain/ValhallaBebidas.Domain.csproj" />
   <Project Path="ValhallaBebidas.Infrastructure/ValhallaBebidas.Infrastructure.csproj" />
+  <Project Path="ValhallaBebidas.UI/ValhallaBebidas.UI.csproj" Id="6df4905a-232c-47a4-9bb9-470c2ecdf590" />
   <Project Path="ValhallaBebidas.Web/ValhallaBebidas.Web.csproj" />
 </Solution>

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ValhallaBebidas.Web.Filters;
 using ValhallaBebidas.Application.DTOs;
-using System.Text.Json;
 
 namespace ValhallaBebidas.Web.Controllers;
 
@@ -19,17 +18,34 @@ public class CarrinhoController : Controller
     public IActionResult Checkout() => View();
     public IActionResult Confirmacao() => View();
 
-    /* ── POST /Carrinho/CheckoutApi ── */
-    /// <summary>
-    /// O token CSRF é validado via cookie pelo AntiForgery, mas como o JS
-    /// envia o token no header RequestVerificationToken (não form data),
-    /// usamos IgnoreAntiforgeryToken e validamos manualmente.
-    /// </summary>
+    [HttpGet]
+    public async Task<IActionResult> ObterPedidoApi(int id)
+    {
+        var clienteId = HttpContext.Session.GetString("UserId");
+        if (string.IsNullOrEmpty(clienteId))
+            return Unauthorized();
+
+        try
+        {
+            var client = _httpClientFactory.CreateClient("ValhallaAPI");
+            var response = await client.GetAsync($"api/pedido/{id}");
+            var body = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+                return StatusCode((int)response.StatusCode, body);
+
+            return Content(body, "application/json");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { mensagem = ex.Message });
+        }
+    }
+
     [HttpPost]
     [IgnoreAntiforgeryToken]
     public async Task<IActionResult> CheckoutApi([FromBody] CriarPedidoDto payload)
     {
-
         if (payload?.Itens == null || payload.Itens.Count == 0)
             return BadRequest(new { mensagem = "Carrinho vazio." });
 
@@ -39,26 +55,39 @@ public class CarrinhoController : Controller
 
         try
         {
-            // 1. Injeta o ID seguro da sessão no DTO que veio do front-end
             payload.ClienteId = clienteId;
 
             var client = _httpClientFactory.CreateClient("ValhallaAPI");
-
-            // 2. Envia o DTO DIRETAMENTE! Sem criar objetos manuais.
             var response = await client.PostAsJsonAsync("api/pedido", payload);
+
+            var respostaTexto = await response.Content.ReadAsStringAsync();
 
             if (!response.IsSuccessStatusCode)
             {
-                var erro = await response.Content.ReadAsStringAsync();
-                return BadRequest(new { mensagem = erro });
+                return StatusCode((int)response.StatusCode, new
+                {
+                    mensagem = string.IsNullOrWhiteSpace(respostaTexto)
+                        ? "Erro retornado pela API de pedidos."
+                        : respostaTexto
+                });
             }
 
-            var pedido = await response.Content.ReadFromJsonAsync<dynamic>();
-            return Json(new { pedidoId = pedido?.id, mensagem = "Pedido criado com sucesso." });
+            var pedido = await response.Content.ReadFromJsonAsync<PedidoCriadoResponseDto>();
+
+            return Json(new
+            {
+                pedidoId = pedido?.Id,
+                mensagem = "Pedido criado com sucesso."
+            });
         }
-        catch
+        catch (Exception ex)
         {
-            return StatusCode(500, new { mensagem = "Erro interno. Tente novamente." });
+            return StatusCode(500, new { mensagem = ex.Message });
         }
     }
+}
+
+public class PedidoCriadoResponseDto
+{
+    public int Id { get; set; }
 }

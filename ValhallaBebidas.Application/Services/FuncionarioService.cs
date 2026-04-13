@@ -8,16 +8,14 @@ public class FuncionarioService
 {
     private readonly IFuncionarioRepository _funcionarioRepository;
     private readonly IEnderecoRepository _enderecoRepository;
-    private readonly IUnitOfWork _unitOfWork;
+
 
     public FuncionarioService(
         IFuncionarioRepository funcionarioRepository,
-        IEnderecoRepository enderecoRepository,
-        IUnitOfWork unitOfWork)
+        IEnderecoRepository enderecoRepository)
     {
         _funcionarioRepository = funcionarioRepository;
         _enderecoRepository = enderecoRepository;
-        _unitOfWork = unitOfWork;
     }
 
     // ════════════════════════════════════════
@@ -53,15 +51,10 @@ public class FuncionarioService
         if (existenteEmail != null)
             throw new InvalidOperationException($"Já existe um funcionário com o email '{dto.Email}'.");
 
-        /* Login único */
-        var existenteLogin = await _funcionarioRepository.ObterPorLoginAsync(dto.Login);
-        if (existenteLogin != null)
-            throw new InvalidOperationException($"O login '{dto.Login}' já está em uso.");
-
         /* Cria o endereço */
         var endereco = new Endereco
         {
-            TipoLogradouro = dto.Endereco.TipoLogradouro,
+
             Logradouro = dto.Endereco.Logradouro,
             Numero = dto.Endereco.Numero,
             Complemento = dto.Endereco.Complemento,
@@ -81,14 +74,13 @@ public class FuncionarioService
             Cpf = dto.Cpf,
             Telefone = dto.Telefone,
             Email = dto.Email,
-            Login = dto.Login,
             SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.Senha),
             Status = true,
             Endereco = endereco,
         };
 
         await _funcionarioRepository.AdicionarAsync(funcionario);
-        await _unitOfWork.SaveChangesAsync();
+
 
         return MapearParaDto(funcionario);
     }
@@ -107,16 +99,15 @@ public class FuncionarioService
         if (comMesmoCpf != null && comMesmoCpf.Id != id)
             throw new InvalidOperationException($"O CPF '{dto.Cpf}' já está em uso por outro funcionário.");
 
-        var comMesmoLogin = await _funcionarioRepository.ObterPorLoginAsync(dto.Login);
-        if (comMesmoLogin != null && comMesmoLogin.Id != id)
-            throw new InvalidOperationException($"O login '{dto.Login}' já está em uso por outro funcionário.");
+        var comMesmoEmail = await _funcionarioRepository.ObterPorEmailAsync(dto.Email);
+        if (comMesmoEmail != null && comMesmoEmail.Id != id)
+            throw new InvalidOperationException($"O e-mail '{dto.Email}' já está em uso por outro funcionário.");
 
         funcionario.NomeCompleto = dto.NomeCompleto;
         funcionario.DataNascimento = dto.DataNascimento;
         funcionario.Cpf = dto.Cpf;
         funcionario.Telefone = dto.Telefone;
         funcionario.Email = dto.Email;
-        funcionario.Login = dto.Login;
         funcionario.Status = dto.Status;
 
         /* Atualiza senha apenas se informada */
@@ -124,7 +115,7 @@ public class FuncionarioService
             funcionario.SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.Senha);
 
         await _funcionarioRepository.AtualizarAsync(funcionario);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
@@ -138,7 +129,7 @@ public class FuncionarioService
 
         funcionario.Status = status;
         await _funcionarioRepository.AtualizarAsync(funcionario);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
@@ -151,7 +142,7 @@ public class FuncionarioService
             throw new KeyNotFoundException($"Funcionário com Id {id} não encontrado.");
 
         await _funcionarioRepository.RemoverAsync(id);
-        await _unitOfWork.SaveChangesAsync();
+
     }
 
     // ════════════════════════════════════════
@@ -159,13 +150,13 @@ public class FuncionarioService
     // ════════════════════════════════════════
     public async Task<LoginFuncionarioResponseDto> LoginAsync(LoginFuncionarioDto dto)
     {
-        var funcionario = await _funcionarioRepository.ObterPorLoginAsync(dto.Login);
+        var funcionario = await _funcionarioRepository.ObterPorEmailAsync(dto.Email);
 
         if (funcionario == null || !BCrypt.Net.BCrypt.Verify(dto.Senha, funcionario.SenhaHash))
             return new LoginFuncionarioResponseDto
             {
                 Sucesso = false,
-                Mensagem = "Login ou senha inválidos."
+                Mensagem = "Email ou senha inválidos."
             };
 
         if (!funcionario.Status)
@@ -179,7 +170,6 @@ public class FuncionarioService
         {
             Id = funcionario.Id,
             Nome = funcionario.NomeCompleto,
-            Login = funcionario.Login,
             Email = funcionario.Email,
             Sucesso = true,
             Mensagem = "Login realizado com sucesso."
@@ -197,7 +187,6 @@ public class FuncionarioService
         Cpf = f.Cpf,
         Telefone = f.Telefone,
         Email = f.Email,
-        Login = f.Login,
         Status = f.Status,
     };
 }

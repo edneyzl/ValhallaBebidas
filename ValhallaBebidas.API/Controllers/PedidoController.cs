@@ -16,9 +16,6 @@ public class PedidoController : ControllerBase
         _pedidoService = pedidoService;
     }
 
-    /// <summary>
-    /// Lista todos os pedidos.
-    /// </summary>
     [HttpGet]
     public async Task<IActionResult> ListarTodos()
     {
@@ -26,9 +23,6 @@ public class PedidoController : ControllerBase
         return Ok(pedidos);
     }
 
-    /// <summary>
-    /// Lista pedidos de um cliente específico.
-    /// </summary>
     [HttpGet("cliente/{clienteId}")]
     public async Task<IActionResult> ListarPorCliente(int clienteId)
     {
@@ -43,21 +37,16 @@ public class PedidoController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Obtém um pedido pelo ID.
-    /// </summary>
     [HttpGet("{id}")]
     public async Task<IActionResult> ObterPorId(int id)
     {
         var pedido = await _pedidoService.ObterPorIdAsync(id);
         if (pedido == null)
             return NotFound(new { mensagem = $"Pedido {id} não encontrado." });
+
         return Ok(pedido);
     }
 
-    /// <summary>
-    /// Cria um novo pedido.
-    /// </summary>
     [HttpPost]
     public async Task<IActionResult> Criar([FromBody] CriarPedidoDto dto)
     {
@@ -80,18 +69,12 @@ public class PedidoController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Atualiza o status de um pedido (Confirmado ou Cancelado).
-    /// </summary>
     [HttpPut("{id}/status")]
     public async Task<IActionResult> AtualizarStatus(int id, [FromBody] AtualizarStatusDto dto)
     {
         try
         {
-            if (!Enum.TryParse<StatusPedido>(dto.NovoStatus, true, out var status))
-                return BadRequest(new { mensagem = $"'{dto.NovoStatus}' não é um StatusPedido válido." });
-
-            await _pedidoService.AtualizarStatusAsync(id, status);
+            await _pedidoService.AtualizarStatusAsync(id, dto.NovoStatus);
             return NoContent();
         }
         catch (KeyNotFoundException ex)
@@ -108,21 +91,15 @@ public class PedidoController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Cancela um pedido e devolve o estoque dos itens.
-    /// Valida que o pedido pertence ao cliente logado.
-    /// </summary>
     [HttpPost("{id}/cancelar")]
-    public async Task<IActionResult> Cancelar(int id)
+    public async Task<IActionResult> Cancelar(int id, [FromQuery] int clienteId)
     {
-        var clienteIdString = HttpContext.Session?.GetString("ClienteId");
-
-        if (string.IsNullOrEmpty(clienteIdString) || !int.TryParse(clienteIdString, out var clienteId))
+        if (clienteId <= 0)
             return Unauthorized(new { mensagem = "Cliente não autenticado." });
 
         try
         {
-            await _pedidoService.CancelarAsync(id, int.Parse(clienteIdString));
+            await _pedidoService.CancelarAsync(id, clienteId);
             return Ok(new { mensagem = "Pedido cancelado com sucesso." });
         }
         catch (KeyNotFoundException ex)
@@ -139,9 +116,6 @@ public class PedidoController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// Remove um pedido.
-    /// </summary>
     [HttpDelete("{id}")]
     public async Task<IActionResult> Remover(int id)
     {

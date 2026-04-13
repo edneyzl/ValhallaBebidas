@@ -2,37 +2,43 @@
    auth.js — Valhalla Bebidas (MVC — Session segura)
    Responsável: busca estado de auth da Session do servidor
    Carrega em: todas as páginas via _Layout
+
+   Correções:
+   - não apaga mais o carrinho automaticamente
+   - evita estado inconsistente antes da sessão carregar
+   - mantém navbar/cart sincronizados com a session
 ════════════════════════════════════════════════════════ */
 
-/* Estado inicial vazio — será preenchido pelo servidor */
 let isLogado = false;
 let nomeUser = 'Usuário';
+let authJaCarregada = false;
 
-/* ════════════════════════════════════════════════════════
-   BUSCA SESSION — GET /api/session
-   Substitui o localStorage.getItem('logado')
-════════════════════════════════════════════════════════ */
+/* ── Busca session no servidor ── */
 async function carregarSession() {
     try {
-        const res = await fetch('/api/session', { credentials: 'include' });
+        const res = await fetch('/api/session', {
+            method: 'GET',
+            credentials: 'include'
+        });
+
+        if (!res.ok) {
+            throw new Error('Falha ao carregar sessão');
+        }
+
         const data = await res.json();
 
-        isLogado = data.isLogado;
+        isLogado = !!data.isLogado;
         nomeUser = data.nome || 'Usuário';
 
-        /* Aplica estado na UI após confirmar com servidor */
         aplicarEstadoAuth();
-
     } catch {
-        /* Se falhar, trata como deslogado */
         isLogado = false;
+        nomeUser = 'Usuário';
         aplicarEstadoAuth();
     }
 }
 
-/* ════════════════════════════════════════════════════════
-   APLICA ESTADO — chamado após carregar a session
-════════════════════════════════════════════════════════ */
+/* ── Aplica estado na UI ── */
 function aplicarEstadoAuth() {
     const navGuest = document.querySelector('.nav__guest');
     const navUser = document.getElementById('nav-user');
@@ -49,38 +55,45 @@ function aplicarEstadoAuth() {
     } else {
         if (navGuest) navGuest.style.display = 'flex';
         if (navUser) navUser.style.display = 'none';
+        if (userNameEl) userNameEl.textContent = 'Usuário';
+        if (userNameMob) userNameMob.textContent = 'Usuário';
         if (cartBtn) cartBtn.style.display = 'none';
-        /* Limpa carrinho se não logado */
-        localStorage.removeItem('carrinho');
+
+        /* IMPORTANTE:
+           não apagar o carrinho aqui.
+           Isso fazia o localStorage resetar ao navegar.
+        */
     }
 
-    /* Itens de auth no mobile */
-    document.querySelectorAll('.dropdown-auth').forEach(el =>
-        el.style.display = isLogado ? 'flex' : 'none'
-    );
-    document.querySelectorAll('.dropdown-guest').forEach(el =>
-        el.style.display = isLogado ? 'none' : 'flex'
-    );
-    document.querySelectorAll('.nav__dropdown-divider.dropdown-auth').forEach(el =>
-        el.style.display = isLogado ? 'block' : 'none'
-    );
-    document.querySelectorAll('.nav__dropdown-divider.dropdown-guest').forEach(el =>
-        el.style.display = isLogado ? 'none' : 'block'
-    );
+    document.querySelectorAll('.dropdown-auth').forEach(el => {
+        el.style.display = isLogado ? 'flex' : 'none';
+    });
 
-    /* Inicializa carrinho se logado */
-    if (isLogado && typeof inicializarCarrinho === 'function') {
-        inicializarCarrinho();
-    }
+    document.querySelectorAll('.dropdown-guest').forEach(el => {
+        el.style.display = isLogado ? 'none' : 'flex';
+    });
 
-    /* Dispara evento para outros scripts saberem que auth carregou */
-    window.dispatchEvent(new CustomEvent('authCarregado', { detail: { isLogado, nomeUser } }));
+    document.querySelectorAll('.nav__dropdown-divider.dropdown-auth').forEach(el => {
+        el.style.display = isLogado ? 'block' : 'none';
+    });
+
+    document.querySelectorAll('.nav__dropdown-divider.dropdown-guest').forEach(el => {
+        el.style.display = isLogado ? 'none' : 'block';
+    });
+
+    authJaCarregada = true;
+
+    window.dispatchEvent(new CustomEvent('authCarregado', {
+        detail: {
+            isLogado,
+            nomeUser
+        }
+    }));
 }
 
-/* ════════════════════════════════════════════════════════
-   LOGOUT — redireciona para o controller MVC
-════════════════════════════════════════════════════════ */
+/* ── Logout ── */
 function logout() {
+    /* aqui sim pode limpar o carrinho, se esse for o comportamento desejado */
     localStorage.removeItem('carrinho');
     window.location.href = '/Auth/Logout';
 }
@@ -95,7 +108,18 @@ document.getElementById('btn-logout-mobile')?.addEventListener('click', (e) => {
     logout();
 });
 
-/* ════════════════════════════════════════════════════════
-   INIT — executa imediatamente
-════════════════════════════════════════════════════════ */
+/* ── Helpers opcionais ── */
+window.authState = {
+    get isLogado() {
+        return isLogado;
+    },
+    get nomeUser() {
+        return nomeUser;
+    },
+    get carregado() {
+        return authJaCarregada;
+    }
+};
+
+/* ── Init ── */
 carregarSession();

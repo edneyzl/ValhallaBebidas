@@ -25,11 +25,13 @@ public class EnderecoRepository : IEnderecoRepository
     public async Task AdicionarAsync(Endereco endereco)
     {
         await _context.Enderecos.AddAsync(endereco);
+        await _context.SaveChangesAsync();
     }
 
     public async Task AtualizarAsync(Endereco endereco)
     {
         _context.Enderecos.Update(endereco);
+        await _context.SaveChangesAsync();
     }
 
     public async Task RemoverAsync(int id)
@@ -38,6 +40,7 @@ public class EnderecoRepository : IEnderecoRepository
         if (endereco != null)
         {
             _context.Enderecos.Remove(endereco);
+            await _context.SaveChangesAsync();
         }
     }
 }

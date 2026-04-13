@@ -3,7 +3,6 @@
 public  class Endereco
 {
     public int Id { get; set; } 
-    public string TipoLogradouro { get; set; } = string.Empty;
     public string Logradouro { get; set; } = string.Empty;
     public int Numero { get; set; }
     public string Complemento { get; set; } = string.Empty;
