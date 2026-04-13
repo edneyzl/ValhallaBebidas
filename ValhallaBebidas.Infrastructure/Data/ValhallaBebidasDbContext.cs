@@ -60,7 +60,7 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
         {
             entity.HasKey(c => c.Id);
             entity.Property(c => c.NomeCliente).IsRequired().HasMaxLength(200);
-            entity.Property(c => c.DataNascimento).HasColumnType("datetime");
+            entity.Property(c => c.DataNascimento).HasColumnType("date");
             entity.Property(c => c.Documento).IsRequired().HasMaxLength(20);
             entity.Property(c => c.Telefone).HasMaxLength(20);
             entity.Property(c => c.Email).IsRequired().HasMaxLength(150);
@@ -89,7 +89,7 @@ public class ValhallaBebidasDbContext : DbContext, IUnitOfWork
             entity.HasKey(f => f.Id);
 
             entity.Property(f => f.NomeCompleto).IsRequired().HasMaxLength(200);
-            entity.Property(f => f.DataNascimento).HasColumnType("datetime");
+            entity.Property(f => f.DataNascimento).HasColumnType("date");
             entity.Property(f => f.Cpf).IsRequired().HasMaxLength(11);
             entity.Property(f => f.Telefone).HasMaxLength(20);
             entity.Property(f => f.Email).IsRequired().HasMaxLength(150);
