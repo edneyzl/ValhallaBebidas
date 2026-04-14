@@ -124,7 +124,7 @@
             // 
             // lblSubtitulo
             // 
-            lblSubtitulo.Font = new Font("Rockwell", 8.25F);
+            lblSubtitulo.Font = new Font("Segoe UI", 9F);
             lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
             lblSubtitulo.Location = new Point(19, 43);
             lblSubtitulo.Name = "lblSubtitulo";
@@ -134,7 +134,7 @@
             // 
             // label1
             // 
-            label1.Font = new Font("Rockwell", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(214, 189, 119);
             label1.Location = new Point(19, 15);
             label1.Name = "label1";
