@@ -35,7 +35,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Name = "ucPedidos";
-            Size = new Size(898, 623);
+            Size = new Size(969, 549);
             ResumeLayout(false);
         }
 
