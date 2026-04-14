@@ -91,7 +91,9 @@
             txtDataNascimento = new Guna.UI2.WinForms.Guna2TextBox();
             txtNome = new Guna.UI2.WinForms.Guna2TextBox();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblSubtitulo = new Label();
+            label1 = new Label();
+            label2 = new Label();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picFotoPerfil).BeginInit();
             pnlEndereco.SuspendLayout();
@@ -555,7 +557,9 @@
             // guna2Panel2
             // 
             guna2Panel2.BackColor = Color.FromArgb(33, 33, 33);
-            guna2Panel2.Controls.Add(guna2HtmlLabel1);
+            guna2Panel2.Controls.Add(lblSubtitulo);
+            guna2Panel2.Controls.Add(label2);
+            guna2Panel2.Controls.Add(label1);
             guna2Panel2.CustomizableEdges = customizableEdges41;
             guna2Panel2.Location = new Point(3, 3);
             guna2Panel2.Name = "guna2Panel2";
@@ -563,14 +567,35 @@
             guna2Panel2.Size = new Size(963, 100);
             guna2Panel2.TabIndex = 16;
             // 
-            // guna2HtmlLabel1
+            // lblSubtitulo
             // 
-            guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Location = new Point(20, 29);
-            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(97, 17);
-            guna2HtmlLabel1.TabIndex = 0;
-            guna2HtmlLabel1.Text = "guna2HtmlLabel1";
+            lblSubtitulo.Font = new Font("Segoe UI", 9F);
+            lblSubtitulo.ForeColor = Color.Silver;
+            lblSubtitulo.Location = new Point(20, 55);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Size = new Size(280, 20);
+            lblSubtitulo.TabIndex = 13;
+            lblSubtitulo.Text = "Gerencie os funcionários cadastrados no sistema";
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Rockwell", 14.25F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(20, 21);
+            label1.Name = "label1";
+            label1.Size = new Size(138, 34);
+            label1.TabIndex = 12;
+            label1.Text = "👥  Novo";
+            // 
+            // label2
+            // 
+            label2.Font = new Font("Rockwell", 14.25F, FontStyle.Bold);
+            label2.ForeColor = Color.FromArgb(214, 189, 119);
+            label2.Location = new Point(110, 21);
+            label2.Name = "label2";
+            label2.Size = new Size(225, 34);
+            label2.TabIndex = 12;
+            label2.Text = "Funcionário";
             // 
             // ucNovoFuncionario
             // 
@@ -585,7 +610,6 @@
             ((System.ComponentModel.ISupportInitialize)picFotoPerfil).EndInit();
             pnlEndereco.ResumeLayout(false);
             guna2Panel2.ResumeLayout(false);
-            guna2Panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -612,6 +636,8 @@
         private Guna.UI2.WinForms.Guna2TextBox txtDataNascimento;
         private Guna.UI2.WinForms.Guna2TextBox txtNome;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Label lblSubtitulo;
+        private Label label2;
+        private Label label1;
     }
 }
