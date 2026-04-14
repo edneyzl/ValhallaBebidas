@@ -15,5 +15,9 @@ namespace ValhallaBebidas.UI
             InitializeComponent();
         }
 
+        private void lblSecPessoal_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
