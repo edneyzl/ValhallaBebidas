@@ -30,6 +30,8 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -41,17 +43,15 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelHeader = new Guna.UI2.WinForms.Guna2Panel();
-            lblTitulo = new Label();
-            lblSubtitulo = new Label();
+            txtBuscaCliente = new Guna.UI2.WinForms.Guna2TextBox();
             btnNovoCliente = new Guna.UI2.WinForms.Guna2Button();
+            lblTitulo = new Label();
             btnEditarCliente = new Guna.UI2.WinForms.Guna2Button();
             btnExcluirCliente = new Guna.UI2.WinForms.Guna2Button();
+            lblSubtitulo = new Label();
             panelConteudo = new Guna.UI2.WinForms.Guna2Panel();
             dgvClientes = new Guna.UI2.WinForms.Guna2DataGridView();
-            txtBuscaCliente = new Guna.UI2.WinForms.Guna2TextBox();
             panelHeader.SuspendLayout();
             panelConteudo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
@@ -74,25 +74,25 @@
             panelHeader.Size = new Size(969, 80);
             panelHeader.TabIndex = 0;
             // 
-            // lblTitulo
+            // txtBuscaCliente
             // 
-            lblTitulo.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblTitulo.Location = new Point(8, 15);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(225, 34);
-            lblTitulo.TabIndex = 2;
-            lblTitulo.Text = "👥  Gestão de Clientes";
-            // 
-            // lblSubtitulo
-            // 
-            lblSubtitulo.Font = new Font("Segoe UI", 9F);
-            lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblSubtitulo.Location = new Point(8, 43);
-            lblSubtitulo.Name = "lblSubtitulo";
-            lblSubtitulo.Size = new Size(238, 20);
-            lblSubtitulo.TabIndex = 3;
-            lblSubtitulo.Text = "Gerencie os clientes cadastrados no sistema";
+            txtBuscaCliente.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtBuscaCliente.BorderColor = Color.FromArgb(214, 189, 119);
+            txtBuscaCliente.BorderRadius = 8;
+            txtBuscaCliente.CustomizableEdges = customizableEdges1;
+            txtBuscaCliente.DefaultText = "";
+            txtBuscaCliente.FillColor = Color.FromArgb(33, 33, 33);
+            txtBuscaCliente.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
+            txtBuscaCliente.Font = new Font("Segoe UI", 9.5F);
+            txtBuscaCliente.ForeColor = Color.FromArgb(214, 189, 119);
+            txtBuscaCliente.Location = new Point(304, 19);
+            txtBuscaCliente.Name = "txtBuscaCliente";
+            txtBuscaCliente.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtBuscaCliente.PlaceholderText = "🔍  Pesquisar por E-mail ou CPF...";
+            txtBuscaCliente.SelectedText = "";
+            txtBuscaCliente.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            txtBuscaCliente.Size = new Size(217, 40);
+            txtBuscaCliente.TabIndex = 9;
             // 
             // btnNovoCliente
             // 
@@ -109,6 +109,16 @@
             btnNovoCliente.Size = new Size(155, 40);
             btnNovoCliente.TabIndex = 6;
             btnNovoCliente.Text = "+ Novo Cliente";
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.FromArgb(214, 189, 119);
+            lblTitulo.Location = new Point(8, 15);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(225, 34);
+            lblTitulo.TabIndex = 2;
+            lblTitulo.Text = "👥  Gestão de Clientes";
             // 
             // btnEditarCliente
             // 
@@ -142,6 +152,16 @@
             btnExcluirCliente.TabIndex = 8;
             btnExcluirCliente.Text = "🗑️ Excluir";
             // 
+            // lblSubtitulo
+            // 
+            lblSubtitulo.Font = new Font("Segoe UI", 9F);
+            lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
+            lblSubtitulo.Location = new Point(8, 47);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Size = new Size(238, 20);
+            lblSubtitulo.TabIndex = 3;
+            lblSubtitulo.Text = "Gerencie os clientes cadastrados no sistema";
+            // 
             // panelConteudo
             // 
             panelConteudo.BackColor = Color.FromArgb(64, 64, 64);
@@ -166,7 +186,8 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClientes.ColumnHeadersHeight = 4;
+            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -192,7 +213,7 @@
             dgvClientes.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvClientes.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             dgvClientes.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dgvClientes.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClientes.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvClientes.ThemeStyle.HeaderStyle.Height = 4;
             dgvClientes.ThemeStyle.ReadOnly = false;
             dgvClientes.ThemeStyle.RowsStyle.BackColor = Color.White;
@@ -202,26 +223,6 @@
             dgvClientes.ThemeStyle.RowsStyle.Height = 25;
             dgvClientes.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvClientes.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            // 
-            // txtBuscaCliente
-            // 
-            txtBuscaCliente.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtBuscaCliente.BorderColor = Color.FromArgb(214, 189, 119);
-            txtBuscaCliente.BorderRadius = 8;
-            txtBuscaCliente.CustomizableEdges = customizableEdges1;
-            txtBuscaCliente.DefaultText = "";
-            txtBuscaCliente.FillColor = Color.FromArgb(33, 33, 33);
-            txtBuscaCliente.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
-            txtBuscaCliente.Font = new Font("Segoe UI", 9.5F);
-            txtBuscaCliente.ForeColor = Color.FromArgb(214, 189, 119);
-            txtBuscaCliente.Location = new Point(304, 19);
-            txtBuscaCliente.Name = "txtBuscaCliente";
-            txtBuscaCliente.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
-            txtBuscaCliente.PlaceholderText = "🔍  Pesquisar por nome ou CPF...";
-            txtBuscaCliente.SelectedText = "";
-            txtBuscaCliente.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtBuscaCliente.Size = new Size(217, 40);
-            txtBuscaCliente.TabIndex = 9;
             // 
             // ucCliente
             // 
