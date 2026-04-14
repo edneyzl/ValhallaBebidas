@@ -28,12 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "frmPrincipal";
+            components = new System.ComponentModel.Container();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
+            panelLogo = new Guna.UI2.WinForms.Guna2Panel();
+            SuspendLayout();
+            // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
+            // panelLogo
+            // 
+            panelLogo.CustomizableEdges = customizableEdges1;
+            panelLogo.FillColor = Color.Black;
+            panelLogo.Location = new Point(2, 1);
+            panelLogo.Name = "panelLogo";
+            panelLogo.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            panelLogo.Size = new Size(200, 100);
+            panelLogo.TabIndex = 0;
+            // 
+            // frmPrincipal
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1050, 550);
+            Controls.Add(panelLogo);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "frmPrincipal";
+            Text = "frmPrincipal";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private Guna.UI2.WinForms.Guna2Panel panelLogo;
     }
 }
