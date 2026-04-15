@@ -12,8 +12,8 @@ using ValhallaBebidas.Infrastructure.Data;
 namespace ValhallaBebidas.Infrastructure.Migrations
 {
     [DbContext(typeof(ValhallaBebidasDbContext))]
-    [Migration("20260415004704_ValhallaBebidasDb")]
-    partial class ValhallaBebidasDb
+    [Migration("20260415010737_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
