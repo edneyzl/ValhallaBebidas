@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace ValhallaBebidas.UI
 {
-    public partial class frmPreviewRecibo : Form
+    public partial class ucMovimentacoes : UserControl
     {
-        public frmPreviewRecibo()
+        public ucMovimentacoes()
         {
             InitializeComponent();
         }

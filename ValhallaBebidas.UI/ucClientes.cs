@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace ValhallaBebidas.UI
 {
-    public partial class ucCliente : UserControl
+    public partial class ucClientes : UserControl
     {
-        public ucCliente()
+        public ucClientes()
         {
             InitializeComponent();
         }

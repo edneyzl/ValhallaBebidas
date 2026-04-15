@@ -12,5 +12,6 @@ namespace ValhallaBebidas.Domain.Interfaces
         Task AdicionarAsync(Endereco endereco);
         Task AtualizarAsync(Endereco endereco);
         Task RemoverAsync(int id);
+        Task SaveAsync();
     }
 }

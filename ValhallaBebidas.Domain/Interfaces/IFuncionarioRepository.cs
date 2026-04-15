@@ -15,6 +15,7 @@ namespace ValhallaBebidas.Domain.Interfaces
         Task AdicionarAsync(Funcionario funcionario);//método para adicionar um novo usuário, recebendo um objeto do tipo Usuario e retornando a tarefa assíncrona
         Task AtualizarAsync(Funcionario funcionario);//método para atualizar um usuário existente, recebendo um objeto do tipo Usuario e retornando a tarefa assíncrona
         Task RemoverAsync(int id);
+        Task SaveAsync();
     }
 }
 

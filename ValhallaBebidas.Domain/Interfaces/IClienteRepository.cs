@@ -14,5 +14,6 @@ namespace ValhallaBebidas.Domain.Interfaces
         Task AdicionarAsync(Cliente cliente);
         Task AtualizarAsync(Cliente cliente);
         Task RemoverAsync(int id);
+        Task SaveAsync();
     }
 }

@@ -9,7 +9,6 @@ public class FuncionarioService
     private readonly IFuncionarioRepository _funcionarioRepository;
     private readonly IEnderecoRepository _enderecoRepository;
 
-
     public FuncionarioService(
         IFuncionarioRepository funcionarioRepository,
         IEnderecoRepository enderecoRepository)
@@ -18,43 +17,30 @@ public class FuncionarioService
         _enderecoRepository = enderecoRepository;
     }
 
-    // ════════════════════════════════════════
-    // LISTAR TODOS
-    // ════════════════════════════════════════
     public async Task<IEnumerable<FuncionarioDto>> ListarTodosAsync()
     {
         var funcionarios = await _funcionarioRepository.ListarTodosAsync();
         return funcionarios.Select(MapearParaDto);
     }
 
-    // ════════════════════════════════════════
-    // OBTER POR ID
-    // ════════════════════════════════════════
     public async Task<FuncionarioDto?> ObterPorIdAsync(int id)
     {
         var funcionario = await _funcionarioRepository.ObterPorIdAsync(id);
         return funcionario == null ? null : MapearParaDto(funcionario);
     }
 
-    // ════════════════════════════════════════
-    // CRIAR
-    // ════════════════════════════════════════
     public async Task<FuncionarioDto> CriarAsync(CriarFuncionarioDto dto)
     {
-        /* CPF único */
         var existenteCpf = await _funcionarioRepository.ObterPorCpfAsync(dto.Cpf);
         if (existenteCpf != null)
             throw new InvalidOperationException($"Já existe um funcionário com o CPF '{dto.Cpf}'.");
 
-        /* Email único */
         var existenteEmail = await _funcionarioRepository.ObterPorEmailAsync(dto.Email);
         if (existenteEmail != null)
             throw new InvalidOperationException($"Já existe um funcionário com o email '{dto.Email}'.");
 
-        /* Cria o endereço */
         var endereco = new Endereco
         {
-
             Logradouro = dto.Endereco.Logradouro,
             Numero = dto.Endereco.Numero,
             Complemento = dto.Endereco.Complemento,
@@ -65,8 +51,8 @@ public class FuncionarioService
         };
 
         await _enderecoRepository.AdicionarAsync(endereco);
+        await _enderecoRepository.SaveAsync();
 
-        /* Cria o funcionário */
         var funcionario = new Funcionario
         {
             NomeCompleto = dto.NomeCompleto,
@@ -80,21 +66,18 @@ public class FuncionarioService
         };
 
         await _funcionarioRepository.AdicionarAsync(funcionario);
+        await _funcionarioRepository.SaveAsync();
 
-
-        return MapearParaDto(funcionario);
+        var salvo = await _funcionarioRepository.ObterPorIdAsync(funcionario.Id);
+        return MapearParaDto(salvo!);
     }
 
-    // ════════════════════════════════════════
-    // ATUALIZAR
-    // ════════════════════════════════════════
     public async Task AtualizarAsync(int id, AtualizarFuncionarioDto dto)
     {
         var funcionario = await _funcionarioRepository.ObterPorIdAsync(id);
         if (funcionario == null)
             throw new KeyNotFoundException($"Funcionário com Id {id} não encontrado.");
 
-        /* Verifica duplicatas em outros registros */
         var comMesmoCpf = await _funcionarioRepository.ObterPorCpfAsync(dto.Cpf);
         if (comMesmoCpf != null && comMesmoCpf.Id != id)
             throw new InvalidOperationException($"O CPF '{dto.Cpf}' já está em uso por outro funcionário.");
@@ -110,17 +93,13 @@ public class FuncionarioService
         funcionario.Email = dto.Email;
         funcionario.Status = dto.Status;
 
-        /* Atualiza senha apenas se informada */
         if (!string.IsNullOrWhiteSpace(dto.Senha))
             funcionario.SenhaHash = BCrypt.Net.BCrypt.HashPassword(dto.Senha);
 
         await _funcionarioRepository.AtualizarAsync(funcionario);
-
+        await _funcionarioRepository.SaveAsync();
     }
 
-    // ════════════════════════════════════════
-    // ATIVAR / INATIVAR — soft delete
-    // ════════════════════════════════════════
     public async Task AlterarStatusAsync(int id, bool status)
     {
         var funcionario = await _funcionarioRepository.ObterPorIdAsync(id);
@@ -128,13 +107,11 @@ public class FuncionarioService
             throw new KeyNotFoundException($"Funcionário com Id {id} não encontrado.");
 
         funcionario.Status = status;
-        await _funcionarioRepository.AtualizarAsync(funcionario);
 
+        await _funcionarioRepository.AtualizarAsync(funcionario);
+        await _funcionarioRepository.SaveAsync();
     }
 
-    // ════════════════════════════════════════
-    // REMOVER
-    // ════════════════════════════════════════
     public async Task RemoverAsync(int id)
     {
         var funcionario = await _funcionarioRepository.ObterPorIdAsync(id);
@@ -142,12 +119,9 @@ public class FuncionarioService
             throw new KeyNotFoundException($"Funcionário com Id {id} não encontrado.");
 
         await _funcionarioRepository.RemoverAsync(id);
-
+        await _funcionarioRepository.SaveAsync();
     }
 
-    // ════════════════════════════════════════
-    // LOGIN — valida credenciais (Windows Forms)
-    // ════════════════════════════════════════
     public async Task<LoginFuncionarioResponseDto> LoginAsync(LoginFuncionarioDto dto)
     {
         var funcionario = await _funcionarioRepository.ObterPorEmailAsync(dto.Email);
@@ -176,9 +150,6 @@ public class FuncionarioService
         };
     }
 
-    // ════════════════════════════════════════
-    // MAPPER — Entidade → DTO
-    // ════════════════════════════════════════
     private static FuncionarioDto MapearParaDto(Funcionario f) => new()
     {
         Id = f.Id,

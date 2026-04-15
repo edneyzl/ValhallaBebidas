@@ -11,7 +11,7 @@ namespace SenacBuy.UI.Services.Models
     ///   esgotamento de sockets (socket exhaustion). Usar um único cliente por toda a aplicação
     ///   é a prática correta em WinForms.
     ///
-    /// Base URL padrão: http://localhost:5000/api/
+    /// Base URL padrão: http://localhost:5101/api/
     /// Altere ApiBaseUrl caso a API rode em porta diferente.
     /// </summary>
     public static class ApiClientService
@@ -19,7 +19,7 @@ namespace SenacBuy.UI.Services.Models
         // ──────────────────────────────────────────────────────────────────────────────
         // CONFIGURAÇÃO: ajuste esta URL se a API estiver em porta diferente
         // ──────────────────────────────────────────────────────────────────────────────
-        public const string ApiBaseUrl = "http://localhost:5156/";
+        public const string ApiBaseUrl = "http://localhost:5101/";
 
         // Cliente HTTP compartilhado por toda a aplicação (padrão recomendado pelo .NET)
         private static readonly HttpClient _httpClient = CriarHttpClient();
