@@ -1,6 +1,6 @@
 ﻿namespace ValhallaBebidas.UI
 {
-    partial class ucCliente
+    partial class ucClientes
     {
         /// <summary> 
         /// Variável de designer necessária.
@@ -197,10 +197,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvClientes.DefaultCellStyle = dataGridViewCellStyle3;
             dgvClientes.GridColor = Color.FromArgb(231, 229, 255);
-            dgvClientes.Location = new Point(3, 7);
+            dgvClientes.Location = new Point(18, 7);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.RowHeadersVisible = false;
-            dgvClientes.Size = new Size(963, 450);
+            dgvClientes.Size = new Size(930, 450);
             dgvClientes.TabIndex = 0;
             dgvClientes.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvClientes.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -224,13 +224,13 @@
             dgvClientes.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvClientes.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
-            // ucCliente
+            // ucClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panelConteudo);
             Controls.Add(panelHeader);
-            Name = "ucCliente";
+            Name = "ucClientes";
             Size = new Size(969, 549);
             panelHeader.ResumeLayout(false);
             panelConteudo.ResumeLayout(false);

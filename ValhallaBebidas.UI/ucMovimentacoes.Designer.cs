@@ -30,23 +30,23 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panelHeader = new Guna.UI2.WinForms.Guna2Panel();
-            lblTitulo = new Label();
-            lblSubtitulo = new Label();
-            txtBuscaMovi = new Guna.UI2.WinForms.Guna2TextBox();
             btnNovaMovi = new Guna.UI2.WinForms.Guna2Button();
             btnEditarMovi = new Guna.UI2.WinForms.Guna2Button();
+            txtBuscaMovi = new Guna.UI2.WinForms.Guna2TextBox();
+            lblSubtitulo = new Label();
+            lblTitulo = new Label();
             panelConteudo = new Guna.UI2.WinForms.Guna2Panel();
             dgvMovimentacoes = new Guna.UI2.WinForms.Guna2DataGridView();
             panelHeader.SuspendLayout();
@@ -69,46 +69,6 @@
             panelHeader.ShadowDecoration.CustomizableEdges = customizableEdges8;
             panelHeader.Size = new Size(969, 80);
             panelHeader.TabIndex = 1;
-            // 
-            // lblTitulo
-            // 
-            lblTitulo.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblTitulo.Location = new Point(8, 19);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(225, 34);
-            lblTitulo.TabIndex = 2;
-            lblTitulo.Text = "👥  Movimentações";
-            // 
-            // lblSubtitulo
-            // 
-            lblSubtitulo.Font = new Font("Segoe UI", 9F);
-            lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblSubtitulo.Location = new Point(8, 43);
-            lblSubtitulo.Name = "lblSubtitulo";
-            lblSubtitulo.Size = new Size(238, 20);
-            lblSubtitulo.TabIndex = 3;
-            lblSubtitulo.Text = "Gerencie as movimentações do sistema";
-            // 
-            // txtBuscaMovi
-            // 
-            txtBuscaMovi.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtBuscaMovi.BorderColor = Color.FromArgb(214, 189, 119);
-            txtBuscaMovi.BorderRadius = 8;
-            txtBuscaMovi.CustomizableEdges = customizableEdges5;
-            txtBuscaMovi.DefaultText = "";
-            txtBuscaMovi.FillColor = Color.FromArgb(33, 33, 33);
-            txtBuscaMovi.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
-            txtBuscaMovi.Font = new Font("Segoe UI", 9.5F);
-            txtBuscaMovi.ForeColor = Color.FromArgb(214, 189, 119);
-            txtBuscaMovi.Location = new Point(304, 19);
-            txtBuscaMovi.Name = "txtBuscaMovi";
-            txtBuscaMovi.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
-            txtBuscaMovi.PlaceholderText = "🔍  Pesquisar";
-            txtBuscaMovi.SelectedText = "";
-            txtBuscaMovi.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            txtBuscaMovi.Size = new Size(217, 40);
-            txtBuscaMovi.TabIndex = 10;
             // 
             // btnNovaMovi
             // 
@@ -142,6 +102,46 @@
             btnEditarMovi.TabIndex = 10;
             btnEditarMovi.Text = "✏️ Editar";
             // 
+            // txtBuscaMovi
+            // 
+            txtBuscaMovi.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtBuscaMovi.BorderColor = Color.FromArgb(214, 189, 119);
+            txtBuscaMovi.BorderRadius = 8;
+            txtBuscaMovi.CustomizableEdges = customizableEdges5;
+            txtBuscaMovi.DefaultText = "";
+            txtBuscaMovi.FillColor = Color.FromArgb(33, 33, 33);
+            txtBuscaMovi.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
+            txtBuscaMovi.Font = new Font("Segoe UI", 9.5F);
+            txtBuscaMovi.ForeColor = Color.FromArgb(214, 189, 119);
+            txtBuscaMovi.Location = new Point(304, 19);
+            txtBuscaMovi.Name = "txtBuscaMovi";
+            txtBuscaMovi.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtBuscaMovi.PlaceholderText = "🔍  Pesquisar";
+            txtBuscaMovi.SelectedText = "";
+            txtBuscaMovi.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            txtBuscaMovi.Size = new Size(217, 40);
+            txtBuscaMovi.TabIndex = 10;
+            // 
+            // lblSubtitulo
+            // 
+            lblSubtitulo.Font = new Font("Segoe UI", 9F);
+            lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
+            lblSubtitulo.Location = new Point(8, 43);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Size = new Size(238, 20);
+            lblSubtitulo.TabIndex = 3;
+            lblSubtitulo.Text = "Gerencie as movimentações do sistema";
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.FromArgb(214, 189, 119);
+            lblTitulo.Location = new Point(8, 19);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(225, 34);
+            lblTitulo.TabIndex = 2;
+            lblTitulo.Text = "📦  Movimentações";
+            // 
             // panelConteudo
             // 
             panelConteudo.BackColor = Color.FromArgb(64, 64, 64);
@@ -166,7 +166,8 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvMovimentacoes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMovimentacoes.ColumnHeadersHeight = 4;
+            dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -176,10 +177,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle3;
             dgvMovimentacoes.GridColor = Color.FromArgb(231, 229, 255);
-            dgvMovimentacoes.Location = new Point(3, 6);
+            dgvMovimentacoes.Location = new Point(20, 6);
             dgvMovimentacoes.Name = "dgvMovimentacoes";
             dgvMovimentacoes.RowHeadersVisible = false;
-            dgvMovimentacoes.Size = new Size(963, 460);
+            dgvMovimentacoes.Size = new Size(930, 450);
             dgvMovimentacoes.TabIndex = 0;
             dgvMovimentacoes.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvMovimentacoes.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -192,7 +193,7 @@
             dgvMovimentacoes.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvMovimentacoes.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             dgvMovimentacoes.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            dgvMovimentacoes.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvMovimentacoes.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvMovimentacoes.ThemeStyle.HeaderStyle.Height = 4;
             dgvMovimentacoes.ThemeStyle.ReadOnly = false;
             dgvMovimentacoes.ThemeStyle.RowsStyle.BackColor = Color.White;

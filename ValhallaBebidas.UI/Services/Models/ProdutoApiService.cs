@@ -64,7 +64,7 @@ namespace ValhallaBebidas.UI.Services.Models
         {
             try
             {
-                var payload  = new CriarProdutoDto { Nome = nome, Preco = preco, FotoProduto = fotoProduto, CategoriaId = categoriaId };
+                var payload  = new CriarProdutoDto { Nome = nome, PrecoVenda = preco, FotoProduto = fotoProduto, CategoriaId = categoriaId };
                 var response = await _http.PostAsJsonAsync("api/produto", payload);
 
                 if (response.IsSuccessStatusCode)
@@ -91,7 +91,7 @@ namespace ValhallaBebidas.UI.Services.Models
         {
             try
             {
-                var payload  = new AtualizarProdutoDto { Nome = nome, Preco = preco, FotoProduto = fotoProduto, CategoriaId = categoriaId };
+                var payload  = new AtualizarProdutoDto { Nome = nome, PrecoVenda = preco, FotoProduto = fotoProduto, CategoriaId = categoriaId };
                 var response = await _http.PutAsJsonAsync($"api/produto/{id}", payload);
 
                 if (response.IsSuccessStatusCode)

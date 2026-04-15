@@ -35,6 +35,14 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -43,27 +51,19 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelConteudo = new Guna.UI2.WinForms.Guna2Panel();
             dgvPedidos = new Guna.UI2.WinForms.Guna2DataGridView();
             panelHeader = new Guna.UI2.WinForms.Guna2Panel();
+            txtPesquisaPedido = new Guna.UI2.WinForms.Guna2TextBox();
+            btnNovoPedido = new Guna.UI2.WinForms.Guna2Button();
+            btnEditarPedido = new Guna.UI2.WinForms.Guna2Button();
+            btnExcluirPedido = new Guna.UI2.WinForms.Guna2Button();
             txtBuscaCliente = new Guna.UI2.WinForms.Guna2TextBox();
             btnNovoCliente = new Guna.UI2.WinForms.Guna2Button();
             lblTitulo = new Label();
             btnEditarCliente = new Guna.UI2.WinForms.Guna2Button();
             btnExcluirCliente = new Guna.UI2.WinForms.Guna2Button();
             lblSubtitulo = new Label();
-            btnNovoPedido = new Guna.UI2.WinForms.Guna2Button();
-            btnEditarPedido = new Guna.UI2.WinForms.Guna2Button();
-            btnExcluirPedido = new Guna.UI2.WinForms.Guna2Button();
-            txtPesquisaPedido = new Guna.UI2.WinForms.Guna2TextBox();
             panelConteudo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             panelHeader.SuspendLayout();
@@ -104,10 +104,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvPedidos.DefaultCellStyle = dataGridViewCellStyle3;
             dgvPedidos.GridColor = Color.FromArgb(231, 229, 255);
-            dgvPedidos.Location = new Point(3, 7);
+            dgvPedidos.Location = new Point(20, 7);
             dgvPedidos.Name = "dgvPedidos";
             dgvPedidos.RowHeadersVisible = false;
-            dgvPedidos.Size = new Size(963, 450);
+            dgvPedidos.Size = new Size(930, 450);
             dgvPedidos.TabIndex = 0;
             dgvPedidos.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvPedidos.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -151,6 +151,74 @@
             panelHeader.ShadowDecoration.CustomizableEdges = customizableEdges20;
             panelHeader.Size = new Size(969, 80);
             panelHeader.TabIndex = 2;
+            // 
+            // txtPesquisaPedido
+            // 
+            txtPesquisaPedido.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txtPesquisaPedido.BorderColor = Color.FromArgb(214, 189, 119);
+            txtPesquisaPedido.BorderRadius = 8;
+            txtPesquisaPedido.CustomizableEdges = customizableEdges3;
+            txtPesquisaPedido.DefaultText = "";
+            txtPesquisaPedido.FillColor = Color.FromArgb(33, 33, 33);
+            txtPesquisaPedido.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
+            txtPesquisaPedido.Font = new Font("Segoe UI", 9.5F);
+            txtPesquisaPedido.ForeColor = Color.FromArgb(214, 189, 119);
+            txtPesquisaPedido.Location = new Point(313, 20);
+            txtPesquisaPedido.Name = "txtPesquisaPedido";
+            txtPesquisaPedido.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtPesquisaPedido.PlaceholderText = "🔍  Pesquisar por nº do Pedido...";
+            txtPesquisaPedido.SelectedText = "";
+            txtPesquisaPedido.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            txtPesquisaPedido.Size = new Size(220, 40);
+            txtPesquisaPedido.TabIndex = 13;
+            // 
+            // btnNovoPedido
+            // 
+            btnNovoPedido.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnNovoPedido.BorderRadius = 10;
+            btnNovoPedido.Cursor = Cursors.Hand;
+            btnNovoPedido.CustomizableEdges = customizableEdges5;
+            btnNovoPedido.FillColor = Color.FromArgb(214, 189, 119);
+            btnNovoPedido.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnNovoPedido.ForeColor = Color.Black;
+            btnNovoPedido.Location = new Point(570, 20);
+            btnNovoPedido.Name = "btnNovoPedido";
+            btnNovoPedido.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btnNovoPedido.Size = new Size(155, 40);
+            btnNovoPedido.TabIndex = 10;
+            btnNovoPedido.Text = "+ Novo Pedido";
+            // 
+            // btnEditarPedido
+            // 
+            btnEditarPedido.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnEditarPedido.BorderRadius = 10;
+            btnEditarPedido.Cursor = Cursors.Hand;
+            btnEditarPedido.CustomizableEdges = customizableEdges7;
+            btnEditarPedido.FillColor = Color.FromArgb(64, 64, 64);
+            btnEditarPedido.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnEditarPedido.ForeColor = Color.White;
+            btnEditarPedido.Location = new Point(731, 20);
+            btnEditarPedido.Name = "btnEditarPedido";
+            btnEditarPedido.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnEditarPedido.Size = new Size(110, 40);
+            btnEditarPedido.TabIndex = 11;
+            btnEditarPedido.Text = "✏️ Editar";
+            // 
+            // btnExcluirPedido
+            // 
+            btnExcluirPedido.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnExcluirPedido.BorderRadius = 10;
+            btnExcluirPedido.Cursor = Cursors.Hand;
+            btnExcluirPedido.CustomizableEdges = customizableEdges9;
+            btnExcluirPedido.FillColor = Color.FromArgb(220, 60, 60);
+            btnExcluirPedido.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnExcluirPedido.ForeColor = Color.White;
+            btnExcluirPedido.Location = new Point(847, 20);
+            btnExcluirPedido.Name = "btnExcluirPedido";
+            btnExcluirPedido.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnExcluirPedido.Size = new Size(110, 40);
+            btnExcluirPedido.TabIndex = 12;
+            btnExcluirPedido.Text = "🗑️ Excluir";
             // 
             // txtBuscaCliente
             // 
@@ -239,74 +307,6 @@
             lblSubtitulo.Size = new Size(245, 20);
             lblSubtitulo.TabIndex = 3;
             lblSubtitulo.Text = "Gerencie os pedidos cadastrados no sistema";
-            // 
-            // btnNovoPedido
-            // 
-            btnNovoPedido.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnNovoPedido.BorderRadius = 10;
-            btnNovoPedido.Cursor = Cursors.Hand;
-            btnNovoPedido.CustomizableEdges = customizableEdges5;
-            btnNovoPedido.FillColor = Color.FromArgb(214, 189, 119);
-            btnNovoPedido.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnNovoPedido.ForeColor = Color.Black;
-            btnNovoPedido.Location = new Point(570, 20);
-            btnNovoPedido.Name = "btnNovoPedido";
-            btnNovoPedido.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnNovoPedido.Size = new Size(155, 40);
-            btnNovoPedido.TabIndex = 10;
-            btnNovoPedido.Text = "+ Novo Pedido";
-            // 
-            // btnEditarPedido
-            // 
-            btnEditarPedido.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEditarPedido.BorderRadius = 10;
-            btnEditarPedido.Cursor = Cursors.Hand;
-            btnEditarPedido.CustomizableEdges = customizableEdges7;
-            btnEditarPedido.FillColor = Color.FromArgb(64, 64, 64);
-            btnEditarPedido.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            btnEditarPedido.ForeColor = Color.White;
-            btnEditarPedido.Location = new Point(731, 20);
-            btnEditarPedido.Name = "btnEditarPedido";
-            btnEditarPedido.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnEditarPedido.Size = new Size(110, 40);
-            btnEditarPedido.TabIndex = 11;
-            btnEditarPedido.Text = "✏️ Editar";
-            // 
-            // btnExcluirPedido
-            // 
-            btnExcluirPedido.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnExcluirPedido.BorderRadius = 10;
-            btnExcluirPedido.Cursor = Cursors.Hand;
-            btnExcluirPedido.CustomizableEdges = customizableEdges9;
-            btnExcluirPedido.FillColor = Color.FromArgb(220, 60, 60);
-            btnExcluirPedido.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            btnExcluirPedido.ForeColor = Color.White;
-            btnExcluirPedido.Location = new Point(847, 20);
-            btnExcluirPedido.Name = "btnExcluirPedido";
-            btnExcluirPedido.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnExcluirPedido.Size = new Size(110, 40);
-            btnExcluirPedido.TabIndex = 12;
-            btnExcluirPedido.Text = "🗑️ Excluir";
-            // 
-            // txtPesquisaPedido
-            // 
-            txtPesquisaPedido.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtPesquisaPedido.BorderColor = Color.FromArgb(214, 189, 119);
-            txtPesquisaPedido.BorderRadius = 8;
-            txtPesquisaPedido.CustomizableEdges = customizableEdges3;
-            txtPesquisaPedido.DefaultText = "";
-            txtPesquisaPedido.FillColor = Color.FromArgb(33, 33, 33);
-            txtPesquisaPedido.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
-            txtPesquisaPedido.Font = new Font("Segoe UI", 9.5F);
-            txtPesquisaPedido.ForeColor = Color.FromArgb(214, 189, 119);
-            txtPesquisaPedido.Location = new Point(313, 20);
-            txtPesquisaPedido.Name = "txtPesquisaPedido";
-            txtPesquisaPedido.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
-            txtPesquisaPedido.PlaceholderText = "🔍  Pesquisar por nº do Pedido...";
-            txtPesquisaPedido.SelectedText = "";
-            txtPesquisaPedido.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtPesquisaPedido.Size = new Size(220, 40);
-            txtPesquisaPedido.TabIndex = 13;
             // 
             // ucPedidos
             // 
