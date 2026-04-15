@@ -60,7 +60,10 @@ public class MovimentacaoService
 
         await _movimentacaoRepository.AdicionarAsync(movimentacao);
 
-        return MapearParaDto(movimentacao);
+        await _produtoRepository.SaveAsync();
+
+        var salva = await _movimentacaoRepository.ObterPorIdAsync(movimentacao.Id);
+        return MapearParaDto(salva!);
     }
 
     public async Task<MovimentacaoDto> RegistrarSaidaAsync(CriarMovimentacaoDto dto)
@@ -91,43 +94,10 @@ public class MovimentacaoService
 
         await _movimentacaoRepository.AdicionarAsync(movimentacao);
 
-        return MapearParaDto(movimentacao);
-    }
+        await _produtoRepository.SaveAsync();
 
-    public async Task<MovimentacaoDto> RegistrarMovimentacaoSemBuscarProdutoAsync(
-    Produto produto,
-    int quantidade,
-    DirecaoMovimentacao direcao,
-    string motivo)
-    {
-        if (produto == null)
-            throw new ArgumentNullException(nameof(produto));
-
-        if (quantidade <= 0)
-            throw new InvalidOperationException("A quantidade deve ser maior que zero.");
-
-        if (direcao == DirecaoMovimentacao.Saida && produto.QuantidadeEstoque < quantidade)
-            throw new InvalidOperationException(
-                $"Estoque insuficiente para '{produto.Nome}'. Disponível: {produto.QuantidadeEstoque}.");
-
-        var movimentacao = new Movimentacao
-        {
-            ProdutoId = produto.Id,
-            Quantidade = quantidade,
-            Direcao = direcao,
-            Motivo = motivo,
-            Data = DateTime.UtcNow,
-        };
-
-        if (direcao == DirecaoMovimentacao.Saida)
-            produto.QuantidadeEstoque -= quantidade;
-        else
-            produto.QuantidadeEstoque += quantidade;
-
-        await _produtoRepository.AtualizarAsync(produto);
-        await _movimentacaoRepository.AdicionarAsync(movimentacao);
-
-        return MapearParaDto(movimentacao);
+        var salva = await _movimentacaoRepository.ObterPorIdAsync(movimentacao.Id);
+        return MapearParaDto(salva!);
     }
 
     public async Task EstornarAsync(int id)
@@ -145,7 +115,6 @@ public class MovimentacaoService
             if (produto.QuantidadeEstoque < movimentacao.Quantidade)
                 throw new InvalidOperationException(
                     $"Estoque atual ({produto.QuantidadeEstoque}) é insuficiente para estornar {movimentacao.Quantidade} unidade(s) de '{produto.Nome}'.");
-
             produto.QuantidadeEstoque -= movimentacao.Quantidade;
         }
         else
@@ -154,11 +123,13 @@ public class MovimentacaoService
         }
 
         await _produtoRepository.AtualizarAsync(produto);
+        await _produtoRepository.SaveAsync();
     }
 
     public async Task RemoverAsync(int id)
     {
         await _movimentacaoRepository.RemoverAsync(id);
+        await _movimentacaoRepository.SaveAsync();
     }
 
     private static MovimentacaoDto MapearParaDto(Movimentacao m) => new()

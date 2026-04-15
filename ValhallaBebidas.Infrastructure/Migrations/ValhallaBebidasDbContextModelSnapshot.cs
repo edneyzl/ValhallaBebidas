@@ -40,7 +40,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     b.HasIndex("Nome")
                         .IsUnique();
 
-                    b.ToTable("Categorias");
+                    b.ToTable("Categorias", (string)null);
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Cliente", b =>
@@ -95,7 +95,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.HasIndex("EnderecoId");
 
-                    b.ToTable("Clientes");
+                    b.ToTable("Clientes", (string)null);
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Endereco", b =>
@@ -143,7 +143,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.HasIndex("Cep");
 
-                    b.ToTable("Enderecos");
+                    b.ToTable("Enderecos", (string)null);
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Funcionario", b =>
@@ -198,7 +198,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.HasIndex("EnderecoId");
 
-                    b.ToTable("Funcionarios");
+                    b.ToTable("Funcionarios", (string)null);
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.ItemPedido", b =>
@@ -230,7 +230,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     b.HasIndex("PedidoId", "ProdutoId")
                         .IsUnique();
 
-                    b.ToTable("ItensPedido");
+                    b.ToTable("ItensPedido", (string)null);
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Movimentacao", b =>
@@ -266,7 +266,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.HasIndex("ProdutoId");
 
-                    b.ToTable("Movimentacoes");
+                    b.ToTable("Movimentacoes", (string)null);
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Pedido", b =>
@@ -327,7 +327,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.HasIndex("ClienteId", "DataPedido");
 
-                    b.ToTable("Pedidos");
+                    b.ToTable("Pedidos", (string)null);
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Produto", b =>
@@ -387,7 +387,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.HasIndex("Nome");
 
-                    b.ToTable("Produtos");
+                    b.ToTable("Produtos", (string)null);
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Cliente", b =>

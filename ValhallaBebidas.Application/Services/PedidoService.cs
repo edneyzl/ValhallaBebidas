@@ -110,6 +110,7 @@ public class PedidoService
             });
         }
 
+        await _pedidoRepository.AtualizarAsync(pedido);
         await _pedidoRepository.SaveAsync();
 
         var salvo = await _pedidoRepository.ObterPorIdAsync(pedido.Id);
@@ -175,6 +176,7 @@ public class PedidoService
             throw new KeyNotFoundException($"Pedido com Id {id} não encontrado.");
 
         await _pedidoRepository.RemoverAsync(id);
+        await _pedidoRepository.SaveAsync();
     }
 
     private static PedidoDto MapearParaDto(Pedido pedido) => new()
