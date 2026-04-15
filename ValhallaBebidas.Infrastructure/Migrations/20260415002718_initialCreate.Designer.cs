@@ -12,8 +12,8 @@ using ValhallaBebidas.Infrastructure.Data;
 namespace ValhallaBebidas.Infrastructure.Migrations
 {
     [DbContext(typeof(ValhallaBebidasDbContext))]
-    [Migration("20260411011745_Valhalla-inicial")]
-    partial class Valhallainicial
+    [Migration("20260415002718_initialCreate")]
+    partial class initialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,7 +55,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime");
+                        .HasColumnType("date");
 
                     b.Property<string>("Documento")
                         .IsRequired()
@@ -163,7 +163,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(11)");
 
                     b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime");
+                        .HasColumnType("date");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -172,11 +172,6 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.Property<int>("EnderecoId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
 
                     b.Property<string>("NomeCompleto")
                         .IsRequired()
@@ -205,9 +200,6 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                         .IsUnique();
 
                     b.HasIndex("EnderecoId");
-
-                    b.HasIndex("Login")
-                        .IsUnique();
 
                     b.ToTable("Funcionarios");
                 });

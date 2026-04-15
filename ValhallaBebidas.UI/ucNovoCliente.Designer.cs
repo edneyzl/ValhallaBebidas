@@ -130,7 +130,7 @@
             lblSubtitulo.Name = "lblSubtitulo";
             lblSubtitulo.Size = new Size(238, 20);
             lblSubtitulo.TabIndex = 11;
-            lblSubtitulo.Text = "Gerencie os clientes cadastrados no sistema";
+            lblSubtitulo.Text = "Crie um novo cliente";
             // 
             // label1
             // 

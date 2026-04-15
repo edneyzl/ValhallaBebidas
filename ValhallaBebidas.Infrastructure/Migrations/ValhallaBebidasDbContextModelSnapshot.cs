@@ -14,7 +14,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
     partial class ValhallaBebidasDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
-        { 
+        {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "10.0.5")
@@ -52,7 +52,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime");
+                        .HasColumnType("date");
 
                     b.Property<string>("Documento")
                         .IsRequired()
@@ -160,7 +160,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                         .HasColumnType("nvarchar(11)");
 
                     b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime");
+                        .HasColumnType("date");
 
                     b.Property<string>("Email")
                         .IsRequired()

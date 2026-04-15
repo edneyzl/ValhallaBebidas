@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ValhallaBebidas.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Valhallainicial : Migration
+    public partial class initialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -79,7 +79,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomeCliente = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    DataNascimento = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DataNascimento = table.Column<DateTime>(type: "date", nullable: false),
                     Documento = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Telefone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
@@ -105,7 +105,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomeCompleto = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    DataNascimento = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DataNascimento = table.Column<DateTime>(type: "date", nullable: false),
                     Cpf = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     Telefone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
@@ -248,12 +248,6 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                 name: "IX_Funcionarios_EnderecoId",
                 table: "Funcionarios",
                 column: "EnderecoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Funcionarios_Login",
-                table: "Funcionarios",
-                column: "Login",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ItensPedido_PedidoId",
