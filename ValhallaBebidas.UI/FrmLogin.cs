@@ -66,7 +66,7 @@ namespace ValhallaBebidas.UI
                 if (resultado.Sucesso)
                 {
                     // Login bem-sucedido — abre o formulário principal
-                    var principal = new frmPrincipal(resultado.Nome, resultado.FotoPerfil);
+                    var principal = new frmPrincipal();
                     principal.Show();
                     this.Hide();
                 }
