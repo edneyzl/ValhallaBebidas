@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -70,11 +70,11 @@
             guna2Panel1.Controls.Add(guna2HtmlLabel2);
             guna2Panel1.Controls.Add(guna2HtmlLabel1);
             guna2Panel1.Controls.Add(btnFechar);
-            guna2Panel1.CustomizableEdges = customizableEdges15;
+            guna2Panel1.CustomizableEdges = customizableEdges3;
             guna2Panel1.FillColor = Color.FromArgb(15, 14, 12);
             guna2Panel1.Location = new Point(-8, -5);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2Panel1.Size = new Size(447, 125);
             guna2Panel1.TabIndex = 0;
             // 
@@ -88,7 +88,7 @@
             guna2CirclePictureBox1.InitialImage = Properties.Resources.icon_val;
             guna2CirclePictureBox1.Location = new Point(10, 10);
             guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges13;
+            guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges1;
             guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CirclePictureBox1.Size = new Size(48, 51);
             guna2CirclePictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -152,7 +152,7 @@
             btnFechar.ForeColor = Color.White;
             btnFechar.Location = new Point(397, 10);
             btnFechar.Name = "btnFechar";
-            btnFechar.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnFechar.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnFechar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             btnFechar.Size = new Size(32, 32);
             btnFechar.TabIndex = 0;
@@ -169,11 +169,11 @@
             guna2Panel2.Controls.Add(txtSenha);
             guna2Panel2.Controls.Add(guna2HtmlLabel6);
             guna2Panel2.Controls.Add(guna2HtmlLabel5);
-            guna2Panel2.CustomizableEdges = customizableEdges23;
+            guna2Panel2.CustomizableEdges = customizableEdges11;
             guna2Panel2.FillColor = Color.FromArgb(33, 33, 33);
             guna2Panel2.Location = new Point(-8, 110);
             guna2Panel2.Name = "guna2Panel2";
-            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2Panel2.Size = new Size(444, 356);
             guna2Panel2.TabIndex = 1;
             // 
@@ -208,7 +208,7 @@
             // 
             btnLogar.BackColor = Color.Transparent;
             btnLogar.BorderRadius = 12;
-            btnLogar.CustomizableEdges = customizableEdges17;
+            btnLogar.CustomizableEdges = customizableEdges5;
             btnLogar.DisabledState.BorderColor = Color.DarkGray;
             btnLogar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnLogar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -218,17 +218,18 @@
             btnLogar.ForeColor = Color.Black;
             btnLogar.Location = new Point(41, 231);
             btnLogar.Name = "btnLogar";
-            btnLogar.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btnLogar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnLogar.Size = new Size(358, 45);
             btnLogar.TabIndex = 3;
             btnLogar.Text = "Acessar conta";
+            btnLogar.Click += btnLogar_Click;
             // 
             // txtEmail
             // 
             txtEmail.BackColor = Color.Transparent;
             txtEmail.BorderColor = Color.Silver;
             txtEmail.BorderRadius = 12;
-            txtEmail.CustomizableEdges = customizableEdges19;
+            txtEmail.CustomizableEdges = customizableEdges7;
             txtEmail.DefaultText = "";
             txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEmail.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -245,7 +246,7 @@
             txtEmail.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             txtEmail.PlaceholderText = "📧 Digite seu e-mail ";
             txtEmail.SelectedText = "";
-            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges8;
             txtEmail.Size = new Size(358, 51);
             txtEmail.TabIndex = 2;
             // 
@@ -254,7 +255,7 @@
             txtSenha.BackColor = Color.Transparent;
             txtSenha.BorderColor = Color.Silver;
             txtSenha.BorderRadius = 12;
-            txtSenha.CustomizableEdges = customizableEdges21;
+            txtSenha.CustomizableEdges = customizableEdges9;
             txtSenha.DefaultText = "";
             txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSenha.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -272,7 +273,7 @@
             txtSenha.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             txtSenha.PlaceholderText = "🔒 Digite sua senha";
             txtSenha.SelectedText = "";
-            txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges10;
             txtSenha.Size = new Size(358, 51);
             txtSenha.TabIndex = 2;
             // 
