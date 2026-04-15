@@ -6,40 +6,70 @@
 
 ## 📋 Sobre o Projeto
 
-A **Valhalla Bebidas** é uma aplicação web completa para distribuidoras de bebidas, permitindo que parceiros comerciais acessem o catálogo exclusivo, adicionem produtos ao carrinho e realizem pedidos online com preços especiais.
+A **Valhalla Bebidas** é uma aplicação completa para distribuidoras de bebidas, permitindo que parceiros comerciais acessem o catálogo exclusivo, adicionem produtos ao carrinho e realizem pedidos online com preços especiais.
 
-O projeto é **full-stack**, dividido em camadas:
+O projeto é **full-stack**, dividido em quatro camadas:
 
 - **Frontend Web** — ASP.NET Core MVC com Razor Views + JavaScript
 - **Backend API** — .NET 10 REST API com Clean Architecture
+- **Desktop Interno** — Windows Forms com Guna UI2 (gestão administrativa)
 - **Banco de Dados** — SQL Server via Entity Framework Core
 
 ---
 
 ## 🚀 Tecnologias
 
-### Frontend (Web — ASP.NET Core MVC)
+### Frontend Web (ASP.NET Core MVC)
+
 | Tecnologia | Uso |
 |---|---|
 | ASP.NET Core MVC | Framework web |
 | Razor Views | Templates server-side |
-| JavaScript (ES6+) | Interações e requisições à API |
-| [GSAP 3.12](https://gsap.com/) | Animações de scroll e entrada |
-| [ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) | Trigger de animações |
-| [Lenis](https://github.com/darkroomengineering/lenis) | Scroll suave |
-| Bootstrap | Componentes base |
-| [Sora](https://fonts.google.com/specimen/Sora) | Tipografia |
+| JavaScript ES6+ | Interações e requisições à API |
+| GSAP 3.12 | Animações de scroll e entrada |
+| ScrollTrigger | Trigger de animações por scroll |
+| Lenis | Scroll suave |
+| Sora (Google Fonts) | Tipografia |
+
+### Desktop Interno (Windows Forms + Guna UI2)
+
+| Tecnologia | Uso |
+|---|---|
+| Windows Forms (.NET) | Framework desktop |
+| Guna UI2 | Componentes visuais modernos |
+| HttpClient | Comunicação com a API REST |
+
+#### Telas implementadas
+
+| Arquivo | Descrição |
+|---|---|
+| `FrmLogin` | Autenticação do funcionário |
+| `frmPrincipal` | Shell principal com navegação lateral |
+| `frmCadastroFuncionario` | Cadastro de novos funcionários |
+| `ucDashboard` | Painel com indicadores e métricas |
+| `ucClientes` | Listagem e gestão de clientes |
+| `ucFuncionarios` | Listagem e gestão de funcionários |
+| `ucProdutos` | Listagem e gestão de produtos |
+| `ucPedidos` | Acompanhamento e gestão de pedidos |
+| `ucMovimentacoes` | Histórico de movimentações de estoque |
+| `ucNovoCliente` | Formulário de cadastro de cliente |
+| `ucNovoFuncionario` | Formulário de cadastro de funcionário |
+| `ucNovoPedido` | Formulário de novo pedido |
+| `ucNovoProduto` | Formulário de cadastro de produto |
+| `ucNovaMovimentacao` | Formulário de nova movimentação |
 
 ### Backend (API — Clean Architecture)
+
 | Tecnologia | Uso |
 |---|---|
 | .NET 10 | API REST |
 | Entity Framework Core 10 | ORM + migrations |
-| SQL Server | Banco de dados |
+| SQL Server | Banco de dados relacional |
 | BCrypt.Net | Hash de senhas |
-| Swagger / OpenAPI | Documentação da API |
+| Swagger / OpenAPI | Documentação interativa da API |
 
 ### Arquitetura
+
 ```
 API (Controllers)
     ↓
@@ -48,6 +78,9 @@ Application (Services + DTOs)
 Domain (Entities + Enums + Interfaces)
     ↑
 Infrastructure (DbContext + Repositories)
+
+Desktop (Windows Forms + Guna UI2)
+    → HttpClient → API REST
 ```
 
 ---
@@ -56,40 +89,58 @@ Infrastructure (DbContext + Repositories)
 
 ```
 ValhallaBebidas/
-├── ValhallaBebidas.API/               # API REST (Clean Architecture)
-│   ├── Controllers/                   # Endpoints públicos
-│   ├── Program.cs                     # Configuração da API
-│   └── appsettings.Development.json   # Connection string local
+├── ValhallaBebidas.API/
+│   ├── Controllers/
+│   ├── Program.cs
+│   └── appsettings.Development.json
 │
-├── ValhallaBebidas.Application/       # Camada de aplicação
-│   ├── DTOs/                          # Data Transfer Objects
-│   └── Services/                      # Regras de negócio
+├── ValhallaBebidas.Application/
+│   ├── DTOs/
+│   └── Services/
 │
-├── ValhallaBebidas.Domain/            # Entidades e contratos
-│   ├── Entities/                      # Modelos de domínio
-│   ├── Enums/                         # StatusPedido, DirecaoMovimentacao
-│   └── Interfaces/                    # Contratos de repositórios
+├── ValhallaBebidas.Domain/
+│   ├── Entities/
+│   ├── Enums/
+│   └── Interfaces/
 │
-├── ValhallaBebidas.Infrastructure/    # Persistência de dados
-│   ├── Data/                          # DbContext + Seeder
-│   ├── Repositories/                  # Implementação dos repositórios
-│   └── Migrations/                    # Migrations do EF Core
+├── ValhallaBebidas.Infrastructure/
+│   ├── Data/                    # DbContext + Seeder
+│   ├── Repositories/
+│   └── Migrations/
 │
-├── ValhallaBebidas.Web/               # Frontend MVC
-│   ├── Controllers/                   # Controllers Razor + API Proxy
-│   ├── Views/                         # Razor Views (.cshtml)
-│   ├── wwwroot/                       # CSS, JS, imagens
-│   ├── Filters/                       # AuthFilter
-│   └── Models/                        # ViewModels
+├── ValhallaBebidas.Web/
+│   ├── Controllers/             # Razor Controllers + API Proxy
+│   ├── Views/                   # Razor Views (.cshtml)
+│   ├── wwwroot/                 # CSS, JS, imagens
+│   ├── Filters/                 # AuthFilter
+│   └── Models/                  # ViewModels
 │
-└── ValhallaBebidas.slnx               # Solution file
+└── ValhallaBebidas.UI/          # Desktop WinForms + Guna
+    ├── DTO/
+    ├── Services/
+    ├── Resources/
+    ├── FrmLogin.cs
+    ├── frmPrincipal.cs
+    ├── frmCadastroFuncionario.cs
+    ├── ucDashboard.cs
+    ├── ucClientes.cs
+    ├── ucFuncionarios.cs
+    ├── ucProdutos.cs
+    ├── ucPedidos.cs
+    ├── ucMovimentacoes.cs
+    ├── ucNovoCliente.cs
+    ├── ucNovoFuncionario.cs
+    ├── ucNovoPedido.cs
+    ├── ucNovoProduto.cs
+    └── ucNovaMovimentacao.cs
 ```
 
 ---
 
-## 📄 Páginas
+## 📄 Páginas Web
 
-### Landing Page (pública — Home)
+### Landing Page (pública)
+
 | Seção | Descrição |
 |---|---|
 | **Nav** | Fixo, com estados visitante e logado |
@@ -97,29 +148,34 @@ ValhallaBebidas/
 | **Brands** | Marquee com marcas parceiras |
 | **Stats** | Indicadores da empresa |
 | **About** | Sobre + cards de benefícios |
+| **Work** | Como funciona em 3 passos |
 | **Footer** | Links e redes sociais |
 
 ### Login / Cadastro
+
 | Página | Descrição |
 |---|---|
 | **Login** | Validação via API, sessão server-side |
 | **Cadastro** | Formulário completo com endereço via ViaCEP |
 
-### Autenticado
+### Área autenticada
+
 | Página | Descrição |
 |---|---|
-| **Catálogo** | Produtos com filtro por categoria + busca + ordenação |
-| **Detalhe do Produto** | Info completa, estoque, botão de adicionar ao carrinho |
+| **Catálogo** | Produtos com filtro por categoria, busca e ordenação |
+| **Produto** | Informações completas, estoque, adicionar ao carrinho |
 | **Carrinho** | Sidebar com itens, quantidades e total |
 | **Checkout** | Endereço de entrega + método de pagamento |
-| **Confirmação** | Pedido confirmado com resumo |
+| **Confirmação** | Resumo do pedido confirmado |
 | **Minhas Compras** | Histórico de pedidos com filtro por status |
+| **Perfil** | Dados pessoais, endereço e alteração de senha |
 
 ---
 
 ## 🎨 Design System
 
 ### Paleta de Cores
+
 | Token | Valor | Uso |
 |---|---|---|
 | `--color-bg` | `#0F0E0C` | Fundo principal |
@@ -127,27 +183,48 @@ ValhallaBebidas/
 | `--color-gold` | `#D6BD77` | Cor de destaque |
 | `--color-gold-hover` | `#E8D08E` | Hover dos elementos dourados |
 | `--color-white` | `#FFFFFF` | Textos principais |
-| `--color-border-btn` | `#404040` | Bordas e textos secundários |
+| `--color-muted` | `#606060` | Textos secundários |
+| `--color-border` | `#404040` | Bordas e divisores |
 
 ### Tipografia
-- **Fonte:** Sora (Google Fonts)
+
+- **Web:** Sora (Google Fonts) — pesos 100 a 800
+- **Desktop:** Guna UI2 padrão com customizações
 
 ---
 
 ## 🔄 Fluxo da Aplicação
 
+### Web (cliente B2B)
+
 ```
 Landing Page (pública)
     ↓
-Login / Cadastro  →  POST /api/auth/login-cliente  →  Session
+Login / Cadastro  →  POST /api/auth/login-cliente  →  Session server-side
     ↓
 Catálogo  →  GET /api/produto
     ↓
-Carrinho (sidebar)  →  localStorage
+Produto   →  GET /api/produto/{id}
     ↓
-Checkout  →  PUT /api/pedido  →  Salva pedido + baixa estoque
+Carrinho (localStorage)
     ↓
-Confirmação  →  GET /api/pedido/{id}
+Checkout  →  POST /api/pedido  →  Baixa estoque + registra movimentação
+    ↓
+Confirmação  →  exibe resumo do pedido
+```
+
+### Desktop (funcionário)
+
+```
+FrmLogin  →  POST /api/funcionario/login  →  BCrypt validation
+    ↓
+frmPrincipal (shell com sidebar Guna)
+    ├── ucDashboard      →  GET /api/dashboard
+    ├── ucProdutos       →  GET/POST/PUT/PATCH/DELETE /api/produto
+    ├── ucPedidos        →  GET/PUT /api/pedido
+    ├── ucClientes       →  GET /api/cliente
+    ├── ucMovimentacoes  →  GET/POST /api/movimentacao
+    └── ucFuncionarios   →  GET/POST/PUT/DELETE /api/funcionario
 ```
 
 ---
@@ -155,54 +232,69 @@ Confirmação  →  GET /api/pedido/{id}
 ## 📦 Como Rodar
 
 ### Pré-requisitos
+
 - [.NET 10 SDK](https://dotnet.microsoft.com/download)
-- [SQL Server](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads) ou LocalDB
-- (Opcional) [SSMS](https://learn.microsoft.com/pt-br/sql/ssms/) para gerenciar o banco
+- [SQL Server](https://www.microsoft.com/pt-br/sql-server/) ou LocalDB
+- Visual Studio 2022+ (recomendado para o Windows Forms)
 
 ### 1. Clone o repositório
+
 ```bash
 git clone https://github.com/RodrigolsBento/ValhallaBebidas.git
 cd ValhallaBebidas
 ```
 
 ### 2. Configure a conexão
-A connection string está em `ValhallaBebidas.API/appsettings.Development.json`:
+
+Edite `ValhallaBebidas.API/appsettings.Development.json`:
+
 ```json
-"ConnectionStrings": {
-  "ValhallaBebidasConnection": "Server=(localdb)\\mssqllocaldb;Database=ValhallaBebidasDb;Trusted_Connection=True;TrustServerCertificate=True;"
+{
+  "ConnectionStrings": {
+    "ValhallaBebidasConnection": "Server=(localdb)\\mssqllocaldb;Database=ValhallaBebidasDb;Trusted_Connection=True;TrustServerCertificate=True;"
+  }
 }
 ```
-Ajuste para o seu ambiente. Para SQL Server local:
+
+Para SQL Server local, substitua por:
+
 ```
 "Server=localhost;Database=ValhallaBebidasDb;Trusted_Connection=True;TrustServerCertificate=True;"
 ```
 
-### 3. Crie e aplique o banco
+### 3. Aplique as migrations
+
 ```bash
-# Gera as migrations
 dotnet ef migrations add InitialCreate \
   --project ValhallaBebidas.Infrastructure \
   --startup-project ValhallaBebidas.API
 
-# Aplica ao banco
 dotnet ef database update \
   --project ValhallaBebidas.Infrastructure \
   --startup-project ValhallaBebidas.API
 ```
 
 ### 4. Inicie os projetos
+
 ```bash
-# API (porta 5101 padrão)
+# Terminal 1 — API (http://localhost:5101)
 dotnet run --project ValhallaBebidas.API
 
-# Web (porta definida no launchSettings)
+# Terminal 2 — Web MVC
 dotnet run --project ValhallaBebidas.Web
 ```
 
-Ou abra o `ValhallaBebidas.slnx` no **Visual Studio / VS Code** e execute ambos os projetos.
+Para o **Desktop**: abra `ValhallaBebidas.slnx` no Visual Studio e execute `ValhallaBebidas.UI`.
 
-### 5. Swagger
-Com a API rodando, acesso em: `http://localhost:5101/`
+### 5. Credenciais padrão
+
+| Tipo | Login | Senha |
+|---|---|---|
+| Funcionário (admin) | `admin` | `adminValhalla` |
+
+### 6. Swagger
+
+Com a API rodando, acesse: `http://localhost:5101/`
 
 ---
 
@@ -210,114 +302,122 @@ Com a API rodando, acesso em: `http://localhost:5101/`
 
 ```
 Cliente
-├── Id, Nome, Email, SenhaHash (BCrypt)
-├── Documento (CPF/CNPJ), Telefone
-├── Status, EnderecoId → Endereco
-│
-├── Pedidos (ICollection)
+├── Id, NomeCliente, Email, SenhaHash (BCrypt)
+├── Documento (CPF/CNPJ), Telefone, DataNascimento
+├── Status (bool — soft delete)
+├── EnderecoId → Endereco
+└── Pedidos (ICollection)
 
 Endereco
-├── Id, TipoLogradouro, Logradouro, Numero
-├── Complemento, Cep, Bairro, Cidade, Estado
+└── Id, Logradouro, Numero, Complemento, Cep, Bairro, Cidade, Estado
 
 Funcionario
 ├── Id, NomeCompleto, Login, SenhaHash (BCrypt)
-├── CPF, Email, Telefone, DataNascimento
-├── Status, EnderecoId → Endereco
+├── Cpf, Email, Telefone, DataNascimento
+├── Status (bool — soft delete)
+└── EnderecoId → Endereco
 
 Produto
-├── Id, Nome, EAN, Descricao
+├── Id, Nome, Ean, Descricao
 ├── PrecoVenda, PrecoCusto
 ├── QuantidadeEstoque, QuantidadeMinimo
-├── Status, CategoriaId → Categoria
-│
-├── ItensPedido, Movimentacoes
+├── Status (bool), DataCadastro
+├── FotoProduto (caminho relativo)
+├── CategoriaId → Categoria
+└── ItensPedido, Movimentacoes
 
 Categoria
 ├── Id, Nome
-│
 └── Produtos (ICollection)
 
 Pedido
 ├── Id, ClienteId → Cliente
-├── ValorTotal, Status (Pendente | Confirmado | Cancelado)
-├── DataPedido (UTC)
-│
-├── Itens (ICollection), Cliente
+├── ValorTotal, DataPedido (UTC)
+├── Status (Pendente | Confirmado | Cancelado)
+├── EnderecoEntrega* (flattened — 7 campos nullable)
+└── Itens (ICollection)
 
 ItemPedido
-├── Id, PedidoId → Pedido
-├── ProdutoId → Produto
+├── Id, PedidoId → Pedido, ProdutoId → Produto
 ├── Quantidade, PrecoUnitario
-└── Subtotal (calculado)
+└── Subtotal (calculado — não persiste)
 
 Movimentacao
 ├── Id, ProdutoId → Produto
 ├── Quantidade, Direcao (Entrada | Saida)
 ├── Motivo, Data (UTC)
-└── ValorImpactoEstoque (calculado)
+└── ValorImpactoEstoque (calculado — não persiste)
 ```
-
----
-
-## 🛒 Carrinho
-
-O carrinho é mantido no **localStorage** do navegador e sincronizado com a API no momento do checkout:
-
-- Ícone na nav (visível apenas para logados)
-- Persiste entre páginas e recarregamentos
-- Limpo automaticamente ao fazer logout
-- Checkout valida estoque na API via `POST /api/pedido`
 
 ---
 
 ## 🔐 Autenticação
 
-### Cliente (Web) → Session
-- Login valida via API (`/api/auth/login-cliente`) com BCrypt
-- Credenciais salvas em **server-side session** (não localStorage)
-- `AuthFilter` protege rotas Razor que requerem login
+### Cliente — Web
 
-### Funcionário → Windows Forms
-- Login validado via `FuncionarioService.LoginAsync` / `AutenticarAsync`
-- Senhas com BCrypt
-- Status `false` bloqueia acesso
+- Login via `POST /api/auth/login-cliente` com BCrypt
+- Credenciais armazenadas em **sessão server-side** (`HttpContext.Session`)
+- `AuthFilter` protege rotas que exigem autenticação
+- Logout limpa a sessão e redireciona para Home
+
+### Funcionário — Desktop
+
+- Login via `POST /api/funcionario/login` com BCrypt
+- Status `false` bloqueia o acesso
+- Credenciais mantidas na memória da aplicação desktop
 
 ---
 
 ## 🏗️ Funcionalidades Implementadas
 
-### Core
-- [x] CRUD completo: Cliente, Funcionário, Produto, Categoria, Pedido
-- [x] Login + Cadastro com validação e sessão
-- [x] Catálogo com filtro, busca e ordenação
-- [x] Carrinho com persistência local
-- [x] Checkout com validação de estoque
-- [x] Minhas Compras com filtro por status
-- [x] Dashboard de vendas (agregações)
+### Web
 
-### Arquitetura
-- [x] Clean Architecture (4 camadas)
+- [x] Login e cadastro com validação frontend + server-side
+- [x] Sessão server-side segura (sem localStorage para auth)
+- [x] Catálogo com filtro por categoria, busca textual e ordenação
+- [x] Carrinho com persistência no localStorage
+- [x] Checkout com endereço preenchido via ViaCEP
+- [x] Registro de pedido com baixa automática de estoque
+- [x] Minhas Compras com filtro por status
+- [x] Perfil com atualização de dados, endereço e senha
+- [x] Animações GSAP + Lenis em todas as páginas
+
+### Desktop (Guna UI2)
+
+- [x] Login com validação BCrypt
+- [x] Dashboard com indicadores de vendas e estoque
+- [x] CRUD completo de produtos
+- [x] CRUD completo de funcionários
+- [x] Gestão e visualização de clientes
+- [x] Acompanhamento e atualização de pedidos
+- [x] Registro e histórico de movimentações de estoque
+
+### Arquitetura e Infraestrutura
+
+- [x] Clean Architecture com 4 camadas bem definidas
 - [x] Repository Pattern + Unit of Work
-- [x] BCrypt para senhas
-- [x] Soft delete (Status booleano)
-- [x] Global error handling por entidade
-- [x] Migrations EF Core
-- [x] Data seeding (categorias + admin)
+- [x] BCrypt para todas as senhas
+- [x] Soft delete via campo `Status` booleano
+- [x] Migrations EF Core com data seeding automático
+- [x] Seed de 8 categorias + admin no primeiro startup
+- [x] CORS configurado (restringir em produção)
+
+---
+
+## 🛒 Carrinho
+
+O carrinho é mantido no **localStorage** do navegador:
+
+- Ícone na nav visível apenas para usuários logados
+- Persiste entre páginas e recarregamentos da sessão
+- Limpo automaticamente ao fazer logout
+- No checkout, os itens são enviados via `POST /api/pedido`, que valida estoque e registra a baixa automaticamente
 
 ---
 
 ## 🗺️ Roadmap
 
-- [ ] Token JWT para autenticação na API (em vez de apenas session)
-- [ ] Validação FluentValidation nos DTOs
-- [ ] Paginação nos endpoints de listagem
-- [ ] Tratamento global de erros (middleware)
-- [ ] Upload de imagens de produto
-- [ ] Pagamento (Stripe simulado)
-- [ ] Testes unitários (xUnit)
-- [ ] Global Query Filters para soft delete
-- [ ] Deploy
+- [ ] Deploy em nuvem (Azure / Railway)
 
 ---
 
@@ -327,4 +427,4 @@ Desenvolvido por **TecnoMancy**
 
 ---
 
-*Projeto acadêmico fictício.*
+*Projeto acadêmico fictício — todos os dados são simulados.*
