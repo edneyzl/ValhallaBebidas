@@ -167,7 +167,7 @@
             btnMovimentacoes.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnMovimentacoes.Size = new Size(200, 28);
             btnMovimentacoes.TabIndex = 3;
-            btnMovimentacoes.Text = "Movimentações";
+            btnMovimentacoes.Text = "Movimentações ";
             btnMovimentacoes.Click += btnMovimentacoes_Click;
             // 
             // guna2CirclePictureBox2
