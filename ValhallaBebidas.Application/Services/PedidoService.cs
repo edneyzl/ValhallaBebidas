@@ -129,6 +129,7 @@ public class PedidoService
         pedido.Status = novoStatus;
 
         await _pedidoRepository.AtualizarAsync(pedido);
+        await _pedidoRepository.SaveAsync();
     }
 
     public async Task CancelarAsync(int id, int clienteId)

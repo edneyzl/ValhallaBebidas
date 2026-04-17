@@ -89,7 +89,7 @@ namespace ValhallaBebidas.UI
         // Permite que UserControls filhos naveguem de volta
         public void Navegar(UserControl control) => LoadUserControl(control);
 
-
+        
     }
 }
 

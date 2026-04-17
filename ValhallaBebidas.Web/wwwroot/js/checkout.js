@@ -49,6 +49,7 @@ renderizarResumo();
 
 /* ── pagamento ── */
 let metodoSelecionado = localStorage.getItem('metodoPagamento') || 'cartao';
+
 const paineis = {
     cartao: document.getElementById('painelCartao'),
     pix: document.getElementById('painelPix'),
@@ -87,6 +88,43 @@ document.getElementById('cep')?.addEventListener('input', e => {
 
 document.getElementById('estado')?.addEventListener('input', e => {
     e.target.value = e.target.value.toUpperCase().replace(/[^A-Z]/g, '');
+});
+
+/* ── buscar CEP ── */
+document.getElementById('cep')?.addEventListener('blur', async e => {
+    const cep = e.target.value.replace(/\D/g, '');
+
+    if (cep.length !== 8) return;
+
+    try {
+        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+
+        if (!response.ok) {
+            console.warn('CEP não encontrado.');
+            return;
+        }
+
+        const data = await response.json();
+
+        if (data.erro) {
+            console.warn('CEP inválido.');
+            return;
+        }
+
+        const logradouroEl = document.getElementById('logradouro');
+        const bairroEl = document.getElementById('bairro');
+        const cidadeEl = document.getElementById('cidade');
+        const estadoEl = document.getElementById('estado');
+
+        if (logradouroEl && !logradouroEl.value.trim()) logradouroEl.value = data.logradouro || '';
+        if (bairroEl && !bairroEl.value.trim()) bairroEl.value = data.bairro || '';
+        if (cidadeEl && !cidadeEl.value.trim()) cidadeEl.value = data.localidade || '';
+        if (estadoEl && !estadoEl.value.trim()) estadoEl.value = data.uf || '';
+
+        console.log('CEP encontrado:', data);
+    } catch (err) {
+        console.error('Erro ao buscar CEP:', err);
+    }
 });
 
 /* ── validação ── */

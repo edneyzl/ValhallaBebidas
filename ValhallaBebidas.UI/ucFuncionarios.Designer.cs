@@ -83,7 +83,7 @@
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
             panelHeader.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            panelHeader.Size = new Size(969, 80);
+            panelHeader.Size = new Size(1162, 80);
             panelHeader.TabIndex = 1;
             // 
             // guna2TextBox1
@@ -97,7 +97,7 @@
             guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             guna2TextBox1.Font = new Font("Segoe UI", 9.5F);
             guna2TextBox1.ForeColor = Color.FromArgb(214, 189, 119);
-            guna2TextBox1.Location = new Point(292, 19);
+            guna2TextBox1.Location = new Point(485, 19);
             guna2TextBox1.Name = "guna2TextBox1";
             guna2TextBox1.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             guna2TextBox1.PlaceholderText = "🔍  Pesquisar por E-mail ou CPF...";
@@ -115,7 +115,7 @@
             guna2Button1.FillColor = Color.FromArgb(214, 189, 119);
             guna2Button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             guna2Button1.ForeColor = Color.Black;
-            guna2Button1.Location = new Point(548, 19);
+            guna2Button1.Location = new Point(741, 19);
             guna2Button1.Name = "guna2Button1";
             guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2Button1.Size = new Size(164, 40);
@@ -131,7 +131,7 @@
             guna2Button2.FillColor = Color.FromArgb(64, 64, 64);
             guna2Button2.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             guna2Button2.ForeColor = Color.White;
-            guna2Button2.Location = new Point(724, 19);
+            guna2Button2.Location = new Point(917, 19);
             guna2Button2.Name = "guna2Button2";
             guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2Button2.Size = new Size(110, 40);
@@ -147,7 +147,7 @@
             guna2Button3.FillColor = Color.FromArgb(220, 60, 60);
             guna2Button3.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             guna2Button3.ForeColor = Color.White;
-            guna2Button3.Location = new Point(843, 19);
+            guna2Button3.Location = new Point(1036, 19);
             guna2Button3.Name = "guna2Button3";
             guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2Button3.Size = new Size(110, 40);
@@ -166,7 +166,7 @@
             txtBuscaCliente.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtBuscaCliente.Font = new Font("Segoe UI", 9.5F);
             txtBuscaCliente.ForeColor = Color.FromArgb(214, 189, 119);
-            txtBuscaCliente.Location = new Point(1073, 19);
+            txtBuscaCliente.Location = new Point(1266, 19);
             txtBuscaCliente.Name = "txtBuscaCliente";
             txtBuscaCliente.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             txtBuscaCliente.PlaceholderText = "🔍  Pesquisar por E-mail ou CPF...";
@@ -184,7 +184,7 @@
             btnNovoCliente.FillColor = Color.FromArgb(214, 189, 119);
             btnNovoCliente.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnNovoCliente.ForeColor = Color.Black;
-            btnNovoCliente.Location = new Point(1339, 19);
+            btnNovoCliente.Location = new Point(1532, 19);
             btnNovoCliente.Name = "btnNovoCliente";
             btnNovoCliente.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnNovoCliente.Size = new Size(155, 40);
@@ -210,7 +210,7 @@
             btnEditarCliente.FillColor = Color.FromArgb(64, 64, 64);
             btnEditarCliente.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnEditarCliente.ForeColor = Color.White;
-            btnEditarCliente.Location = new Point(1500, 19);
+            btnEditarCliente.Location = new Point(1693, 19);
             btnEditarCliente.Name = "btnEditarCliente";
             btnEditarCliente.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnEditarCliente.Size = new Size(110, 40);
@@ -226,7 +226,7 @@
             btnExcluirCliente.FillColor = Color.FromArgb(220, 60, 60);
             btnExcluirCliente.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnExcluirCliente.ForeColor = Color.White;
-            btnExcluirCliente.Location = new Point(1616, 19);
+            btnExcluirCliente.Location = new Point(1809, 19);
             btnExcluirCliente.Name = "btnExcluirCliente";
             btnExcluirCliente.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btnExcluirCliente.Size = new Size(110, 40);
@@ -270,7 +270,7 @@
             dgvFuncionarios.Location = new Point(19, 86);
             dgvFuncionarios.Name = "dgvFuncionarios";
             dgvFuncionarios.RowHeadersVisible = false;
-            dgvFuncionarios.Size = new Size(930, 450);
+            dgvFuncionarios.Size = new Size(1143, 505);
             dgvFuncionarios.TabIndex = 2;
             dgvFuncionarios.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvFuncionarios.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -302,7 +302,7 @@
             Controls.Add(dgvFuncionarios);
             Controls.Add(panelHeader);
             Name = "ucFuncionarios";
-            Size = new Size(969, 549);
+            Size = new Size(1165, 594);
             panelHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvFuncionarios).EndInit();
             ResumeLayout(false);

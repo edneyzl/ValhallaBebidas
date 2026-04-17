@@ -66,8 +66,9 @@ namespace ValhallaBebidas.UI
                 if (resultado.Sucesso)
                 {
                     // Login bem-sucedido — abre o formulário principal
-                    var principal = new frmPrincipal();
-                    principal.Show();
+                    int id = resultado.Id;
+                    var inicial = new frmInicio(id);
+                    inicial.Show();
                     this.Hide();
                 }
                 else
