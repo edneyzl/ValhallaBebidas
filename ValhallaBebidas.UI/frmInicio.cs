@@ -26,13 +26,13 @@ namespace ValhallaBebidas.UI
 
         private async Task CarregarUsuarioAsync()
         {
-          
+
 
 
             var funcionario = await _funcionarioService.GetUsuarioByIdAsync(_idUsu.Value);
             if (funcionario != null)
             {
-                lblNome.Text = funcionario.Nome; 
+                lblNome.Text = funcionario.Nome;
 
                 if (!string.IsNullOrEmpty(funcionario.FotoPerfil))
                 {
@@ -61,5 +61,7 @@ namespace ValhallaBebidas.UI
             login.Show();
             this.Close();
         }
+
+
     }
 }
