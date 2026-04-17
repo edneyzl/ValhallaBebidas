@@ -31,47 +31,47 @@ namespace ValhallaBebidas.UI
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            CustomizableEdges customizableEdges1 = new CustomizableEdges();
+            CustomizableEdges customizableEdges2 = new CustomizableEdges();
+            CustomizableEdges customizableEdges40 = new CustomizableEdges();
+            CustomizableEdges customizableEdges41 = new CustomizableEdges();
+            CustomizableEdges customizableEdges8 = new CustomizableEdges();
+            CustomizableEdges customizableEdges9 = new CustomizableEdges();
+            CustomizableEdges customizableEdges10 = new CustomizableEdges();
+            CustomizableEdges customizableEdges11 = new CustomizableEdges();
+            CustomizableEdges customizableEdges26 = new CustomizableEdges();
+            CustomizableEdges customizableEdges27 = new CustomizableEdges();
+            CustomizableEdges customizableEdges12 = new CustomizableEdges();
+            CustomizableEdges customizableEdges13 = new CustomizableEdges();
+            CustomizableEdges customizableEdges14 = new CustomizableEdges();
+            CustomizableEdges customizableEdges15 = new CustomizableEdges();
+            CustomizableEdges customizableEdges16 = new CustomizableEdges();
+            CustomizableEdges customizableEdges17 = new CustomizableEdges();
+            CustomizableEdges customizableEdges18 = new CustomizableEdges();
+            CustomizableEdges customizableEdges19 = new CustomizableEdges();
+            CustomizableEdges customizableEdges20 = new CustomizableEdges();
+            CustomizableEdges customizableEdges21 = new CustomizableEdges();
+            CustomizableEdges customizableEdges22 = new CustomizableEdges();
+            CustomizableEdges customizableEdges23 = new CustomizableEdges();
+            CustomizableEdges customizableEdges24 = new CustomizableEdges();
+            CustomizableEdges customizableEdges25 = new CustomizableEdges();
+            CustomizableEdges customizableEdges28 = new CustomizableEdges();
+            CustomizableEdges customizableEdges29 = new CustomizableEdges();
+            CustomizableEdges customizableEdges30 = new CustomizableEdges();
+            CustomizableEdges customizableEdges31 = new CustomizableEdges();
+            CustomizableEdges customizableEdges32 = new CustomizableEdges();
+            CustomizableEdges customizableEdges33 = new CustomizableEdges();
+            CustomizableEdges customizableEdges34 = new CustomizableEdges();
+            CustomizableEdges customizableEdges35 = new CustomizableEdges();
+            CustomizableEdges customizableEdges36 = new CustomizableEdges();
+            CustomizableEdges customizableEdges37 = new CustomizableEdges();
+            CustomizableEdges customizableEdges38 = new CustomizableEdges();
+            CustomizableEdges customizableEdges39 = new CustomizableEdges();
+            CustomizableEdges customizableEdges7 = new CustomizableEdges();
+            CustomizableEdges customizableEdges3 = new CustomizableEdges();
+            CustomizableEdges customizableEdges4 = new CustomizableEdges();
+            CustomizableEdges customizableEdges5 = new CustomizableEdges();
+            CustomizableEdges customizableEdges6 = new CustomizableEdges();
             txtNome = new Guna.UI2.WinForms.Guna2TextBox();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -87,13 +87,13 @@ namespace ValhallaBebidas.UI
             txtComplemento = new Guna.UI2.WinForms.Guna2TextBox();
             txtTelefone = new Guna.UI2.WinForms.Guna2TextBox();
             txtCpf = new Guna.UI2.WinForms.Guna2TextBox();
+            txtSenha = new Guna.UI2.WinForms.Guna2TextBox();
             txtConfirmarSenha = new Guna.UI2.WinForms.Guna2TextBox();
             txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             txtDataNascimento = new Guna.UI2.WinForms.Guna2TextBox();
             btnFechar = new Guna.UI2.WinForms.Guna2CircleButton();
             btnCadastrar = new Guna.UI2.WinForms.Guna2Button();
             btnLimparCampos = new Guna.UI2.WinForms.Guna2Button();
-            txtSenha = new Guna.UI2.WinForms.Guna2TextBox();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picFotoPerfil).BeginInit();
             pnlEndereco.SuspendLayout();
@@ -429,6 +429,31 @@ namespace ValhallaBebidas.UI
             txtCpf.Size = new Size(279, 34);
             txtCpf.TabIndex = 1;
             // 
+            // txtSenha
+            // 
+            txtSenha.BorderColor = Color.Silver;
+            txtSenha.BorderRadius = 10;
+            txtSenha.CustomizableEdges = customizableEdges32;
+            txtSenha.DefaultText = "";
+            txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtSenha.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtSenha.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtSenha.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtSenha.FillColor = Color.FromArgb(22, 22, 22);
+            txtSenha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSenha.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSenha.ForeColor = Color.LightGray;
+            txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSenha.Location = new Point(180, 196);
+            txtSenha.Margin = new Padding(4);
+            txtSenha.Name = "txtSenha";
+            txtSenha.PlaceholderForeColor = Color.DarkGray;
+            txtSenha.PlaceholderText = "Senha";
+            txtSenha.SelectedText = "";
+            txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges33;
+            txtSenha.Size = new Size(279, 34);
+            txtSenha.TabIndex = 1;
+            // 
             // txtConfirmarSenha
             // 
             txtConfirmarSenha.BorderColor = Color.Silver;
@@ -557,29 +582,6 @@ namespace ValhallaBebidas.UI
             btnLimparCampos.Text = "Limpar Campos";
             btnLimparCampos.Click += btnLimparCampos_Click;
             // 
-            // txtSenha
-            // 
-            txtSenha.BorderColor = Color.Silver;
-            txtSenha.BorderRadius = 10;
-            txtSenha.DefaultText = "";
-            txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtSenha.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtSenha.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtSenha.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtSenha.FillColor = Color.FromArgb(22, 22, 22);
-            txtSenha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSenha.ForeColor = Color.LightGray;
-            txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(180, 196);
-            txtSenha.Margin = new Padding(4);
-            txtSenha.Name = "txtSenha";
-            txtSenha.PlaceholderForeColor = Color.DarkGray;
-            txtSenha.PlaceholderText = "Senha";
-            txtSenha.SelectedText = "";
-            txtSenha.Size = new Size(279, 34);
-            txtSenha.TabIndex = 1;
-            // 
             // frmCadastroFuncionario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -595,6 +597,7 @@ namespace ValhallaBebidas.UI
             FormBorderStyle = FormBorderStyle.None;
             FormScreenCaptureMode = ScreenCaptureMode.HideContent;
             Name = "frmCadastroFuncionario";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmCadstroUsuario";
             guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picFotoPerfil).EndInit();

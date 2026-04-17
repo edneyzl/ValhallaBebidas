@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -55,6 +56,7 @@
             txtSenha = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
             guna2Panel2.SuspendLayout();
@@ -171,10 +173,10 @@
             guna2Panel2.Controls.Add(guna2HtmlLabel5);
             guna2Panel2.CustomizableEdges = customizableEdges11;
             guna2Panel2.FillColor = Color.FromArgb(33, 33, 33);
-            guna2Panel2.Location = new Point(-8, 110);
+            guna2Panel2.Location = new Point(-8, 116);
             guna2Panel2.Name = "guna2Panel2";
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2Panel2.Size = new Size(444, 356);
+            guna2Panel2.Size = new Size(444, 350);
             guna2Panel2.TabIndex = 1;
             // 
             // guna2HtmlLabel7
@@ -230,7 +232,7 @@
             txtEmail.BorderColor = Color.Silver;
             txtEmail.BorderRadius = 12;
             txtEmail.CustomizableEdges = customizableEdges7;
-            txtEmail.DefaultText = "";
+            txtEmail.DefaultText = "admin@valhalla.br";
             txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEmail.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtEmail.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
@@ -256,7 +258,7 @@
             txtSenha.BorderColor = Color.Silver;
             txtSenha.BorderRadius = 12;
             txtSenha.CustomizableEdges = customizableEdges9;
-            txtSenha.DefaultText = "";
+            txtSenha.DefaultText = "adminValhalla";
             txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSenha.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtSenha.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
@@ -299,6 +301,13 @@
             guna2HtmlLabel5.TabIndex = 1;
             guna2HtmlLabel5.Text = "Bem Vindo(a) de";
             // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.BorderRadius = 15;
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -335,5 +344,6 @@
         private LinkLabel linkCadastreSe;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

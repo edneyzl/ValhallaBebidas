@@ -307,6 +307,7 @@
             ForeColor = Color.FromArgb(15, 14, 12);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmPrincipal";
             panelLogo.ResumeLayout(false);
             panelLogo.PerformLayout();
