@@ -193,6 +193,7 @@
             btnAdicionarItem.Size = new Size(119, 25);
             btnAdicionarItem.TabIndex = 19;
             btnAdicionarItem.Text = "+ Adicionar";
+            btnAdicionarItem.Click += btnAdicionarItem_Click;
             // 
             // lblCarrinho
             // 
@@ -249,6 +250,7 @@
             btnFinalizar.Size = new Size(450, 45);
             btnFinalizar.TabIndex = 22;
             btnFinalizar.Text = "✓  Finalizar Pedido";
+            btnFinalizar.Click += btnFinalizar_Click;
             // 
             // btnCancelar
             // 
@@ -264,6 +266,7 @@
             btnCancelar.Size = new Size(450, 45);
             btnCancelar.TabIndex = 23;
             btnCancelar.Text = "Cancelar";
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // panelHeader
             // 

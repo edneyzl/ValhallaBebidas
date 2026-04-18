@@ -54,7 +54,7 @@
             panelConteudo = new Guna.UI2.WinForms.Guna2Panel();
             dgvPedidos = new Guna.UI2.WinForms.Guna2DataGridView();
             panelHeader = new Guna.UI2.WinForms.Guna2Panel();
-            txtPesquisaPedido = new Guna.UI2.WinForms.Guna2TextBox();
+            cmbFiltroStatus = new Guna.UI2.WinForms.Guna2ComboBox();
             btnNovoPedido = new Guna.UI2.WinForms.Guna2Button();
             btnEditarPedido = new Guna.UI2.WinForms.Guna2Button();
             btnExcluirPedido = new Guna.UI2.WinForms.Guna2Button();
@@ -134,7 +134,7 @@
             // panelHeader
             // 
             panelHeader.BackColor = Color.FromArgb(33, 33, 33);
-            panelHeader.Controls.Add(txtPesquisaPedido);
+            panelHeader.Controls.Add(cmbFiltroStatus);
             panelHeader.Controls.Add(btnNovoPedido);
             panelHeader.Controls.Add(btnEditarPedido);
             panelHeader.Controls.Add(btnExcluirPedido);
@@ -152,25 +152,27 @@
             panelHeader.Size = new Size(969, 80);
             panelHeader.TabIndex = 2;
             // 
-            // txtPesquisaPedido
+            // cmbFiltroStatus
             // 
-            txtPesquisaPedido.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtPesquisaPedido.BorderColor = Color.FromArgb(214, 189, 119);
-            txtPesquisaPedido.BorderRadius = 8;
-            txtPesquisaPedido.CustomizableEdges = customizableEdges3;
-            txtPesquisaPedido.DefaultText = "";
-            txtPesquisaPedido.FillColor = Color.FromArgb(33, 33, 33);
-            txtPesquisaPedido.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
-            txtPesquisaPedido.Font = new Font("Segoe UI", 9.5F);
-            txtPesquisaPedido.ForeColor = Color.FromArgb(214, 189, 119);
-            txtPesquisaPedido.Location = new Point(313, 20);
-            txtPesquisaPedido.Name = "txtPesquisaPedido";
-            txtPesquisaPedido.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
-            txtPesquisaPedido.PlaceholderText = "🔍  Pesquisar por nº do Pedido...";
-            txtPesquisaPedido.SelectedText = "";
-            txtPesquisaPedido.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtPesquisaPedido.Size = new Size(220, 40);
-            txtPesquisaPedido.TabIndex = 13;
+            cmbFiltroStatus.BackColor = Color.FromArgb(33, 33, 33);
+            cmbFiltroStatus.BorderColor = Color.FromArgb(214, 189, 119);
+            cmbFiltroStatus.BorderRadius = 10;
+            cmbFiltroStatus.CustomizableEdges = customizableEdges3;
+            cmbFiltroStatus.DrawMode = DrawMode.OwnerDrawFixed;
+            cmbFiltroStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbFiltroStatus.FillColor = Color.FromArgb(33, 33, 33);
+            cmbFiltroStatus.FocusedColor = Color.FromArgb(94, 148, 255);
+            cmbFiltroStatus.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cmbFiltroStatus.Font = new Font("Segoe UI", 10F);
+            cmbFiltroStatus.ForeColor = Color.FromArgb(214, 189, 119);
+            cmbFiltroStatus.ItemHeight = 30;
+            cmbFiltroStatus.Items.AddRange(new object[] { "Todos", "Pendente", "Finalizado", "Cancelado" });
+            cmbFiltroStatus.Location = new Point(408, 24);
+            cmbFiltroStatus.Name = "cmbFiltroStatus";
+            cmbFiltroStatus.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            cmbFiltroStatus.Size = new Size(140, 36);
+            cmbFiltroStatus.TabIndex = 1;
+            cmbFiltroStatus.SelectedIndexChanged += cmbFiltroStatus_SelectedIndexChanged;
             // 
             // btnNovoPedido
             // 
@@ -187,6 +189,7 @@
             btnNovoPedido.Size = new Size(155, 40);
             btnNovoPedido.TabIndex = 10;
             btnNovoPedido.Text = "+ Novo Pedido";
+            btnNovoPedido.Click += btnNovoPedido_Click;
             // 
             // btnEditarPedido
             // 
@@ -203,6 +206,7 @@
             btnEditarPedido.Size = new Size(110, 40);
             btnEditarPedido.TabIndex = 11;
             btnEditarPedido.Text = "✏️ Editar";
+            btnEditarPedido.Click += btnEditarPedido_Click;
             // 
             // btnExcluirPedido
             // 
@@ -219,6 +223,7 @@
             btnExcluirPedido.Size = new Size(110, 40);
             btnExcluirPedido.TabIndex = 12;
             btnExcluirPedido.Text = "🗑️ Excluir";
+            btnExcluirPedido.Click += btnExcluirPedido_Click;
             // 
             // txtBuscaCliente
             // 
@@ -336,6 +341,6 @@
         private Guna.UI2.WinForms.Guna2Button btnNovoPedido;
         private Guna.UI2.WinForms.Guna2Button btnEditarPedido;
         private Guna.UI2.WinForms.Guna2Button btnExcluirPedido;
-        private Guna.UI2.WinForms.Guna2TextBox txtPesquisaPedido;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbFiltroStatus;
     }
 }
