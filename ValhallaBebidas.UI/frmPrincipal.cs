@@ -39,31 +39,31 @@ namespace ValhallaBebidas.UI
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btnDashboard);
+            SetActiveButton(btnClientes);
             LoadUserControl(new ucClientes());
         }
 
         private void btnProdutos_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btnDashboard);
+            SetActiveButton(btnProdutos);
             LoadUserControl(new ucProdutos());
         }
 
         private void btnPedidos_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btnDashboard);
+            SetActiveButton(btnPedidos);
             LoadUserControl(new ucPedidos());
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btnDashboard);
+            SetActiveButton(btnUsuarios);
             LoadUserControl(new ucFuncionarios());
         }
 
         private void btnMovimentacoes_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btnDashboard);
+            SetActiveButton(btnMovimentacoes);
             LoadUserControl(new ucMovimentacoes());
         }
 
@@ -76,7 +76,7 @@ namespace ValhallaBebidas.UI
 
         private void SetActiveButton(Guna.UI2.WinForms.Guna2Button activeBtn)
         {
-            var botoes = new[] { btnDashboard, btnClientes, btnProdutos, btnPedidos, btnUsuarios };
+            var botoes = new[] { btnDashboard, btnClientes, btnProdutos, btnPedidos, btnUsuarios, btnMovimentacoes };
             foreach (var btn in botoes)
             {
                 btn.FillColor = Color.FromArgb(22, 22, 22);

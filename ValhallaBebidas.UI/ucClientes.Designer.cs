@@ -93,6 +93,7 @@
             txtBuscaCliente.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtBuscaCliente.Size = new Size(217, 40);
             txtBuscaCliente.TabIndex = 9;
+            txtBuscaCliente.TextChanged += txtBuscaCliente_TextChanged;
             // 
             // btnNovoCliente
             // 
@@ -109,6 +110,7 @@
             btnNovoCliente.Size = new Size(155, 40);
             btnNovoCliente.TabIndex = 6;
             btnNovoCliente.Text = "+ Novo Cliente";
+            btnNovoCliente.Click += btnNovoCliente_Click;
             // 
             // lblTitulo
             // 
@@ -135,6 +137,7 @@
             btnEditarCliente.Size = new Size(110, 40);
             btnEditarCliente.TabIndex = 7;
             btnEditarCliente.Text = "✏️ Editar";
+            btnEditarCliente.Click += btnEditarCliente_Click;
             // 
             // btnExcluirCliente
             // 
@@ -151,6 +154,7 @@
             btnExcluirCliente.Size = new Size(110, 40);
             btnExcluirCliente.TabIndex = 8;
             btnExcluirCliente.Text = "🗑️ Excluir";
+            btnExcluirCliente.Click += btnExcluirCliente_Click;
             // 
             // lblSubtitulo
             // 

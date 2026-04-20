@@ -28,62 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            panelBemVindo = new Guna.UI2.WinForms.Guna2Panel();
             lblBemVindo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            guna2Panel9 = new Guna.UI2.WinForms.Guna2Panel();
+            panelFill = new Guna.UI2.WinForms.Guna2Panel();
             guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
-            lblResumoSistema = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblAtividade = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
             lblValClientes = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            lblTotalClientes = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
+            lblCardClientes = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            panelCards = new Guna.UI2.WinForms.Guna2Panel();
             guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            lblValFaturamento = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            lblFaturamento = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblValFatur = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblCardFatur = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             lblValPedidos = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            lblPedidosHoje = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblCardPedidos = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            lblValAtivos = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            lblProdutosAtivos = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2Panel1.SuspendLayout();
+            lblValProdutos = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblCardProdutos = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblData = new Label();
+            panelBemVindo.SuspendLayout();
             guna2Panel2.SuspendLayout();
             guna2Panel6.SuspendLayout();
-            guna2Panel7.SuspendLayout();
+            panelCards.SuspendLayout();
             guna2Panel5.SuspendLayout();
             guna2Panel4.SuspendLayout();
             guna2Panel3.SuspendLayout();
             SuspendLayout();
             // 
-            // guna2Panel1
+            // panelBemVindo
             // 
-            guna2Panel1.BackColor = Color.FromArgb(33, 33, 33);
-            guna2Panel1.Controls.Add(lblBemVindo);
-            guna2Panel1.CustomizableEdges = customizableEdges19;
-            guna2Panel1.Location = new Point(0, 0);
-            guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            guna2Panel1.Size = new Size(1060, 80);
-            guna2Panel1.TabIndex = 0;
+            panelBemVindo.BackColor = Color.FromArgb(33, 33, 33);
+            panelBemVindo.Controls.Add(lblData);
+            panelBemVindo.Controls.Add(lblBemVindo);
+            panelBemVindo.CustomizableEdges = customizableEdges1;
+            panelBemVindo.Location = new Point(0, 0);
+            panelBemVindo.Name = "panelBemVindo";
+            panelBemVindo.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            panelBemVindo.Size = new Size(1060, 80);
+            panelBemVindo.TabIndex = 0;
             // 
             // lblBemVindo
             // 
@@ -99,54 +101,54 @@
             // guna2Panel2
             // 
             guna2Panel2.BackColor = Color.Black;
-            guna2Panel2.Controls.Add(guna2Panel9);
+            guna2Panel2.Controls.Add(panelFill);
             guna2Panel2.Controls.Add(guna2Panel8);
-            guna2Panel2.Controls.Add(lblResumoSistema);
-            guna2Panel2.CustomizableEdges = customizableEdges25;
+            guna2Panel2.Controls.Add(lblAtividade);
+            guna2Panel2.CustomizableEdges = customizableEdges7;
             guna2Panel2.Location = new Point(-8, 226);
             guna2Panel2.Name = "guna2Panel2";
-            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2Panel2.Size = new Size(977, 323);
             guna2Panel2.TabIndex = 0;
             // 
-            // guna2Panel9
+            // panelFill
             // 
-            guna2Panel9.BackColor = Color.FromArgb(64, 64, 64);
-            guna2Panel9.CustomizableEdges = customizableEdges21;
-            guna2Panel9.Location = new Point(8, 53);
-            guna2Panel9.Name = "guna2Panel9";
-            guna2Panel9.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            guna2Panel9.Size = new Size(969, 267);
-            guna2Panel9.TabIndex = 2;
+            panelFill.BackColor = Color.FromArgb(64, 64, 64);
+            panelFill.CustomizableEdges = customizableEdges3;
+            panelFill.Location = new Point(8, 53);
+            panelFill.Name = "panelFill";
+            panelFill.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            panelFill.Size = new Size(969, 267);
+            panelFill.TabIndex = 2;
             // 
             // guna2Panel8
             // 
-            guna2Panel8.CustomizableEdges = customizableEdges23;
+            guna2Panel8.CustomizableEdges = customizableEdges5;
             guna2Panel8.Location = new Point(60, 150);
             guna2Panel8.Name = "guna2Panel8";
-            guna2Panel8.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            guna2Panel8.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2Panel8.Size = new Size(0, 0);
             guna2Panel8.TabIndex = 1;
             // 
-            // lblResumoSistema
+            // lblAtividade
             // 
-            lblResumoSistema.BackColor = Color.Transparent;
-            lblResumoSistema.Font = new Font("Rockwell", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblResumoSistema.ForeColor = Color.FromArgb(214, 189, 119);
-            lblResumoSistema.Location = new Point(27, 20);
-            lblResumoSistema.Name = "lblResumoSistema";
-            lblResumoSistema.Size = new Size(203, 27);
-            lblResumoSistema.TabIndex = 0;
-            lblResumoSistema.Text = " Resumo do Sistema";
+            lblAtividade.BackColor = Color.Transparent;
+            lblAtividade.Font = new Font("Rockwell", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAtividade.ForeColor = Color.FromArgb(214, 189, 119);
+            lblAtividade.Location = new Point(27, 20);
+            lblAtividade.Name = "lblAtividade";
+            lblAtividade.Size = new Size(203, 27);
+            lblAtividade.TabIndex = 0;
+            lblAtividade.Text = " Resumo do Sistema";
             // 
             // guna2Panel6
             // 
             guna2Panel6.Controls.Add(lblValClientes);
-            guna2Panel6.Controls.Add(lblTotalClientes);
-            guna2Panel6.CustomizableEdges = customizableEdges27;
+            guna2Panel6.Controls.Add(lblCardClientes);
+            guna2Panel6.CustomizableEdges = customizableEdges9;
             guna2Panel6.Location = new Point(19, 26);
             guna2Panel6.Name = "guna2Panel6";
-            guna2Panel6.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            guna2Panel6.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2Panel6.Size = new Size(200, 100);
             guna2Panel6.TabIndex = 0;
             // 
@@ -162,75 +164,75 @@
             lblValClientes.Text = "0";
             lblValClientes.TextAlignment = ContentAlignment.TopCenter;
             // 
-            // lblTotalClientes
+            // lblCardClientes
             // 
-            lblTotalClientes.BackColor = Color.Transparent;
-            lblTotalClientes.Font = new Font("Rockwell", 12F, FontStyle.Bold);
-            lblTotalClientes.ForeColor = Color.FromArgb(214, 189, 119);
-            lblTotalClientes.Location = new Point(42, 3);
-            lblTotalClientes.Name = "lblTotalClientes";
-            lblTotalClientes.Size = new Size(111, 21);
-            lblTotalClientes.TabIndex = 0;
-            lblTotalClientes.Text = "Total clientes";
-            lblTotalClientes.TextAlignment = ContentAlignment.TopCenter;
+            lblCardClientes.BackColor = Color.Transparent;
+            lblCardClientes.Font = new Font("Rockwell", 12F, FontStyle.Bold);
+            lblCardClientes.ForeColor = Color.FromArgb(214, 189, 119);
+            lblCardClientes.Location = new Point(42, 3);
+            lblCardClientes.Name = "lblCardClientes";
+            lblCardClientes.Size = new Size(111, 21);
+            lblCardClientes.TabIndex = 0;
+            lblCardClientes.Text = "Total clientes";
+            lblCardClientes.TextAlignment = ContentAlignment.TopCenter;
             // 
-            // guna2Panel7
+            // panelCards
             // 
-            guna2Panel7.BackColor = Color.FromArgb(64, 64, 64);
-            guna2Panel7.Controls.Add(guna2Panel5);
-            guna2Panel7.Controls.Add(guna2Panel4);
-            guna2Panel7.Controls.Add(guna2Panel3);
-            guna2Panel7.Controls.Add(guna2Panel6);
-            guna2Panel7.CustomizableEdges = customizableEdges35;
-            guna2Panel7.Location = new Point(0, 76);
-            guna2Panel7.Name = "guna2Panel7";
-            guna2Panel7.ShadowDecoration.CustomizableEdges = customizableEdges36;
-            guna2Panel7.Size = new Size(1063, 151);
-            guna2Panel7.TabIndex = 0;
+            panelCards.BackColor = Color.FromArgb(64, 64, 64);
+            panelCards.Controls.Add(guna2Panel5);
+            panelCards.Controls.Add(guna2Panel4);
+            panelCards.Controls.Add(guna2Panel3);
+            panelCards.Controls.Add(guna2Panel6);
+            panelCards.CustomizableEdges = customizableEdges17;
+            panelCards.Location = new Point(0, 76);
+            panelCards.Name = "panelCards";
+            panelCards.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            panelCards.Size = new Size(1063, 151);
+            panelCards.TabIndex = 0;
             // 
             // guna2Panel5
             // 
-            guna2Panel5.Controls.Add(lblValFaturamento);
-            guna2Panel5.Controls.Add(lblFaturamento);
-            guna2Panel5.CustomizableEdges = customizableEdges29;
+            guna2Panel5.Controls.Add(lblValFatur);
+            guna2Panel5.Controls.Add(lblCardFatur);
+            guna2Panel5.CustomizableEdges = customizableEdges11;
             guna2Panel5.Location = new Point(753, 26);
             guna2Panel5.Name = "guna2Panel5";
-            guna2Panel5.ShadowDecoration.CustomizableEdges = customizableEdges30;
+            guna2Panel5.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2Panel5.Size = new Size(200, 100);
             guna2Panel5.TabIndex = 0;
             // 
-            // lblValFaturamento
+            // lblValFatur
             // 
-            lblValFaturamento.BackColor = Color.Transparent;
-            lblValFaturamento.Font = new Font("Rockwell", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblValFaturamento.ForeColor = Color.FromArgb(214, 189, 119);
-            lblValFaturamento.Location = new Point(86, 40);
-            lblValFaturamento.Name = "lblValFaturamento";
-            lblValFaturamento.Size = new Size(18, 35);
-            lblValFaturamento.TabIndex = 0;
-            lblValFaturamento.Text = "0";
-            lblValFaturamento.TextAlignment = ContentAlignment.TopCenter;
+            lblValFatur.BackColor = Color.Transparent;
+            lblValFatur.Font = new Font("Rockwell", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblValFatur.ForeColor = Color.FromArgb(214, 189, 119);
+            lblValFatur.Location = new Point(86, 40);
+            lblValFatur.Name = "lblValFatur";
+            lblValFatur.Size = new Size(18, 35);
+            lblValFatur.TabIndex = 0;
+            lblValFatur.Text = "0";
+            lblValFatur.TextAlignment = ContentAlignment.TopCenter;
             // 
-            // lblFaturamento
+            // lblCardFatur
             // 
-            lblFaturamento.BackColor = Color.Transparent;
-            lblFaturamento.Font = new Font("Rockwell", 12F, FontStyle.Bold);
-            lblFaturamento.ForeColor = Color.FromArgb(214, 189, 119);
-            lblFaturamento.Location = new Point(45, 3);
-            lblFaturamento.Name = "lblFaturamento";
-            lblFaturamento.Size = new Size(104, 21);
-            lblFaturamento.TabIndex = 0;
-            lblFaturamento.Text = "Faturamento";
-            lblFaturamento.TextAlignment = ContentAlignment.TopCenter;
+            lblCardFatur.BackColor = Color.Transparent;
+            lblCardFatur.Font = new Font("Rockwell", 12F, FontStyle.Bold);
+            lblCardFatur.ForeColor = Color.FromArgb(214, 189, 119);
+            lblCardFatur.Location = new Point(45, 3);
+            lblCardFatur.Name = "lblCardFatur";
+            lblCardFatur.Size = new Size(104, 21);
+            lblCardFatur.TabIndex = 0;
+            lblCardFatur.Text = "Faturamento";
+            lblCardFatur.TextAlignment = ContentAlignment.TopCenter;
             // 
             // guna2Panel4
             // 
             guna2Panel4.Controls.Add(lblValPedidos);
-            guna2Panel4.Controls.Add(lblPedidosHoje);
-            guna2Panel4.CustomizableEdges = customizableEdges31;
+            guna2Panel4.Controls.Add(lblCardPedidos);
+            guna2Panel4.CustomizableEdges = customizableEdges13;
             guna2Panel4.Location = new Point(509, 26);
             guna2Panel4.Name = "guna2Panel4";
-            guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            guna2Panel4.ShadowDecoration.CustomizableEdges = customizableEdges14;
             guna2Panel4.Size = new Size(200, 100);
             guna2Panel4.TabIndex = 0;
             // 
@@ -246,69 +248,78 @@
             lblValPedidos.Text = "0";
             lblValPedidos.TextAlignment = ContentAlignment.TopCenter;
             // 
-            // lblPedidosHoje
+            // lblCardPedidos
             // 
-            lblPedidosHoje.BackColor = Color.Transparent;
-            lblPedidosHoje.Font = new Font("Rockwell", 12F, FontStyle.Bold);
-            lblPedidosHoje.ForeColor = Color.FromArgb(214, 189, 119);
-            lblPedidosHoje.Location = new Point(47, 3);
-            lblPedidosHoje.Name = "lblPedidosHoje";
-            lblPedidosHoje.Size = new Size(106, 21);
-            lblPedidosHoje.TabIndex = 0;
-            lblPedidosHoje.Text = "Pedidos Hoje";
-            lblPedidosHoje.TextAlignment = ContentAlignment.TopCenter;
+            lblCardPedidos.BackColor = Color.Transparent;
+            lblCardPedidos.Font = new Font("Rockwell", 12F, FontStyle.Bold);
+            lblCardPedidos.ForeColor = Color.FromArgb(214, 189, 119);
+            lblCardPedidos.Location = new Point(47, 3);
+            lblCardPedidos.Name = "lblCardPedidos";
+            lblCardPedidos.Size = new Size(106, 21);
+            lblCardPedidos.TabIndex = 0;
+            lblCardPedidos.Text = "Pedidos Hoje";
+            lblCardPedidos.TextAlignment = ContentAlignment.TopCenter;
             // 
             // guna2Panel3
             // 
-            guna2Panel3.Controls.Add(lblValAtivos);
-            guna2Panel3.Controls.Add(lblProdutosAtivos);
-            guna2Panel3.CustomizableEdges = customizableEdges33;
+            guna2Panel3.Controls.Add(lblValProdutos);
+            guna2Panel3.Controls.Add(lblCardProdutos);
+            guna2Panel3.CustomizableEdges = customizableEdges15;
             guna2Panel3.Location = new Point(265, 26);
             guna2Panel3.Name = "guna2Panel3";
-            guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges34;
+            guna2Panel3.ShadowDecoration.CustomizableEdges = customizableEdges16;
             guna2Panel3.Size = new Size(200, 100);
             guna2Panel3.TabIndex = 0;
             // 
-            // lblValAtivos
+            // lblValProdutos
             // 
-            lblValAtivos.BackColor = Color.Transparent;
-            lblValAtivos.Font = new Font("Rockwell", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblValAtivos.ForeColor = Color.FromArgb(214, 189, 119);
-            lblValAtivos.Location = new Point(90, 40);
-            lblValAtivos.Name = "lblValAtivos";
-            lblValAtivos.Size = new Size(18, 35);
-            lblValAtivos.TabIndex = 0;
-            lblValAtivos.Text = "0";
-            lblValAtivos.TextAlignment = ContentAlignment.TopCenter;
+            lblValProdutos.BackColor = Color.Transparent;
+            lblValProdutos.Font = new Font("Rockwell", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblValProdutos.ForeColor = Color.FromArgb(214, 189, 119);
+            lblValProdutos.Location = new Point(90, 40);
+            lblValProdutos.Name = "lblValProdutos";
+            lblValProdutos.Size = new Size(18, 35);
+            lblValProdutos.TabIndex = 0;
+            lblValProdutos.Text = "0";
+            lblValProdutos.TextAlignment = ContentAlignment.TopCenter;
             // 
-            // lblProdutosAtivos
+            // lblCardProdutos
             // 
-            lblProdutosAtivos.BackColor = Color.Transparent;
-            lblProdutosAtivos.Font = new Font("Rockwell", 12F, FontStyle.Bold);
-            lblProdutosAtivos.ForeColor = Color.FromArgb(214, 189, 119);
-            lblProdutosAtivos.Location = new Point(34, 3);
-            lblProdutosAtivos.Name = "lblProdutosAtivos";
-            lblProdutosAtivos.Size = new Size(126, 21);
-            lblProdutosAtivos.TabIndex = 0;
-            lblProdutosAtivos.Text = "Produtos Ativos";
-            lblProdutosAtivos.TextAlignment = ContentAlignment.TopCenter;
+            lblCardProdutos.BackColor = Color.Transparent;
+            lblCardProdutos.Font = new Font("Rockwell", 12F, FontStyle.Bold);
+            lblCardProdutos.ForeColor = Color.FromArgb(214, 189, 119);
+            lblCardProdutos.Location = new Point(34, 3);
+            lblCardProdutos.Name = "lblCardProdutos";
+            lblCardProdutos.Size = new Size(126, 21);
+            lblCardProdutos.TabIndex = 0;
+            lblCardProdutos.Text = "Produtos Ativos";
+            lblCardProdutos.TextAlignment = ContentAlignment.TopCenter;
+            // 
+            // lblData
+            // 
+            lblData.Font = new Font("Segoe UI", 9F);
+            lblData.ForeColor = Color.Gray;
+            lblData.Location = new Point(3, 33);
+            lblData.Name = "lblData";
+            lblData.Size = new Size(400, 20);
+            lblData.TabIndex = 2;
             // 
             // ucDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(guna2Panel7);
+            Controls.Add(panelCards);
             Controls.Add(guna2Panel2);
-            Controls.Add(guna2Panel1);
+            Controls.Add(panelBemVindo);
             Name = "ucDashboard";
             Size = new Size(969, 549);
-            guna2Panel1.ResumeLayout(false);
-            guna2Panel1.PerformLayout();
+            panelBemVindo.ResumeLayout(false);
+            panelBemVindo.PerformLayout();
             guna2Panel2.ResumeLayout(false);
             guna2Panel2.PerformLayout();
             guna2Panel6.ResumeLayout(false);
             guna2Panel6.PerformLayout();
-            guna2Panel7.ResumeLayout(false);
+            panelCards.ResumeLayout(false);
             guna2Panel5.ResumeLayout(false);
             guna2Panel5.PerformLayout();
             guna2Panel4.ResumeLayout(false);
@@ -320,24 +331,25 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel panelBemVindo;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel7;
+        private Guna.UI2.WinForms.Guna2Panel panelCards;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblBemVindo;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblResumoSistema;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblAtividade;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblValPedidos;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblTotalClientes;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblCardClientes;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblFaturamento;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblCardFatur;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblPedidosHoje;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblCardPedidos;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblProdutosAtivos;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblCardProdutos;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblValClientes;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblValFaturamento;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lblValAtivos;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblValFatur;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblValProdutos;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel8;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel9;
+        private Guna.UI2.WinForms.Guna2Panel panelFill;
+        private Label lblData;
     }
 }

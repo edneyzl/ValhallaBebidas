@@ -92,8 +92,8 @@
             txtNome = new Guna.UI2.WinForms.Guna2TextBox();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             lblSubtitulo = new Label();
-            label1 = new Label();
             label2 = new Label();
+            lblTitulo = new Label();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picFotoPerfil).BeginInit();
             pnlEndereco.SuspendLayout();
@@ -114,6 +114,7 @@
             btnCadastrar.Size = new Size(127, 34);
             btnCadastrar.TabIndex = 16;
             btnCadastrar.Text = "✓  Cadastrar";
+            btnCadastrar.Click += btnCadastrar_Click;
             // 
             // btnLimparCampos
             // 
@@ -184,6 +185,7 @@
             btnSelecionarImagem.Size = new Size(141, 34);
             btnSelecionarImagem.TabIndex = 4;
             btnSelecionarImagem.Text = "Selecionar Foto";
+            btnSelecionarImagem.Click += btnSelecionarImagem_Click;
             // 
             // pnlEndereco
             // 
@@ -559,7 +561,7 @@
             guna2Panel2.BackColor = Color.FromArgb(33, 33, 33);
             guna2Panel2.Controls.Add(lblSubtitulo);
             guna2Panel2.Controls.Add(label2);
-            guna2Panel2.Controls.Add(label1);
+            guna2Panel2.Controls.Add(lblTitulo);
             guna2Panel2.CustomizableEdges = customizableEdges41;
             guna2Panel2.Location = new Point(3, 3);
             guna2Panel2.Name = "guna2Panel2";
@@ -577,16 +579,6 @@
             lblSubtitulo.TabIndex = 13;
             lblSubtitulo.Text = "Gerencie os funcionários cadastrados no sistema";
             // 
-            // label1
-            // 
-            label1.Font = new Font("Rockwell", 14.25F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(20, 21);
-            label1.Name = "label1";
-            label1.Size = new Size(138, 34);
-            label1.TabIndex = 12;
-            label1.Text = "👥  Novo";
-            // 
             // label2
             // 
             label2.Font = new Font("Rockwell", 14.25F, FontStyle.Bold);
@@ -596,6 +588,16 @@
             label2.Size = new Size(225, 34);
             label2.TabIndex = 12;
             label2.Text = "Funcionário";
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.Font = new Font("Rockwell", 14.25F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.White;
+            lblTitulo.Location = new Point(20, 21);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(138, 34);
+            lblTitulo.TabIndex = 12;
+            lblTitulo.Text = "👥  Novo";
             // 
             // ucNovoFuncionario
             // 
@@ -638,6 +640,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Label lblSubtitulo;
         private Label label2;
-        private Label label1;
+        private Label lblTitulo;
     }
 }

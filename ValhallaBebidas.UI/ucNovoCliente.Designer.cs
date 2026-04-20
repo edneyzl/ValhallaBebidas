@@ -350,6 +350,7 @@
             btnSalvar.Size = new Size(450, 45);
             btnSalvar.TabIndex = 18;
             btnSalvar.Text = "✓  Salvar";
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnCancelar
             // 
@@ -365,6 +366,7 @@
             btnCancelar.Size = new Size(450, 45);
             btnCancelar.TabIndex = 19;
             btnCancelar.Text = "Cancelar";
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // txtNascimento
             // 
@@ -502,7 +504,6 @@
             lblSecPessoal.Size = new Size(152, 19);
             lblSecPessoal.TabIndex = 5;
             lblSecPessoal.Text = "Informações Pessoais";
-            lblSecPessoal.Click += lblSecPessoal_Click;
             // 
             // txtNome
             // 
