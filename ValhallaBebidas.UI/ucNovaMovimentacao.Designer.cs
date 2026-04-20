@@ -129,7 +129,7 @@
             lblTitulo.ForeColor = Color.FromArgb(214, 189, 119);
             lblTitulo.Location = new Point(8, 19);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(225, 34);
+            lblTitulo.Size = new Size(218, 34);
             lblTitulo.TabIndex = 2;
             lblTitulo.Text = "👥  Movimentações";
             // 
