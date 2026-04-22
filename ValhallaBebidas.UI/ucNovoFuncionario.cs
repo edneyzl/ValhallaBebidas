@@ -38,18 +38,8 @@ namespace ValhallaBebidas.UI
             var usuario = await _usuarioService.GetUsuarioByIdAsync(_idEdicao.Value);
             if (usuario != null)
             {
-                txtNome.Text = usuario.Nome;
+                txtNome.Text = usuario.NomeCompleto;
                 txtEmail.Text = usuario.Email;
-
-                if (!string.IsNullOrEmpty(usuario.FotoPerfil))
-                {
-                    try
-                    {
-                        var url = $"{ApiClientService.ApiBaseUrl.TrimEnd('/')}/api/imagens/{usuario.FotoPerfil}";
-                        picFotoPerfil.LoadAsync(url);
-                    }
-                    catch { }
-                }
             }
         }
 
@@ -73,6 +63,9 @@ namespace ValhallaBebidas.UI
                 string nome = txtNome.Text.Trim();
                 string email = txtEmail.Text.Trim();
                 string senha = txtSenha.Text;
+                DateTime dataNasc = DateTime.Parse(txtDataNascimento.Text);
+                string cpf = txtCpf.Text.Trim();
+                string telefone = txtTelefone.Text.Trim();
 
                 // Se não é edição, senha é obrigatória
                 if (!_idEdicao.HasValue && string.IsNullOrEmpty(senha))
@@ -103,12 +96,14 @@ namespace ValhallaBebidas.UI
                 if (_idEdicao.HasValue)
                 {
                     btnCadastrar.Text = "Atualizando Usuário...";
-                    var dto = new FuncionarioDto
+                    var dto = new AtualizarFuncionarioDto
                     {
                         Id = _idEdicao.Value,
-                        Nome = nome,
+                        NomeCompleto = nome,
                         Email = email,
-                        FotoPerfil = caminhoFotoApi // se subir nova foto, substitui; caso contrário, a Controller deve ignorar ou manter.
+                        DataNascimento = dataNasc,
+                        Cpf = cpf,
+                        Telefone = telefone,
                     };
 
                     var ok = await _usuarioService.AtualizarUsuarioAsync(dto);
@@ -128,7 +123,7 @@ namespace ValhallaBebidas.UI
 
                     var novoDto = await _usuarioService.CadastrarFuncionarioAsync(
                         nome,
-                        "", // dataNasc (preencha conforme necessário)
+                        dataNasc, // dataNasc (preencha conforme necessário)
                         "", // cpf (preencha conforme necessário)
                         "", // telefone (preencha conforme necessário)
                         email,

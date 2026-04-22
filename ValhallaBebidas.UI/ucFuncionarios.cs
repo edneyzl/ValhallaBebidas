@@ -57,13 +57,12 @@ namespace ValhallaBebidas.UI
             var exibidos = string.IsNullOrWhiteSpace(filtro)
                 ? lista
                 : lista.Where(u =>
-                    u.Nome.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
+                    u.NomeCompleto.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
                     u.Email.Contains(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
 
             foreach (var u in exibidos)
             {
-                int rowIndex = dgvFuncionarios.Rows.Add(null, u.Id, u.Nome, u.Email);
-                _ = CarregarImagemAsync(rowIndex, u.FotoPerfil);
+                int rowIndex = dgvFuncionarios.Rows.Add(null, u.Id, u.NomeCompleto, u.Email);
             }
         }
 

@@ -225,7 +225,7 @@
             Controls.Add(dgvProdutos);
             Controls.Add(guna2Panel1);
             Name = "ucProdutos";
-            Size = new Size(969, 549);
+            Size = new Size(1165, 550);
             guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).EndInit();
             ResumeLayout(false);

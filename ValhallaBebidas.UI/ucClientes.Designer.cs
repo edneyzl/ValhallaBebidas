@@ -235,7 +235,7 @@
             Controls.Add(panelConteudo);
             Controls.Add(panelHeader);
             Name = "ucClientes";
-            Size = new Size(969, 549);
+            Size = new Size(1165, 550);
             panelHeader.ResumeLayout(false);
             panelConteudo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();

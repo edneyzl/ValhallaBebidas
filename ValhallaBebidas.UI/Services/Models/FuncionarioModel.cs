@@ -8,21 +8,31 @@ namespace ValhallaBebidas.UI.Services.Models
     public class FuncionarioDto
     {
         public int    Id         { get; set; }
-        public string Nome       { get; set; } = string.Empty;
+        public string NomeCompleto { get; set; } = string.Empty;
         public string Email      { get; set; } = string.Empty;
-        public string? FotoPerfil { get; set; }
     }
 
     // Corpo de POST /api/funcionario
     public class CriarFuncionarioDto
     {
-        public string Nome  { get; set; } = string.Empty;
+        public string NomeCompleto { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public string DataNascimento { get; set; } = string.Empty;
+        public DateTime DataNascimento { get; set; }
         public string Cpf { get; set; } = string.Empty;
         public string Telefone { get; set; } = string.Empty;
         public string Senha { get; set; } = string.Empty;
-        public string? FotoPerfil { get; set; }
+    }
+
+    // Corpo de PUT /api/funcionario/{id}
+    public class AtualizarFuncionarioDto
+    {
+        public int Id { get; set; }
+        public string NomeCompleto { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public DateTime DataNascimento { get; set; }
+        public string Cpf { get; set; } = string.Empty;
+        public string Telefone { get; set; } = string.Empty;
+        public string Senha { get; set; } = string.Empty;
     }
 
     // Corpo de POST /api/funcionario/login
@@ -36,10 +46,9 @@ namespace ValhallaBebidas.UI.Services.Models
     public class LoginResponseDto
     {
         public int    Id       { get; set; }
-        public string Nome     { get; set; } = string.Empty;
+        public string NomeCompleto { get; set; } = string.Empty;
         public string Email    { get; set; } = string.Empty;
         public bool   Sucesso  { get; set; }
         public string Mensagem { get; set; } = string.Empty;
-        public string? FotoPerfil { get; set; }
     }
 }

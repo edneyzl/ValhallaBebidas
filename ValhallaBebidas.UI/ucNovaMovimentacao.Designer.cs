@@ -139,7 +139,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panelHeader);
             Name = "ucNovaMovimentacao";
-            Size = new Size(969, 549);
+            Size = new Size(1165, 550);
             panelHeader.ResumeLayout(false);
             ResumeLayout(false);
         }

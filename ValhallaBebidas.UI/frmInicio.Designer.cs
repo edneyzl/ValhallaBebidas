@@ -79,9 +79,10 @@
             lblNome.ForeColor = Color.White;
             lblNome.Location = new Point(480, 211);
             lblNome.Name = "lblNome";
-            lblNome.Size = new Size(192, 46);
+            lblNome.Size = new Size(192, 38);
             lblNome.TabIndex = 2;
             lblNome.Text = "Olá, Usuário.";
+            lblNome.TextAlignment = ContentAlignment.MiddleCenter;
             // 
             // btnIniciar
             // 

@@ -607,7 +607,7 @@
             Controls.Add(guna2Panel1);
             Controls.Add(guna2Panel2);
             Name = "ucNovoFuncionario";
-            Size = new Size(969, 549);
+            Size = new Size(1165, 550);
             guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picFotoPerfil).EndInit();
             pnlEndereco.ResumeLayout(false);

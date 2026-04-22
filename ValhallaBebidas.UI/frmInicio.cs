@@ -12,38 +12,14 @@ namespace ValhallaBebidas.UI
 {
     public partial class frmInicio : Form
     {
-        private readonly FuncionarioApiService _funcionarioService = new();
-        private string? _caminhoFotoLocal;
-        private readonly int? _idUsu;
 
-        public frmInicio(int? id = null)
+        private readonly string _nomeUsuario;
+
+        public frmInicio(string nomeUsuario = "Usuário", int? id = null)
         {
             InitializeComponent();
-            _idUsu = id;
-            this.Load += async (s, e) => await CarregarUsuarioAsync();
-        }
-
-
-        private async Task CarregarUsuarioAsync()
-        {
-
-
-
-            var funcionario = await _funcionarioService.GetUsuarioByIdAsync(_idUsu.Value);
-            if (funcionario != null)
-            {
-                lblNome.Text = funcionario.Nome;
-
-                if (!string.IsNullOrEmpty(funcionario.FotoPerfil))
-                {
-                    try
-                    {
-                        var url = $"{ApiClientService.ApiBaseUrl.TrimEnd('/')}/api/imagens/{funcionario.FotoPerfil}";
-                        picFoto.LoadAsync(url);
-                    }
-                    catch { }
-                }
-            }
+            _nomeUsuario = nomeUsuario;
+            lblNome.Text = $"Olá, {nomeUsuario}";
         }
 
 
