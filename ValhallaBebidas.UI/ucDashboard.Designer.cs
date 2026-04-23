@@ -100,9 +100,9 @@
             // 
             // lblData
             // 
-            lblData.Font = new Font("Segoe UI", 9F);
+            lblData.Font = new Font("Sora", 10F);
             lblData.ForeColor = Color.Gray;
-            lblData.Location = new Point(3, 33);
+            lblData.Location = new Point(3, 53);
             lblData.Name = "lblData";
             lblData.Size = new Size(400, 20);
             lblData.TabIndex = 2;
