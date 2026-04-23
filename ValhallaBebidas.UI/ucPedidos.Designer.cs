@@ -82,6 +82,8 @@
             // 
             // dgvPedidos
             // 
+            dgvPedidos.AllowUserToAddRows = false;
+            dgvPedidos.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             dgvPedidos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvPedidos.BackgroundColor = Color.Black;
@@ -106,6 +108,7 @@
             dgvPedidos.GridColor = Color.FromArgb(231, 229, 255);
             dgvPedidos.Location = new Point(0, 0);
             dgvPedidos.Name = "dgvPedidos";
+            dgvPedidos.ReadOnly = true;
             dgvPedidos.RowHeadersVisible = false;
             dgvPedidos.Size = new Size(1165, 471);
             dgvPedidos.TabIndex = 0;
@@ -122,7 +125,7 @@
             dgvPedidos.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             dgvPedidos.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgvPedidos.ThemeStyle.HeaderStyle.Height = 25;
-            dgvPedidos.ThemeStyle.ReadOnly = false;
+            dgvPedidos.ThemeStyle.ReadOnly = true;
             dgvPedidos.ThemeStyle.RowsStyle.BackColor = Color.White;
             dgvPedidos.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvPedidos.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
