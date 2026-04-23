@@ -38,7 +38,7 @@ namespace ValhallaBebidas.UI
             lblValFatur.Text = _dados.TotalVendas.ToString("C0", new CultureInfo("pt-BR"));
 
             // Atualiza rótulo de atividade com status de pedidos
-            lblAtividade.Text = $"  📋  Pendentes: {_dados.PedidosPendentes}  |  " +
+            lblAtividade.Text = $"Pendentes: {_dados.PedidosPendentes}  |  " +
                                 $"Finalizados: {_dados.PedidosConcluidos}  |  " +
                                 $"Cancelados: {_dados.PedidosCancelados}";
 
@@ -61,15 +61,15 @@ namespace ValhallaBebidas.UI
             int baseY = panelFill.Height - 50;
             int maxH = panelFill.Height - 100;
 
-            var corBarra = Color.FromArgb(19, 127, 236);
+            var corBarra = Color.FromArgb(214, 189, 119);
             var brushBarra = new SolidBrush(corBarra);
-            var brushText = new SolidBrush(Color.FromArgb(60, 70, 90));
+            var brushText = new SolidBrush(Color.FromArgb(214, 189, 119));
             var font = new Font("Segoe UI", 8F);
 
             // Título do gráfico
-            g.DrawString("📊  Pedidos por Mês (últimos 6 meses)",
+            g.DrawString("Pedidos por Mês (últimos 6 meses)",
                 new Font("Segoe UI", 10F, FontStyle.Bold),
-                new SolidBrush(Color.FromArgb(30, 40, 60)),
+                new SolidBrush(Color.FromArgb(214, 189, 119)),
                 new PointF(startX, 10));
 
             var meses = new[] { "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
@@ -97,9 +97,5 @@ namespace ValhallaBebidas.UI
 
         private void ConfigurarInterface() { /* utilizado pelo Designer */ }
 
-        private void lblCardFatur_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

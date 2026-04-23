@@ -57,8 +57,6 @@
             lblValClientes = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblCardClientes = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelCards = new Guna.UI2.WinForms.Guna2Panel();
-            lblValFatur = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            lblCardFatur = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             lblValPedidos = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblCardPedidos = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -66,6 +64,8 @@
             lblValProdutos = new Guna.UI2.WinForms.Guna2HtmlLabel();
             lblCardProdutos = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
+            lblValFatur = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            lblCardFatur = new Guna.UI2.WinForms.Guna2HtmlLabel();
             panelBemVindo.SuspendLayout();
             guna2Panel2.SuspendLayout();
             guna2Panel6.SuspendLayout();
@@ -92,7 +92,7 @@
             lblBemVindo.BackColor = Color.Transparent;
             lblBemVindo.Font = new Font("Sora", 20.2499962F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblBemVindo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblBemVindo.Location = new Point(19, 17);
+            lblBemVindo.Location = new Point(19, 18);
             lblBemVindo.Name = "lblBemVindo";
             lblBemVindo.Size = new Size(326, 36);
             lblBemVindo.TabIndex = 0;
@@ -170,7 +170,7 @@
             lblValClientes.BackColor = Color.Transparent;
             lblValClientes.Font = new Font("Sora", 20.2499962F, FontStyle.Bold);
             lblValClientes.ForeColor = Color.FromArgb(214, 189, 119);
-            lblValClientes.Location = new Point(89, 40);
+            lblValClientes.Location = new Point(91, 40);
             lblValClientes.Name = "lblValClientes";
             lblValClientes.Size = new Size(24, 36);
             lblValClientes.TabIndex = 0;
@@ -181,8 +181,8 @@
             // 
             lblCardClientes.BackColor = Color.Transparent;
             lblCardClientes.Font = new Font("Sora", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCardClientes.ForeColor = Color.FromArgb(214, 189, 119);
-            lblCardClientes.Location = new Point(43, 11);
+            lblCardClientes.ForeColor = Color.White;
+            lblCardClientes.Location = new Point(44, 11);
             lblCardClientes.Name = "lblCardClientes";
             lblCardClientes.Size = new Size(115, 23);
             lblCardClientes.TabIndex = 0;
@@ -202,31 +202,6 @@
             panelCards.ShadowDecoration.CustomizableEdges = customizableEdges18;
             panelCards.Size = new Size(1165, 151);
             panelCards.TabIndex = 0;
-            // 
-            // lblValFatur
-            // 
-            lblValFatur.BackColor = Color.FromArgb(33, 33, 33);
-            lblValFatur.Font = new Font("Sora", 20.2499962F, FontStyle.Bold);
-            lblValFatur.ForeColor = Color.FromArgb(214, 189, 119);
-            lblValFatur.Location = new Point(94, 40);
-            lblValFatur.Name = "lblValFatur";
-            lblValFatur.Size = new Size(24, 36);
-            lblValFatur.TabIndex = 0;
-            lblValFatur.Text = "0";
-            lblValFatur.TextAlignment = ContentAlignment.TopCenter;
-            // 
-            // lblCardFatur
-            // 
-            lblCardFatur.BackColor = Color.FromArgb(33, 33, 33);
-            lblCardFatur.Font = new Font("Sora", 12F, FontStyle.Bold);
-            lblCardFatur.ForeColor = Color.FromArgb(214, 189, 119);
-            lblCardFatur.Location = new Point(50, 11);
-            lblCardFatur.Name = "lblCardFatur";
-            lblCardFatur.Size = new Size(110, 23);
-            lblCardFatur.TabIndex = 0;
-            lblCardFatur.Text = "Faturamento";
-            lblCardFatur.TextAlignment = ContentAlignment.TopCenter;
-            lblCardFatur.Click += lblCardFatur_Click;
             // 
             // guna2Panel4
             // 
@@ -248,7 +223,7 @@
             lblValPedidos.BackColor = Color.Transparent;
             lblValPedidos.Font = new Font("Sora", 20.2499962F, FontStyle.Bold);
             lblValPedidos.ForeColor = Color.FromArgb(214, 189, 119);
-            lblValPedidos.Location = new Point(88, 40);
+            lblValPedidos.Location = new Point(91, 40);
             lblValPedidos.Name = "lblValPedidos";
             lblValPedidos.Size = new Size(24, 36);
             lblValPedidos.TabIndex = 0;
@@ -259,8 +234,8 @@
             // 
             lblCardPedidos.BackColor = Color.Transparent;
             lblCardPedidos.Font = new Font("Sora", 12F, FontStyle.Bold);
-            lblCardPedidos.ForeColor = Color.FromArgb(214, 189, 119);
-            lblCardPedidos.Location = new Point(42, 11);
+            lblCardPedidos.ForeColor = Color.White;
+            lblCardPedidos.Location = new Point(46, 11);
             lblCardPedidos.Name = "lblCardPedidos";
             lblCardPedidos.Size = new Size(113, 23);
             lblCardPedidos.TabIndex = 0;
@@ -287,7 +262,7 @@
             lblValProdutos.BackColor = Color.Transparent;
             lblValProdutos.Font = new Font("Sora", 20.2499962F, FontStyle.Bold);
             lblValProdutos.ForeColor = Color.FromArgb(214, 189, 119);
-            lblValProdutos.Location = new Point(90, 40);
+            lblValProdutos.Location = new Point(92, 40);
             lblValProdutos.Name = "lblValProdutos";
             lblValProdutos.Size = new Size(24, 36);
             lblValProdutos.TabIndex = 0;
@@ -298,8 +273,8 @@
             // 
             lblCardProdutos.BackColor = Color.Transparent;
             lblCardProdutos.Font = new Font("Sora", 12F, FontStyle.Bold);
-            lblCardProdutos.ForeColor = Color.FromArgb(214, 189, 119);
-            lblCardProdutos.Location = new Point(32, 11);
+            lblCardProdutos.ForeColor = Color.White;
+            lblCardProdutos.Location = new Point(34, 11);
             lblCardProdutos.Name = "lblCardProdutos";
             lblCardProdutos.Size = new Size(138, 23);
             lblCardProdutos.TabIndex = 0;
@@ -320,6 +295,30 @@
             guna2Panel5.ShadowDecoration.CustomizableEdges = customizableEdges16;
             guna2Panel5.Size = new Size(200, 100);
             guna2Panel5.TabIndex = 0;
+            // 
+            // lblValFatur
+            // 
+            lblValFatur.BackColor = Color.FromArgb(33, 33, 33);
+            lblValFatur.Font = new Font("Sora", 20.2499962F, FontStyle.Bold);
+            lblValFatur.ForeColor = Color.FromArgb(214, 189, 119);
+            lblValFatur.Location = new Point(91, 40);
+            lblValFatur.Name = "lblValFatur";
+            lblValFatur.Size = new Size(24, 36);
+            lblValFatur.TabIndex = 0;
+            lblValFatur.Text = "0";
+            lblValFatur.TextAlignment = ContentAlignment.TopCenter;
+            // 
+            // lblCardFatur
+            // 
+            lblCardFatur.BackColor = Color.FromArgb(33, 33, 33);
+            lblCardFatur.Font = new Font("Sora", 12F, FontStyle.Bold);
+            lblCardFatur.ForeColor = Color.White;
+            lblCardFatur.Location = new Point(48, 11);
+            lblCardFatur.Name = "lblCardFatur";
+            lblCardFatur.Size = new Size(110, 23);
+            lblCardFatur.TabIndex = 0;
+            lblCardFatur.Text = "Faturamento";
+            lblCardFatur.TextAlignment = ContentAlignment.TopCenter;
             // 
             // ucDashboard
             // 
