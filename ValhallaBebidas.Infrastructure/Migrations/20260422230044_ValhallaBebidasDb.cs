@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ValhallaBebidas.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateValhallaDb : Migration
+    public partial class ValhallaBebidasDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -121,6 +121,7 @@
             txtBuscaMovi.ShadowDecoration.CustomizableEdges = customizableEdges6;
             txtBuscaMovi.Size = new Size(217, 40);
             txtBuscaMovi.TabIndex = 10;
+            txtBuscaMovi.TextChanged += txtBuscaMovi_TextChanged;
             // 
             // lblSubtitulo
             // 

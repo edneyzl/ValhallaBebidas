@@ -58,7 +58,7 @@
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
             panelHeader.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            panelHeader.Size = new Size(969, 80);
+            panelHeader.Size = new Size(1165, 80);
             panelHeader.TabIndex = 2;
             // 
             // btnNovaMovi
@@ -70,7 +70,7 @@
             btnNovaMovi.FillColor = Color.FromArgb(214, 189, 119);
             btnNovaMovi.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnNovaMovi.ForeColor = Color.Black;
-            btnNovaMovi.Location = new Point(1365, 19);
+            btnNovaMovi.Location = new Point(1561, 19);
             btnNovaMovi.Name = "btnNovaMovi";
             btnNovaMovi.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnNovaMovi.Size = new Size(198, 40);
@@ -86,7 +86,7 @@
             btnEditarMovi.FillColor = Color.FromArgb(64, 64, 64);
             btnEditarMovi.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnEditarMovi.ForeColor = Color.White;
-            btnEditarMovi.Location = new Point(1583, 19);
+            btnEditarMovi.Location = new Point(1779, 19);
             btnEditarMovi.Name = "btnEditarMovi";
             btnEditarMovi.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnEditarMovi.Size = new Size(110, 40);
@@ -104,7 +104,7 @@
             txtBuscaMovi.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtBuscaMovi.Font = new Font("Segoe UI", 9.5F);
             txtBuscaMovi.ForeColor = Color.FromArgb(214, 189, 119);
-            txtBuscaMovi.Location = new Point(1073, 19);
+            txtBuscaMovi.Location = new Point(1269, 19);
             txtBuscaMovi.Name = "txtBuscaMovi";
             txtBuscaMovi.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             txtBuscaMovi.PlaceholderText = "🔍  Pesquisar";
