@@ -85,6 +85,7 @@
             btnNovaMovi.Size = new Size(198, 40);
             btnNovaMovi.TabIndex = 9;
             btnNovaMovi.Text = "+ Nova Movimentação";
+            btnNovaMovi.Click += btnNovaMovi_Click;
             // 
             // btnEditarMovi
             // 
@@ -101,6 +102,7 @@
             btnEditarMovi.Size = new Size(110, 40);
             btnEditarMovi.TabIndex = 10;
             btnEditarMovi.Text = "✏️ Editar";
+            btnEditarMovi.Click += btnEditarMovi_Click;
             // 
             // txtBuscaMovi
             // 

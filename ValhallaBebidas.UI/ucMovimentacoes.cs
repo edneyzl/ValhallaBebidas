@@ -83,5 +83,40 @@ namespace ValhallaBebidas.UI
         {
             AtualizarGrid(_movimentacoes, txtBuscaMovi.Text);
         }
+
+        private async void btnEditarMovi_Click(object sender, EventArgs e)
+        {
+            if (dgvMovimentacoes.CurrentRow == null)
+            {
+                MessageBox.Show("Selecione uma movimentação.",
+                    "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int id = Convert.ToInt32(dgvMovimentacoes.CurrentRow.Cells["colId"].Value);
+
+            var confirm = MessageBox.Show(
+                "Deseja estornar essa movimentação?",
+                "Confirmação",
+                MessageBoxButtons.YesNo);
+
+            if (confirm != DialogResult.Yes) return;
+
+            bool ok = await _service.EstornarAsync(id);
+
+            if (ok)
+            {
+                MessageBox.Show("Estornado com sucesso!",
+                    "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                _movimentacoes.Clear();
+                await CarregarMovimentacoesAsync();
+            }
+        }
+
+        private void btnNovaMovi_Click(object sender, EventArgs e)
+        {
+            (this.FindForm() as frmPrincipal)?.Navegar(new ucNovaMovimentacao());
+        }
     }
 }
