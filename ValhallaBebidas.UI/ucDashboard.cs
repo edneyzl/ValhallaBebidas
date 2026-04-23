@@ -97,5 +97,9 @@ namespace ValhallaBebidas.UI
 
         private void ConfigurarInterface() { /* utilizado pelo Designer */ }
 
+        private void lblCardFatur_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

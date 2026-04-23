@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -69,9 +70,9 @@ namespace ValhallaBebidas.UI
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja realmente sair do sistema?", "Confirmar Saída",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                Application.Exit();
+                var login = new FrmLogin();
+                login.Show();
+                this.Close();
         }
 
         private void SetActiveButton(Guna.UI2.WinForms.Guna2Button activeBtn)

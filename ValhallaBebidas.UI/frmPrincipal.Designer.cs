@@ -46,6 +46,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             btnSair = new Guna.UI2.WinForms.Guna2Button();
@@ -60,13 +61,16 @@
             panelContainer = new Guna.UI2.WinForms.Guna2Panel();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2BorderlessForm2 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox2).BeginInit();
             guna2Panel1.SuspendLayout();
             SuspendLayout();
             // 
             // btnSair
             // 
-            btnSair.BackColor = Color.FromArgb(22, 22, 22);
+            btnSair.BackColor = Color.Transparent;
+            btnSair.BorderRadius = 5;
+            btnSair.Cursor = Cursors.Hand;
             btnSair.CustomizableEdges = customizableEdges1;
             btnSair.DisabledState.BorderColor = Color.DarkGray;
             btnSair.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -75,22 +79,22 @@
             btnSair.FillColor = Color.IndianRed;
             btnSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSair.ForeColor = Color.White;
-            btnSair.Location = new Point(960, 114);
+            btnSair.Image = Properties.Resources.logout;
+            btnSair.Location = new Point(1112, 50);
             btnSair.Name = "btnSair";
             btnSair.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnSair.Size = new Size(58, 28);
+            btnSair.Size = new Size(40, 40);
             btnSair.TabIndex = 0;
-            btnSair.Text = "Sair";
             btnSair.Click += btnSair_Click;
             // 
             // lblUsuario
             // 
             lblUsuario.BackColor = Color.Transparent;
-            lblUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUsuario.ForeColor = Color.FromArgb(22, 22, 22);
-            lblUsuario.Location = new Point(1087, 125);
+            lblUsuario.Font = new Font("Sora", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUsuario.ForeColor = Color.FromArgb(214, 189, 119);
+            lblUsuario.Location = new Point(1041, 104);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(45, 17);
+            lblUsuario.Size = new Size(51, 17);
             lblUsuario.TabIndex = 1;
             lblUsuario.Text = "Usuário";
             // 
@@ -98,26 +102,32 @@
             // 
             guna2CirclePictureBox2.BackColor = Color.Transparent;
             guna2CirclePictureBox2.FillColor = Color.FromArgb(22, 22, 22);
+            guna2CirclePictureBox2.Image = Properties.Resources.user1;
             guna2CirclePictureBox2.ImageRotate = 0F;
-            guna2CirclePictureBox2.Location = new Point(1061, 7);
+            guna2CirclePictureBox2.Location = new Point(1037, 38);
             guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
             guna2CirclePictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges3;
             guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CirclePictureBox2.Size = new Size(99, 112);
+            guna2CirclePictureBox2.Size = new Size(60, 60);
+            guna2CirclePictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             guna2CirclePictureBox2.TabIndex = 2;
             guna2CirclePictureBox2.TabStop = false;
             // 
             // btnMovimentacoes
             // 
+            btnMovimentacoes.BackColor = Color.Transparent;
+            btnMovimentacoes.BorderRadius = 5;
+            btnMovimentacoes.Cursor = Cursors.Hand;
             btnMovimentacoes.CustomizableEdges = customizableEdges4;
             btnMovimentacoes.DisabledState.BorderColor = Color.DarkGray;
             btnMovimentacoes.DisabledState.CustomBorderColor = Color.DarkGray;
             btnMovimentacoes.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnMovimentacoes.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnMovimentacoes.FillColor = Color.FromArgb(22, 22, 22);
-            btnMovimentacoes.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnMovimentacoes.Font = new Font("Sora SemiBold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnMovimentacoes.ForeColor = Color.White;
-            btnMovimentacoes.Location = new Point(814, 114);
+            btnMovimentacoes.Image = Properties.Resources.move;
+            btnMovimentacoes.Location = new Point(842, 114);
             btnMovimentacoes.Name = "btnMovimentacoes";
             btnMovimentacoes.ShadowDecoration.CustomizableEdges = customizableEdges5;
             btnMovimentacoes.Size = new Size(130, 28);
@@ -127,15 +137,19 @@
             // 
             // btnDashboard
             // 
+            btnDashboard.BackColor = Color.Transparent;
+            btnDashboard.BorderRadius = 5;
+            btnDashboard.Cursor = Cursors.Hand;
             btnDashboard.CustomizableEdges = customizableEdges6;
             btnDashboard.DisabledState.BorderColor = Color.DarkGray;
             btnDashboard.DisabledState.CustomBorderColor = Color.DarkGray;
             btnDashboard.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnDashboard.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnDashboard.FillColor = Color.FromArgb(214, 189, 119);
-            btnDashboard.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDashboard.Font = new Font("Sora SemiBold", 9F, FontStyle.Bold);
             btnDashboard.ForeColor = Color.Black;
-            btnDashboard.Location = new Point(115, 114);
+            btnDashboard.Image = Properties.Resources.dashboard;
+            btnDashboard.Location = new Point(143, 114);
             btnDashboard.Name = "btnDashboard";
             btnDashboard.ShadowDecoration.CustomizableEdges = customizableEdges7;
             btnDashboard.Size = new Size(141, 28);
@@ -145,15 +159,19 @@
             // 
             // btnUsuarios
             // 
+            btnUsuarios.BackColor = Color.Transparent;
+            btnUsuarios.BorderRadius = 5;
+            btnUsuarios.Cursor = Cursors.Hand;
             btnUsuarios.CustomizableEdges = customizableEdges8;
             btnUsuarios.DisabledState.BorderColor = Color.DarkGray;
             btnUsuarios.DisabledState.CustomBorderColor = Color.DarkGray;
             btnUsuarios.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnUsuarios.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnUsuarios.FillColor = Color.FromArgb(22, 22, 22);
-            btnUsuarios.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnUsuarios.Font = new Font("Sora SemiBold", 9F, FontStyle.Bold);
             btnUsuarios.ForeColor = Color.White;
-            btnUsuarios.Location = new Point(698, 114);
+            btnUsuarios.Image = Properties.Resources.client;
+            btnUsuarios.Location = new Point(726, 114);
             btnUsuarios.Name = "btnUsuarios";
             btnUsuarios.ShadowDecoration.CustomizableEdges = customizableEdges9;
             btnUsuarios.Size = new Size(110, 28);
@@ -163,15 +181,19 @@
             // 
             // btnClientes
             // 
+            btnClientes.BackColor = Color.Transparent;
+            btnClientes.BorderRadius = 5;
+            btnClientes.Cursor = Cursors.Hand;
             btnClientes.CustomizableEdges = customizableEdges10;
             btnClientes.DisabledState.BorderColor = Color.DarkGray;
             btnClientes.DisabledState.CustomBorderColor = Color.DarkGray;
             btnClientes.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnClientes.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnClientes.FillColor = Color.FromArgb(22, 22, 22);
-            btnClientes.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnClientes.Font = new Font("Sora SemiBold", 9F, FontStyle.Bold);
             btnClientes.ForeColor = Color.White;
-            btnClientes.Location = new Point(262, 114);
+            btnClientes.Image = Properties.Resources.client;
+            btnClientes.Location = new Point(290, 114);
             btnClientes.Name = "btnClientes";
             btnClientes.ShadowDecoration.CustomizableEdges = customizableEdges11;
             btnClientes.Size = new Size(141, 28);
@@ -181,15 +203,19 @@
             // 
             // btnPedidos
             // 
+            btnPedidos.BackColor = Color.Transparent;
+            btnPedidos.BorderRadius = 5;
+            btnPedidos.Cursor = Cursors.Hand;
             btnPedidos.CustomizableEdges = customizableEdges12;
             btnPedidos.DisabledState.BorderColor = Color.DarkGray;
             btnPedidos.DisabledState.CustomBorderColor = Color.DarkGray;
             btnPedidos.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnPedidos.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnPedidos.FillColor = Color.FromArgb(22, 22, 22);
-            btnPedidos.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnPedidos.Font = new Font("Sora SemiBold", 9F, FontStyle.Bold);
             btnPedidos.ForeColor = Color.White;
-            btnPedidos.Location = new Point(556, 114);
+            btnPedidos.Image = Properties.Resources.order;
+            btnPedidos.Location = new Point(584, 114);
             btnPedidos.Name = "btnPedidos";
             btnPedidos.ShadowDecoration.CustomizableEdges = customizableEdges13;
             btnPedidos.Size = new Size(136, 28);
@@ -199,15 +225,19 @@
             // 
             // btnProdutos
             // 
+            btnProdutos.BackColor = Color.Transparent;
+            btnProdutos.BorderRadius = 5;
+            btnProdutos.Cursor = Cursors.Hand;
             btnProdutos.CustomizableEdges = customizableEdges14;
             btnProdutos.DisabledState.BorderColor = Color.DarkGray;
             btnProdutos.DisabledState.CustomBorderColor = Color.DarkGray;
             btnProdutos.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnProdutos.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnProdutos.FillColor = Color.FromArgb(22, 22, 22);
-            btnProdutos.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnProdutos.Font = new Font("Sora SemiBold", 9F, FontStyle.Bold);
             btnProdutos.ForeColor = Color.White;
-            btnProdutos.Location = new Point(409, 114);
+            btnProdutos.Image = Properties.Resources.product;
+            btnProdutos.Location = new Point(437, 114);
             btnProdutos.Name = "btnProdutos";
             btnProdutos.ShadowDecoration.CustomizableEdges = customizableEdges15;
             btnProdutos.Size = new Size(141, 28);
@@ -217,11 +247,12 @@
             // 
             // panelContainer
             // 
+            panelContainer.BackColor = Color.FromArgb(33, 33, 33);
             panelContainer.CustomizableEdges = customizableEdges16;
             panelContainer.Location = new Point(2, 148);
             panelContainer.Name = "panelContainer";
             panelContainer.ShadowDecoration.CustomizableEdges = customizableEdges17;
-            panelContainer.Size = new Size(1165, 550);
+            panelContainer.Size = new Size(1168, 550);
             panelContainer.TabIndex = 3;
             // 
             // guna2BorderlessForm1
@@ -232,7 +263,7 @@
             // 
             // guna2Panel1
             // 
-            guna2Panel1.BackgroundImage = Properties.Resources.Group_3;
+            guna2Panel1.BackgroundImage = (Image)resources.GetObject("guna2Panel1.BackgroundImage");
             guna2Panel1.BackgroundImageLayout = ImageLayout.Stretch;
             guna2Panel1.Controls.Add(lblUsuario);
             guna2Panel1.Controls.Add(btnSair);
@@ -249,6 +280,13 @@
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges19;
             guna2Panel1.Size = new Size(1170, 147);
             guna2Panel1.TabIndex = 0;
+            // 
+            // guna2BorderlessForm2
+            // 
+            guna2BorderlessForm2.BorderRadius = 15;
+            guna2BorderlessForm2.ContainerControl = this;
+            guna2BorderlessForm2.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm2.TransparentWhileDrag = true;
             // 
             // frmPrincipal
             // 
@@ -282,5 +320,6 @@
         private Guna.UI2.WinForms.Guna2Button btnMovimentacoes;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm2;
     }
 }

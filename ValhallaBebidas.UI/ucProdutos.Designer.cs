@@ -66,24 +66,24 @@
             txtBuscaProduto.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtBuscaProduto.FillColor = Color.FromArgb(33, 33, 33);
             txtBuscaProduto.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBuscaProduto.Font = new Font("Segoe UI", 9F);
+            txtBuscaProduto.Font = new Font("Sora", 9.749999F);
             txtBuscaProduto.ForeColor = Color.FromArgb(214, 189, 119);
             txtBuscaProduto.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBuscaProduto.Location = new Point(277, 24);
+            txtBuscaProduto.Location = new Point(374, 21);
             txtBuscaProduto.Name = "txtBuscaProduto";
             txtBuscaProduto.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             txtBuscaProduto.PlaceholderText = "🔍  Pesquisar produto pelo nome...";
             txtBuscaProduto.SelectedText = "";
             txtBuscaProduto.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtBuscaProduto.Size = new Size(263, 36);
+            txtBuscaProduto.Size = new Size(301, 41);
             txtBuscaProduto.TabIndex = 4;
             txtBuscaProduto.TextChanged += txtBuscaProduto_TextChanged_1;
             // 
             // guna2Panel1
             // 
             guna2Panel1.BackColor = Color.FromArgb(33, 33, 33);
-            guna2Panel1.Controls.Add(lblTitulo);
             guna2Panel1.Controls.Add(lblSubtitulo);
+            guna2Panel1.Controls.Add(lblTitulo);
             guna2Panel1.Controls.Add(btnNovoProduto);
             guna2Panel1.Controls.Add(txtBuscaProduto);
             guna2Panel1.Controls.Add(btnEditarProduto);
@@ -92,26 +92,26 @@
             guna2Panel1.Location = new Point(0, 0);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2Panel1.Size = new Size(969, 80);
+            guna2Panel1.Size = new Size(1165, 80);
             guna2Panel1.TabIndex = 0;
             // 
             // lblTitulo
             // 
-            lblTitulo.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
+            lblTitulo.Font = new Font("Sora", 14.2499981F, FontStyle.Bold);
             lblTitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblTitulo.Location = new Point(17, 13);
+            lblTitulo.Location = new Point(17, 18);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(225, 34);
+            lblTitulo.Size = new Size(242, 34);
             lblTitulo.TabIndex = 12;
             lblTitulo.Text = "📦  Gestão de Produtos";
             // 
             // lblSubtitulo
             // 
-            lblSubtitulo.Font = new Font("Segoe UI", 9F);
+            lblSubtitulo.Font = new Font("Sora Light", 9F);
             lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblSubtitulo.Location = new Point(14, 45);
+            lblSubtitulo.Location = new Point(21, 47);
             lblSubtitulo.Name = "lblSubtitulo";
-            lblSubtitulo.Size = new Size(245, 20);
+            lblSubtitulo.Size = new Size(294, 20);
             lblSubtitulo.TabIndex = 13;
             lblSubtitulo.Text = "Gerencie os produtos cadastrados no sistema";
             // 
@@ -122,9 +122,9 @@
             btnNovoProduto.Cursor = Cursors.Hand;
             btnNovoProduto.CustomizableEdges = customizableEdges3;
             btnNovoProduto.FillColor = Color.FromArgb(214, 189, 119);
-            btnNovoProduto.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnNovoProduto.Font = new Font("Sora", 9.749999F, FontStyle.Bold);
             btnNovoProduto.ForeColor = Color.Black;
-            btnNovoProduto.Location = new Point(562, 22);
+            btnNovoProduto.Location = new Point(751, 22);
             btnNovoProduto.Name = "btnNovoProduto";
             btnNovoProduto.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnNovoProduto.Size = new Size(155, 40);
@@ -139,9 +139,9 @@
             btnEditarProduto.Cursor = Cursors.Hand;
             btnEditarProduto.CustomizableEdges = customizableEdges5;
             btnEditarProduto.FillColor = Color.FromArgb(64, 64, 64);
-            btnEditarProduto.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnEditarProduto.Font = new Font("Sora", 9.749999F, FontStyle.Bold);
             btnEditarProduto.ForeColor = Color.White;
-            btnEditarProduto.Location = new Point(723, 22);
+            btnEditarProduto.Location = new Point(912, 22);
             btnEditarProduto.Name = "btnEditarProduto";
             btnEditarProduto.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnEditarProduto.Size = new Size(110, 40);
@@ -156,9 +156,9 @@
             btnExcluirProduto.Cursor = Cursors.Hand;
             btnExcluirProduto.CustomizableEdges = customizableEdges7;
             btnExcluirProduto.FillColor = Color.FromArgb(220, 60, 60);
-            btnExcluirProduto.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnExcluirProduto.Font = new Font("Sora", 9.749999F, FontStyle.Bold);
             btnExcluirProduto.ForeColor = Color.White;
-            btnExcluirProduto.Location = new Point(839, 22);
+            btnExcluirProduto.Location = new Point(1028, 22);
             btnExcluirProduto.Name = "btnExcluirProduto";
             btnExcluirProduto.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnExcluirProduto.Size = new Size(110, 40);
@@ -190,10 +190,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvProdutos.DefaultCellStyle = dataGridViewCellStyle3;
             dgvProdutos.GridColor = Color.FromArgb(231, 229, 255);
-            dgvProdutos.Location = new Point(19, 86);
+            dgvProdutos.Location = new Point(0, 81);
             dgvProdutos.Name = "dgvProdutos";
             dgvProdutos.RowHeadersVisible = false;
-            dgvProdutos.Size = new Size(930, 450);
+            dgvProdutos.Size = new Size(1165, 469);
             dgvProdutos.TabIndex = 1;
             dgvProdutos.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvProdutos.ThemeStyle.AlternatingRowsStyle.Font = null;

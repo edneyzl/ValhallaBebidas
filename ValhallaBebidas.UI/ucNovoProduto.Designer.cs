@@ -79,30 +79,30 @@
             guna2Panel1.Location = new Point(0, 0);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2Panel1.Size = new Size(969, 103);
+            guna2Panel1.Size = new Size(1165, 80);
             guna2Panel1.TabIndex = 0;
             // 
             // lblPreencha
             // 
             lblPreencha.BackColor = Color.Transparent;
-            lblPreencha.Font = new Font("Rockwell", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPreencha.Font = new Font("Sora Light", 9F);
             lblPreencha.ForeColor = Color.FromArgb(214, 189, 119);
-            lblPreencha.Location = new Point(70, 57);
+            lblPreencha.Location = new Point(24, 44);
             lblPreencha.Name = "lblPreencha";
-            lblPreencha.Size = new Size(234, 17);
+            lblPreencha.Size = new Size(226, 17);
             lblPreencha.TabIndex = 0;
             lblPreencha.Text = "Preencha as informações do produto";
             // 
             // LblCadastrarNovoProduto
             // 
             LblCadastrarNovoProduto.BackColor = Color.Transparent;
-            LblCadastrarNovoProduto.Font = new Font("Rockwell", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblCadastrarNovoProduto.Font = new Font("Sora", 14.2499981F, FontStyle.Bold);
             LblCadastrarNovoProduto.ForeColor = Color.FromArgb(214, 189, 119);
-            LblCadastrarNovoProduto.Location = new Point(70, 20);
+            LblCadastrarNovoProduto.Location = new Point(24, 17);
             LblCadastrarNovoProduto.Name = "LblCadastrarNovoProduto";
-            LblCadastrarNovoProduto.Size = new Size(311, 31);
+            LblCadastrarNovoProduto.Size = new Size(264, 26);
             LblCadastrarNovoProduto.TabIndex = 0;
-            LblCadastrarNovoProduto.Text = " Cadastro de Novo Produto";
+            LblCadastrarNovoProduto.Text = "Cadastro de Novo Produto";
             // 
             // guna2Panel2
             // 
@@ -119,10 +119,10 @@
             guna2Panel2.Controls.Add(btnSelecionarImagem);
             guna2Panel2.CustomizableEdges = customizableEdges21;
             guna2Panel2.ForeColor = SystemColors.Control;
-            guna2Panel2.Location = new Point(0, 99);
+            guna2Panel2.Location = new Point(0, 80);
             guna2Panel2.Name = "guna2Panel2";
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            guna2Panel2.Size = new Size(969, 450);
+            guna2Panel2.Size = new Size(1165, 470);
             guna2Panel2.TabIndex = 0;
             // 
             // cmbCategorias

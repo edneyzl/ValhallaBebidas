@@ -77,7 +77,7 @@
             panelConteudo.Location = new Point(0, 79);
             panelConteudo.Name = "panelConteudo";
             panelConteudo.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            panelConteudo.Size = new Size(969, 470);
+            panelConteudo.Size = new Size(1165, 471);
             panelConteudo.TabIndex = 3;
             // 
             // dgvPedidos
@@ -104,10 +104,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvPedidos.DefaultCellStyle = dataGridViewCellStyle3;
             dgvPedidos.GridColor = Color.FromArgb(231, 229, 255);
-            dgvPedidos.Location = new Point(20, 7);
+            dgvPedidos.Location = new Point(0, 0);
             dgvPedidos.Name = "dgvPedidos";
             dgvPedidos.RowHeadersVisible = false;
-            dgvPedidos.Size = new Size(930, 450);
+            dgvPedidos.Size = new Size(1165, 471);
             dgvPedidos.TabIndex = 0;
             dgvPedidos.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvPedidos.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -134,6 +134,7 @@
             // panelHeader
             // 
             panelHeader.BackColor = Color.FromArgb(33, 33, 33);
+            panelHeader.Controls.Add(lblSubtitulo);
             panelHeader.Controls.Add(cmbFiltroStatus);
             panelHeader.Controls.Add(btnNovoPedido);
             panelHeader.Controls.Add(btnEditarPedido);
@@ -143,13 +144,12 @@
             panelHeader.Controls.Add(lblTitulo);
             panelHeader.Controls.Add(btnEditarCliente);
             panelHeader.Controls.Add(btnExcluirCliente);
-            panelHeader.Controls.Add(lblSubtitulo);
             panelHeader.CustomizableEdges = customizableEdges19;
             panelHeader.ForeColor = SystemColors.ControlText;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
             panelHeader.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            panelHeader.Size = new Size(969, 80);
+            panelHeader.Size = new Size(1165, 80);
             panelHeader.TabIndex = 2;
             // 
             // cmbFiltroStatus
@@ -163,11 +163,11 @@
             cmbFiltroStatus.FillColor = Color.FromArgb(33, 33, 33);
             cmbFiltroStatus.FocusedColor = Color.FromArgb(94, 148, 255);
             cmbFiltroStatus.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cmbFiltroStatus.Font = new Font("Segoe UI", 10F);
+            cmbFiltroStatus.Font = new Font("Sora", 9.749999F);
             cmbFiltroStatus.ForeColor = Color.FromArgb(214, 189, 119);
             cmbFiltroStatus.ItemHeight = 30;
             cmbFiltroStatus.Items.AddRange(new object[] { "Todos", "Pendente", "Finalizado", "Cancelado" });
-            cmbFiltroStatus.Location = new Point(408, 24);
+            cmbFiltroStatus.Location = new Point(424, 20);
             cmbFiltroStatus.Name = "cmbFiltroStatus";
             cmbFiltroStatus.ShadowDecoration.CustomizableEdges = customizableEdges4;
             cmbFiltroStatus.Size = new Size(140, 36);
@@ -181,9 +181,9 @@
             btnNovoPedido.Cursor = Cursors.Hand;
             btnNovoPedido.CustomizableEdges = customizableEdges5;
             btnNovoPedido.FillColor = Color.FromArgb(214, 189, 119);
-            btnNovoPedido.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnNovoPedido.Font = new Font("Sora", 9.749999F, FontStyle.Bold);
             btnNovoPedido.ForeColor = Color.Black;
-            btnNovoPedido.Location = new Point(570, 20);
+            btnNovoPedido.Location = new Point(745, 20);
             btnNovoPedido.Name = "btnNovoPedido";
             btnNovoPedido.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnNovoPedido.Size = new Size(155, 40);
@@ -198,9 +198,9 @@
             btnEditarPedido.Cursor = Cursors.Hand;
             btnEditarPedido.CustomizableEdges = customizableEdges7;
             btnEditarPedido.FillColor = Color.FromArgb(64, 64, 64);
-            btnEditarPedido.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnEditarPedido.Font = new Font("Sora", 9.749999F, FontStyle.Bold);
             btnEditarPedido.ForeColor = Color.White;
-            btnEditarPedido.Location = new Point(731, 20);
+            btnEditarPedido.Location = new Point(906, 20);
             btnEditarPedido.Name = "btnEditarPedido";
             btnEditarPedido.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnEditarPedido.Size = new Size(110, 40);
@@ -215,9 +215,9 @@
             btnExcluirPedido.Cursor = Cursors.Hand;
             btnExcluirPedido.CustomizableEdges = customizableEdges9;
             btnExcluirPedido.FillColor = Color.FromArgb(220, 60, 60);
-            btnExcluirPedido.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnExcluirPedido.Font = new Font("Sora", 9.749999F, FontStyle.Bold);
             btnExcluirPedido.ForeColor = Color.White;
-            btnExcluirPedido.Location = new Point(847, 20);
+            btnExcluirPedido.Location = new Point(1022, 20);
             btnExcluirPedido.Name = "btnExcluirPedido";
             btnExcluirPedido.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnExcluirPedido.Size = new Size(110, 40);
@@ -236,7 +236,7 @@
             txtBuscaCliente.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtBuscaCliente.Font = new Font("Segoe UI", 9.5F);
             txtBuscaCliente.ForeColor = Color.FromArgb(214, 189, 119);
-            txtBuscaCliente.Location = new Point(1073, 19);
+            txtBuscaCliente.Location = new Point(1269, 19);
             txtBuscaCliente.Name = "txtBuscaCliente";
             txtBuscaCliente.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             txtBuscaCliente.PlaceholderText = "🔍  Pesquisar por E-mail ou CPF...";
@@ -254,7 +254,7 @@
             btnNovoCliente.FillColor = Color.FromArgb(214, 189, 119);
             btnNovoCliente.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnNovoCliente.ForeColor = Color.Black;
-            btnNovoCliente.Location = new Point(1339, 19);
+            btnNovoCliente.Location = new Point(1535, 19);
             btnNovoCliente.Name = "btnNovoCliente";
             btnNovoCliente.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnNovoCliente.Size = new Size(155, 40);
@@ -263,11 +263,11 @@
             // 
             // lblTitulo
             // 
-            lblTitulo.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
+            lblTitulo.Font = new Font("Sora", 14.2499981F, FontStyle.Bold);
             lblTitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblTitulo.Location = new Point(11, 15);
+            lblTitulo.Location = new Point(21, 15);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(225, 34);
+            lblTitulo.Size = new Size(230, 34);
             lblTitulo.TabIndex = 2;
             lblTitulo.Text = "📦  Gestão de Pedidos";
             // 
@@ -280,7 +280,7 @@
             btnEditarCliente.FillColor = Color.FromArgb(64, 64, 64);
             btnEditarCliente.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnEditarCliente.ForeColor = Color.White;
-            btnEditarCliente.Location = new Point(1500, 19);
+            btnEditarCliente.Location = new Point(1696, 19);
             btnEditarCliente.Name = "btnEditarCliente";
             btnEditarCliente.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btnEditarCliente.Size = new Size(110, 40);
@@ -296,7 +296,7 @@
             btnExcluirCliente.FillColor = Color.FromArgb(220, 60, 60);
             btnExcluirCliente.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnExcluirCliente.ForeColor = Color.White;
-            btnExcluirCliente.Location = new Point(1616, 19);
+            btnExcluirCliente.Location = new Point(1812, 19);
             btnExcluirCliente.Name = "btnExcluirCliente";
             btnExcluirCliente.ShadowDecoration.CustomizableEdges = customizableEdges18;
             btnExcluirCliente.Size = new Size(110, 40);
@@ -305,11 +305,11 @@
             // 
             // lblSubtitulo
             // 
-            lblSubtitulo.Font = new Font("Segoe UI", 9F);
+            lblSubtitulo.Font = new Font("Sora Light", 9F);
             lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblSubtitulo.Location = new Point(8, 47);
+            lblSubtitulo.Location = new Point(25, 45);
             lblSubtitulo.Name = "lblSubtitulo";
-            lblSubtitulo.Size = new Size(245, 20);
+            lblSubtitulo.Size = new Size(286, 20);
             lblSubtitulo.TabIndex = 3;
             lblSubtitulo.Text = "Gerencie os pedidos cadastrados no sistema";
             // 
@@ -320,7 +320,7 @@
             Controls.Add(panelConteudo);
             Controls.Add(panelHeader);
             Name = "ucPedidos";
-            Size = new Size(969, 549);
+            Size = new Size(1165, 550);
             panelConteudo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).EndInit();
             panelHeader.ResumeLayout(false);

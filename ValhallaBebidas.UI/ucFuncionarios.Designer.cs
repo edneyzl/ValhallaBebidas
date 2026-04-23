@@ -50,6 +50,7 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panelHeader = new Guna.UI2.WinForms.Guna2Panel();
+            lblSubtitulo = new Label();
             txtBuscaUsuario = new Guna.UI2.WinForms.Guna2TextBox();
             btnNovoFuncionario = new Guna.UI2.WinForms.Guna2Button();
             btnEditar = new Guna.UI2.WinForms.Guna2Button();
@@ -59,7 +60,6 @@
             lblTitulo = new Label();
             btnEditarCliente = new Guna.UI2.WinForms.Guna2Button();
             btnExcluirCliente = new Guna.UI2.WinForms.Guna2Button();
-            lblSubtitulo = new Label();
             dgvFuncionarios = new Guna.UI2.WinForms.Guna2DataGridView();
             panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFuncionarios).BeginInit();
@@ -68,6 +68,7 @@
             // panelHeader
             // 
             panelHeader.BackColor = Color.FromArgb(33, 33, 33);
+            panelHeader.Controls.Add(lblSubtitulo);
             panelHeader.Controls.Add(txtBuscaUsuario);
             panelHeader.Controls.Add(btnNovoFuncionario);
             panelHeader.Controls.Add(btnEditar);
@@ -77,14 +78,23 @@
             panelHeader.Controls.Add(lblTitulo);
             panelHeader.Controls.Add(btnEditarCliente);
             panelHeader.Controls.Add(btnExcluirCliente);
-            panelHeader.Controls.Add(lblSubtitulo);
             panelHeader.CustomizableEdges = customizableEdges17;
             panelHeader.ForeColor = SystemColors.ControlText;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
             panelHeader.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            panelHeader.Size = new Size(1162, 80);
+            panelHeader.Size = new Size(1165, 80);
             panelHeader.TabIndex = 1;
+            // 
+            // lblSubtitulo
+            // 
+            lblSubtitulo.Font = new Font("Sora Light", 9F);
+            lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
+            lblSubtitulo.Location = new Point(12, 42);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Size = new Size(238, 20);
+            lblSubtitulo.TabIndex = 3;
+            lblSubtitulo.Text = "Gerencie os funcionários cadastrados";
             // 
             // txtBuscaUsuario
             // 
@@ -95,15 +105,15 @@
             txtBuscaUsuario.DefaultText = "";
             txtBuscaUsuario.FillColor = Color.FromArgb(33, 33, 33);
             txtBuscaUsuario.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
-            txtBuscaUsuario.Font = new Font("Segoe UI", 9.5F);
+            txtBuscaUsuario.Font = new Font("Sora", 9.749999F);
             txtBuscaUsuario.ForeColor = Color.FromArgb(214, 189, 119);
-            txtBuscaUsuario.Location = new Point(485, 19);
+            txtBuscaUsuario.Location = new Point(387, 14);
             txtBuscaUsuario.Name = "txtBuscaUsuario";
             txtBuscaUsuario.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             txtBuscaUsuario.PlaceholderText = "🔍  Pesquisar por E-mail ou CPF...";
             txtBuscaUsuario.SelectedText = "";
             txtBuscaUsuario.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtBuscaUsuario.Size = new Size(217, 40);
+            txtBuscaUsuario.Size = new Size(248, 45);
             txtBuscaUsuario.TabIndex = 13;
             txtBuscaUsuario.TextChanged += guna2TextBox1_TextChanged;
             // 
@@ -114,7 +124,7 @@
             btnNovoFuncionario.Cursor = Cursors.Hand;
             btnNovoFuncionario.CustomizableEdges = customizableEdges3;
             btnNovoFuncionario.FillColor = Color.FromArgb(214, 189, 119);
-            btnNovoFuncionario.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnNovoFuncionario.Font = new Font("Sora", 9.749999F, FontStyle.Bold);
             btnNovoFuncionario.ForeColor = Color.Black;
             btnNovoFuncionario.Location = new Point(741, 19);
             btnNovoFuncionario.Name = "btnNovoFuncionario";
@@ -131,9 +141,9 @@
             btnEditar.Cursor = Cursors.Hand;
             btnEditar.CustomizableEdges = customizableEdges5;
             btnEditar.FillColor = Color.FromArgb(64, 64, 64);
-            btnEditar.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnEditar.Font = new Font("Sora", 9.749999F, FontStyle.Bold);
             btnEditar.ForeColor = Color.White;
-            btnEditar.Location = new Point(917, 19);
+            btnEditar.Location = new Point(910, 19);
             btnEditar.Name = "btnEditar";
             btnEditar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnEditar.Size = new Size(110, 40);
@@ -148,9 +158,9 @@
             btnExcluir.Cursor = Cursors.Hand;
             btnExcluir.CustomizableEdges = customizableEdges7;
             btnExcluir.FillColor = Color.FromArgb(220, 60, 60);
-            btnExcluir.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnExcluir.Font = new Font("Sora", 9.749999F, FontStyle.Bold);
             btnExcluir.ForeColor = Color.White;
-            btnExcluir.Location = new Point(1036, 19);
+            btnExcluir.Location = new Point(1027, 19);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnExcluir.Size = new Size(110, 40);
@@ -169,7 +179,7 @@
             txtBuscaCliente.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtBuscaCliente.Font = new Font("Segoe UI", 9.5F);
             txtBuscaCliente.ForeColor = Color.FromArgb(214, 189, 119);
-            txtBuscaCliente.Location = new Point(1266, 19);
+            txtBuscaCliente.Location = new Point(1269, 19);
             txtBuscaCliente.Name = "txtBuscaCliente";
             txtBuscaCliente.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             txtBuscaCliente.PlaceholderText = "🔍  Pesquisar por E-mail ou CPF...";
@@ -187,7 +197,7 @@
             btnNovoCliente.FillColor = Color.FromArgb(214, 189, 119);
             btnNovoCliente.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnNovoCliente.ForeColor = Color.Black;
-            btnNovoCliente.Location = new Point(1532, 19);
+            btnNovoCliente.Location = new Point(1535, 19);
             btnNovoCliente.Name = "btnNovoCliente";
             btnNovoCliente.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnNovoCliente.Size = new Size(155, 40);
@@ -196,11 +206,11 @@
             // 
             // lblTitulo
             // 
-            lblTitulo.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
+            lblTitulo.Font = new Font("Sora", 14.2499981F, FontStyle.Bold);
             lblTitulo.ForeColor = Color.FromArgb(214, 189, 119);
             lblTitulo.Location = new Point(8, 15);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(254, 34);
+            lblTitulo.Size = new Size(263, 34);
             lblTitulo.TabIndex = 2;
             lblTitulo.Text = "👥  Gestão de Funcionário ";
             // 
@@ -213,7 +223,7 @@
             btnEditarCliente.FillColor = Color.FromArgb(64, 64, 64);
             btnEditarCliente.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnEditarCliente.ForeColor = Color.White;
-            btnEditarCliente.Location = new Point(1693, 19);
+            btnEditarCliente.Location = new Point(1696, 19);
             btnEditarCliente.Name = "btnEditarCliente";
             btnEditarCliente.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnEditarCliente.Size = new Size(110, 40);
@@ -229,22 +239,12 @@
             btnExcluirCliente.FillColor = Color.FromArgb(220, 60, 60);
             btnExcluirCliente.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnExcluirCliente.ForeColor = Color.White;
-            btnExcluirCliente.Location = new Point(1809, 19);
+            btnExcluirCliente.Location = new Point(1812, 19);
             btnExcluirCliente.Name = "btnExcluirCliente";
             btnExcluirCliente.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btnExcluirCliente.Size = new Size(110, 40);
             btnExcluirCliente.TabIndex = 8;
             btnExcluirCliente.Text = "🗑️ Excluir";
-            // 
-            // lblSubtitulo
-            // 
-            lblSubtitulo.Font = new Font("Segoe UI", 9F);
-            lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblSubtitulo.Location = new Point(8, 47);
-            lblSubtitulo.Name = "lblSubtitulo";
-            lblSubtitulo.Size = new Size(238, 20);
-            lblSubtitulo.TabIndex = 3;
-            lblSubtitulo.Text = "Gerencie os funcionários cadastrados";
             // 
             // dgvFuncionarios
             // 
@@ -270,10 +270,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvFuncionarios.DefaultCellStyle = dataGridViewCellStyle3;
             dgvFuncionarios.GridColor = Color.FromArgb(231, 229, 255);
-            dgvFuncionarios.Location = new Point(19, 86);
+            dgvFuncionarios.Location = new Point(-3, 76);
             dgvFuncionarios.Name = "dgvFuncionarios";
             dgvFuncionarios.RowHeadersVisible = false;
-            dgvFuncionarios.Size = new Size(1143, 461);
+            dgvFuncionarios.Size = new Size(1168, 474);
             dgvFuncionarios.TabIndex = 2;
             dgvFuncionarios.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvFuncionarios.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -302,8 +302,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
-            Controls.Add(dgvFuncionarios);
             Controls.Add(panelHeader);
+            Controls.Add(dgvFuncionarios);
             Name = "ucFuncionarios";
             Size = new Size(1165, 550);
             panelHeader.ResumeLayout(false);
