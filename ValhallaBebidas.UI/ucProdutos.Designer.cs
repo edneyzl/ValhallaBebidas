@@ -43,8 +43,8 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             txtBuscaProduto = new Guna.UI2.WinForms.Guna2TextBox();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            lblTitulo = new Label();
             lblSubtitulo = new Label();
+            lblTitulo = new Label();
             btnNovoProduto = new Guna.UI2.WinForms.Guna2Button();
             btnEditarProduto = new Guna.UI2.WinForms.Guna2Button();
             btnExcluirProduto = new Guna.UI2.WinForms.Guna2Button();
@@ -95,16 +95,6 @@
             guna2Panel1.Size = new Size(1165, 80);
             guna2Panel1.TabIndex = 0;
             // 
-            // lblTitulo
-            // 
-            lblTitulo.Font = new Font("Sora", 14.2499981F, FontStyle.Bold);
-            lblTitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblTitulo.Location = new Point(17, 18);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(242, 34);
-            lblTitulo.TabIndex = 12;
-            lblTitulo.Text = "📦  Gestão de Produtos";
-            // 
             // lblSubtitulo
             // 
             lblSubtitulo.Font = new Font("Sora Light", 9F);
@@ -114,6 +104,16 @@
             lblSubtitulo.Size = new Size(294, 20);
             lblSubtitulo.TabIndex = 13;
             lblSubtitulo.Text = "Gerencie os produtos cadastrados no sistema";
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.Font = new Font("Sora", 14.2499981F, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.FromArgb(214, 189, 119);
+            lblTitulo.Location = new Point(17, 18);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(242, 34);
+            lblTitulo.TabIndex = 12;
+            lblTitulo.Text = "📦  Gestão de Produtos";
             // 
             // btnNovoProduto
             // 
@@ -179,7 +179,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvProdutos.ColumnHeadersHeight = 4;
+            dgvProdutos.ColumnHeadersHeight = 25;
             dgvProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
@@ -207,7 +207,7 @@
             dgvProdutos.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             dgvProdutos.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             dgvProdutos.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgvProdutos.ThemeStyle.HeaderStyle.Height = 4;
+            dgvProdutos.ThemeStyle.HeaderStyle.Height = 25;
             dgvProdutos.ThemeStyle.ReadOnly = false;
             dgvProdutos.ThemeStyle.RowsStyle.BackColor = Color.White;
             dgvProdutos.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;

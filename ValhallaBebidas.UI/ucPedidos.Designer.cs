@@ -54,6 +54,7 @@
             panelConteudo = new Guna.UI2.WinForms.Guna2Panel();
             dgvPedidos = new Guna.UI2.WinForms.Guna2DataGridView();
             panelHeader = new Guna.UI2.WinForms.Guna2Panel();
+            lblSubtitulo = new Label();
             cmbFiltroStatus = new Guna.UI2.WinForms.Guna2ComboBox();
             btnNovoPedido = new Guna.UI2.WinForms.Guna2Button();
             btnEditarPedido = new Guna.UI2.WinForms.Guna2Button();
@@ -63,7 +64,6 @@
             lblTitulo = new Label();
             btnEditarCliente = new Guna.UI2.WinForms.Guna2Button();
             btnExcluirCliente = new Guna.UI2.WinForms.Guna2Button();
-            lblSubtitulo = new Label();
             panelConteudo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             panelHeader.SuspendLayout();
@@ -93,7 +93,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvPedidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvPedidos.ColumnHeadersHeight = 4;
+            dgvPedidos.ColumnHeadersHeight = 25;
             dgvPedidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
@@ -121,7 +121,7 @@
             dgvPedidos.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             dgvPedidos.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             dgvPedidos.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgvPedidos.ThemeStyle.HeaderStyle.Height = 4;
+            dgvPedidos.ThemeStyle.HeaderStyle.Height = 25;
             dgvPedidos.ThemeStyle.ReadOnly = false;
             dgvPedidos.ThemeStyle.RowsStyle.BackColor = Color.White;
             dgvPedidos.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -151,6 +151,16 @@
             panelHeader.ShadowDecoration.CustomizableEdges = customizableEdges20;
             panelHeader.Size = new Size(1165, 80);
             panelHeader.TabIndex = 2;
+            // 
+            // lblSubtitulo
+            // 
+            lblSubtitulo.Font = new Font("Sora Light", 9F);
+            lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
+            lblSubtitulo.Location = new Point(25, 45);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Size = new Size(286, 20);
+            lblSubtitulo.TabIndex = 3;
+            lblSubtitulo.Text = "Gerencie os pedidos cadastrados no sistema";
             // 
             // cmbFiltroStatus
             // 
@@ -302,16 +312,6 @@
             btnExcluirCliente.Size = new Size(110, 40);
             btnExcluirCliente.TabIndex = 8;
             btnExcluirCliente.Text = "🗑️ Excluir";
-            // 
-            // lblSubtitulo
-            // 
-            lblSubtitulo.Font = new Font("Sora Light", 9F);
-            lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblSubtitulo.Location = new Point(25, 45);
-            lblSubtitulo.Name = "lblSubtitulo";
-            lblSubtitulo.Size = new Size(286, 20);
-            lblSubtitulo.TabIndex = 3;
-            lblSubtitulo.Text = "Gerencie os pedidos cadastrados no sistema";
             // 
             // ucPedidos
             // 

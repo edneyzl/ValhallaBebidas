@@ -167,7 +167,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvMovimentacoes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvMovimentacoes.ColumnHeadersHeight = 4;
+            dgvMovimentacoes.ColumnHeadersHeight = 25;
             dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
@@ -195,7 +195,7 @@
             dgvMovimentacoes.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             dgvMovimentacoes.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             dgvMovimentacoes.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgvMovimentacoes.ThemeStyle.HeaderStyle.Height = 4;
+            dgvMovimentacoes.ThemeStyle.HeaderStyle.Height = 25;
             dgvMovimentacoes.ThemeStyle.ReadOnly = false;
             dgvMovimentacoes.ThemeStyle.RowsStyle.BackColor = Color.White;
             dgvMovimentacoes.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;

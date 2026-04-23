@@ -259,7 +259,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvFuncionarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvFuncionarios.ColumnHeadersHeight = 4;
+            dgvFuncionarios.ColumnHeadersHeight = 25;
             dgvFuncionarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
@@ -270,10 +270,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvFuncionarios.DefaultCellStyle = dataGridViewCellStyle3;
             dgvFuncionarios.GridColor = Color.FromArgb(231, 229, 255);
-            dgvFuncionarios.Location = new Point(-3, 76);
+            dgvFuncionarios.Location = new Point(0, 79);
             dgvFuncionarios.Name = "dgvFuncionarios";
             dgvFuncionarios.RowHeadersVisible = false;
-            dgvFuncionarios.Size = new Size(1168, 474);
+            dgvFuncionarios.Size = new Size(1165, 471);
             dgvFuncionarios.TabIndex = 2;
             dgvFuncionarios.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvFuncionarios.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -287,7 +287,7 @@
             dgvFuncionarios.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             dgvFuncionarios.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             dgvFuncionarios.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgvFuncionarios.ThemeStyle.HeaderStyle.Height = 4;
+            dgvFuncionarios.ThemeStyle.HeaderStyle.Height = 25;
             dgvFuncionarios.ThemeStyle.ReadOnly = false;
             dgvFuncionarios.ThemeStyle.RowsStyle.BackColor = Color.White;
             dgvFuncionarios.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;

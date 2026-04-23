@@ -44,12 +44,12 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panelHeader = new Guna.UI2.WinForms.Guna2Panel();
+            lblSubtitulo = new Label();
             txtBuscaCliente = new Guna.UI2.WinForms.Guna2TextBox();
             btnNovoCliente = new Guna.UI2.WinForms.Guna2Button();
             lblTitulo = new Label();
             btnEditarCliente = new Guna.UI2.WinForms.Guna2Button();
             btnExcluirCliente = new Guna.UI2.WinForms.Guna2Button();
-            lblSubtitulo = new Label();
             panelConteudo = new Guna.UI2.WinForms.Guna2Panel();
             dgvClientes = new Guna.UI2.WinForms.Guna2DataGridView();
             panelHeader.SuspendLayout();
@@ -73,6 +73,16 @@
             panelHeader.ShadowDecoration.CustomizableEdges = customizableEdges10;
             panelHeader.Size = new Size(1165, 80);
             panelHeader.TabIndex = 0;
+            // 
+            // lblSubtitulo
+            // 
+            lblSubtitulo.Font = new Font("Sora Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
+            lblSubtitulo.Location = new Point(12, 42);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Size = new Size(276, 20);
+            lblSubtitulo.TabIndex = 3;
+            lblSubtitulo.Text = "Gerencie os clientes cadastrados no sistema";
             // 
             // txtBuscaCliente
             // 
@@ -156,16 +166,6 @@
             btnExcluirCliente.Text = "🗑️ Excluir";
             btnExcluirCliente.Click += btnExcluirCliente_Click;
             // 
-            // lblSubtitulo
-            // 
-            lblSubtitulo.Font = new Font("Sora Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblSubtitulo.Location = new Point(12, 42);
-            lblSubtitulo.Name = "lblSubtitulo";
-            lblSubtitulo.Size = new Size(276, 20);
-            lblSubtitulo.TabIndex = 3;
-            lblSubtitulo.Text = "Gerencie os clientes cadastrados no sistema";
-            // 
             // panelConteudo
             // 
             panelConteudo.BackColor = Color.FromArgb(64, 64, 64);
@@ -190,7 +190,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvClientes.ColumnHeadersHeight = 4;
+            dgvClientes.ColumnHeadersHeight = 25;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
@@ -218,7 +218,7 @@
             dgvClientes.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             dgvClientes.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             dgvClientes.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dgvClientes.ThemeStyle.HeaderStyle.Height = 4;
+            dgvClientes.ThemeStyle.HeaderStyle.Height = 25;
             dgvClientes.ThemeStyle.ReadOnly = false;
             dgvClientes.ThemeStyle.RowsStyle.BackColor = Color.White;
             dgvClientes.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
