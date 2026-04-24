@@ -102,7 +102,7 @@
             // 
             lblData.Font = new Font("Sora", 10F);
             lblData.ForeColor = Color.Gray;
-            lblData.Location = new Point(3, 53);
+            lblData.Location = new Point(19, 53);
             lblData.Name = "lblData";
             lblData.Size = new Size(400, 20);
             lblData.TabIndex = 2;
@@ -114,20 +114,20 @@
             guna2Panel2.Controls.Add(guna2Panel8);
             guna2Panel2.Controls.Add(lblAtividade);
             guna2Panel2.CustomizableEdges = customizableEdges7;
-            guna2Panel2.Location = new Point(-8, 226);
+            guna2Panel2.Location = new Point(0, 226);
             guna2Panel2.Name = "guna2Panel2";
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Panel2.Size = new Size(1181, 324);
+            guna2Panel2.Size = new Size(1165, 324);
             guna2Panel2.TabIndex = 0;
             // 
             // panelFill
             // 
             panelFill.BackColor = Color.FromArgb(64, 64, 64);
             panelFill.CustomizableEdges = customizableEdges3;
-            panelFill.Location = new Point(8, 53);
+            panelFill.Location = new Point(0, 53);
             panelFill.Name = "panelFill";
             panelFill.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            panelFill.Size = new Size(1165, 267);
+            panelFill.Size = new Size(1165, 271);
             panelFill.TabIndex = 2;
             // 
             // guna2Panel8

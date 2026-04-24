@@ -1,3 +1,4 @@
+using ValhallaBebidas.Domain.Entities;
 using ValhallaBebidas.UI.Services.Models;
 
 namespace ValhallaBebidas.UI
@@ -56,6 +57,7 @@ namespace ValhallaBebidas.UI
                 var resultado = await _funcionarioApiService.LoginAsync(
                     email: txtEmail.Text.Trim(),
                     senha: txtSenha.Text);
+                FuncionarioDto funcionario = await _funcionarioApiService.GetUsuarioByIdAsync(resultado.Id);
 
                 if (resultado == null)
                 {
@@ -66,7 +68,7 @@ namespace ValhallaBebidas.UI
                 if (resultado.Sucesso)
                 {
                     // Login bem-sucedido — abre o formulário principal
-                    var inicial = new frmInicio(resultado.NomeCompleto, resultado.Id);
+                    var inicial = new frmInicio(funcionario);
                     inicial.Show();
                     this.Hide();
                 }

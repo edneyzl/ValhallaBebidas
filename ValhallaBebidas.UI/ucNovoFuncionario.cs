@@ -43,17 +43,6 @@ namespace ValhallaBebidas.UI
             }
         }
 
-        private void btnSelecionarImagem_Click(object sender, EventArgs e)
-        {
-            using var ofd = new OpenFileDialog();
-            ofd.Filter = "Imagens (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                _caminhoFotoLocal = ofd.FileName;
-                picFotoPerfil.ImageLocation = _caminhoFotoLocal;
-            }
-        }
-
         private async void btnCadastrar_Click(object sender, EventArgs e)
         {
             try

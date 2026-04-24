@@ -160,6 +160,7 @@
             // 
             dgvMovimentacoes.AllowUserToAddRows = false;
             dgvMovimentacoes.AllowUserToDeleteRows = false;
+            dgvMovimentacoes.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             dgvMovimentacoes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvMovimentacoes.BackgroundColor = Color.Black;
@@ -186,6 +187,7 @@
             dgvMovimentacoes.Name = "dgvMovimentacoes";
             dgvMovimentacoes.ReadOnly = true;
             dgvMovimentacoes.RowHeadersVisible = false;
+            dgvMovimentacoes.RowTemplate.Height = 30;
             dgvMovimentacoes.Size = new Size(1165, 470);
             dgvMovimentacoes.TabIndex = 0;
             dgvMovimentacoes.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
@@ -206,7 +208,7 @@
             dgvMovimentacoes.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvMovimentacoes.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
             dgvMovimentacoes.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            dgvMovimentacoes.ThemeStyle.RowsStyle.Height = 25;
+            dgvMovimentacoes.ThemeStyle.RowsStyle.Height = 30;
             dgvMovimentacoes.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvMovimentacoes.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 

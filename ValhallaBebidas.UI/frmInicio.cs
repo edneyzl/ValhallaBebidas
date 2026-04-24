@@ -13,15 +13,17 @@ namespace ValhallaBebidas.UI
     public partial class frmInicio : Form
     {
 
-        private readonly string _nomeUsuario;
-
-        public frmInicio(string nomeUsuario = "Usuário", int? id = null)
+        public frmInicio(FuncionarioDto funcionario)
         {
             InitializeComponent();
-            _nomeUsuario = nomeUsuario;
-            lblNome.Text = $"Olá, {nomeUsuario}";
+            lblNome.Text = $"Olá, {funcionario.NomeCompleto}";
+            CentralizarLabel();
         }
 
+        private void CentralizarLabel()
+        {
+            lblNome.Left = (panelBack2.Width - lblNome.Width) / 2;
+        }
 
 
         private void btnIniciar_Click(object sender, EventArgs e)
@@ -38,6 +40,9 @@ namespace ValhallaBebidas.UI
             this.Close();
         }
 
-
+        private void frmInicio_Load(object sender, EventArgs e)
+        {
+            CentralizarLabel();
+        }
     }
 }

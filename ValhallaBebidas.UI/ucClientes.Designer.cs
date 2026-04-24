@@ -181,6 +181,7 @@
             // 
             dgvClientes.AllowUserToAddRows = false;
             dgvClientes.AllowUserToDeleteRows = false;
+            dgvClientes.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             dgvClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvClientes.BackgroundColor = Color.Black;
@@ -207,6 +208,7 @@
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
             dgvClientes.RowHeadersVisible = false;
+            dgvClientes.RowTemplate.Height = 30;
             dgvClientes.Size = new Size(1165, 471);
             dgvClientes.TabIndex = 0;
             dgvClientes.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
@@ -227,7 +229,7 @@
             dgvClientes.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvClientes.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
             dgvClientes.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            dgvClientes.ThemeStyle.RowsStyle.Height = 25;
+            dgvClientes.ThemeStyle.RowsStyle.Height = 30;
             dgvClientes.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvClientes.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
