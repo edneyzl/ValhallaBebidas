@@ -197,7 +197,7 @@
             dgvProdutos.Name = "dgvProdutos";
             dgvProdutos.ReadOnly = true;
             dgvProdutos.RowHeadersVisible = false;
-            dgvProdutos.RowTemplate.Height = 30;
+            dgvProdutos.RowTemplate.Height = 20;
             dgvProdutos.Size = new Size(1165, 469);
             dgvProdutos.TabIndex = 1;
             dgvProdutos.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
@@ -218,7 +218,7 @@
             dgvProdutos.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvProdutos.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
             dgvProdutos.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            dgvProdutos.ThemeStyle.RowsStyle.Height = 30;
+            dgvProdutos.ThemeStyle.RowsStyle.Height = 20;
             dgvProdutos.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgvProdutos.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
