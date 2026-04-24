@@ -77,7 +77,7 @@
             // 
             // panelConteudo
             // 
-            panelConteudo.BackColor = Color.FromArgb(64, 64, 64);
+            panelConteudo.BackColor = SystemColors.Control;
             panelConteudo.Controls.Add(lblCliente);
             panelConteudo.Controls.Add(cmbCliente);
             panelConteudo.Controls.Add(lblStatus);
@@ -101,7 +101,7 @@
             // 
             lblCliente.AutoSize = true;
             lblCliente.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCliente.ForeColor = Color.FromArgb(214, 189, 119);
+            lblCliente.ForeColor = Color.Black;
             lblCliente.Location = new Point(25, 17);
             lblCliente.Name = "lblCliente";
             lblCliente.Size = new Size(56, 17);
@@ -110,10 +110,10 @@
             // 
             // cmbCliente
             // 
-            cmbCliente.BackColor = Color.FromArgb(64, 64, 64);
+            cmbCliente.BackColor = Color.White;
             cmbCliente.FlatStyle = FlatStyle.Flat;
             cmbCliente.Font = new Font("Segoe UI", 10F);
-            cmbCliente.ForeColor = Color.FromArgb(214, 189, 119);
+            cmbCliente.ForeColor = Color.Black;
             cmbCliente.Location = new Point(25, 37);
             cmbCliente.Name = "cmbCliente";
             cmbCliente.Size = new Size(750, 25);
@@ -123,7 +123,7 @@
             // 
             lblStatus.AutoSize = true;
             lblStatus.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblStatus.ForeColor = Color.FromArgb(214, 189, 119);
+            lblStatus.ForeColor = Color.Black;
             lblStatus.Location = new Point(858, 17);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(52, 17);
@@ -132,11 +132,11 @@
             // 
             // cmbStatus
             // 
-            cmbStatus.BackColor = Color.FromArgb(64, 64, 64);
+            cmbStatus.BackColor = Color.White;
             cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbStatus.FlatStyle = FlatStyle.Flat;
             cmbStatus.Font = new Font("Segoe UI", 10F);
-            cmbStatus.ForeColor = Color.FromArgb(214, 189, 119);
+            cmbStatus.ForeColor = Color.Black;
             cmbStatus.Items.AddRange(new object[] { "Pendente", "Finalizado", "Cancelado" });
             cmbStatus.Location = new Point(859, 37);
             cmbStatus.Name = "cmbStatus";
@@ -147,7 +147,7 @@
             // 
             lblAdicionarItens.AutoSize = true;
             lblAdicionarItens.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAdicionarItens.ForeColor = Color.FromArgb(214, 189, 119);
+            lblAdicionarItens.ForeColor = Color.Black;
             lblAdicionarItens.Location = new Point(25, 90);
             lblAdicionarItens.Name = "lblAdicionarItens";
             lblAdicionarItens.Size = new Size(137, 17);
@@ -156,11 +156,11 @@
             // 
             // cmbProduto
             // 
-            cmbProduto.BackColor = Color.FromArgb(64, 64, 64);
+            cmbProduto.BackColor = Color.White;
             cmbProduto.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbProduto.FlatStyle = FlatStyle.Flat;
             cmbProduto.Font = new Font("Segoe UI", 10F);
-            cmbProduto.ForeColor = Color.FromArgb(214, 189, 119);
+            cmbProduto.ForeColor = Color.Black;
             cmbProduto.Location = new Point(25, 112);
             cmbProduto.Name = "cmbProduto";
             cmbProduto.Size = new Size(885, 25);
@@ -168,9 +168,9 @@
             // 
             // numQtd
             // 
-            numQtd.BackColor = Color.FromArgb(64, 64, 64);
+            numQtd.BackColor = Color.White;
             numQtd.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            numQtd.ForeColor = Color.FromArgb(214, 189, 119);
+            numQtd.ForeColor = Color.Black;
             numQtd.Location = new Point(933, 113);
             numQtd.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
             numQtd.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
@@ -187,10 +187,10 @@
             btnAdicionarItem.FillColor = Color.FromArgb(214, 189, 119);
             btnAdicionarItem.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAdicionarItem.ForeColor = Color.Black;
-            btnAdicionarItem.Location = new Point(1023, 112);
+            btnAdicionarItem.Location = new Point(1023, 106);
             btnAdicionarItem.Name = "btnAdicionarItem";
             btnAdicionarItem.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnAdicionarItem.Size = new Size(119, 25);
+            btnAdicionarItem.Size = new Size(119, 37);
             btnAdicionarItem.TabIndex = 19;
             btnAdicionarItem.Text = "+ Adicionar";
             btnAdicionarItem.Click += btnAdicionarItem_Click;
@@ -199,7 +199,7 @@
             // 
             lblCarrinho.AutoSize = true;
             lblCarrinho.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCarrinho.ForeColor = Color.FromArgb(214, 189, 119);
+            lblCarrinho.ForeColor = Color.Black;
             lblCarrinho.Location = new Point(25, 163);
             lblCarrinho.Name = "lblCarrinho";
             lblCarrinho.Size = new Size(121, 17);

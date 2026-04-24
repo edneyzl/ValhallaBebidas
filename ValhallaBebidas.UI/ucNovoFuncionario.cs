@@ -139,6 +139,11 @@ namespace ValhallaBebidas.UI
             var principal = this.FindForm() as frmPrincipal;
             principal?.Navegar(new ucFuncionarios());
         }
+
+        private void txtTelefone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

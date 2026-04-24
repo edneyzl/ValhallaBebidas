@@ -48,10 +48,10 @@ namespace ValhallaBebidas.UI
                 ? lista
                 : lista.Where(c =>
                     c.Nome.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
-                    c.CPF.Contains(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
+                    c.Documento.Contains(filtro, StringComparison.OrdinalIgnoreCase)).ToList();
 
             foreach (var c in exibidos)
-                dgvClientes.Rows.Add(c.Id, c.Nome, c.CPF);
+                dgvClientes.Rows.Add(c.Id, c.Nome, c.Documento);
         }
 
         private void txtBuscaCliente_TextChanged(object sender, EventArgs e)

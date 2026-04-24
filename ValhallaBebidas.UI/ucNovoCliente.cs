@@ -37,9 +37,25 @@ namespace ValhallaBebidas.UI
             if (cliente != null)
             {
                 txtNome.Text = cliente.Nome;
-                txtCpf.Text = cliente.CPF;
+                txtNascimento.Text = cliente.DataNascimento.ToString("yyyy-MM-dd");
+                txtCpf.Text = cliente.Documento;
+                txtTelefone.Text = cliente.Telefone;
+                txtEmail.Text = cliente.Email;
+
                 // email não no DTO de get? Mockamos algo visual
-                txtEmail.Text = "email@exemplo.com";
+                txtEmail.Text = cliente.Email ?? "Não informado";
+
+                txtCep.Text = cliente.Endereco?.Cep ?? "";
+                txtLogradouro.Text = cliente.Endereco?.Logradouro ?? "";
+                txtNumero.Text = cliente.Endereco?.Numero.ToString() ?? "";
+                txtCidade.Text = cliente.Endereco?.Cidade ?? "";
+                txtEstado.Text = cliente.Endereco?.Estado ?? "";
+                txtBairro.Text = cliente.Endereco?.Bairro ?? "";
+                txtComplemento.Text = cliente.Endereco?.Complemento ?? "";
+
+                txtSenha.Text = "********"; // Placeholder para senha, já que não é retornada pela API
+                txtConfirmarSenha.Text = "********"; // Placeholder para confirmar senha
+
             }
         }
 
@@ -118,6 +134,11 @@ namespace ValhallaBebidas.UI
         {
             var principal = this.FindForm() as frmPrincipal;
             principal?.Navegar(new ucClientes());
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

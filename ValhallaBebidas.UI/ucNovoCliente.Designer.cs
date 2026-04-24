@@ -126,7 +126,7 @@
             // 
             lblSubtitulo.Font = new Font("Sora Light", 9F);
             lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
-            lblSubtitulo.Location = new Point(22, 43);
+            lblSubtitulo.Location = new Point(32, 43);
             lblSubtitulo.Name = "lblSubtitulo";
             lblSubtitulo.Size = new Size(238, 20);
             lblSubtitulo.TabIndex = 11;
@@ -136,7 +136,7 @@
             // 
             label1.Font = new Font("Sora", 14.2499981F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(214, 189, 119);
-            label1.Location = new Point(19, 15);
+            label1.Location = new Point(29, 15);
             label1.Name = "label1";
             label1.Size = new Size(225, 34);
             label1.TabIndex = 10;
@@ -222,7 +222,7 @@
             // 
             // panelConteudo
             // 
-            panelConteudo.BackColor = Color.FromArgb(64, 64, 64);
+            panelConteudo.BackColor = SystemColors.Control;
             panelConteudo.Controls.Add(txtConfirmarSenha);
             panelConteudo.Controls.Add(txtSenha);
             panelConteudo.Controls.Add(lblSecSenha);
@@ -251,17 +251,17 @@
             // 
             // txtConfirmarSenha
             // 
-            txtConfirmarSenha.BorderColor = Color.Transparent;
+            txtConfirmarSenha.BorderColor = Color.FromArgb(217, 221, 226);
             txtConfirmarSenha.BorderRadius = 10;
             txtConfirmarSenha.CustomizableEdges = customizableEdges11;
             txtConfirmarSenha.DefaultText = "";
-            txtConfirmarSenha.FillColor = Color.FromArgb(33, 33, 33);
             txtConfirmarSenha.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtConfirmarSenha.Font = new Font("Sora", 9.749999F);
+            txtConfirmarSenha.ForeColor = Color.Black;
             txtConfirmarSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtConfirmarSenha.Location = new Point(724, 114);
             txtConfirmarSenha.Name = "txtConfirmarSenha";
-            txtConfirmarSenha.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtConfirmarSenha.PlaceholderForeColor = Color.Black;
             txtConfirmarSenha.PlaceholderText = "Confirmar Senha";
             txtConfirmarSenha.SelectedText = "";
             txtConfirmarSenha.ShadowDecoration.CustomizableEdges = customizableEdges12;
@@ -270,17 +270,17 @@
             // 
             // txtSenha
             // 
-            txtSenha.BorderColor = Color.Transparent;
+            txtSenha.BorderColor = Color.FromArgb(217, 221, 226);
             txtSenha.BorderRadius = 10;
             txtSenha.CustomizableEdges = customizableEdges13;
             txtSenha.DefaultText = "";
-            txtSenha.FillColor = Color.FromArgb(33, 33, 33);
             txtSenha.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtSenha.Font = new Font("Sora", 9.749999F);
+            txtSenha.ForeColor = Color.Black;
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSenha.Location = new Point(724, 57);
             txtSenha.Name = "txtSenha";
-            txtSenha.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtSenha.PlaceholderForeColor = Color.Black;
             txtSenha.PlaceholderText = "Senha";
             txtSenha.SelectedText = "";
             txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges14;
@@ -291,7 +291,7 @@
             // 
             lblSecSenha.AutoSize = true;
             lblSecSenha.Font = new Font("Sora", 9.749999F, FontStyle.Bold);
-            lblSecSenha.ForeColor = Color.FromArgb(214, 189, 119);
+            lblSecSenha.ForeColor = SystemColors.ControlText;
             lblSecSenha.Location = new Point(724, 29);
             lblSecSenha.Name = "lblSecSenha";
             lblSecSenha.Size = new Size(105, 17);
@@ -300,17 +300,17 @@
             // 
             // txtComplemento
             // 
-            txtComplemento.BorderColor = Color.Transparent;
+            txtComplemento.BorderColor = Color.FromArgb(217, 221, 226);
             txtComplemento.BorderRadius = 10;
             txtComplemento.CustomizableEdges = customizableEdges15;
             txtComplemento.DefaultText = "";
-            txtComplemento.FillColor = Color.FromArgb(33, 33, 33);
             txtComplemento.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtComplemento.Font = new Font("Sora", 9.749999F);
+            txtComplemento.ForeColor = Color.Black;
             txtComplemento.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtComplemento.Location = new Point(615, 327);
             txtComplemento.Name = "txtComplemento";
-            txtComplemento.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtComplemento.PlaceholderForeColor = Color.Black;
             txtComplemento.PlaceholderText = "Complemento";
             txtComplemento.SelectedText = "";
             txtComplemento.ShadowDecoration.CustomizableEdges = customizableEdges16;
@@ -319,17 +319,17 @@
             // 
             // txtBairro
             // 
-            txtBairro.BorderColor = Color.Transparent;
+            txtBairro.BorderColor = Color.FromArgb(217, 221, 226);
             txtBairro.BorderRadius = 10;
             txtBairro.CustomizableEdges = customizableEdges17;
             txtBairro.DefaultText = "";
-            txtBairro.FillColor = Color.FromArgb(33, 33, 33);
             txtBairro.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtBairro.Font = new Font("Sora", 9.749999F);
+            txtBairro.ForeColor = Color.Black;
             txtBairro.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBairro.Location = new Point(475, 327);
             txtBairro.Name = "txtBairro";
-            txtBairro.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtBairro.PlaceholderForeColor = Color.Black;
             txtBairro.PlaceholderText = "Bairro";
             txtBairro.SelectedText = "";
             txtBairro.ShadowDecoration.CustomizableEdges = customizableEdges18;
@@ -344,10 +344,10 @@
             btnSalvar.FillColor = Color.FromArgb(214, 189, 119);
             btnSalvar.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSalvar.ForeColor = Color.Black;
-            btnSalvar.Location = new Point(125, 393);
+            btnSalvar.Location = new Point(65, 393);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            btnSalvar.Size = new Size(450, 45);
+            btnSalvar.Size = new Size(524, 45);
             btnSalvar.TabIndex = 18;
             btnSalvar.Text = "✓  Salvar";
             btnSalvar.Click += btnSalvar_Click;
@@ -360,28 +360,27 @@
             btnCancelar.FillColor = Color.FromArgb(220, 220, 225);
             btnCancelar.Font = new Font("Sora", 9.749999F, FontStyle.Bold);
             btnCancelar.ForeColor = Color.FromArgb(80, 80, 90);
-            btnCancelar.Location = new Point(606, 393);
+            btnCancelar.Location = new Point(615, 393);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            btnCancelar.Size = new Size(450, 45);
+            btnCancelar.Size = new Size(490, 45);
             btnCancelar.TabIndex = 19;
             btnCancelar.Text = "Cancelar";
             btnCancelar.Click += btnCancelar_Click;
             // 
             // txtNascimento
             // 
-            txtNascimento.BorderColor = Color.Transparent;
+            txtNascimento.BorderColor = Color.FromArgb(217, 221, 226);
             txtNascimento.BorderRadius = 10;
             txtNascimento.CustomizableEdges = customizableEdges23;
             txtNascimento.DefaultText = "";
-            txtNascimento.FillColor = Color.FromArgb(33, 33, 33);
             txtNascimento.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtNascimento.Font = new Font("Sora", 9.749999F);
-            txtNascimento.ForeColor = Color.FromArgb(214, 189, 119);
+            txtNascimento.ForeColor = Color.Black;
             txtNascimento.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNascimento.Location = new Point(65, 114);
             txtNascimento.Name = "txtNascimento";
-            txtNascimento.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtNascimento.PlaceholderForeColor = Color.Black;
             txtNascimento.PlaceholderText = "DD/MM/AAAA *";
             txtNascimento.SelectedText = "";
             txtNascimento.ShadowDecoration.CustomizableEdges = customizableEdges24;
@@ -392,7 +391,7 @@
             // 
             lblSecEndereco.AutoSize = true;
             lblSecEndereco.Font = new Font("Sora", 9.749999F, FontStyle.Bold);
-            lblSecEndereco.ForeColor = Color.FromArgb(214, 189, 119);
+            lblSecEndereco.ForeColor = SystemColors.ControlText;
             lblSecEndereco.Location = new Point(64, 238);
             lblSecEndereco.Name = "lblSecEndereco";
             lblSecEndereco.Size = new Size(71, 17);
@@ -401,17 +400,17 @@
             // 
             // txtCep
             // 
-            txtCep.BorderColor = Color.Transparent;
+            txtCep.BorderColor = Color.FromArgb(217, 221, 226);
             txtCep.BorderRadius = 10;
             txtCep.CustomizableEdges = customizableEdges25;
             txtCep.DefaultText = "";
-            txtCep.FillColor = Color.FromArgb(33, 33, 33);
             txtCep.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtCep.Font = new Font("Sora", 9.749999F);
+            txtCep.ForeColor = Color.Black;
             txtCep.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtCep.Location = new Point(64, 268);
             txtCep.Name = "txtCep";
-            txtCep.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtCep.PlaceholderForeColor = Color.Black;
             txtCep.PlaceholderText = "CEP";
             txtCep.SelectedText = "";
             txtCep.ShadowDecoration.CustomizableEdges = customizableEdges26;
@@ -420,17 +419,17 @@
             // 
             // txtLogradouro
             // 
-            txtLogradouro.BorderColor = Color.Transparent;
+            txtLogradouro.BorderColor = Color.FromArgb(217, 221, 226);
             txtLogradouro.BorderRadius = 10;
             txtLogradouro.CustomizableEdges = customizableEdges27;
             txtLogradouro.DefaultText = "";
-            txtLogradouro.FillColor = Color.FromArgb(33, 33, 33);
             txtLogradouro.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtLogradouro.Font = new Font("Sora", 9.749999F);
+            txtLogradouro.ForeColor = Color.Black;
             txtLogradouro.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtLogradouro.Location = new Point(259, 268);
             txtLogradouro.Name = "txtLogradouro";
-            txtLogradouro.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtLogradouro.PlaceholderForeColor = Color.Black;
             txtLogradouro.PlaceholderText = "Logradouro";
             txtLogradouro.SelectedText = "";
             txtLogradouro.ShadowDecoration.CustomizableEdges = customizableEdges28;
@@ -439,17 +438,17 @@
             // 
             // txtNumero
             // 
-            txtNumero.BorderColor = Color.Transparent;
+            txtNumero.BorderColor = Color.FromArgb(217, 221, 226);
             txtNumero.BorderRadius = 10;
             txtNumero.CustomizableEdges = customizableEdges29;
             txtNumero.DefaultText = "";
-            txtNumero.FillColor = Color.FromArgb(33, 33, 33);
             txtNumero.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtNumero.Font = new Font("Sora", 9.749999F);
+            txtNumero.ForeColor = Color.Black;
             txtNumero.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNumero.Location = new Point(64, 327);
             txtNumero.Name = "txtNumero";
-            txtNumero.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtNumero.PlaceholderForeColor = Color.Black;
             txtNumero.PlaceholderText = "Número";
             txtNumero.SelectedText = "";
             txtNumero.ShadowDecoration.CustomizableEdges = customizableEdges30;
@@ -458,17 +457,17 @@
             // 
             // txtCidade
             // 
-            txtCidade.BorderColor = Color.Transparent;
+            txtCidade.BorderColor = Color.FromArgb(217, 221, 226);
             txtCidade.BorderRadius = 10;
             txtCidade.CustomizableEdges = customizableEdges31;
             txtCidade.DefaultText = "";
-            txtCidade.FillColor = Color.FromArgb(33, 33, 33);
             txtCidade.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtCidade.Font = new Font("Sora", 9.749999F);
+            txtCidade.ForeColor = Color.Black;
             txtCidade.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtCidade.Location = new Point(202, 327);
             txtCidade.Name = "txtCidade";
-            txtCidade.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtCidade.PlaceholderForeColor = Color.Black;
             txtCidade.PlaceholderText = "Cidade";
             txtCidade.SelectedText = "";
             txtCidade.ShadowDecoration.CustomizableEdges = customizableEdges32;
@@ -477,17 +476,17 @@
             // 
             // txtEstado
             // 
-            txtEstado.BorderColor = Color.Transparent;
+            txtEstado.BorderColor = Color.FromArgb(217, 221, 226);
             txtEstado.BorderRadius = 10;
             txtEstado.CustomizableEdges = customizableEdges33;
             txtEstado.DefaultText = "";
-            txtEstado.FillColor = Color.FromArgb(33, 33, 33);
             txtEstado.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtEstado.Font = new Font("Sora", 9.749999F);
+            txtEstado.ForeColor = Color.Black;
             txtEstado.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEstado.Location = new Point(615, 268);
             txtEstado.Name = "txtEstado";
-            txtEstado.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtEstado.PlaceholderForeColor = Color.Black;
             txtEstado.PlaceholderText = "UF";
             txtEstado.SelectedText = "";
             txtEstado.ShadowDecoration.CustomizableEdges = customizableEdges34;
@@ -498,7 +497,7 @@
             // 
             lblSecPessoal.AutoSize = true;
             lblSecPessoal.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSecPessoal.ForeColor = Color.FromArgb(214, 189, 119);
+            lblSecPessoal.ForeColor = SystemColors.ControlText;
             lblSecPessoal.Location = new Point(62, 29);
             lblSecPessoal.Name = "lblSecPessoal";
             lblSecPessoal.Size = new Size(154, 17);
@@ -507,38 +506,37 @@
             // 
             // txtNome
             // 
-            txtNome.BorderColor = Color.Transparent;
+            txtNome.BorderColor = Color.FromArgb(217, 221, 226);
             txtNome.BorderRadius = 10;
             txtNome.CustomizableEdges = customizableEdges35;
             txtNome.DefaultText = "";
-            txtNome.FillColor = Color.FromArgb(33, 33, 33);
             txtNome.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtNome.Font = new Font("Sora", 9.749999F);
-            txtNome.ForeColor = Color.FromArgb(214, 189, 119);
+            txtNome.ForeColor = Color.Black;
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNome.Location = new Point(65, 57);
             txtNome.Name = "txtNome";
-            txtNome.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtNome.PlaceholderForeColor = Color.Black;
             txtNome.PlaceholderText = "Nome Completo *";
             txtNome.SelectedText = "";
             txtNome.ShadowDecoration.CustomizableEdges = customizableEdges36;
             txtNome.Size = new Size(514, 43);
             txtNome.TabIndex = 6;
+            txtNome.TextChanged += txtNome_TextChanged;
             // 
             // txtCpf
             // 
-            txtCpf.BorderColor = Color.Transparent;
+            txtCpf.BorderColor = Color.FromArgb(217, 221, 226);
             txtCpf.BorderRadius = 10;
             txtCpf.CustomizableEdges = customizableEdges37;
             txtCpf.DefaultText = "";
-            txtCpf.FillColor = Color.FromArgb(33, 33, 33);
             txtCpf.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtCpf.Font = new Font("Sora", 9.749999F);
-            txtCpf.ForeColor = Color.FromArgb(214, 189, 119);
+            txtCpf.ForeColor = Color.Black;
             txtCpf.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtCpf.Location = new Point(316, 114);
             txtCpf.Name = "txtCpf";
-            txtCpf.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtCpf.PlaceholderForeColor = Color.Black;
             txtCpf.PlaceholderText = "CPF / CNPJ *";
             txtCpf.SelectedText = "";
             txtCpf.ShadowDecoration.CustomizableEdges = customizableEdges38;
@@ -547,18 +545,17 @@
             // 
             // txtEmail
             // 
-            txtEmail.BorderColor = Color.Transparent;
+            txtEmail.BorderColor = Color.FromArgb(217, 221, 226);
             txtEmail.BorderRadius = 10;
             txtEmail.CustomizableEdges = customizableEdges39;
             txtEmail.DefaultText = "";
-            txtEmail.FillColor = Color.FromArgb(33, 33, 33);
             txtEmail.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtEmail.Font = new Font("Sora", 9.749999F);
-            txtEmail.ForeColor = Color.FromArgb(214, 189, 119);
+            txtEmail.ForeColor = Color.Black;
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEmail.Location = new Point(316, 175);
             txtEmail.Name = "txtEmail";
-            txtEmail.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtEmail.PlaceholderForeColor = Color.Black;
             txtEmail.PlaceholderText = "E-mail *";
             txtEmail.SelectedText = "";
             txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges40;
@@ -567,18 +564,17 @@
             // 
             // txtTelefone
             // 
-            txtTelefone.BorderColor = Color.Transparent;
+            txtTelefone.BorderColor = Color.FromArgb(217, 221, 226);
             txtTelefone.BorderRadius = 10;
             txtTelefone.CustomizableEdges = customizableEdges41;
             txtTelefone.DefaultText = "";
-            txtTelefone.FillColor = Color.FromArgb(33, 33, 33);
             txtTelefone.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtTelefone.Font = new Font("Sora", 9.749999F);
-            txtTelefone.ForeColor = Color.FromArgb(214, 189, 119);
+            txtTelefone.ForeColor = Color.Black;
             txtTelefone.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtTelefone.Location = new Point(65, 175);
             txtTelefone.Name = "txtTelefone";
-            txtTelefone.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
+            txtTelefone.PlaceholderForeColor = Color.Black;
             txtTelefone.PlaceholderText = "Telefone";
             txtTelefone.SelectedText = "";
             txtTelefone.ShadowDecoration.CustomizableEdges = customizableEdges42;
