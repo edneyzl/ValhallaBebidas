@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ValhallaBebidas.UI.Services.Models;
 
 namespace ValhallaBebidas.UI
 {
@@ -15,11 +16,10 @@ namespace ValhallaBebidas.UI
         private readonly string _nomeUsuario;
 
 
-        public frmPrincipal(string nomeUsuario = "Usuário", string? caminhoFoto = null)
+        public frmPrincipal(FuncionarioDto funcionario)
         {
             InitializeComponent();
-            _nomeUsuario = nomeUsuario;
-            lblUsuario.Text = $"👤  {nomeUsuario}";
+            lblUsuario.Text = $"{funcionario.NomeCompleto}";
 
             // Carrega o Dashboard como tela inicial
             LoadUserControl(new ucDashboard());

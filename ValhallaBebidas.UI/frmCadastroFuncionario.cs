@@ -1,7 +1,6 @@
 ﻿using ValhallaBebidas.UI.Services.Models;
 using System.Text.Json;
 using ValhallaBebidas.UI.DTO;
-using ValhallaBebidas.UI.Services.Models;
 
 namespace ValhallaBebidas.UI
 {
@@ -13,7 +12,6 @@ namespace ValhallaBebidas.UI
         }
 
         private readonly FuncionarioApiService _funcionarioService = new();
-        private string? _caminhoFotoLocal;
 
         private async void txtCep_Leave(object sender, EventArgs e)
         {

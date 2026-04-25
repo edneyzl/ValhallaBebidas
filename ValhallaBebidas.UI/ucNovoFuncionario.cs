@@ -13,7 +13,6 @@ namespace ValhallaBebidas.UI
     public partial class ucNovoFuncionario : UserControl
     {
         private readonly FuncionarioApiService _usuarioService = new();
-        private string? _caminhoFotoLocal;
         private readonly int? _idEdicao;
 
         public ucNovoFuncionario(int? id = null)
@@ -71,16 +70,7 @@ namespace ValhallaBebidas.UI
                     return;
                 }
 
-                string? caminhoFotoApi = null;
-                if (!string.IsNullOrEmpty(_caminhoFotoLocal))
-                {
-                    btnCadastrar.Text = "Enviando foto...";
-                    caminhoFotoApi = await _usuarioService.UploadFotoAsync(_caminhoFotoLocal);
-                    if (caminhoFotoApi == null)
-                    {
-                        return; // falha no upload já exibiu mensagem
-                    }
-                }
+
 
                 if (_idEdicao.HasValue)
                 {
@@ -116,9 +106,7 @@ namespace ValhallaBebidas.UI
                         "", // cpf (preencha conforme necessário)
                         "", // telefone (preencha conforme necessário)
                         email,
-                        senha,
-                        caminhoFotoApi
-                    );
+                        senha);
                     if (novoDto != null)
                     {
                         MessageBox.Show("Usuário cadastrado com sucesso!", "Sucesso",

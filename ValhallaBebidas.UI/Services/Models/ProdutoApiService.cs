@@ -60,11 +60,11 @@ namespace ValhallaBebidas.UI.Services.Models
         // CRIAR
         // ──────────────────────────────────────────────────────────────────────────────
 
-        public async Task<ProdutoDto?> CreateProdutoAsync(string nome, decimal preco, string? fotoProduto = null, int? categoriaId = null)
+        public async Task<ProdutoDto?> CreateProdutoAsync(string nome, string descricao, decimal precoVenda, decimal precoCusto, int qtdMin, string ean, string? fotoProduto = null, int? categoriaId = null)
         {
             try
             {
-                var payload  = new CriarProdutoDto { Nome = nome, PrecoVenda = preco, FotoProduto = fotoProduto, CategoriaId = categoriaId };
+                var payload  = new CriarProdutoDto { Nome = nome, Descricao = descricao, PrecoVenda = precoVenda, PrecoCusto = precoCusto, FotoProduto = fotoProduto, CategoriaId = categoriaId, QuantidadeMinimo = qtdMin, Ean = ean };
                 var response = await _http.PostAsJsonAsync("api/produto", payload);
 
                 if (response.IsSuccessStatusCode)
@@ -87,11 +87,11 @@ namespace ValhallaBebidas.UI.Services.Models
         // ATUALIZAR
         // ──────────────────────────────────────────────────────────────────────────────
 
-        public async Task<bool> UpdateProdutoAsync(int id, string nome, decimal preco, string? fotoProduto = null, int? categoriaId = null)
+        public async Task<bool> UpdateProdutoAsync(int id, string nome, string descricao, decimal precoVenda, decimal precoCusto, int qtdMin, string ean, string? fotoProduto = null, int? categoriaId = null)
         {
             try
             {
-                var payload  = new AtualizarProdutoDto { Nome = nome, PrecoVenda = preco, FotoProduto = fotoProduto, CategoriaId = categoriaId };
+                var payload  = new AtualizarProdutoDto { Nome = nome, Descricao = descricao, PrecoVenda = precoVenda, PrecoCusto = precoCusto, FotoProduto = fotoProduto, CategoriaId = categoriaId, QuantidadeMinimo = qtdMin, Ean = ean };
                 var response = await _http.PutAsJsonAsync($"api/produto/{id}", payload);
 
                 if (response.IsSuccessStatusCode)

@@ -57,7 +57,7 @@ namespace ValhallaBebidas.UI
                 var resultado = await _funcionarioApiService.LoginAsync(
                     email: txtEmail.Text.Trim(),
                     senha: txtSenha.Text);
-                FuncionarioDto funcionario = await _funcionarioApiService.GetUsuarioByIdAsync(resultado.Id);
+                FuncionarioDto? funcionario = await _funcionarioApiService.GetUsuarioByIdAsync(resultado.Id);
 
                 if (resultado == null)
                 {

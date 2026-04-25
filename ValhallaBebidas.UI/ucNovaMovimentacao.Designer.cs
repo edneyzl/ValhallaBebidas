@@ -445,20 +445,19 @@
         private Guna.UI2.WinForms.Guna2TextBox txtBuscaMovi;
         private Label lblSubtitulo;
         private Label lblTitulo;
-        private Guna.UI2.WinForms.Guna2Button btbVoltar;
         private Label label1;
         private Label label3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Label label4;
         private Label label5;
-        private Guna.UI2.WinForms.Guna2TextBox txtInsiraProduto;
+  
         private Guna.UI2.WinForms.Guna2TextBox txtInformeQuantidade;
         private Label label2;
         private Label label7;
         private Guna.UI2.WinForms.Guna2TextBox txtMotivo;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Label label6;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
         private Guna.UI2.WinForms.Guna2Button btnSalvarMovimentacao;
         private Guna.UI2.WinForms.Guna2ComboBox cmbTipo;

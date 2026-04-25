@@ -12,11 +12,12 @@ namespace ValhallaBebidas.UI
 {
     public partial class frmInicio : Form
     {
-
+        FuncionarioDto func;
         public frmInicio(FuncionarioDto funcionario)
         {
             InitializeComponent();
             lblNome.Text = $"Olá, {funcionario.NomeCompleto}";
+            func = funcionario;
             CentralizarLabel();
         }
 
@@ -28,7 +29,7 @@ namespace ValhallaBebidas.UI
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            var principal = new frmPrincipal();
+            var principal = new frmPrincipal(func);
             principal.Show();
             this.Close();
         }
