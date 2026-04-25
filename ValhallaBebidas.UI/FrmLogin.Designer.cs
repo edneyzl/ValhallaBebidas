@@ -237,7 +237,7 @@
             txtEmail.BorderColor = Color.Silver;
             txtEmail.BorderRadius = 12;
             txtEmail.CustomizableEdges = customizableEdges7;
-            txtEmail.DefaultText = "";
+            txtEmail.DefaultText = "admin@admin.com";
             txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEmail.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtEmail.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
@@ -263,7 +263,7 @@
             txtSenha.BorderColor = Color.Silver;
             txtSenha.BorderRadius = 12;
             txtSenha.CustomizableEdges = customizableEdges9;
-            txtSenha.DefaultText = "";
+            txtSenha.DefaultText = "admin";
             txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSenha.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtSenha.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
