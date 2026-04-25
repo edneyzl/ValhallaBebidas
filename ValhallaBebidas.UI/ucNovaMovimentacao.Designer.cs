@@ -36,6 +36,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -48,16 +50,13 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelHeader = new Guna.UI2.WinForms.Guna2Panel();
             btnNovaMovi = new Guna.UI2.WinForms.Guna2Button();
             btnEditarMovi = new Guna.UI2.WinForms.Guna2Button();
             txtBuscaMovi = new Guna.UI2.WinForms.Guna2TextBox();
             lblSubtitulo = new Label();
             lblTitulo = new Label();
+            btnVoltar = new Guna.UI2.WinForms.Guna2Button();
             label1 = new Label();
             label3 = new Label();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -69,14 +68,11 @@
             txtMotivo = new Guna.UI2.WinForms.Guna2TextBox();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             label6 = new Label();
-            label8 = new Label();
             btnCancelar = new Guna.UI2.WinForms.Guna2Button();
             btnSalvarMovimentacao = new Guna.UI2.WinForms.Guna2Button();
             cmbTipo = new Guna.UI2.WinForms.Guna2ComboBox();
             cmbProduto = new Guna.UI2.WinForms.Guna2ComboBox();
             dtgData = new DataGridView();
-            txtObservacao = new Guna.UI2.WinForms.Guna2TextBox();
-            btnVoltar = new Guna.UI2.WinForms.Guna2Button();
             panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgData).BeginInit();
             SuspendLayout();
@@ -169,6 +165,29 @@
             lblTitulo.Size = new Size(218, 34);
             lblTitulo.TabIndex = 2;
             lblTitulo.Text = "👥  Movimentações";
+            // 
+            // btnVoltar
+            // 
+            btnVoltar.BorderColor = Color.FromArgb(214, 189, 119);
+            btnVoltar.BorderRadius = 12;
+            btnVoltar.BorderThickness = 1;
+            btnVoltar.CustomBorderColor = Color.FromArgb(214, 189, 119);
+            btnVoltar.CustomizableEdges = customizableEdges7;
+            btnVoltar.DisabledState.BorderColor = Color.DarkGray;
+            btnVoltar.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnVoltar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnVoltar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnVoltar.FillColor = Color.Transparent;
+            btnVoltar.FocusedColor = Color.FromArgb(214, 189, 119);
+            btnVoltar.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnVoltar.ForeColor = Color.FromArgb(214, 189, 119);
+            btnVoltar.Location = new Point(991, 19);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnVoltar.Size = new Size(119, 45);
+            btnVoltar.TabIndex = 11;
+            btnVoltar.Text = "Voltar ";
+            btnVoltar.Click += btnVoltar_Click;
             // 
             // label1
             // 
@@ -302,16 +321,6 @@
             label6.TabIndex = 6;
             label6.Text = "Produto *";
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F);
-            label8.Location = new Point(447, 396);
-            label8.Name = "label8";
-            label8.Size = new Size(165, 21);
-            label8.TabIndex = 6;
-            label8.Text = "Observação (opcional)";
-            // 
             // btnCancelar
             // 
             btnCancelar.BorderRadius = 12;
@@ -399,54 +408,10 @@
             dtgData.Size = new Size(250, 40);
             dtgData.TabIndex = 13;
             // 
-            // txtObservacao
-            // 
-            txtObservacao.CustomizableEdges = customizableEdges23;
-            txtObservacao.DefaultText = "";
-            txtObservacao.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtObservacao.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtObservacao.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtObservacao.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtObservacao.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtObservacao.Font = new Font("Segoe UI", 9F);
-            txtObservacao.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtObservacao.Location = new Point(447, 420);
-            txtObservacao.Name = "txtObservacao";
-            txtObservacao.PlaceholderForeColor = Color.FromArgb(64, 64, 64);
-            txtObservacao.PlaceholderText = "Insirir observações";
-            txtObservacao.SelectedText = "";
-            txtObservacao.ShadowDecoration.CustomizableEdges = customizableEdges24;
-            txtObservacao.Size = new Size(563, 40);
-            txtObservacao.TabIndex = 7;
-            // 
-            // btnVoltar
-            // 
-            btnVoltar.BorderColor = Color.FromArgb(214, 189, 119);
-            btnVoltar.BorderRadius = 12;
-            btnVoltar.BorderThickness = 1;
-            btnVoltar.CustomBorderColor = Color.FromArgb(214, 189, 119);
-            btnVoltar.CustomizableEdges = customizableEdges7;
-            btnVoltar.DisabledState.BorderColor = Color.DarkGray;
-            btnVoltar.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnVoltar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnVoltar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnVoltar.FillColor = Color.Transparent;
-            btnVoltar.FocusedColor = Color.FromArgb(214, 189, 119);
-            btnVoltar.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnVoltar.ForeColor = Color.FromArgb(214, 189, 119);
-            btnVoltar.Location = new Point(991, 19);
-            btnVoltar.Name = "btnVoltar";
-            btnVoltar.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnVoltar.Size = new Size(119, 45);
-            btnVoltar.TabIndex = 11;
-            btnVoltar.Text = "Voltar ";
-            btnVoltar.Click += btnVoltar_Click;
-            // 
             // ucNovaMovimentacao
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(txtObservacao);
             Controls.Add(dtgData);
             Controls.Add(cmbProduto);
             Controls.Add(cmbTipo);
@@ -458,7 +423,6 @@
             Controls.Add(txtMotivo);
             Controls.Add(label5);
             Controls.Add(label6);
-            Controls.Add(label8);
             Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(label3);
@@ -494,14 +458,12 @@
         private Guna.UI2.WinForms.Guna2TextBox txtMotivo;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Label label6;
-        private Label label8;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
         private Guna.UI2.WinForms.Guna2Button btnSalvarMovimentacao;
         private Guna.UI2.WinForms.Guna2ComboBox cmbTipo;
         private Guna.UI2.WinForms.Guna2ComboBox cmbProduto;
         private DataGridView dtgData;
-        private Guna.UI2.WinForms.Guna2TextBox txtObservacao;
         private Guna.UI2.WinForms.Guna2Button btnVoltar;
     }
 }
