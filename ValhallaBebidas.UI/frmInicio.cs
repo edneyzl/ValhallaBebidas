@@ -12,45 +12,24 @@ namespace ValhallaBebidas.UI
 {
     public partial class frmInicio : Form
     {
-        private readonly FuncionarioApiService _funcionarioService = new();
-        private string? _caminhoFotoLocal;
-        private readonly int? _idUsu;
-
-        public frmInicio(int? id = null)
+        FuncionarioDto func;
+        public frmInicio(FuncionarioDto funcionario)
         {
             InitializeComponent();
-            _idUsu = id;
-            this.Load += async (s, e) => await CarregarUsuarioAsync();
+            lblNome.Text = $"Olá, {funcionario.NomeCompleto}";
+            func = funcionario;
+            CentralizarLabel();
         }
 
-
-        private async Task CarregarUsuarioAsync()
+        private void CentralizarLabel()
         {
-
-
-
-            var funcionario = await _funcionarioService.GetUsuarioByIdAsync(_idUsu.Value);
-            if (funcionario != null)
-            {
-                lblNome.Text = funcionario.Nome;
-
-                if (!string.IsNullOrEmpty(funcionario.FotoPerfil))
-                {
-                    try
-                    {
-                        var url = $"{ApiClientService.ApiBaseUrl.TrimEnd('/')}/api/imagens/{funcionario.FotoPerfil}";
-                        picFoto.LoadAsync(url);
-                    }
-                    catch { }
-                }
-            }
+            lblNome.Left = (panelBack2.Width - lblNome.Width) / 2;
         }
-
 
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            var principal = new frmPrincipal();
+            var principal = new frmPrincipal(func);
             principal.Show();
             this.Close();
         }
@@ -62,6 +41,9 @@ namespace ValhallaBebidas.UI
             this.Close();
         }
 
-
+        private void frmInicio_Load(object sender, EventArgs e)
+        {
+            CentralizarLabel();
+        }
     }
 }

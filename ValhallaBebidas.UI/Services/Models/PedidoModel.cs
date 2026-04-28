@@ -1,4 +1,8 @@
+using ValhallaBebidas.Domain.Enums;
+
 namespace ValhallaBebidas.UI.Services.Models
+
+
 {
     /// <summary>
     /// Espelhos locais dos DTOs de Pedido da ValhallaBebidas.API.
@@ -12,7 +16,7 @@ namespace ValhallaBebidas.UI.Services.Models
         public string            NomeCliente { get; set; } = string.Empty;
         public DateTime          DataPedido  { get; set; }
         public decimal           Total       { get; set; }
-        public string            Status      { get; set; } = "Pendente";
+        public StatusPedido       Status      { get; set; } 
         public List<ItemPedidoDto> Itens     { get; set; } = new();
     }
 
@@ -30,7 +34,7 @@ namespace ValhallaBebidas.UI.Services.Models
     public class CriarPedidoDto
     {
         public int                    ClienteId { get; set; }
-        public string                 Status    { get; set; } = "Pendente";
+        public StatusPedido             Status    { get; set; } 
         public List<CriarItemPedidoDto> Itens   { get; set; } = new();
     }
 
@@ -44,7 +48,7 @@ namespace ValhallaBebidas.UI.Services.Models
     public class AtualizarPedidoDto
     {
         public int                      ClienteId { get; set; }
-        public string                   Status    { get; set; } = "Pendente";
+        public StatusPedido             Status    { get; set; } 
         public List<CriarItemPedidoDto> Itens     { get; set; } = new();
     }
 }

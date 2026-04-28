@@ -33,14 +33,14 @@ namespace ValhallaBebidas.UI
             components = new System.ComponentModel.Container();
             CustomizableEdges customizableEdges1 = new CustomizableEdges();
             CustomizableEdges customizableEdges2 = new CustomizableEdges();
-            CustomizableEdges customizableEdges40 = new CustomizableEdges();
-            CustomizableEdges customizableEdges41 = new CustomizableEdges();
+            CustomizableEdges customizableEdges36 = new CustomizableEdges();
+            CustomizableEdges customizableEdges37 = new CustomizableEdges();
+            CustomizableEdges customizableEdges22 = new CustomizableEdges();
+            CustomizableEdges customizableEdges23 = new CustomizableEdges();
             CustomizableEdges customizableEdges8 = new CustomizableEdges();
             CustomizableEdges customizableEdges9 = new CustomizableEdges();
             CustomizableEdges customizableEdges10 = new CustomizableEdges();
             CustomizableEdges customizableEdges11 = new CustomizableEdges();
-            CustomizableEdges customizableEdges26 = new CustomizableEdges();
-            CustomizableEdges customizableEdges27 = new CustomizableEdges();
             CustomizableEdges customizableEdges12 = new CustomizableEdges();
             CustomizableEdges customizableEdges13 = new CustomizableEdges();
             CustomizableEdges customizableEdges14 = new CustomizableEdges();
@@ -51,10 +51,10 @@ namespace ValhallaBebidas.UI
             CustomizableEdges customizableEdges19 = new CustomizableEdges();
             CustomizableEdges customizableEdges20 = new CustomizableEdges();
             CustomizableEdges customizableEdges21 = new CustomizableEdges();
-            CustomizableEdges customizableEdges22 = new CustomizableEdges();
-            CustomizableEdges customizableEdges23 = new CustomizableEdges();
             CustomizableEdges customizableEdges24 = new CustomizableEdges();
             CustomizableEdges customizableEdges25 = new CustomizableEdges();
+            CustomizableEdges customizableEdges26 = new CustomizableEdges();
+            CustomizableEdges customizableEdges27 = new CustomizableEdges();
             CustomizableEdges customizableEdges28 = new CustomizableEdges();
             CustomizableEdges customizableEdges29 = new CustomizableEdges();
             CustomizableEdges customizableEdges30 = new CustomizableEdges();
@@ -63,10 +63,6 @@ namespace ValhallaBebidas.UI
             CustomizableEdges customizableEdges33 = new CustomizableEdges();
             CustomizableEdges customizableEdges34 = new CustomizableEdges();
             CustomizableEdges customizableEdges35 = new CustomizableEdges();
-            CustomizableEdges customizableEdges36 = new CustomizableEdges();
-            CustomizableEdges customizableEdges37 = new CustomizableEdges();
-            CustomizableEdges customizableEdges38 = new CustomizableEdges();
-            CustomizableEdges customizableEdges39 = new CustomizableEdges();
             CustomizableEdges customizableEdges7 = new CustomizableEdges();
             CustomizableEdges customizableEdges3 = new CustomizableEdges();
             CustomizableEdges customizableEdges4 = new CustomizableEdges();
@@ -75,8 +71,6 @@ namespace ValhallaBebidas.UI
             txtNome = new Guna.UI2.WinForms.Guna2TextBox();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            picFotoPerfil = new Guna.UI2.WinForms.Guna2PictureBox();
-            btnSelecionarImagem = new Guna.UI2.WinForms.Guna2Button();
             pnlEndereco = new Guna.UI2.WinForms.Guna2Panel();
             txtNumero = new Guna.UI2.WinForms.Guna2TextBox();
             txtEstado = new Guna.UI2.WinForms.Guna2TextBox();
@@ -94,8 +88,8 @@ namespace ValhallaBebidas.UI
             btnFechar = new Guna.UI2.WinForms.Guna2CircleButton();
             btnCadastrar = new Guna.UI2.WinForms.Guna2Button();
             btnLimparCampos = new Guna.UI2.WinForms.Guna2Button();
+            lblTitulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picFotoPerfil).BeginInit();
             pnlEndereco.SuspendLayout();
             SuspendLayout();
             // 
@@ -114,7 +108,7 @@ namespace ValhallaBebidas.UI
             txtNome.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNome.ForeColor = Color.LightGray;
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(180, 23);
+            txtNome.Location = new Point(20, 18);
             txtNome.Margin = new Padding(4);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderForeColor = Color.DarkGray;
@@ -126,6 +120,7 @@ namespace ValhallaBebidas.UI
             // 
             // guna2BorderlessForm1
             // 
+            guna2BorderlessForm1.BorderRadius = 15;
             guna2BorderlessForm1.ContainerControl = this;
             guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
             guna2BorderlessForm1.TransparentWhileDrag = true;
@@ -136,8 +131,6 @@ namespace ValhallaBebidas.UI
             guna2Panel1.BorderColor = Color.FromArgb(15, 14, 12);
             guna2Panel1.BorderRadius = 15;
             guna2Panel1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot;
-            guna2Panel1.Controls.Add(picFotoPerfil);
-            guna2Panel1.Controls.Add(btnSelecionarImagem);
             guna2Panel1.Controls.Add(pnlEndereco);
             guna2Panel1.Controls.Add(txtTelefone);
             guna2Panel1.Controls.Add(txtCpf);
@@ -146,43 +139,13 @@ namespace ValhallaBebidas.UI
             guna2Panel1.Controls.Add(txtEmail);
             guna2Panel1.Controls.Add(txtDataNascimento);
             guna2Panel1.Controls.Add(txtNome);
-            guna2Panel1.CustomizableEdges = customizableEdges40;
+            guna2Panel1.CustomizableEdges = customizableEdges36;
             guna2Panel1.Location = new Point(12, 42);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.BorderRadius = 15;
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges41;
-            guna2Panel1.Size = new Size(769, 390);
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges37;
+            guna2Panel1.Size = new Size(614, 448);
             guna2Panel1.TabIndex = 2;
-            // 
-            // picFotoPerfil
-            // 
-            picFotoPerfil.BorderRadius = 10;
-            picFotoPerfil.CustomizableEdges = customizableEdges8;
-            picFotoPerfil.FillColor = Color.DarkGray;
-            picFotoPerfil.ImageRotate = 0F;
-            picFotoPerfil.Location = new Point(20, 23);
-            picFotoPerfil.Name = "picFotoPerfil";
-            picFotoPerfil.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            picFotoPerfil.Size = new Size(141, 167);
-            picFotoPerfil.SizeMode = PictureBoxSizeMode.Zoom;
-            picFotoPerfil.TabIndex = 5;
-            picFotoPerfil.TabStop = false;
-            // 
-            // btnSelecionarImagem
-            // 
-            btnSelecionarImagem.BorderRadius = 8;
-            btnSelecionarImagem.Cursor = Cursors.Hand;
-            btnSelecionarImagem.CustomizableEdges = customizableEdges10;
-            btnSelecionarImagem.FillColor = Color.FromArgb(230, 235, 240);
-            btnSelecionarImagem.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnSelecionarImagem.ForeColor = Color.FromArgb(80, 90, 100);
-            btnSelecionarImagem.Location = new Point(20, 196);
-            btnSelecionarImagem.Name = "btnSelecionarImagem";
-            btnSelecionarImagem.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            btnSelecionarImagem.Size = new Size(141, 34);
-            btnSelecionarImagem.TabIndex = 4;
-            btnSelecionarImagem.Text = "Selecionar Foto";
-            btnSelecionarImagem.Click += btnSelecionarImagem_Click;
             // 
             // pnlEndereco
             // 
@@ -196,18 +159,18 @@ namespace ValhallaBebidas.UI
             pnlEndereco.Controls.Add(txtCep);
             pnlEndereco.Controls.Add(txtBairro);
             pnlEndereco.Controls.Add(txtComplemento);
-            pnlEndereco.CustomizableEdges = customizableEdges26;
+            pnlEndereco.CustomizableEdges = customizableEdges22;
             pnlEndereco.Location = new Point(20, 247);
             pnlEndereco.Name = "pnlEndereco";
-            pnlEndereco.ShadowDecoration.CustomizableEdges = customizableEdges27;
-            pnlEndereco.Size = new Size(730, 124);
+            pnlEndereco.ShadowDecoration.CustomizableEdges = customizableEdges23;
+            pnlEndereco.Size = new Size(570, 177);
             pnlEndereco.TabIndex = 3;
             // 
             // txtNumero
             // 
             txtNumero.BorderColor = Color.Silver;
             txtNumero.BorderRadius = 10;
-            txtNumero.CustomizableEdges = customizableEdges12;
+            txtNumero.CustomizableEdges = customizableEdges8;
             txtNumero.DefaultText = "";
             txtNumero.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtNumero.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -218,21 +181,21 @@ namespace ValhallaBebidas.UI
             txtNumero.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNumero.ForeColor = Color.LightGray;
             txtNumero.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNumero.Location = new Point(466, 15);
+            txtNumero.Location = new Point(15, 69);
             txtNumero.Margin = new Padding(4);
             txtNumero.Name = "txtNumero";
             txtNumero.PlaceholderForeColor = Color.DarkGray;
             txtNumero.PlaceholderText = "Número";
             txtNumero.SelectedText = "";
-            txtNumero.ShadowDecoration.CustomizableEdges = customizableEdges13;
-            txtNumero.Size = new Size(111, 34);
+            txtNumero.ShadowDecoration.CustomizableEdges = customizableEdges9;
+            txtNumero.Size = new Size(120, 34);
             txtNumero.TabIndex = 1;
             // 
             // txtEstado
             // 
             txtEstado.BorderColor = Color.Silver;
             txtEstado.BorderRadius = 10;
-            txtEstado.CustomizableEdges = customizableEdges14;
+            txtEstado.CustomizableEdges = customizableEdges10;
             txtEstado.DefaultText = "";
             txtEstado.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEstado.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -243,21 +206,21 @@ namespace ValhallaBebidas.UI
             txtEstado.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtEstado.ForeColor = Color.LightGray;
             txtEstado.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEstado.Location = new Point(623, 69);
+            txtEstado.Location = new Point(425, 122);
             txtEstado.Margin = new Padding(4);
             txtEstado.Name = "txtEstado";
             txtEstado.PlaceholderForeColor = Color.DarkGray;
             txtEstado.PlaceholderText = "UF";
             txtEstado.SelectedText = "";
-            txtEstado.ShadowDecoration.CustomizableEdges = customizableEdges15;
-            txtEstado.Size = new Size(88, 34);
+            txtEstado.ShadowDecoration.CustomizableEdges = customizableEdges11;
+            txtEstado.Size = new Size(125, 34);
             txtEstado.TabIndex = 1;
             // 
             // txtCidade
             // 
             txtCidade.BorderColor = Color.Silver;
             txtCidade.BorderRadius = 10;
-            txtCidade.CustomizableEdges = customizableEdges16;
+            txtCidade.CustomizableEdges = customizableEdges12;
             txtCidade.DefaultText = "";
             txtCidade.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtCidade.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -268,21 +231,21 @@ namespace ValhallaBebidas.UI
             txtCidade.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCidade.ForeColor = Color.LightGray;
             txtCidade.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtCidade.Location = new Point(318, 69);
+            txtCidade.Location = new Point(15, 122);
             txtCidade.Margin = new Padding(4);
             txtCidade.Name = "txtCidade";
             txtCidade.PlaceholderForeColor = Color.DarkGray;
             txtCidade.PlaceholderText = "Cidade";
             txtCidade.SelectedText = "";
-            txtCidade.ShadowDecoration.CustomizableEdges = customizableEdges17;
-            txtCidade.Size = new Size(291, 34);
+            txtCidade.ShadowDecoration.CustomizableEdges = customizableEdges13;
+            txtCidade.Size = new Size(390, 34);
             txtCidade.TabIndex = 1;
             // 
             // txtEndereco
             // 
             txtEndereco.BorderColor = Color.Silver;
             txtEndereco.BorderRadius = 10;
-            txtEndereco.CustomizableEdges = customizableEdges18;
+            txtEndereco.CustomizableEdges = customizableEdges14;
             txtEndereco.DefaultText = "";
             txtEndereco.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEndereco.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -299,15 +262,15 @@ namespace ValhallaBebidas.UI
             txtEndereco.PlaceholderForeColor = Color.DarkGray;
             txtEndereco.PlaceholderText = "Endereço";
             txtEndereco.SelectedText = "";
-            txtEndereco.ShadowDecoration.CustomizableEdges = customizableEdges19;
-            txtEndereco.Size = new Size(307, 34);
+            txtEndereco.ShadowDecoration.CustomizableEdges = customizableEdges15;
+            txtEndereco.Size = new Size(404, 34);
             txtEndereco.TabIndex = 1;
             // 
             // txtCep
             // 
             txtCep.BorderColor = Color.Silver;
             txtCep.BorderRadius = 10;
-            txtCep.CustomizableEdges = customizableEdges20;
+            txtCep.CustomizableEdges = customizableEdges16;
             txtCep.DefaultText = "";
             txtCep.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtCep.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -324,7 +287,7 @@ namespace ValhallaBebidas.UI
             txtCep.PlaceholderForeColor = Color.DarkGray;
             txtCep.PlaceholderText = "CEP";
             txtCep.SelectedText = "";
-            txtCep.ShadowDecoration.CustomizableEdges = customizableEdges21;
+            txtCep.ShadowDecoration.CustomizableEdges = customizableEdges17;
             txtCep.Size = new Size(120, 34);
             txtCep.TabIndex = 1;
             txtCep.Leave += txtCep_Leave;
@@ -333,7 +296,7 @@ namespace ValhallaBebidas.UI
             // 
             txtBairro.BorderColor = Color.Silver;
             txtBairro.BorderRadius = 10;
-            txtBairro.CustomizableEdges = customizableEdges22;
+            txtBairro.CustomizableEdges = customizableEdges18;
             txtBairro.DefaultText = "";
             txtBairro.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtBairro.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -344,21 +307,21 @@ namespace ValhallaBebidas.UI
             txtBairro.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtBairro.ForeColor = Color.LightGray;
             txtBairro.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBairro.Location = new Point(15, 69);
+            txtBairro.Location = new Point(286, 69);
             txtBairro.Margin = new Padding(4);
             txtBairro.Name = "txtBairro";
             txtBairro.PlaceholderForeColor = Color.DarkGray;
             txtBairro.PlaceholderText = "Bairro";
             txtBairro.SelectedText = "";
-            txtBairro.ShadowDecoration.CustomizableEdges = customizableEdges23;
-            txtBairro.Size = new Size(291, 34);
+            txtBairro.ShadowDecoration.CustomizableEdges = customizableEdges19;
+            txtBairro.Size = new Size(264, 34);
             txtBairro.TabIndex = 1;
             // 
             // txtComplemento
             // 
             txtComplemento.BorderColor = Color.Silver;
             txtComplemento.BorderRadius = 10;
-            txtComplemento.CustomizableEdges = customizableEdges24;
+            txtComplemento.CustomizableEdges = customizableEdges20;
             txtComplemento.DefaultText = "";
             txtComplemento.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtComplemento.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -369,13 +332,13 @@ namespace ValhallaBebidas.UI
             txtComplemento.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtComplemento.ForeColor = Color.LightGray;
             txtComplemento.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtComplemento.Location = new Point(588, 15);
+            txtComplemento.Location = new Point(146, 69);
             txtComplemento.Margin = new Padding(4);
             txtComplemento.Name = "txtComplemento";
             txtComplemento.PlaceholderForeColor = Color.DarkGray;
             txtComplemento.PlaceholderText = "Complemento";
             txtComplemento.SelectedText = "";
-            txtComplemento.ShadowDecoration.CustomizableEdges = customizableEdges25;
+            txtComplemento.ShadowDecoration.CustomizableEdges = customizableEdges21;
             txtComplemento.Size = new Size(123, 34);
             txtComplemento.TabIndex = 1;
             // 
@@ -383,7 +346,7 @@ namespace ValhallaBebidas.UI
             // 
             txtTelefone.BorderColor = Color.Silver;
             txtTelefone.BorderRadius = 10;
-            txtTelefone.CustomizableEdges = customizableEdges28;
+            txtTelefone.CustomizableEdges = customizableEdges24;
             txtTelefone.DefaultText = "";
             txtTelefone.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtTelefone.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -394,13 +357,13 @@ namespace ValhallaBebidas.UI
             txtTelefone.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtTelefone.ForeColor = Color.LightGray;
             txtTelefone.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtTelefone.Location = new Point(540, 141);
+            txtTelefone.Location = new Point(380, 136);
             txtTelefone.Margin = new Padding(4);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.PlaceholderForeColor = Color.DarkGray;
             txtTelefone.PlaceholderText = "Telefone";
             txtTelefone.SelectedText = "";
-            txtTelefone.ShadowDecoration.CustomizableEdges = customizableEdges29;
+            txtTelefone.ShadowDecoration.CustomizableEdges = customizableEdges25;
             txtTelefone.Size = new Size(210, 34);
             txtTelefone.TabIndex = 1;
             // 
@@ -408,7 +371,7 @@ namespace ValhallaBebidas.UI
             // 
             txtCpf.BorderColor = Color.Silver;
             txtCpf.BorderRadius = 10;
-            txtCpf.CustomizableEdges = customizableEdges30;
+            txtCpf.CustomizableEdges = customizableEdges26;
             txtCpf.DefaultText = "";
             txtCpf.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtCpf.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -419,13 +382,13 @@ namespace ValhallaBebidas.UI
             txtCpf.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCpf.ForeColor = Color.LightGray;
             txtCpf.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtCpf.Location = new Point(471, 81);
+            txtCpf.Location = new Point(311, 76);
             txtCpf.Margin = new Padding(4);
             txtCpf.Name = "txtCpf";
             txtCpf.PlaceholderForeColor = Color.DarkGray;
             txtCpf.PlaceholderText = "CPF";
             txtCpf.SelectedText = "";
-            txtCpf.ShadowDecoration.CustomizableEdges = customizableEdges31;
+            txtCpf.ShadowDecoration.CustomizableEdges = customizableEdges27;
             txtCpf.Size = new Size(279, 34);
             txtCpf.TabIndex = 1;
             // 
@@ -433,7 +396,7 @@ namespace ValhallaBebidas.UI
             // 
             txtSenha.BorderColor = Color.Silver;
             txtSenha.BorderRadius = 10;
-            txtSenha.CustomizableEdges = customizableEdges32;
+            txtSenha.CustomizableEdges = customizableEdges28;
             txtSenha.DefaultText = "";
             txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSenha.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -444,13 +407,13 @@ namespace ValhallaBebidas.UI
             txtSenha.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtSenha.ForeColor = Color.LightGray;
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(180, 196);
+            txtSenha.Location = new Point(20, 191);
             txtSenha.Margin = new Padding(4);
             txtSenha.Name = "txtSenha";
             txtSenha.PlaceholderForeColor = Color.DarkGray;
             txtSenha.PlaceholderText = "Senha";
             txtSenha.SelectedText = "";
-            txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges33;
+            txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges29;
             txtSenha.Size = new Size(279, 34);
             txtSenha.TabIndex = 1;
             // 
@@ -458,7 +421,7 @@ namespace ValhallaBebidas.UI
             // 
             txtConfirmarSenha.BorderColor = Color.Silver;
             txtConfirmarSenha.BorderRadius = 10;
-            txtConfirmarSenha.CustomizableEdges = customizableEdges34;
+            txtConfirmarSenha.CustomizableEdges = customizableEdges30;
             txtConfirmarSenha.DefaultText = "";
             txtConfirmarSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtConfirmarSenha.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -469,13 +432,13 @@ namespace ValhallaBebidas.UI
             txtConfirmarSenha.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtConfirmarSenha.ForeColor = Color.LightGray;
             txtConfirmarSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtConfirmarSenha.Location = new Point(471, 196);
+            txtConfirmarSenha.Location = new Point(311, 191);
             txtConfirmarSenha.Margin = new Padding(4);
             txtConfirmarSenha.Name = "txtConfirmarSenha";
             txtConfirmarSenha.PlaceholderForeColor = Color.DarkGray;
             txtConfirmarSenha.PlaceholderText = "Confirme sua senha";
             txtConfirmarSenha.SelectedText = "";
-            txtConfirmarSenha.ShadowDecoration.CustomizableEdges = customizableEdges35;
+            txtConfirmarSenha.ShadowDecoration.CustomizableEdges = customizableEdges31;
             txtConfirmarSenha.Size = new Size(279, 34);
             txtConfirmarSenha.TabIndex = 1;
             // 
@@ -483,7 +446,7 @@ namespace ValhallaBebidas.UI
             // 
             txtEmail.BorderColor = Color.Silver;
             txtEmail.BorderRadius = 10;
-            txtEmail.CustomizableEdges = customizableEdges36;
+            txtEmail.CustomizableEdges = customizableEdges32;
             txtEmail.DefaultText = "";
             txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEmail.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -494,13 +457,13 @@ namespace ValhallaBebidas.UI
             txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtEmail.ForeColor = Color.LightGray;
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(180, 141);
+            txtEmail.Location = new Point(20, 136);
             txtEmail.Margin = new Padding(4);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderForeColor = Color.DarkGray;
             txtEmail.PlaceholderText = "E-mail (Exemplo: nome@email.com)";
             txtEmail.SelectedText = "";
-            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges37;
+            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges33;
             txtEmail.Size = new Size(352, 34);
             txtEmail.TabIndex = 1;
             // 
@@ -508,7 +471,7 @@ namespace ValhallaBebidas.UI
             // 
             txtDataNascimento.BorderColor = Color.Silver;
             txtDataNascimento.BorderRadius = 10;
-            txtDataNascimento.CustomizableEdges = customizableEdges38;
+            txtDataNascimento.CustomizableEdges = customizableEdges34;
             txtDataNascimento.DefaultText = "";
             txtDataNascimento.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtDataNascimento.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -519,13 +482,13 @@ namespace ValhallaBebidas.UI
             txtDataNascimento.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtDataNascimento.ForeColor = Color.LightGray;
             txtDataNascimento.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtDataNascimento.Location = new Point(180, 81);
+            txtDataNascimento.Location = new Point(20, 76);
             txtDataNascimento.Margin = new Padding(4);
             txtDataNascimento.Name = "txtDataNascimento";
             txtDataNascimento.PlaceholderForeColor = Color.DarkGray;
             txtDataNascimento.PlaceholderText = "Data de Nascimento";
             txtDataNascimento.SelectedText = "";
-            txtDataNascimento.ShadowDecoration.CustomizableEdges = customizableEdges39;
+            txtDataNascimento.ShadowDecoration.CustomizableEdges = customizableEdges35;
             txtDataNascimento.Size = new Size(279, 34);
             txtDataNascimento.TabIndex = 1;
             // 
@@ -540,7 +503,7 @@ namespace ValhallaBebidas.UI
             btnFechar.FillColor = Color.Red;
             btnFechar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnFechar.ForeColor = Color.White;
-            btnFechar.Location = new Point(749, 4);
+            btnFechar.Location = new Point(594, 4);
             btnFechar.Name = "btnFechar";
             btnFechar.PressedColor = Color.Transparent;
             btnFechar.ShadowDecoration.CustomizableEdges = customizableEdges7;
@@ -558,7 +521,7 @@ namespace ValhallaBebidas.UI
             btnCadastrar.FillColor = Color.FromArgb(0, 123, 204);
             btnCadastrar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnCadastrar.ForeColor = Color.White;
-            btnCadastrar.Location = new Point(654, 441);
+            btnCadastrar.Location = new Point(499, 510);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnCadastrar.Size = new Size(127, 34);
@@ -574,7 +537,7 @@ namespace ValhallaBebidas.UI
             btnLimparCampos.FillColor = Color.FromArgb(220, 220, 225);
             btnLimparCampos.Font = new Font("Segoe UI", 10F);
             btnLimparCampos.ForeColor = Color.FromArgb(80, 80, 90);
-            btnLimparCampos.Location = new Point(514, 441);
+            btnLimparCampos.Location = new Point(359, 510);
             btnLimparCampos.Name = "btnLimparCampos";
             btnLimparCampos.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnLimparCampos.Size = new Size(127, 34);
@@ -582,13 +545,25 @@ namespace ValhallaBebidas.UI
             btnLimparCampos.Text = "Limpar Campos";
             btnLimparCampos.Click += btnLimparCampos_Click;
             // 
+            // lblTitulo
+            // 
+            lblTitulo.BackColor = Color.Transparent;
+            lblTitulo.Font = new Font("Sora SemiBold", 20.75F, FontStyle.Bold);
+            lblTitulo.ForeColor = SystemColors.ButtonHighlight;
+            lblTitulo.Location = new Point(12, 4);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(355, 37);
+            lblTitulo.TabIndex = 15;
+            lblTitulo.Text = "Cadastro de Funcionário";
+            // 
             // frmCadastroFuncionario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnablePreventFocusChange;
             BackColor = Color.FromArgb(15, 14, 12);
-            ClientSize = new Size(795, 488);
+            ClientSize = new Size(642, 556);
+            Controls.Add(lblTitulo);
             Controls.Add(btnCadastrar);
             Controls.Add(btnLimparCampos);
             Controls.Add(btnFechar);
@@ -600,9 +575,9 @@ namespace ValhallaBebidas.UI
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmCadstroUsuario";
             guna2Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)picFotoPerfil).EndInit();
             pnlEndereco.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -615,7 +590,6 @@ namespace ValhallaBebidas.UI
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2Panel pnlEndereco;
         private Guna.UI2.WinForms.Guna2TextBox txtConfirmarSenha;
-        private Guna.UI2.WinForms.Guna2TextBox txtNumerotxtSenha;
         private Guna.UI2.WinForms.Guna2TextBox txtBairro;
         private Guna.UI2.WinForms.Guna2TextBox txtCidade;
         private Guna.UI2.WinForms.Guna2TextBox txtCep;
@@ -623,11 +597,10 @@ namespace ValhallaBebidas.UI
         private Guna.UI2.WinForms.Guna2TextBox txtEndereco;
         private Guna.UI2.WinForms.Guna2TextBox txtEstado;
         private Guna.UI2.WinForms.Guna2CircleButton btnFechar;
-        private Guna.UI2.WinForms.Guna2Button btnSelecionarImagem;
-        private Guna.UI2.WinForms.Guna2PictureBox picFotoPerfil;
         private Guna.UI2.WinForms.Guna2Button btnCadastrar;
         private Guna.UI2.WinForms.Guna2Button btnLimparCampos;
         private Guna.UI2.WinForms.Guna2TextBox txtTelefone;
         private Guna.UI2.WinForms.Guna2TextBox txtSenha;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblTitulo;
     }
 }

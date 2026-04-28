@@ -1,6 +1,7 @@
 using SenacBuy.UI.Services.Models;
 using System.Net.Http.Json;
 using System.Text.Json;
+using ValhallaBebidas.Domain.Enums;
 
 namespace ValhallaBebidas.UI.Services.Models
 {
@@ -66,7 +67,14 @@ namespace ValhallaBebidas.UI.Services.Models
         {
             try
             {
-                var payload  = new CriarPedidoDto { ClienteId = clienteId, Itens = itens, Status = status };
+                // O nome da propriedade no seu DTO é 'Status' (conforme linha 37 da sua imagem)
+                var payload = new CriarPedidoDto
+                {
+                    ClienteId = clienteId,
+                    Itens = itens,
+                    Status = StatusPedido.Pendente
+                };
+
                 var response = await _http.PostAsJsonAsync("api/pedido", payload);
 
                 if (response.IsSuccessStatusCode)
@@ -123,7 +131,7 @@ namespace ValhallaBebidas.UI.Services.Models
         {
             try
             {
-                var payload  = new AtualizarPedidoDto { ClienteId = clienteId, Itens = itens, Status = status };
+                var payload = new AtualizarPedidoDto { ClienteId = clienteId, Itens = itens, Status = Enum.Parse<StatusPedido>(status) };
                 var response = await _http.PutAsJsonAsync($"api/pedido/{id}", payload);
 
                 if (response.IsSuccessStatusCode)

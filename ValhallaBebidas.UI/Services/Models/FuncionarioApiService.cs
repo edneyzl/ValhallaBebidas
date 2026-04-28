@@ -60,11 +60,11 @@ namespace ValhallaBebidas.UI.Services.Models
         /// Cadastra um novo usuário na API.
         /// Retorna o UsuarioDto criado ou null em caso de erro.
         /// </summary>
-        public async Task<FuncionarioDto?> CadastrarFuncionarioAsync(string nome,string dataNasc, string cpf, string telefone, string email, string senha, string? fotoPerfil = null)
+        public async Task<FuncionarioDto?> CadastrarFuncionarioAsync(string nome,DateTime dataNasc, string cpf, string telefone, string email, string senha, string? fotoPerfil = null)
         {
             try
             {
-                var payload = new CriarFuncionarioDto { Nome = nome, Email = email, DataNascimento = dataNasc, Cpf = cpf, Telefone = telefone, Senha = senha, FotoPerfil = fotoPerfil };
+                var payload = new CriarFuncionarioDto { NomeCompleto = nome, Email = email, DataNascimento = dataNasc, Cpf = cpf, Telefone = telefone, Senha = senha};
                 var response = await _http.PostAsJsonAsync("api/funcionario", payload);
 
                 if (response.IsSuccessStatusCode)
@@ -132,7 +132,7 @@ namespace ValhallaBebidas.UI.Services.Models
         /// Atualiza nome e email de um usuário existente.
         /// Retorna true em caso de sucesso.
         /// </summary>
-        public async Task<bool> AtualizarUsuarioAsync(FuncionarioDto dto)
+        public async Task<bool> AtualizarUsuarioAsync(AtualizarFuncionarioDto dto)
         {
             try
             {

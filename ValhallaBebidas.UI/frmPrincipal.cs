@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ValhallaBebidas.UI.Services.Models;
 
 namespace ValhallaBebidas.UI
 {
@@ -14,11 +16,10 @@ namespace ValhallaBebidas.UI
         private readonly string _nomeUsuario;
 
 
-        public frmPrincipal(string nomeUsuario = "Usuário", string? caminhoFoto = null)
+        public frmPrincipal(FuncionarioDto funcionario)
         {
             InitializeComponent();
-            _nomeUsuario = nomeUsuario;
-            lblUsuario.Text = $"👤  {nomeUsuario}";
+            lblUsuario.Text = $"{funcionario.NomeCompleto}";
 
             // Carrega o Dashboard como tela inicial
             LoadUserControl(new ucDashboard());
@@ -39,44 +40,44 @@ namespace ValhallaBebidas.UI
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btnDashboard);
+            SetActiveButton(btnClientes);
             LoadUserControl(new ucClientes());
         }
 
         private void btnProdutos_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btnDashboard);
+            SetActiveButton(btnProdutos);
             LoadUserControl(new ucProdutos());
         }
 
         private void btnPedidos_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btnDashboard);
+            SetActiveButton(btnPedidos);
             LoadUserControl(new ucPedidos());
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btnDashboard);
+            SetActiveButton(btnUsuarios);
             LoadUserControl(new ucFuncionarios());
         }
 
         private void btnMovimentacoes_Click(object sender, EventArgs e)
         {
-            SetActiveButton(btnDashboard);
+            SetActiveButton(btnMovimentacoes);
             LoadUserControl(new ucMovimentacoes());
         }
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja realmente sair do sistema?", "Confirmar Saída",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                Application.Exit();
+                var login = new FrmLogin();
+                login.Show();
+                this.Close();
         }
 
         private void SetActiveButton(Guna.UI2.WinForms.Guna2Button activeBtn)
         {
-            var botoes = new[] { btnDashboard, btnClientes, btnProdutos, btnPedidos, btnUsuarios };
+            var botoes = new[] { btnDashboard, btnClientes, btnProdutos, btnPedidos, btnUsuarios, btnMovimentacoes };
             foreach (var btn in botoes)
             {
                 btn.FillColor = Color.FromArgb(22, 22, 22);

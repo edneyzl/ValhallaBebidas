@@ -41,7 +41,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            panelHeader = new Guna.UI2.WinForms.Guna2Panel();
             guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -57,28 +57,29 @@
             guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
-            guna2Panel1.SuspendLayout();
+            guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(components);
+            panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
             guna2Panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // guna2Panel1
+            // panelHeader
             // 
-            guna2Panel1.BackColor = Color.Transparent;
-            guna2Panel1.BorderRadius = 5;
-            guna2Panel1.Controls.Add(guna2CirclePictureBox1);
-            guna2Panel1.Controls.Add(guna2HtmlLabel4);
-            guna2Panel1.Controls.Add(guna2HtmlLabel3);
-            guna2Panel1.Controls.Add(guna2HtmlLabel2);
-            guna2Panel1.Controls.Add(guna2HtmlLabel1);
-            guna2Panel1.Controls.Add(btnFechar);
-            guna2Panel1.CustomizableEdges = customizableEdges3;
-            guna2Panel1.FillColor = Color.FromArgb(15, 14, 12);
-            guna2Panel1.Location = new Point(-8, -5);
-            guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2Panel1.Size = new Size(447, 125);
-            guna2Panel1.TabIndex = 0;
+            panelHeader.BackColor = Color.Transparent;
+            panelHeader.BorderRadius = 5;
+            panelHeader.Controls.Add(guna2CirclePictureBox1);
+            panelHeader.Controls.Add(guna2HtmlLabel4);
+            panelHeader.Controls.Add(guna2HtmlLabel3);
+            panelHeader.Controls.Add(guna2HtmlLabel2);
+            panelHeader.Controls.Add(guna2HtmlLabel1);
+            panelHeader.Controls.Add(btnFechar);
+            panelHeader.CustomizableEdges = customizableEdges3;
+            panelHeader.FillColor = Color.FromArgb(15, 14, 12);
+            panelHeader.Location = new Point(-8, -2);
+            panelHeader.Name = "panelHeader";
+            panelHeader.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            panelHeader.Size = new Size(435, 122);
+            panelHeader.TabIndex = 0;
             // 
             // guna2CirclePictureBox1
             // 
@@ -88,7 +89,7 @@
             guna2CirclePictureBox1.Image = Properties.Resources.icon_val;
             guna2CirclePictureBox1.ImageRotate = 0F;
             guna2CirclePictureBox1.InitialImage = Properties.Resources.icon_val;
-            guna2CirclePictureBox1.Location = new Point(10, 10);
+            guna2CirclePictureBox1.Location = new Point(201, 5);
             guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             guna2CirclePictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges1;
             guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
@@ -122,43 +123,46 @@
             // guna2HtmlLabel2
             // 
             guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Font = new Font("Rockwell", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel2.Font = new Font("Sora", 27.75F, FontStyle.Bold);
             guna2HtmlLabel2.ForeColor = Color.FromArgb(214, 189, 119);
-            guna2HtmlLabel2.Location = new Point(227, 48);
+            guna2HtmlLabel2.Location = new Point(219, 61);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(150, 48);
+            guna2HtmlLabel2.Size = new Size(159, 49);
             guna2HtmlLabel2.TabIndex = 1;
             guna2HtmlLabel2.Text = "Bebidas";
             // 
             // guna2HtmlLabel1
             // 
             guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Rockwell", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel1.Font = new Font("Sora", 27.75F, FontStyle.Bold);
             guna2HtmlLabel1.ForeColor = SystemColors.ButtonHighlight;
-            guna2HtmlLabel1.Location = new Point(64, 48);
+            guna2HtmlLabel1.Location = new Point(65, 60);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(157, 48);
+            guna2HtmlLabel1.Size = new Size(156, 49);
             guna2HtmlLabel1.TabIndex = 1;
             guna2HtmlLabel1.Text = "Valhalla";
             // 
             // btnFechar
             // 
             btnFechar.BackColor = Color.Transparent;
+            btnFechar.BackgroundImageLayout = ImageLayout.Center;
+            btnFechar.Cursor = Cursors.Hand;
             btnFechar.CustomBorderColor = Color.Black;
             btnFechar.DisabledState.BorderColor = Color.DarkGray;
             btnFechar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnFechar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnFechar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnFechar.FillColor = Color.Red;
+            btnFechar.FillColor = Color.FromArgb(214, 189, 119);
             btnFechar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnFechar.ForeColor = Color.White;
-            btnFechar.Location = new Point(397, 10);
+            btnFechar.Image = Properties.Resources.close__2_;
+            btnFechar.ImageSize = new Size(13, 13);
+            btnFechar.Location = new Point(394, 5);
             btnFechar.Name = "btnFechar";
             btnFechar.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnFechar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             btnFechar.Size = new Size(32, 32);
-            btnFechar.TabIndex = 0;
-            btnFechar.Text = "X";
+            btnFechar.TabIndex = 4;
             btnFechar.Click += guna2CircleButton1_Click;
             // 
             // guna2Panel2
@@ -176,17 +180,17 @@
             guna2Panel2.Location = new Point(-8, 116);
             guna2Panel2.Name = "guna2Panel2";
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2Panel2.Size = new Size(444, 350);
+            guna2Panel2.Size = new Size(435, 339);
             guna2Panel2.TabIndex = 1;
             // 
             // guna2HtmlLabel7
             // 
             guna2HtmlLabel7.BackColor = Color.Transparent;
-            guna2HtmlLabel7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            guna2HtmlLabel7.Font = new Font("Sora SemiBold", 12F, FontStyle.Bold);
             guna2HtmlLabel7.ForeColor = Color.White;
-            guna2HtmlLabel7.Location = new Point(98, 284);
+            guna2HtmlLabel7.Location = new Point(79, 278);
             guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            guna2HtmlLabel7.Size = new Size(161, 23);
+            guna2HtmlLabel7.Size = new Size(170, 23);
             guna2HtmlLabel7.TabIndex = 5;
             guna2HtmlLabel7.Text = "Não tem uma conta? ";
             // 
@@ -195,13 +199,13 @@
             linkCadastreSe.AutoSize = true;
             linkCadastreSe.BackColor = Color.Transparent;
             linkCadastreSe.DisabledLinkColor = Color.Transparent;
-            linkCadastreSe.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            linkCadastreSe.Font = new Font("Sora SemiBold", 12F, FontStyle.Bold);
             linkCadastreSe.ForeColor = Color.Transparent;
             linkCadastreSe.LinkColor = Color.FromArgb(214, 189, 119);
-            linkCadastreSe.Location = new Point(265, 286);
+            linkCadastreSe.Location = new Point(251, 278);
             linkCadastreSe.Name = "linkCadastreSe";
-            linkCadastreSe.Size = new Size(95, 21);
-            linkCadastreSe.TabIndex = 4;
+            linkCadastreSe.Size = new Size(106, 21);
+            linkCadastreSe.TabIndex = 3;
             linkCadastreSe.TabStop = true;
             linkCadastreSe.Text = "Inscreva-se";
             linkCadastreSe.LinkClicked += linkLabel1_LinkClicked;
@@ -210,19 +214,20 @@
             // 
             btnLogar.BackColor = Color.Transparent;
             btnLogar.BorderRadius = 12;
+            btnLogar.Cursor = Cursors.Hand;
             btnLogar.CustomizableEdges = customizableEdges5;
             btnLogar.DisabledState.BorderColor = Color.DarkGray;
             btnLogar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnLogar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnLogar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnLogar.FillColor = Color.FromArgb(214, 189, 119);
-            btnLogar.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLogar.Font = new Font("Sora SemiBold", 18F, FontStyle.Bold);
             btnLogar.ForeColor = Color.Black;
-            btnLogar.Location = new Point(41, 231);
+            btnLogar.Location = new Point(41, 227);
             btnLogar.Name = "btnLogar";
             btnLogar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnLogar.Size = new Size(358, 45);
-            btnLogar.TabIndex = 3;
+            btnLogar.TabIndex = 2;
             btnLogar.Text = "Acessar conta";
             btnLogar.Click += btnLogar_Click;
             // 
@@ -232,25 +237,25 @@
             txtEmail.BorderColor = Color.Silver;
             txtEmail.BorderRadius = 12;
             txtEmail.CustomizableEdges = customizableEdges7;
-            txtEmail.DefaultText = "admin@valhalla.br";
+            txtEmail.DefaultText = "admin@admin.com";
             txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEmail.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtEmail.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtEmail.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtEmail.FillColor = Color.FromArgb(33, 33, 33);
             txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEmail.Font = new Font("Sora SemiBold", 12F, FontStyle.Bold);
             txtEmail.ForeColor = Color.FromArgb(214, 189, 119);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(40, 109);
-            txtEmail.Margin = new Padding(11, 12, 11, 12);
+            txtEmail.Location = new Point(41, 101);
+            txtEmail.Margin = new Padding(17);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             txtEmail.PlaceholderText = "📧 Digite seu e-mail ";
             txtEmail.SelectedText = "";
             txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            txtEmail.Size = new Size(358, 51);
-            txtEmail.TabIndex = 2;
+            txtEmail.Size = new Size(358, 50);
+            txtEmail.TabIndex = 0;
             // 
             // txtSenha
             // 
@@ -258,46 +263,46 @@
             txtSenha.BorderColor = Color.Silver;
             txtSenha.BorderRadius = 12;
             txtSenha.CustomizableEdges = customizableEdges9;
-            txtSenha.DefaultText = "adminValhalla";
+            txtSenha.DefaultText = "admin";
             txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSenha.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             txtSenha.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtSenha.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtSenha.FillColor = Color.FromArgb(33, 33, 33);
             txtSenha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSenha.Font = new Font("Sora SemiBold", 12F, FontStyle.Bold);
             txtSenha.ForeColor = Color.FromArgb(214, 189, 119);
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(41, 170);
-            txtSenha.Margin = new Padding(7);
+            txtSenha.Location = new Point(41, 165);
+            txtSenha.Margin = new Padding(11, 10, 11, 10);
             txtSenha.Name = "txtSenha";
             txtSenha.PasswordChar = '*';
             txtSenha.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             txtSenha.PlaceholderText = "🔒 Digite sua senha";
             txtSenha.SelectedText = "";
             txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtSenha.Size = new Size(358, 51);
-            txtSenha.TabIndex = 2;
+            txtSenha.Size = new Size(358, 50);
+            txtSenha.TabIndex = 1;
             // 
             // guna2HtmlLabel6
             // 
             guna2HtmlLabel6.BackColor = Color.Transparent;
-            guna2HtmlLabel6.Font = new Font("Rockwell", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel6.Font = new Font("Sora SemiBold", 24F, FontStyle.Bold);
             guna2HtmlLabel6.ForeColor = Color.FromArgb(214, 189, 119);
-            guna2HtmlLabel6.Location = new Point(308, 46);
+            guna2HtmlLabel6.Location = new Point(309, 40);
             guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            guna2HtmlLabel6.Size = new Size(95, 41);
+            guna2HtmlLabel6.Size = new Size(101, 42);
             guna2HtmlLabel6.TabIndex = 1;
             guna2HtmlLabel6.Text = "Volta!";
             // 
             // guna2HtmlLabel5
             // 
             guna2HtmlLabel5.BackColor = Color.Transparent;
-            guna2HtmlLabel5.Font = new Font("Rockwell", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel5.Font = new Font("Sora SemiBold", 24F, FontStyle.Bold);
             guna2HtmlLabel5.ForeColor = SystemColors.ButtonHighlight;
-            guna2HtmlLabel5.Location = new Point(41, 46);
+            guna2HtmlLabel5.Location = new Point(30, 40);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            guna2HtmlLabel5.Size = new Size(261, 41);
+            guna2HtmlLabel5.Size = new Size(273, 42);
             guna2HtmlLabel5.TabIndex = 1;
             guna2HtmlLabel5.Text = "Bem Vindo(a) de";
             // 
@@ -308,19 +313,25 @@
             guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
             guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
+            // guna2DragControl1
+            // 
+            guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            guna2DragControl1.TargetControl = panelHeader;
+            guna2DragControl1.UseTransparentDrag = true;
+            // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(423, 450);
-            Controls.Add(guna2Panel1);
+            Controls.Add(panelHeader);
             Controls.Add(guna2Panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            guna2Panel1.ResumeLayout(false);
-            guna2Panel1.PerformLayout();
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).EndInit();
             guna2Panel2.ResumeLayout(false);
             guna2Panel2.PerformLayout();
@@ -329,7 +340,7 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel panelHeader;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2CircleButton btnFechar;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
@@ -345,5 +356,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

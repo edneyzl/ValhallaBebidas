@@ -64,7 +64,7 @@ namespace ValhallaBebidas.UI.Services.Models
         {
             try
             {
-                var payload  = new CriarClienteDto { Nome = nome, CPF = cpf };
+                var payload  = new CriarClienteDto { Nome = nome, Documento = cpf };
                 var response = await _http.PostAsJsonAsync("api/cliente", payload);
 
                 if (response.IsSuccessStatusCode)
@@ -91,7 +91,7 @@ namespace ValhallaBebidas.UI.Services.Models
         {
             try
             {
-                var payload  = new AtualizarClienteDto { Nome = nome, CPF = cpf };
+                var payload  = new AtualizarClienteDto { Nome = nome, Documento = cpf };
                 var response = await _http.PutAsJsonAsync($"api/cliente/{id}", payload);
 
                 if (response.IsSuccessStatusCode)

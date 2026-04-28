@@ -21,7 +21,7 @@ namespace SenacBuy.UI.Services.Models
         {
             try
             {
-                var lista = await _http.GetFromJsonAsync<List<CategoriaDto>>("api/categorias");
+                var lista = await _http.GetFromJsonAsync<List<CategoriaDto>>("api/Categoria");
                 return lista ?? new List<CategoriaDto>();
             }
             catch (HttpRequestException ex)

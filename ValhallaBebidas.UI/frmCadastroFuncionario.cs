@@ -1,7 +1,6 @@
 ﻿using ValhallaBebidas.UI.Services.Models;
 using System.Text.Json;
 using ValhallaBebidas.UI.DTO;
-using ValhallaBebidas.UI.Services.Models;
 
 namespace ValhallaBebidas.UI
 {
@@ -13,7 +12,6 @@ namespace ValhallaBebidas.UI
         }
 
         private readonly FuncionarioApiService _funcionarioService = new();
-        private string? _caminhoFotoLocal;
 
         private async void txtCep_Leave(object sender, EventArgs e)
         {
@@ -60,16 +58,7 @@ namespace ValhallaBebidas.UI
             this.Close();
         }
 
-        private void btnSelecionarImagem_Click(object sender, EventArgs e)
-        {
-            using var ofd = new OpenFileDialog();
-            ofd.Filter = "Imagens (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                _caminhoFotoLocal = ofd.FileName;
-                picFotoPerfil.ImageLocation = _caminhoFotoLocal;
-            }
-        }
+        
 
         private void btnLimparCampos_Click(object sender, EventArgs e)
         {
@@ -87,7 +76,7 @@ namespace ValhallaBebidas.UI
             txtBairro.Text = string.Empty;
             txtCidade.Text = string.Empty;
             txtEstado.Text = string.Empty;
-            picFotoPerfil.Image = null;
+        
         }
 
         private async void btnSalvar_Click(object sender, EventArgs e)
@@ -130,13 +119,13 @@ namespace ValhallaBebidas.UI
 
             btnCadastrar.Enabled = false;
             btnCadastrar.Text = "Cadastrando...";
-
+            var dataNascimento = DateTime.Parse(txtDataNascimento.Text);
             try
             {
                 var funcionario = await _funcionarioService.CadastrarFuncionarioAsync(
                     nome: txtNome.Text.Trim(),
                     email: txtEmail.Text.Trim(),
-                    dataNasc: txtDataNascimento.Text.Trim(),
+                    dataNasc: dataNascimento,
                     cpf: txtCpf.Text.Trim(),
                     telefone: txtTelefone.Text.Trim(),
                     senha: txtSenha.Text);
@@ -144,7 +133,7 @@ namespace ValhallaBebidas.UI
                 if (funcionario != null)
                 {
                     MessageBox.Show(
-                        $"Funcionário \"{funcionario.Nome}\" cadastrado com sucesso!\nFaça login para continuar.",
+                        $"Funcionário \"{funcionario.NomeCompleto}\" cadastrado com sucesso!\nFaça login para continuar.",
                         "Cadastro Realizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Fecha o formulário de cadastro e volta para o login

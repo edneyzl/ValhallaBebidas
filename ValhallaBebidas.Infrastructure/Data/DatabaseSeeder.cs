@@ -33,7 +33,7 @@ public static class DatabaseSeeder
     {
         if (await db.Funcionarios.AnyAsync()) return;
 
-        var hash = BCrypt.Net.BCrypt.HashPassword("adminValhalla");
+        var hash = BCrypt.Net.BCrypt.HashPassword("admin");
 
         var endereco = db.Enderecos.FirstOrDefault();
         if (endereco == null)
@@ -58,7 +58,7 @@ public static class DatabaseSeeder
             DataNascimento = new DateTime(2000, 1, 1),
             Cpf = "11122233344",
             Telefone = "(11) 99999-9999",
-            Email = "admin@valhalla.br",
+            Email = "admin@admin.com",
             SenhaHash = hash,
             Status = true,
             EnderecoId = endereco.Id,

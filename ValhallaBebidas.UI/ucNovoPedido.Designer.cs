@@ -77,7 +77,7 @@
             // 
             // panelConteudo
             // 
-            panelConteudo.BackColor = Color.FromArgb(64, 64, 64);
+            panelConteudo.BackColor = SystemColors.Control;
             panelConteudo.Controls.Add(lblCliente);
             panelConteudo.Controls.Add(cmbCliente);
             panelConteudo.Controls.Add(lblStatus);
@@ -94,51 +94,51 @@
             panelConteudo.Location = new Point(0, 79);
             panelConteudo.Name = "panelConteudo";
             panelConteudo.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            panelConteudo.Size = new Size(969, 470);
+            panelConteudo.Size = new Size(1165, 471);
             panelConteudo.TabIndex = 4;
             // 
             // lblCliente
             // 
             lblCliente.AutoSize = true;
-            lblCliente.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCliente.ForeColor = Color.FromArgb(214, 189, 119);
+            lblCliente.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCliente.ForeColor = Color.Black;
             lblCliente.Location = new Point(25, 17);
             lblCliente.Name = "lblCliente";
-            lblCliente.Size = new Size(51, 17);
+            lblCliente.Size = new Size(56, 17);
             lblCliente.TabIndex = 12;
             lblCliente.Text = "Cliente";
             // 
             // cmbCliente
             // 
-            cmbCliente.BackColor = Color.FromArgb(64, 64, 64);
+            cmbCliente.BackColor = Color.White;
             cmbCliente.FlatStyle = FlatStyle.Flat;
             cmbCliente.Font = new Font("Segoe UI", 10F);
-            cmbCliente.ForeColor = Color.FromArgb(214, 189, 119);
+            cmbCliente.ForeColor = Color.Black;
             cmbCliente.Location = new Point(25, 37);
             cmbCliente.Name = "cmbCliente";
-            cmbCliente.Size = new Size(383, 25);
+            cmbCliente.Size = new Size(750, 25);
             cmbCliente.TabIndex = 13;
             // 
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblStatus.ForeColor = Color.FromArgb(214, 189, 119);
-            lblStatus.Location = new Point(426, 17);
+            lblStatus.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblStatus.ForeColor = Color.Black;
+            lblStatus.Location = new Point(858, 17);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(46, 17);
+            lblStatus.Size = new Size(52, 17);
             lblStatus.TabIndex = 14;
             lblStatus.Text = "Status";
             // 
             // cmbStatus
             // 
-            cmbStatus.BackColor = Color.FromArgb(64, 64, 64);
+            cmbStatus.BackColor = Color.White;
             cmbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbStatus.FlatStyle = FlatStyle.Flat;
             cmbStatus.Font = new Font("Segoe UI", 10F);
-            cmbStatus.ForeColor = Color.FromArgb(214, 189, 119);
+            cmbStatus.ForeColor = Color.Black;
             cmbStatus.Items.AddRange(new object[] { "Pendente", "Finalizado", "Cancelado" });
-            cmbStatus.Location = new Point(426, 37);
+            cmbStatus.Location = new Point(859, 37);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(283, 25);
             cmbStatus.TabIndex = 15;
@@ -146,32 +146,32 @@
             // lblAdicionarItens
             // 
             lblAdicionarItens.AutoSize = true;
-            lblAdicionarItens.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblAdicionarItens.ForeColor = Color.FromArgb(214, 189, 119);
+            lblAdicionarItens.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAdicionarItens.ForeColor = Color.Black;
             lblAdicionarItens.Location = new Point(25, 90);
             lblAdicionarItens.Name = "lblAdicionarItens";
-            lblAdicionarItens.Size = new Size(141, 19);
+            lblAdicionarItens.Size = new Size(137, 17);
             lblAdicionarItens.TabIndex = 16;
             lblAdicionarItens.Text = "🛍   Adicionar Itens";
             // 
             // cmbProduto
             // 
-            cmbProduto.BackColor = Color.FromArgb(64, 64, 64);
+            cmbProduto.BackColor = Color.White;
             cmbProduto.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbProduto.FlatStyle = FlatStyle.Flat;
             cmbProduto.Font = new Font("Segoe UI", 10F);
-            cmbProduto.ForeColor = Color.FromArgb(214, 189, 119);
+            cmbProduto.ForeColor = Color.Black;
             cmbProduto.Location = new Point(25, 112);
             cmbProduto.Name = "cmbProduto";
-            cmbProduto.Size = new Size(482, 25);
+            cmbProduto.Size = new Size(885, 25);
             cmbProduto.TabIndex = 17;
             // 
             // numQtd
             // 
-            numQtd.BackColor = Color.FromArgb(64, 64, 64);
+            numQtd.BackColor = Color.White;
             numQtd.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            numQtd.ForeColor = Color.FromArgb(214, 189, 119);
-            numQtd.Location = new Point(524, 112);
+            numQtd.ForeColor = Color.Black;
+            numQtd.Location = new Point(933, 113);
             numQtd.Maximum = new decimal(new int[] { 999, 0, 0, 0 });
             numQtd.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numQtd.Name = "numQtd";
@@ -185,23 +185,24 @@
             btnAdicionarItem.Cursor = Cursors.Hand;
             btnAdicionarItem.CustomizableEdges = customizableEdges1;
             btnAdicionarItem.FillColor = Color.FromArgb(214, 189, 119);
-            btnAdicionarItem.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAdicionarItem.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAdicionarItem.ForeColor = Color.Black;
-            btnAdicionarItem.Location = new Point(590, 112);
+            btnAdicionarItem.Location = new Point(1023, 106);
             btnAdicionarItem.Name = "btnAdicionarItem";
             btnAdicionarItem.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnAdicionarItem.Size = new Size(119, 25);
+            btnAdicionarItem.Size = new Size(119, 37);
             btnAdicionarItem.TabIndex = 19;
             btnAdicionarItem.Text = "+ Adicionar";
+            btnAdicionarItem.Click += btnAdicionarItem_Click;
             // 
             // lblCarrinho
             // 
             lblCarrinho.AutoSize = true;
-            lblCarrinho.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblCarrinho.ForeColor = Color.FromArgb(214, 189, 119);
+            lblCarrinho.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCarrinho.ForeColor = Color.Black;
             lblCarrinho.Location = new Point(25, 163);
             lblCarrinho.Name = "lblCarrinho";
-            lblCarrinho.Size = new Size(123, 19);
+            lblCarrinho.Size = new Size(121, 17);
             lblCarrinho.TabIndex = 20;
             lblCarrinho.Text = "Itens no Carrinho";
             // 
@@ -232,7 +233,7 @@
             dgvItens.ReadOnly = true;
             dgvItens.RowHeadersVisible = false;
             dgvItens.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvItens.Size = new Size(912, 207);
+            dgvItens.Size = new Size(1117, 207);
             dgvItens.TabIndex = 21;
             // 
             // btnFinalizar
@@ -241,14 +242,15 @@
             btnFinalizar.Cursor = Cursors.Hand;
             btnFinalizar.CustomizableEdges = customizableEdges3;
             btnFinalizar.FillColor = Color.FromArgb(214, 189, 119);
-            btnFinalizar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnFinalizar.Font = new Font("Sora", 9.749999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnFinalizar.ForeColor = Color.Black;
             btnFinalizar.Location = new Point(25, 409);
             btnFinalizar.Name = "btnFinalizar";
             btnFinalizar.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnFinalizar.Size = new Size(450, 45);
+            btnFinalizar.Size = new Size(559, 45);
             btnFinalizar.TabIndex = 22;
             btnFinalizar.Text = "✓  Finalizar Pedido";
+            btnFinalizar.Click += btnFinalizar_Click;
             // 
             // btnCancelar
             // 
@@ -256,14 +258,15 @@
             btnCancelar.Cursor = Cursors.Hand;
             btnCancelar.CustomizableEdges = customizableEdges5;
             btnCancelar.FillColor = Color.FromArgb(220, 220, 225);
-            btnCancelar.Font = new Font("Segoe UI", 10F);
+            btnCancelar.Font = new Font("Sora", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCancelar.ForeColor = Color.FromArgb(80, 80, 90);
-            btnCancelar.Location = new Point(487, 409);
+            btnCancelar.Location = new Point(590, 409);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnCancelar.Size = new Size(450, 45);
+            btnCancelar.Size = new Size(552, 45);
             btnCancelar.TabIndex = 23;
             btnCancelar.Text = "Cancelar";
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // panelHeader
             // 
@@ -280,22 +283,22 @@
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
             panelHeader.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            panelHeader.Size = new Size(969, 80);
+            panelHeader.Size = new Size(1165, 80);
             panelHeader.TabIndex = 3;
             // 
             // lblSubtitulo
             // 
-            lblSubtitulo.Font = new Font("Segoe UI", 9F);
+            lblSubtitulo.Font = new Font("Sora Light", 9F);
             lblSubtitulo.ForeColor = Color.FromArgb(214, 189, 119);
             lblSubtitulo.Location = new Point(19, 43);
             lblSubtitulo.Name = "lblSubtitulo";
-            lblSubtitulo.Size = new Size(315, 20);
+            lblSubtitulo.Size = new Size(364, 20);
             lblSubtitulo.TabIndex = 11;
             lblSubtitulo.Text = "Selecione o cliente, defina o status e adicione os produtos";
             // 
             // label1
             // 
-            label1.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
+            label1.Font = new Font("Sora", 14.2499981F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(214, 189, 119);
             label1.Location = new Point(19, 15);
             label1.Name = "label1";
@@ -314,7 +317,7 @@
             txtBuscaCliente.FocusedState.BorderColor = Color.FromArgb(0, 123, 204);
             txtBuscaCliente.Font = new Font("Segoe UI", 9.5F);
             txtBuscaCliente.ForeColor = Color.FromArgb(214, 189, 119);
-            txtBuscaCliente.Location = new Point(1842, 19);
+            txtBuscaCliente.Location = new Point(2038, 19);
             txtBuscaCliente.Name = "txtBuscaCliente";
             txtBuscaCliente.PlaceholderForeColor = Color.FromArgb(214, 189, 119);
             txtBuscaCliente.PlaceholderText = "🔍  Pesquisar por nome ou CPF...";
@@ -332,7 +335,7 @@
             btnNovoCliente.FillColor = Color.FromArgb(214, 189, 119);
             btnNovoCliente.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnNovoCliente.ForeColor = Color.Black;
-            btnNovoCliente.Location = new Point(2108, 19);
+            btnNovoCliente.Location = new Point(2304, 19);
             btnNovoCliente.Name = "btnNovoCliente";
             btnNovoCliente.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnNovoCliente.Size = new Size(155, 40);
@@ -358,7 +361,7 @@
             btnEditarCliente.FillColor = Color.FromArgb(64, 64, 64);
             btnEditarCliente.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnEditarCliente.ForeColor = Color.White;
-            btnEditarCliente.Location = new Point(2269, 19);
+            btnEditarCliente.Location = new Point(2465, 19);
             btnEditarCliente.Name = "btnEditarCliente";
             btnEditarCliente.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnEditarCliente.Size = new Size(110, 40);
@@ -374,7 +377,7 @@
             btnExcluirCliente.FillColor = Color.FromArgb(220, 60, 60);
             btnExcluirCliente.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             btnExcluirCliente.ForeColor = Color.White;
-            btnExcluirCliente.Location = new Point(2385, 19);
+            btnExcluirCliente.Location = new Point(2581, 19);
             btnExcluirCliente.Name = "btnExcluirCliente";
             btnExcluirCliente.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btnExcluirCliente.Size = new Size(110, 40);
@@ -388,7 +391,7 @@
             Controls.Add(panelConteudo);
             Controls.Add(panelHeader);
             Name = "ucNovoPedido";
-            Size = new Size(969, 549);
+            Size = new Size(1165, 550);
             panelConteudo.ResumeLayout(false);
             panelConteudo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numQtd).EndInit();

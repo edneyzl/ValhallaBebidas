@@ -12,15 +12,15 @@ using ValhallaBebidas.Infrastructure.Data;
 namespace ValhallaBebidas.Infrastructure.Migrations
 {
     [DbContext(typeof(ValhallaBebidasDbContext))]
-    [Migration("20260415010737_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260423003055_initialCreate")]
+    partial class initialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.5")
+                .HasAnnotation("ProductVersion", "10.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);

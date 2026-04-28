@@ -1,4 +1,6 @@
-﻿namespace ValhallaBebidas.UI
+﻿using Guna.UI2.WinForms;
+
+namespace ValhallaBebidas.UI
 {
     partial class frmInicio
     {
@@ -30,21 +32,21 @@
         {
             components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
-            picFoto = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            lblNome = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            btnIniciar = new Guna.UI2.WinForms.Guna2Button();
-            btnSair = new Guna.UI2.WinForms.Guna2Button();
-            panelBack2 = new Guna.UI2.WinForms.Guna2Panel();
-            panelBack1 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2BorderlessForm1 = new Guna2BorderlessForm(components);
+            picFoto = new Guna2CirclePictureBox();
+            lblNome = new Guna2HtmlLabel();
+            panelBack2 = new Guna2Panel();
+            btnSair = new Guna2Button();
+            btnIniciar = new Guna2Button();
+            panelBack1 = new Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)picFoto).BeginInit();
             panelBack2.SuspendLayout();
             SuspendLayout();
@@ -77,34 +79,28 @@
             lblNome.BackColor = Color.Transparent;
             lblNome.Font = new Font("Sora ExtraBold", 21.7499962F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNome.ForeColor = Color.White;
-            lblNome.Location = new Point(480, 211);
+            lblNome.Location = new Point(484, 209);
             lblNome.Name = "lblNome";
-            lblNome.Size = new Size(192, 46);
+            lblNome.Size = new Size(192, 38);
             lblNome.TabIndex = 2;
             lblNome.Text = "Olá, Usuário.";
+            lblNome.TextAlignment = ContentAlignment.MiddleCenter;
             // 
-            // btnIniciar
+            // panelBack2
             // 
-            btnIniciar.BackColor = Color.Transparent;
-            btnIniciar.BorderRadius = 15;
-            btnIniciar.Cursor = Cursors.Hand;
-            btnIniciar.CustomizableEdges = customizableEdges6;
-            btnIniciar.DisabledState.BorderColor = Color.DarkGray;
-            btnIniciar.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnIniciar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnIniciar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnIniciar.FillColor = Color.FromArgb(214, 189, 119);
-            btnIniciar.Font = new Font("Sora", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnIniciar.ForeColor = Color.Black;
-            btnIniciar.HoverState.FillColor = Color.FromArgb(242, 215, 134);
-            btnIniciar.Location = new Point(432, 275);
-            btnIniciar.Name = "btnIniciar";
-            btnIniciar.ShadowDecoration.CustomizableEdges = customizableEdges7;
-            btnIniciar.Size = new Size(290, 60);
-            btnIniciar.TabIndex = 3;
-            btnIniciar.Text = "Iniciar Sistema";
-            btnIniciar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            btnIniciar.Click += btnIniciar_Click;
+            panelBack2.BackgroundImage = Properties.Resources.BackGround2;
+            panelBack2.BackgroundImageLayout = ImageLayout.Zoom;
+            panelBack2.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            panelBack2.Controls.Add(picFoto);
+            panelBack2.Controls.Add(btnSair);
+            panelBack2.Controls.Add(lblNome);
+            panelBack2.Controls.Add(btnIniciar);
+            panelBack2.CustomizableEdges = customizableEdges8;
+            panelBack2.Location = new Point(2, 184);
+            panelBack2.Name = "panelBack2";
+            panelBack2.ShadowDecoration.CustomizableEdges = customizableEdges9;
+            panelBack2.Size = new Size(1168, 519);
+            panelBack2.TabIndex = 4;
             // 
             // btnSair
             // 
@@ -122,7 +118,7 @@
             btnSair.Font = new Font("Sora", 15.75F, FontStyle.Bold);
             btnSair.ForeColor = Color.White;
             btnSair.HoverState.ForeColor = Color.FromArgb(255, 47, 75);
-            btnSair.Location = new Point(432, 353);
+            btnSair.Location = new Point(435, 353);
             btnSair.Name = "btnSair";
             btnSair.PressedColor = Color.Transparent;
             btnSair.ShadowDecoration.CustomizableEdges = customizableEdges5;
@@ -131,21 +127,28 @@
             btnSair.Text = "Sair";
             btnSair.Click += btnSair_Click;
             // 
-            // panelBack2
+            // btnIniciar
             // 
-            panelBack2.BackgroundImage = Properties.Resources.BackGround2;
-            panelBack2.BackgroundImageLayout = ImageLayout.Zoom;
-            panelBack2.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            panelBack2.Controls.Add(picFoto);
-            panelBack2.Controls.Add(btnSair);
-            panelBack2.Controls.Add(lblNome);
-            panelBack2.Controls.Add(btnIniciar);
-            panelBack2.CustomizableEdges = customizableEdges8;
-            panelBack2.Location = new Point(2, 184);
-            panelBack2.Name = "panelBack2";
-            panelBack2.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            panelBack2.Size = new Size(1168, 519);
-            panelBack2.TabIndex = 4;
+            btnIniciar.BackColor = Color.Transparent;
+            btnIniciar.BorderRadius = 15;
+            btnIniciar.Cursor = Cursors.Hand;
+            btnIniciar.CustomizableEdges = customizableEdges6;
+            btnIniciar.DisabledState.BorderColor = Color.DarkGray;
+            btnIniciar.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnIniciar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnIniciar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnIniciar.FillColor = Color.FromArgb(214, 189, 119);
+            btnIniciar.Font = new Font("Sora", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnIniciar.ForeColor = Color.Black;
+            btnIniciar.HoverState.FillColor = Color.FromArgb(242, 215, 134);
+            btnIniciar.Location = new Point(435, 275);
+            btnIniciar.Name = "btnIniciar";
+            btnIniciar.ShadowDecoration.CustomizableEdges = customizableEdges7;
+            btnIniciar.Size = new Size(290, 60);
+            btnIniciar.TabIndex = 3;
+            btnIniciar.Text = "Iniciar Sistema";
+            btnIniciar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            btnIniciar.Click += btnIniciar_Click;
             // 
             // panelBack1
             // 
@@ -172,6 +175,7 @@
             Name = "frmInicio";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmInicio";
+            Load += frmInicio_Load;
             ((System.ComponentModel.ISupportInitialize)picFoto).EndInit();
             panelBack2.ResumeLayout(false);
             panelBack2.PerformLayout();

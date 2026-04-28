@@ -17,7 +17,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.5")
+                .HasAnnotation("ProductVersion", "10.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -40,7 +40,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     b.HasIndex("Nome")
                         .IsUnique();
 
-                    b.ToTable("Categorias", (string)null);
+                    b.ToTable("Categorias");
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Cliente", b =>
@@ -95,7 +95,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.HasIndex("EnderecoId");
 
-                    b.ToTable("Clientes", (string)null);
+                    b.ToTable("Clientes");
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Endereco", b =>
@@ -143,7 +143,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.HasIndex("Cep");
 
-                    b.ToTable("Enderecos", (string)null);
+                    b.ToTable("Enderecos");
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Funcionario", b =>
@@ -198,7 +198,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.HasIndex("EnderecoId");
 
-                    b.ToTable("Funcionarios", (string)null);
+                    b.ToTable("Funcionarios");
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.ItemPedido", b =>
@@ -230,7 +230,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
                     b.HasIndex("PedidoId", "ProdutoId")
                         .IsUnique();
 
-                    b.ToTable("ItensPedido", (string)null);
+                    b.ToTable("ItensPedido");
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Movimentacao", b =>
@@ -266,7 +266,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.HasIndex("ProdutoId");
 
-                    b.ToTable("Movimentacoes", (string)null);
+                    b.ToTable("Movimentacoes");
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Pedido", b =>
@@ -327,7 +327,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.HasIndex("ClienteId", "DataPedido");
 
-                    b.ToTable("Pedidos", (string)null);
+                    b.ToTable("Pedidos");
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Produto", b =>
@@ -387,7 +387,7 @@ namespace ValhallaBebidas.Infrastructure.Migrations
 
                     b.HasIndex("Nome");
 
-                    b.ToTable("Produtos", (string)null);
+                    b.ToTable("Produtos");
                 });
 
             modelBuilder.Entity("ValhallaBebidas.Domain.Entities.Cliente", b =>
